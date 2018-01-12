@@ -1,0 +1,104 @@
+C:\Users\ITG\source\repos\KlausBot\KlausBot\obj\Debug\KlausBot.csprojResolveAssemblyReference.cache
+C:\Users\ITG\source\repos\KlausBot\KlausBot\obj\Debug\KlausBot.csproj.CoreCompileInputs.cache
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Bot Application.dll.config
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Bot Application.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Bot Application.pdb
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Autofac.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Chronic.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.Bot.Builder.Autofac.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.Bot.Builder.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.Bot.Connector.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.Rest.ClientRuntime.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.WindowsAzure.Configuration.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Newtonsoft.Json.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\System.Net.Http.Formatting.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\System.Web.Http.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\System.Web.Http.WebHost.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Autofac.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.Bot.Builder.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.Bot.Builder.Autofac.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.Bot.Connector.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Protocols.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Microsoft.WindowsAzure.Configuration.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\Newtonsoft.Json.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\System.Net.Http.Formatting.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\System.Web.Http.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\System.Web.Http.WebHost.xml
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\ar\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\cs\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\de-dE\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\en\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\es\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\fa\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\fr\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\it\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\ja\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\nl\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\pt-BR\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\ru\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\obj\Debug\Bot Application.dll
+C:\Users\ITG\source\repos\KlausBot\KlausBot\obj\Debug\Bot Application.pdb
+C:\KlausBot\KlausBot\bin\Bot Application.dll.config
+C:\KlausBot\KlausBot\bin\Bot Application.dll
+C:\KlausBot\KlausBot\bin\Bot Application.pdb
+C:\KlausBot\KlausBot\bin\Autofac.dll
+C:\KlausBot\KlausBot\bin\Chronic.dll
+C:\KlausBot\KlausBot\bin\Microsoft.Bot.Builder.Autofac.dll
+C:\KlausBot\KlausBot\bin\Microsoft.Bot.Builder.dll
+C:\KlausBot\KlausBot\bin\Microsoft.Bot.Connector.dll
+C:\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Logging.dll
+C:\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+C:\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Protocols.dll
+C:\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Tokens.dll
+C:\KlausBot\KlausBot\bin\Microsoft.Rest.ClientRuntime.dll
+C:\KlausBot\KlausBot\bin\Microsoft.WindowsAzure.Configuration.dll
+C:\KlausBot\KlausBot\bin\Newtonsoft.Json.dll
+C:\KlausBot\KlausBot\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\KlausBot\KlausBot\bin\System.Net.Http.Formatting.dll
+C:\KlausBot\KlausBot\bin\System.Web.Http.dll
+C:\KlausBot\KlausBot\bin\System.Web.Http.WebHost.dll
+C:\KlausBot\KlausBot\bin\Autofac.xml
+C:\KlausBot\KlausBot\bin\Microsoft.Bot.Builder.xml
+C:\KlausBot\KlausBot\bin\Microsoft.Bot.Builder.Autofac.xml
+C:\KlausBot\KlausBot\bin\Microsoft.Bot.Connector.xml
+C:\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Logging.xml
+C:\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+C:\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Protocols.xml
+C:\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+C:\KlausBot\KlausBot\bin\Microsoft.IdentityModel.Tokens.xml
+C:\KlausBot\KlausBot\bin\Microsoft.WindowsAzure.Configuration.xml
+C:\KlausBot\KlausBot\bin\Newtonsoft.Json.xml
+C:\KlausBot\KlausBot\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\KlausBot\KlausBot\bin\System.Net.Http.Formatting.xml
+C:\KlausBot\KlausBot\bin\System.Web.Http.xml
+C:\KlausBot\KlausBot\bin\System.Web.Http.WebHost.xml
+C:\KlausBot\KlausBot\bin\ar\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\bin\cs\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\bin\de-dE\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\bin\en\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\bin\es\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\bin\fa\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\bin\fr\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\bin\it\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\bin\ja\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\bin\nl\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\bin\pt-BR\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\bin\ru\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
+C:\KlausBot\KlausBot\obj\Debug\KlausBot.csprojResolveAssemblyReference.cache
+C:\KlausBot\KlausBot\obj\Debug\KlausBot.csproj.CoreCompileInputs.cache
+C:\KlausBot\KlausBot\obj\Debug\Bot Application.dll
+C:\KlausBot\KlausBot\obj\Debug\Bot Application.pdb
