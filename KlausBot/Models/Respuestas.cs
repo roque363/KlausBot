@@ -8,9 +8,23 @@ namespace KlausBot.Models
 {
     public class Respuestas
     {
-        // ----------------------------------------------------------
-        // PREGUNTAS DE OUTLOOK
-        // ----------------------------------------------------------
+        // ------------------------------------------------------------- 
+        // PREGUNTAS DE OUTLOOK                                          
+        // ------------------------------------------------------------- 
+        // Crear y enviar correo electrónico
+        public static IList<Attachment> GetCrearEnviarCorreoElectronico()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear y enviar correo electrónico",
+                    "",
+                    "",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Inicio-r%C3%A1pido-de-Outlook-2016-e9da47c4-9b89-4b49-b945-a204aeea6726?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
         // Definicon de Outlook
         public static IList<Attachment> GetOutlookDefinicionCard()
         {
@@ -66,19 +80,158 @@ namespace KlausBot.Models
         {
             return new List<Attachment>()
             {
-              GetVideoCard(
+                GetHeroCardV2(
                     "Recuperar o reemplazar un mensaje después de enviarlo",
+                    "",
                     "Con la recuperación de mensajes, un mensaje enviado se recupera de los buzones de los destinatarios que aún no lo hayan abierto. " +
                     "También puede reemplazarlo con un mensaje de sustitución. Por ejemplo, si olvidó incluir un dato adjunto, puede intentar " +
                     "recuperar el mensaje y luego enviar un mensaje de reemplazo con el dato adjunto.",
-                    "",
-                    "https://support.office.com/es-es/article/Recuperar-o-reemplazar-un-mensaje-despu%C3%A9s-de-enviarlo-35027f88-d655-4554-b4f8-6c0729a723a0?ui=es-ES&rs=es-ES&ad=ES"),
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información", 
+                    value: "https://support.office.com/es-es/article/Recuperar-o-reemplazar-un-mensaje-despu%C3%A9s-de-enviarlo-35027f88-d655-4554-b4f8-6c0729a723a0?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
 
-        // ----------------------------------------------------------
+        // -------------------------------------------------------------
+        // PREGUNTAS NO IMPLEMENTADAS
+
+        // Crear, cambiar o personalizar una vista
+        public static IList<Attachment> GetCrearCambiarPersonalizarVista()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear, cambiar o personalizar una vista",
+                    "",
+                    "Cada carpeta Outlook, como la Bandeja de entrada y calendario, muestra sus elementos en un diseño de una vista. " +
+                    "Cada carpeta tiene varias vistas predefinidas que puede elegir entre y puede crear vistas personalizadas.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información", 
+                    value: "https://support.office.com/es-es/article/Crear-cambiar-o-personalizar-una-vista-f693f3d9-0037-4fa0-9376-3a57b6337b71")),
+            };
+        }
+
+        // Cambiar el modo de ver el calendario de Outlook
+        public static IList<Attachment> GetCambiarModoVerCalendario()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar el modo de ver el calendario de Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Mantener las próximas citas y reuniones siempre a la vista
+        public static IList<Attachment> GetMantenerCitasReunionesVista()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Mantener las próximas citas y reuniones siempre a la vista",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Mantener-las-pr%C3%B3ximas-citas-y-reuniones-siempre-a-la-vista-0dc3d54c-9ae9-4285-9439-4f675244aae0")),
+            };
+        }
+
+        // Mostrar, ocultar y ver el campo de copia carbón oculta (CCO)
+        public static IList<Attachment> GetMostrarOcultarVerCampoCopiaCarbonOculta()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Mostrar, ocultar y ver el campo de copia carbón oculta (CCO)",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Si agrega el nombre de un destinatario al cuadro CCO (copia carbón oculta) en un mensaje de correo electrónico, " +
+                    "se enviará una copia del mensaje al destinatario que especifique. Los destinatarios que se agreguen al cuadro CCO no se " +
+                    "mostrarán al resto de los destinatarios que reciban el mensaje.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Mostrar-ocultar-y-ver-el-campo-de-copia-carb%C3%B3n-oculta-CCO-04304e27-63a2-4276-8884-5077fba0e229?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Ver mensajes de correo electrónico por conversación
+        public static IList<Attachment> GetVerMensajesCorreoElectronicoConversacion()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Ver mensajes de correo electrónico por conversación",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Cuando se cambia a la vista de organización por conversaciones, los mensajes que tienen el mismo asunto aparecen" +
+                    " como un grupo o una colección de mensajes.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Ver-mensajes-de-correo-electr%C3%B3nico-por-conversaci%C3%B3n-0eeec76c-f59b-4834-98e6-05cfdfa9fb07?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Ver solo los mensajes no leídos
+        public static IList<Attachment> GetVerSoloMensajesNoLeidos()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Ver solo los mensajes no leídos",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "La Bandeja de entrada o cualquier carpeta de correo se pueden filtrar para mostrar solo los mensajes no leídos. " +
+                    "De forma predeterminada, los mensajes no leídos aparecen en negrita en el lista de mensajes.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Ver-solo-los-mensajes-no-le%C3%ADdos-f2c8450c-9cd0-4037-a5d3-26f6946727ca")),
+            };
+        }
+
+        // Marcar un mensaje como leído o como no leído
+        public static IList<Attachment> GetMarcarMensajeComoLeidoONoLeido()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Marcar un mensaje como leído o como no leído",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "En la Bandeja de entrada, los mensajes no leídos aparecen en negrita. Cuando haga clic en ellos y, después, en otro elemento, " +
+                    "el título del mensaje dejará de estar en negrita, lo que pone de manifiesto que se ha leído.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Marcar-un-mensaje-como-le%C3%ADdo-o-como-no-le%C3%ADdo-59b44298-08c2-4eb7-8128-ea0fb7f52720")),
+            };
+        }
+
+        // Ver encabezados de mensajes de correo electrónico
+        public static IList<Attachment> GetVerEncabezadosMensajesCorreoElectronico()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Ver encabezados de mensajes de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Encabezados de mensajes de correo electrónico proporcionan una lista de detalles técnicos sobre el mensaje, " +
+                    "como el remitente, el software utilizado para redactarlo y los servidores de correo electrónico que ha pasado hasta " +
+                    "llegar al destinatario.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Ver-encabezados-de-mensajes-de-correo-electr%C3%B3nico-cd039382-dc6e-4264-ac74-c048563d212c")),
+            };
+        }
+
+        // Cambiar el sonido reproducido cuando se recibe un mensaje de correo
+        public static IList<Attachment> GetCambiarSonidoReproducidoMensajeCorreo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar el sonido reproducido cuando se recibe un mensaje de correo",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Cambiar el sonido de Windows mediante el Panel de Control. Si desea desactivar el sonido, use la vista Backstage en Outlook.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-sonido-reproducido-cuando-se-recibe-un-mensaje-de-correo-cbf254a8-008c-4dce-a02f-b9c87fa8097a?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+
+        // -------------------------------------------------------------
         // PREGUNTAS DE EXCEL
-        // ----------------------------------------------------------
+        // -------------------------------------------------------------
         // Definicon de Excel
         public static IList<Attachment> GetExcelDefinicionCard()
         {
@@ -100,9 +253,9 @@ namespace KlausBot.Models
             };
         }
 
-        // ----------------------------------------------------------
+        // -------------------------------------------------------------
         // PREGUNTAS DE POWER POINT
-        // ----------------------------------------------------------
+        // -------------------------------------------------------------
         // Definicon de Power Point
         public static IList<Attachment> GetPowerPointDefinicionCard()
         {
@@ -122,9 +275,9 @@ namespace KlausBot.Models
             };
         }
 
-        // ----------------------------------------------------------
+        // -------------------------------------------------------------
         // PREGUNTAS DE WORD
-        // ----------------------------------------------------------
+        // -------------------------------------------------------------
         // Definicon de Word
         public static IList<Attachment> GetWordDefinicionCard()
         {
@@ -143,6 +296,8 @@ namespace KlausBot.Models
                     "https://support.office.com/es-es/article/V%C3%ADdeo-%C2%BFQu%C3%A9-es-Word-aee9c7ff-f9c5-415f-80dc-103ad5e344d7"),
             };
         }
+
+        // -------------------------------------------------------------
 
         private static Attachment GetHeroCard(string title, string subtitle, string text, CardImage cardImage)
         {
@@ -164,7 +319,6 @@ namespace KlausBot.Models
                 Title = title,
                 Subtitle = subtitle,
                 Text = text,
-                //Images = new List<CardImage>() { cardImage },
                 Buttons = new List<CardAction>() { cardAction },
             };
             return heroCard.ToAttachment();
@@ -206,4 +360,5 @@ namespace KlausBot.Models
         }
 
     }
+
 }

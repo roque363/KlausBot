@@ -135,22 +135,26 @@ namespace KlausBot.Dialogs
             }
         }
 
+        // La accion del usuario es crear 
         [LuisIntent("Consulta.Crear")]
         public async Task ConsultaCrear(IDialogContext context, LuisResult result)
         {
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
-            foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))// Primera parte de la pregunta
+            // Recorrido de la primera parte de la pregunta
+            foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
             {
-                foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))// Segunda parte de la pregunta
+                var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                
+                // El usuario escribio en su pregunta la palabra mensaje
+                if (palabra2 == "mensaje" || palabra2 == "mensajes")
                 {
-                    var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                    var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
-
-                    // El usuario escribio en su pregunta la palabra mensaje o correo
-                    if (palabra2 == "mensaje" || palabra2 == "mensajes" || palabra2 == "correo" || palabra2 == "correos")
+                    // Recorrido de la segunda parte de la pregunta
+                    foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
                     {
+                        var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
+
                         // El usuario escribio en su pregunta la palabra firma
                         if (palabra1 == "firma" || palabra1 == "firmas")
                         {
@@ -166,25 +170,35 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
-                    else
-                    {
-                        await context.PostAsync($"Lo siento, su pregunta no esta registrada");
-                        context.Wait(MessageReceived);
-                        return;
-                    }
-
+                }
+                // El usuario escribio en su pregunta la palabra correo
+                else if (palabra2 == "correo" || palabra2 == "correos")
+                {
+                    reply.Attachments = Respuestas.GetCrearEnviarCorreoElectronico();
+                    await context.PostAsync(reply);
+                    context.Wait(MessageReceived);
+                    return;
+                }
+                else
+                {
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    context.Wait(MessageReceived);
+                    return;
                 }
             }   
         }
 
+        // La accion del usuairo es recuperar 
         [LuisIntent("Consulta.Recuperar")]
         public async Task ConsultaRecuperar(IDialogContext context, LuisResult result)
         {
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
+            // Recorrido de la primera parte de la pregunta
             foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))// Segunda parte de la pregunta
             {
+                // Recorrido de la segunda parte de la pregunta
                 foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))// Primera parte de la pregunta
                 {
                     var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
@@ -211,10 +225,20 @@ namespace KlausBot.Dialogs
                     // El usuario escribio en su pregunta la palabra mensaje
                     else if (palabra1 == "mensaje" || palabra1 == "mensajes")
                     {
-                        reply.Attachments = Respuestas.GetRecuperarMensajeDespuésEnviarlo();
-                        await context.PostAsync(reply);
-                        context.Wait(MessageReceived);
-                        return;
+                        // El usuario escribio en su pregunta la palabra correo
+                        if (palabra2 == "correo" || palabra2 == "correos")
+                        {
+                            reply.Attachments = Respuestas.GetRecuperarMensajeDespuésEnviarlo();
+                            await context.PostAsync(reply);
+                            context.Wait(MessageReceived);
+                            return;
+                        }
+                        else
+                        {
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                            context.Wait(MessageReceived);
+                            return;
+                        }
                     }
                     else
                     {
