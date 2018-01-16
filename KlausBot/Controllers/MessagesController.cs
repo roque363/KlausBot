@@ -94,13 +94,6 @@ namespace KlausBot
             {
                 Title = "Hola",
                 Subtitle = "¿En que puedo ayudarte?, Por favor se especificó en tu pregunta ",
-                /*
-                Buttons = new List<CardAction>
-                {
-                    new CardAction(ActionTypes.PostBack, "Consultas", value: "Consulta"),
-                    new CardAction(ActionTypes.PostBack, "Requerimiento", value: "Requerimiento")
-                }
-                */
             };
             return Saludocard.ToAttachment();
         }

@@ -91,9 +91,6 @@ namespace KlausBot.Models
             };
         }
 
-        // -------------------------------------------------------------
-        // PREGUNTAS NO IMPLEMENTADAS
-
         // Crear, cambiar o personalizar una vista
         public static IList<Attachment> GetCrearCambiarPersonalizarVista()
         {
@@ -104,7 +101,7 @@ namespace KlausBot.Models
                     "",
                     "Cada carpeta Outlook, como la Bandeja de entrada y calendario, muestra sus elementos en un diseño de una vista. " +
                     "Cada carpeta tiene varias vistas predefinidas que puede elegir entre y puede crear vistas personalizadas.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información", 
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Crear-cambiar-o-personalizar-una-vista-f693f3d9-0037-4fa0-9376-3a57b6337b71")),
             };
         }
@@ -122,6 +119,9 @@ namespace KlausBot.Models
                     value: "https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
+
+        // -------------------------------------------------------------
+        // PREGUNTAS NO IMPLEMENTADAS
 
         // Mantener las próximas citas y reuniones siempre a la vista
         public static IList<Attachment> GetMantenerCitasReunionesVista()
@@ -225,6 +225,65 @@ namespace KlausBot.Models
                     "Cambiar el sonido de Windows mediante el Panel de Control. Si desea desactivar el sonido, use la vista Backstage en Outlook.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Cambiar-el-sonido-reproducido-cuando-se-recibe-un-mensaje-de-correo-cbf254a8-008c-4dce-a02f-b9c87fa8097a?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Activar y desactivar las alertas de escritorio
+        public static IList<Attachment> GetActivarDesactivarAlertasEscritorio()
+        {
+            return new List<Attachment>()
+            {
+                GetVideoCard(
+                    "Activar y desactivar las alertas de escritorio",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "https://videocontent.osi.office.net/367cb3e3-121b-4e18-9662-1055bf6757ab/7a6cc676-5ef0-44c6-a7be-aa84ebd2bd08_1280x720_3400.mp4",
+                    "https://support.office.com/es-es/article/Activar-y-desactivar-las-alertas-de-escritorio-9940c70e-b306-442e-a856-d94b20318481?ui=es-ES&rs=es-ES&ad=ES"),
+            };
+        }
+
+        // Crear o programar una cita
+        public static IList<Attachment> GetCrearProgramarCita()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear o programar una cita",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Las citas son actividades programadas en el calendario que no implican invitar a otras personas ni reservar recursos. " +
+                    "Puede convertir una cita en una reunión mediante la adición de los asistentes.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-o-programar-una-cita-be84396a-0903-4e25-b31c-1c99ce0dacf2?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Crear un grupo de contactos o una lista de distribución en Outlook
+        public static IList<Attachment> GetCrearGrupoContactosListaDistribuciónOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un grupo de contactos o una lista de distribución en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Use un grupo de contactos (anteriormente denominado “lista de distribución”) para enviar un mensaje de correo electrónico " +
+                    "a varias personas (un equipo del proyecto, un comité o incluso solo un grupo de amigos) sin tener que agregar cada nombre " +
+                    "cada vez que desea escribirles.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-un-grupo-de-contactos-o-una-lista-de-distribuci%C3%B3n-en-Outlook-88ff6c60-0a1d-4b54-8c9d-9e1a71bc3023?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Enviar respuestas automáticas "Fuera de la oficina" de Outlook
+        public static IList<Attachment> GetCambiarSonidoReproducidoMensaj()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Enviar respuestas automáticas 'Fuera de la oficina' de Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Solo puede enviar respuestas automáticas de fuera de la oficina siguiendo estos pasos si tiene cuenta de Office 365, " +
+                    "Outlook.com o Exchange. Para el resto de cuentas de correo electrónico, vea Enviar y redirigir correo electrónico automáticamente.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Enviar-respuestas-autom%C3%A1ticas-Fuera-de-la-oficina-de-Outlook-9742f476-5348-4f9f-997f-5e208513bd67?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
 

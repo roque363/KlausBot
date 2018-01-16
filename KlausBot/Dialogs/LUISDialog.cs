@@ -143,20 +143,20 @@ namespace KlausBot.Dialogs
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
             // Recorrido de la primera parte de la pregunta
-            foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+            foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
-                var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                
-                // El usuario escribio en su pregunta la palabra mensaje
-                if (palabra2 == "mensaje" || palabra2 == "mensajes")
+                var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
+
+                // La primera parte de la pregunta es firma 
+                if (palabra1 == "firma" || palabra1 == "firmas")
                 {
                     // Recorrido de la segunda parte de la pregunta
-                    foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
-                        var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
 
-                        // El usuario escribio en su pregunta la palabra firma
-                        if (palabra1 == "firma" || palabra1 == "firmas")
+                        // La segunda parte de la prgunta es mensaje o correo
+                        if (palabra2 == "mensaje" || palabra2 == "mensajes" || palabra2 == "correo" || palabra2 == "correos")
                         {
                             reply.Attachments = Respuestas.GetCrearFirmaMensaje();
                             await context.PostAsync(reply);
@@ -171,8 +171,16 @@ namespace KlausBot.Dialogs
                         }
                     }
                 }
-                // El usuario escribio en su pregunta la palabra correo
-                else if (palabra2 == "correo" || palabra2 == "correos")
+                // La primera parte de la pregunta es vista
+                else if (palabra1 == "vista" || palabra1 == "vistas")
+                {
+                    reply.Attachments = Respuestas.GetCrearCambiarPersonalizarVista();
+                    await context.PostAsync(reply);
+                    context.Wait(MessageReceived);
+                    return;
+                }
+                // La primera parte de la pregunta es correo
+                else if (palabra1 == "correo" || palabra1 == "correos")
                 {
                     reply.Attachments = Respuestas.GetCrearEnviarCorreoElectronico();
                     await context.PostAsync(reply);
@@ -186,6 +194,51 @@ namespace KlausBot.Dialogs
                     return;
                 }
             }   
+        }
+
+        // La accion del usuario es cambiar
+        [LuisIntent("Consulta.Cambiar")]
+        public async Task ConsultaCambiar(IDialogContext context, LuisResult result)
+        {
+            var reply = context.MakeMessage();
+            reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+
+            // Recorrido de la primera parte de la pregunta
+            foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
+            {
+                var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
+
+                // La primera parte de la pregunta es firma 
+                if (palabra1 == "modo" || palabra1 == "apariencia")
+                {
+                    // Recorrido de la segunda parte de la pregunta
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+
+                        // La segunda parte de la prgunta es mensaje o correo
+                        if (palabra2 == "calendario" || palabra2 == "calendarios")
+                        {
+                            reply.Attachments = Respuestas.GetCambiarModoVerCalendario();
+                            await context.PostAsync(reply);
+                            context.Wait(MessageReceived);
+                            return;
+                        }
+                        else
+                        {
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                            context.Wait(MessageReceived);
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    context.Wait(MessageReceived);
+                    return;
+                }
+            }
         }
 
         // La accion del usuairo es recuperar 
