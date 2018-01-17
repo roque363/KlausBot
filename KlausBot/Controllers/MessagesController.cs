@@ -64,9 +64,9 @@ namespace KlausBot
                         // if the bot is added, then
                         if (member.Id == iConversationUpdated.Recipient.Id)
                         {
-                            Activity replyToConversation = message.CreateReply("");
+                            Activity replyToConversation = message.CreateReply("¡Hola!, ¿en qué te puedo ayudar?");
                             replyToConversation.Attachments.Add(GetCardSaludos());
-                            var reply = await connector.Conversations.SendToConversationAsync(replyToConversation);
+                            await connector.Conversations.SendToConversationAsync(replyToConversation);
                         }
                     }
                 }
@@ -92,8 +92,11 @@ namespace KlausBot
         {
             var Saludocard = new ThumbnailCard
             {
-                Title = "Hola",
-                Subtitle = "¿En que puedo ayudarte?, Por favor se especificó en tu pregunta ",
+                Text = "¿Tienes una consulta?",
+                Buttons = new List<CardAction>
+                {
+                    new CardAction(ActionTypes.PostBack, "Consulta", value: "Consulta"),
+                }
             };
             return Saludocard.ToAttachment();
         }

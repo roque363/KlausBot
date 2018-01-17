@@ -25,6 +25,20 @@ namespace KlausBot.Models
             };
         }
 
+        // Crear un mensaje de correo electrónico
+        public static IList<Attachment> GetCrearMensajeCorreoElectronico()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un mensaje de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Office 365 Pequeña Empresa Outlook 2010",
+                    "",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-un-mensaje-de-correo-electr%C3%B3nico-147208af-ca8e-4cdf-b71f-77ba81a54069?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
         // Definicon de Outlook
         public static IList<Attachment> GetOutlookDefinicionCard()
         {
@@ -117,6 +131,83 @@ namespace KlausBot.Models
                     "",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Crear o programar una cita
+        public static IList<Attachment> GetCrearProgramarCita()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear o programar una cita",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Las citas son actividades programadas en el calendario que no implican invitar a otras personas ni reservar recursos. " +
+                    "Puede convertir una cita en una reunión mediante la adición de los asistentes.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-o-programar-una-cita-be84396a-0903-4e25-b31c-1c99ce0dacf2?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Crear y asignar categorías de color
+        public static IList<Attachment> GetCrearAsignarCategoriasColor()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear y asignar categorías de color",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Categorías de color permiten identificar y agrupar elementos asociados en Microsoft Outlook fácilmente. " +
+                    "Asignar una categoría de color a un grupo de elementos interrelacionados, como notas, contactos, citas y " +
+                    "mensajes de correo electrónico, para que puede realizar un seguimiento y organizarlos rápidamente. ",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-y-asignar-categor%C3%ADas-de-color-a1fde97e-15e1-4179-a1a0-8a91ef89b8dc")),
+            };
+        }
+
+        // Crear una plantilla de mensaje de correo electrónico
+        public static IList<Attachment> GetCrearPlantillaMensajeCorreoElectronico()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear una plantilla de mensaje de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010",
+                    "Use plantillas de correo electrónico para enviar mensajes que incluyan información que normalmente no cambie de " +
+                    "un mensaje a otro. Redacte y guarde un mensaje como plantilla y vuelva a utilizarlo cuando lo necesite. " +
+                    "Se puede agregar información nueva antes de enviar la plantilla como mensaje de correo.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-una-plantilla-de-mensaje-de-correo-electr%C3%B3nico-43ec7142-4dd0-4351-8727-bd0977b6b2d1")),
+            };
+        }
+
+        // Crear una plantilla de correo electrónico
+        public static IList<Attachment> GetCrearPlantillaCorreoElectronico()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear una plantilla de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010",
+                    "Use plantillas de correo electrónico para enviar mensajes que incluyan información que normalmente no cambie de " +
+                    "un mensaje a otro. Redacte y guarde un mensaje como plantilla y vuelva a utilizarlo cuando lo necesite. Se puede " +
+                    "agregar información nueva antes de enviar la plantilla como mensaje de correo.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-una-plantilla-de-correo-electr%C3%B3nico-d14aff6f-b5be-4144-8979-2dca68a96215")),
+            };
+        }
+
+        // Crear un evento que dure todo el día
+        public static IList<Attachment> GetCrearEventoQueDureTodoDia()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un evento que dure todo el día",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010",
+                    "Un evento es una actividad que dura 24 horas o más. Una feria de muestras, un seminario o unas vacaciones son ejemplos de eventos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-un-evento-que-dure-todo-el-d%C3%ADa-52420de0-8f5a-41b2-a165-070588896c25?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
 
@@ -241,23 +332,8 @@ namespace KlausBot.Models
             };
         }
 
-        // Crear o programar una cita
-        public static IList<Attachment> GetCrearProgramarCita()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Crear o programar una cita",
-                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
-                    "Las citas son actividades programadas en el calendario que no implican invitar a otras personas ni reservar recursos. " +
-                    "Puede convertir una cita en una reunión mediante la adición de los asistentes.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Crear-o-programar-una-cita-be84396a-0903-4e25-b31c-1c99ce0dacf2?ui=es-ES&rs=es-ES&ad=ES")),
-            };
-        }
-
         // Crear un grupo de contactos o una lista de distribución en Outlook
-        public static IList<Attachment> GetCrearGrupoContactosListaDistribuciónOutlook()
+        public static IList<Attachment> GetCrearGrupoContactosListaDistribucionOutlook()
         {
             return new List<Attachment>()
             {
@@ -273,7 +349,7 @@ namespace KlausBot.Models
         }
 
         // Enviar respuestas automáticas "Fuera de la oficina" de Outlook
-        public static IList<Attachment> GetCambiarSonidoReproducidoMensaj()
+        public static IList<Attachment> GetEnviarRespuestasAutomaticas()
         {
             return new List<Attachment>()
             {
@@ -287,6 +363,52 @@ namespace KlausBot.Models
             };
         }
 
+        // Crear una carpeta de búsqueda
+        public static IList<Attachment> GetCrearCarpetaBúsqueda()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear una carpeta de búsqueda",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010",
+                    "Una carpeta de búsqueda es una carpeta virtual que proporciona una vista de todos los elementos de correo electrónico " +
+                    "que coinciden con criterios de búsqueda específicos. Por ejemplo, la carpeta de búsqueda Correo sin leer permite ver " +
+                    "todos los mensajes no leídos en la misma carpeta aunque los mensajes estén guardados en varias ubicaciones del buzón.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Usar-carpetas-de-b%C3%BAsqueda-para-buscar-mensajes-u-otros-elementos-de-Outlook-c1807038-01e4-475e-8869-0ccab0a56dc5?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Crear diseños de fondo para los mensajes de correo electrónico
+        public static IList<Attachment> GetCrearDiseñosFondoParaMensajes()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear diseños de fondo para los mensajes de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "os diseños de fondo y los temas son un conjunto de elementos de diseño unificados y combinaciones de color. " +
+                    "Especifican fuentes, viñetas, colores de fondo, líneas horizontales, imágenes y otros elementos de diseño que " +
+                    "se incluirán en los mensajes de correo electrónico salientes.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-dise%C3%B1os-de-fondo-para-los-mensajes-de-correo-electr%C3%B3nico-b5552ece-8f09-49ce-81a1-c1b7d347914f")),
+            };
+        }
+
+        // Crear una tarea a partir de un mensaje
+        public static IList<Attachment> GetCrearTareaAPartirMensaje()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear una tarea a partir de un mensaje",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Si desea crear una tarea basada en el contenido de un mensaje de correo electrónico, no tiene que volver a especificar " +
+                    "toda la información. En su lugar, haga clic en el mensaje y arrástrelo a tareas en el barra de navegación.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-una-tarea-a-partir-de-un-mensaje-40deff88-941a-4fc0-aba1-7d929d947795")),
+            };
+        }
 
         // -------------------------------------------------------------
         // PREGUNTAS DE EXCEL
@@ -416,6 +538,29 @@ namespace KlausBot.Models
                 }
             };
             return videoCard.ToAttachment();
+        }
+
+        private static Attachment GetCardConsulta(string text, String value)
+        {
+            var Saludocard = new ThumbnailCard
+            {
+                Title = text,
+                Buttons = new List<CardAction>
+                {
+                    new CardAction(ActionTypes.PostBack, "Consulta", value: value),
+                }
+            };
+            return Saludocard.ToAttachment();
+        }
+
+        public static IList<Attachment> GetConsulta()
+        {
+            return new List<Attachment>()
+            {
+                GetCardConsulta(
+                    "¿Tienes una consulta?",
+                    "Consulta"),
+            };
         }
 
     }
