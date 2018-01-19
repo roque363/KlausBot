@@ -40,7 +40,7 @@ namespace KlausBot.Dialogs
             }
             else
             {
-                await context.PostAsync(String.Format("Hola {0}. ¿Como puedo ayudarte hoy?", userName));
+                await context.PostAsync(String.Format("¡Hola! {0}. ¿Como puedo ayudarte hoy?", userName));
             }
         }
 

@@ -211,6 +211,191 @@ namespace KlausBot.Models
             };
         }
 
+        // Usar o crear carpetas de búsqueda para buscar mensajes u otros elementos de Outlook
+        public static IList<Attachment> GetUsarCrearCarpetasBusqueda()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Usar carpetas de búsqueda para buscar mensajes u otros elementos de Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010",
+                    "Una carpeta de búsqueda es una carpeta virtual que proporciona una vista de todos los elementos de correo electrónico " +
+                    "que coinciden con criterios de búsqueda específicos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Usar-carpetas-de-b%C3%BAsqueda-para-buscar-mensajes-u-otros-elementos-de-Outlook-c1807038-01e4-475e-8869-0ccab0a56dc5?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Crear y usar carpetas personales
+        public static IList<Attachment> GetCrearUsarCarpetasPersonales()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear y usar carpetas personales",
+                    "",
+                    "Si le gusta usar carpetas para administrar el correo electrónico, debería conocer las carpetas personales. Las carpetas " +
+                    "personales funcionan igual que las carpetas habituales. Es lo que ocurre en segundo plano lo que las diferencia. Realice " +
+                    "este breve curso para obtener más información y conocer aspectos sobre el archivado y la importación y exportación de correo " +
+                    "electrónico a una cuenta diferente.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-y-usar-carpetas-personales-archivos-de-datos-de-Outlook-cc784f7c-70c4-495d-bcbf-f3fcb679651f?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Agregar algun contacto en outlook
+        public static IList<Attachment> GetAgregarContacto()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como agregar un contacto en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Vamos a ver cómo podemos agregar un nuevo contacto en Outlook. En Outlook, agregar un nuevo contacto no es necesario para poder enviarle un correo ya que podemos enviar un correo a cualquier dirección. Aún así tener un contacto agregado nos permitirá poder hablar con él a través del chat de Outlook, próximamente en Skype y organizar nuestros contactos conocidos. Por todo esto veremos hoy cómo podemos agregar un nuevo contacto en Outlook.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-un-contacto-e1dc4548-3bd6-4644-aecd-47b5728f7b0d")),
+                GetVideoCardV2(
+                    "Office 365 - Outlook",
+                    "Ayuda sobre como agregar un contacto",
+                    "https://www.youtube.com/watch?v=LQ1yev-dpXY"
+                    )
+            };
+        }
+
+        // Agregar persona a una lista de contactos
+        public static IList<Attachment> GetAgregarContactoListaContactos()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como agregar alguna persona a un grupo de contactos",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Use un grupo de contactos (anteriormente denominado “lista de distribución”) para enviar un mensaje de correo electrónico a varias personas (un equipo de proyecto, un comité o incluso solo un grupo de amigos) sin tener que agregar cada nombre cada vez que desea escribirles.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-personas-a-un-grupo-de-contactos-0c6c3bee-0529-4d87-822f-026620072e28")),
+            };
+        }
+
+        // Como agregar contactos a categorías de color
+        public static IList<Attachment> GetAgregarPersonasCategoriasColor()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como agregar contactos a categorías de color",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "¿Su lista de contactos empieza a ser abrumadora? La forma más rápida de organizar los contactos es mediante colores (por ejemplo, azul para los compañeros, rojo para familiares y amigos o verde para las organizaciones y miembros de la comunidad).",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-contactos-a-categor%C3%ADas-de-color-4d4e6521-aee8-4929-bea3-4a12e830fbfb")),
+
+            };
+        }
+
+        // Como agregar gráficos a mensajes en Outlook
+        public static IList<Attachment> GetAgregarGraficosMensajesOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como agregar gráficos a mensajes en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010",
+                    "Si una línea tras de otra de texto sin formato aburre a sus destinatarios, convierta su mensaje en una obra maestra visual con cinco tipos distintos de gráficos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-gr%C3%A1ficos-a-mensajes-en-outlook-114bb251-861f-41cd-b20f-7e7289630c5b")),
+
+            };
+        }
+
+        // Como agregar tablas a mensajes en Outlook
+        public static IList<Attachment> GetAgregarTablasMensajeOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como agregar tablas a mensajes en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010",
+                    "Si ha intentado alguna vez alinear filas y columnas de texto manualmente con espacios, sabrá lo frustrante que puede ser.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-una-tabla-a-un-mensaje-59766ab4-0fe5-4520-ba0b-e34f8b8cd025")),
+
+            };
+        }
+
+        // Como agregar una confirmacion de lectura o una notificación de entreega
+        public static IList<Attachment> GetAgregarConfirmacionLecturaNotificacionEntrega()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como agregar una confirmacion de lectura o una notificación de entreega",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Una confirmación de entrega confirma la entrega del mensaje de correo electrónico al buzón del destinatario, pero no si el destinatario lo ha visto o leído.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-y-solicitar-confirmaciones-de-lectura-y-notificaciones-de-entrega-a34bf70a-4c2c-4461-b2a1-12e4a7a92141")),
+
+            };
+        }
+
+        // Agregar la confirmación de entrega para realizar un seguimiento de un mensaje de correo electrónico
+        public static IList<Attachment> GetAgregarConfirmacionEntregaRealizarSeguimiento()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar la confirmación de entrega para realizar un seguimiento de un mensaje de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Una confirmación de entrega indica que un mensaje de correo se ha enviado al buzón del destinatario, pero no si el destinatario lo ha visto o leído.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-la-confirmaci%C3%B3n-de-entrega-para-realizar-un-seguimiento-de-un-mensaje-de-correo-electr%C3%B3nico-69cd1b39-2300-482d-96c6-22e2f4a96848")),
+
+            };
+        }
+
+        // Como agregar la confirmación de entrega para realizar un seguimiento de un mensaje de correo electrónico
+        public static IList<Attachment> GetAgregarSeguimientoMensajesOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como agregar la confirmación de entrega para realizar un seguimiento de un mensaje de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Una confirmación de entrega indica que un mensaje de correo se ha enviado al buzón del destinatario, pero no si el destinatario lo ha visto o leído. Una confirmación de lectura avisa cuando se abre un mensaje.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-la-confirmaci%C3%B3n-de-entrega-para-realizar-un-seguimiento-de-un-mensaje-de-correo-electr%C3%B3nico-69cd1b39-2300-482d-96c6-22e2f4a96848?ui=es-ES&rs=es-HN&ad=PE")),
+
+            };
+        }
+
+        // Como agregar días no laborables a tu calendario en Outlook
+        public static IList<Attachment> GetAgregarFeriadosCalendarioOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como agregar días no laborables a tu calendario en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Cuando exporta su calendario de Outlook a Google Calendar, está exportando una instantánea del calendario. Cualquier cambio que realice en su calendario de Outlook no se reflejará automáticamente en Google Calendar.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Exportar-un-Calendario-de-Outlook-a-Google-Calendar-662fa3bb-0794-4b18-add8-9968b665f4e6")),
+
+            };
+        }
+
+        // Bloquear a un remitente de correo
+        public static IList<Attachment> GetNombresListasBloqueados()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Bloquear a un remitente de correo",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Como parte de sus criterios de filtrado, el filtro de correo electrónico no deseado de Outlook comprueba los remitentes de mensajes con las listas de direcciones de correo electrónico y dominios de Internet designados como seguro o bloqueado.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Bloquear-a-un-remitente-de-correo-b29fd867-cac9-40d8-aed1-659e06a706e4?ui=es-ES&rs=es-HN&ad=PE")),
+
+            };
+        }
+
         // -------------------------------------------------------------
         // PREGUNTAS NO IMPLEMENTADAS
 
@@ -363,22 +548,6 @@ namespace KlausBot.Models
             };
         }
 
-        // Crear una carpeta de búsqueda
-        public static IList<Attachment> GetCrearCarpetaBúsqueda()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Crear una carpeta de búsqueda",
-                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010",
-                    "Una carpeta de búsqueda es una carpeta virtual que proporciona una vista de todos los elementos de correo electrónico " +
-                    "que coinciden con criterios de búsqueda específicos. Por ejemplo, la carpeta de búsqueda Correo sin leer permite ver " +
-                    "todos los mensajes no leídos en la misma carpeta aunque los mensajes estén guardados en varias ubicaciones del buzón.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Usar-carpetas-de-b%C3%BAsqueda-para-buscar-mensajes-u-otros-elementos-de-Outlook-c1807038-01e4-475e-8869-0ccab0a56dc5?ui=es-ES&rs=es-ES&ad=ES")),
-            };
-        }
-
         // Crear diseños de fondo para los mensajes de correo electrónico
         public static IList<Attachment> GetCrearDiseñosFondoParaMensajes()
         {
@@ -407,6 +576,69 @@ namespace KlausBot.Models
                     "toda la información. En su lugar, haga clic en el mensaje y arrástrelo a tareas en el barra de navegación.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Crear-una-tarea-a-partir-de-un-mensaje-40deff88-941a-4fc0-aba1-7d929d947795")),
+            };
+        }
+
+        // Crear sondeos en mensajes de correo y revisar los resultados
+        public static IList<Attachment> GetCrearSondeosMensajesRevisarResultados()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear sondeos en mensajes de correo y revisar los resultados",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Es fácil crear un sondeo en Microsoft Outlook, incluyendo los botones de voto en un mensaje de correo electrónico. " +
+                    "Cuando los destinatarios responden a un sondeo, puede automáticamente incluir los resultados de la votación en Outlook " +
+                    "o exportar las respuestas a una hoja de cálculo Excel.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-sondeos-en-mensajes-de-correo-y-revisar-los-resultados-4d10e079-8ea1-489a-a79c-18cb71ae12dd?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Crear un grupo de contactos o una lista de distribución en Outlook
+        public static IList<Attachment> GetCrearGgrupoContactosListaDistribucion()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un grupo de contactos o una lista de distribución en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Use un grupo de contactos (anteriormente denominado “lista de distribución”) para enviar un mensaje de " +
+                    "correo electrónico a varias personas (un equipo del proyecto, un comité o incluso solo un grupo de amigos) sin " +
+                    "tener que agregar cada nombre cada vez que desea escribirles.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-un-grupo-de-contactos-o-una-lista-de-distribuci%C3%B3n-en-Outlook-88ff6c60-0a1d-4b54-8c9d-9e1a71bc3023?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Crear un grupo de contactos desde una lista de contactos en Exce
+        public static IList<Attachment> GetCrearGrupoContactosDesdeListaContactosExcel()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un grupo de contactos desde una lista de contactos en Exce",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Use un grupo de contactos (anteriormente denominado “lista de distribución”) para enviar un mensaje de " +
+                    "correo electrónico a varias personas (un equipo del proyecto, un comité o incluso solo un grupo de amigos) sin " +
+                    "tener que agregar cada nombre cada vez que desea escribirles.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-un-grupo-de-contactos-o-una-lista-de-distribuci%C3%B3n-en-Outlook-88ff6c60-0a1d-4b54-8c9d-9e1a71bc3023?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Crear tareas y elementos de tarea
+        public static IList<Attachment> GetCrearTareasEelementosTarea()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear tareas y elementos de tarea",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Muchas personas llevan una lista de tareas pendientes, en papel, en una hoja de cálculo, o mediante una combinación " +
+                    "de papel y medios electrónicos. En Outlook, puede combinar sus diversas listas en una, mejorada con avisos y seguimientos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-tareas-y-elementos-de-tarea-45a94e7b-a4ee-46ea-9823-c3423c0eab8e?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
 
@@ -534,6 +766,27 @@ namespace KlausBot.Models
                         Title = "Ver más información",
                         Type = ActionTypes.OpenUrl,
                         Value = value
+                    }
+                }
+            };
+            return videoCard.ToAttachment();
+        }
+
+        private static Attachment GetVideoCardV2(string title, string text, string url)
+        {
+            var videoCard = new VideoCard
+            {
+                Title = title,
+                Text = text,
+                Media = new List<MediaUrl> {
+                    new MediaUrl() {
+                        Url = url
+                    }
+                },
+                Buttons = new List<CardAction> {
+                    new CardAction() {
+                        Title = "Ver más información",
+                        Type = ActionTypes.OpenUrl
                     }
                 }
             };

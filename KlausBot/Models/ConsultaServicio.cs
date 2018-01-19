@@ -29,7 +29,7 @@ namespace KlausBot.Models
     }
 
     [Serializable]
-    [Template(TemplateUsage.NotUnderstood, "\"{0}\" no es uno de los servicios", "Esa no es una opción: \"{0}\".")]
+    [Template(TemplateUsage.NotUnderstood, "\"{0}\" no es uno de los servicios", "Esa no es una opción: \"{0}\".", "\"{0}\" no es una opción.")]
     public class ConsultaServicio
     {
         [Prompt("Con que tipo de servicio tienes problemas: {||}")]

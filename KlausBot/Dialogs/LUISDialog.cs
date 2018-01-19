@@ -13,8 +13,8 @@ using Microsoft.Bot.Builder.FormFlow;
 
 namespace KlausBot.Dialogs
 {
-    //[LuisModel("cd076119-b212-4414-a71d-3874bb7a5ab6", "755c923dc1fe4acb91201cbd955e7a71")]
-    [LuisModel("82f3e996-7431-4211-a195-8cc9ca1a600d", "55b706c0133e457e9f928188adeabe1e")]
+    //[LuisModel("cd076119-b212-4414-a71d-3874bb7a5ab6", "755c923dc1fe4acb91201cbd955e7a71")] KlausBot
+    [LuisModel("26132056-47a4-4f3b-9c71-ee6e5fa0dad3", "2a755c441df445349b5d17f491219153")]
 
     [Serializable]
     public class LUISDialog : LuisDialog<ConsultaServicio>
@@ -164,9 +164,9 @@ namespace KlausBot.Dialogs
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
-
+                // -------------------------------------------------------------------
                 // La primera parte de la pregunta es firma 
-                if (palabra1 == "firma" || palabra1 == "firmas")
+                if (palabra1 == "firma" || palabra1 == "firmas") 
                 {
                     // Recorrido de la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
@@ -189,7 +189,13 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
+                    // Si el usuario no ingreso la segunda parte de la pregunta
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                    context.Wait(MessageReceived);
+                    return;
                 }
+                // -------------------------------------------------------------------
                 // La primera parte de la pregunta es categorías
                 else if (palabra1 == "categoría" || palabra1 == "categoria" || palabra1 == "categorías" || palabra1 == "categorias")
                 {
@@ -197,7 +203,7 @@ namespace KlausBot.Dialogs
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-
+                        // La segunda parte de la pregunta es colores
                         if (palabra2 == "color" || palabra2 == "colores")
                         {
                             reply.Attachments = Respuestas.GetCrearAsignarCategoriasColor();
@@ -213,7 +219,13 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
+                    // Si el usuario no ingreso la segunda parte de la pregunta
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                    context.Wait(MessageReceived);
+                    return;
                 }
+                // -------------------------------------------------------------------
                 // La primera parte de la pregunta es plantilla
                 else if (palabra1 == "plantilla" || palabra1 == "plantillas")
                 {
@@ -244,7 +256,44 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
+                    // Si el usuario no ingreso la segunda parte de la pregunta
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                    context.Wait(MessageReceived);
+                    return;
                 }
+                // -------------------------------------------------------------------
+                // La primera parte de la pregunta es carpetas
+                else if (palabra1 == "carpeta" || palabra1 == "carpetas")
+                {
+                    // Recorrido de la segunda parte de la pregunta
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+
+                        // La segunda parte de la pregunta es busqueda
+                        if (palabra2 == "busqueda" || palabra2 == "busquedas" || palabra2 == "búsquedas" || palabra2 == "búsqueda")
+                        {
+                            reply.Attachments = Respuestas.GetUsarCrearCarpetasBusqueda();
+                            await context.PostAsync(reply);
+                            context.Wait(MessageReceived);
+                            return;
+                        }
+                        else
+                        {
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                            await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                            context.Wait(MessageReceived);
+                            return;
+                        }
+                    }
+                    // Si el usuario no ingreso la segunda parte de la pregunta
+                    reply.Attachments = Respuestas.GetCrearUsarCarpetasPersonales();
+                    await context.PostAsync(reply);
+                    context.Wait(MessageReceived);
+                    return;
+                }
+                // -------------------------------------------------------------------
                 // La primera parte de la pregunta es vista
                 else if (palabra1 == "evento" || palabra1 == "eventos")
                 {
@@ -253,6 +302,7 @@ namespace KlausBot.Dialogs
                     context.Wait(MessageReceived);
                     return;
                 }
+                // -------------------------------------------------------------------
                 // La primera parte de la pregunta es vista
                 else if (palabra1 == "vista" || palabra1 == "vistas")
                 {
@@ -261,6 +311,7 @@ namespace KlausBot.Dialogs
                     context.Wait(MessageReceived);
                     return;
                 }
+                // -------------------------------------------------------------------
                 // La primera parte de la pregunta es correo
                 else if (palabra1 == "correo" || palabra1 == "correos")
                 {
@@ -269,7 +320,8 @@ namespace KlausBot.Dialogs
                     context.Wait(MessageReceived);
                     return;
                 }
-                // La primera parte de la pregunta es vista
+                // -------------------------------------------------------------------
+                // La primera parte de la pregunta es cita
                 else if (palabra1 == "cita" || palabra1 == "citas")
                 {
                     reply.Attachments = Respuestas.GetCrearProgramarCita();
@@ -284,7 +336,12 @@ namespace KlausBot.Dialogs
                     context.Wait(MessageReceived);
                     return;
                 }
-            }   
+            }
+            // Si el usuario no a ingresado la primera parte de la pregunta
+            await context.PostAsync("Lo siento, su pregunta no esta registrada");
+            await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+            context.Wait(MessageReceived);
+            return;
         }
 
         // La accion del usuario es cambiar
@@ -323,6 +380,11 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
+                    // Si el usuario no ingreso la segunda parte de la pregunta
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                    context.Wait(MessageReceived);
+                    return;
                 }
                 else
                 {
@@ -370,6 +432,11 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
+                    // Si el usuario no ingreso la segunda parte de la pregunta
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                    context.Wait(MessageReceived);
+                    return;
                 }
                 // El usuario escribio en su pregunta la palabra mensaje
                 else if (palabra1 == "mensaje" || palabra1 == "mensajes" || palabra1 == "correo" || palabra1 == "correos")
@@ -387,6 +454,12 @@ namespace KlausBot.Dialogs
                     return;
                 }
             }
+        }
+
+        [LuisIntent("Consulta.Agregar")]
+        public async Task ConsultaAgregar(IDialogContext context, LuisResult result)
+        {
+            await new AgregarDialog(context, result).StartAsync();
         }
 
     }
