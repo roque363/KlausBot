@@ -120,20 +120,6 @@ namespace KlausBot.Models
             };
         }
 
-        // Cambiar el modo de ver el calendario de Outlook
-        public static IList<Attachment> GetCambiarModoVerCalendario()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Cambiar el modo de ver el calendario de Outlook",
-                    "Se aplica a: Outlook 2016 Outlook 2013",
-                    "",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES")),
-            };
-        }
-
         // Crear o programar una cita
         public static IList<Attachment> GetCrearProgramarCita()
         {
@@ -396,6 +382,263 @@ namespace KlausBot.Models
             };
         }
 
+        // Cambiar el modo de ver el calendario de Outlook
+        public static IList<Attachment> GetCambiarModoVerCalendario()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar el modo de ver el calendario de Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Cambiar el sonido reproducido cuando se recibe un mensaje de correo
+        public static IList<Attachment> GetCambiarSonidoReproducidoMensajeCorreo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar el sonido reproducido cuando se recibe un mensaje de correo",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Cambiar el sonido de Windows mediante el Panel de Control. Si desea desactivar el sonido, use la vista Backstage en Outlook.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-sonido-reproducido-cuando-se-recibe-un-mensaje-de-correo-cbf254a8-008c-4dce-a02f-b9c87fa8097a?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Como cambiar el nombre de una categoría de color
+        public static IList<Attachment> GetCambiarNombreCategoriaColor()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como cambiar el nombre de una categoría de color",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Las categorías de color son una excelente forma de agrupar visualmente mensajes, tareas, contactos o eventos de calendario que se parecen.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-nombre-de-una-categor%C3%ADa-de-color-692ab131-525a-467b-8cbd-4b08346d5346")),
+            };
+        }
+
+        // Como cambiar el color del texto a medida que se redacta un mensaje de correo electrónico
+        public static IList<Attachment> GetCambiarColorTextoRedactaMensaje()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como cambiar el color del texto a medida que se redacta un mensaje de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Cuando escribe un mensaje de correo electrónico, puede cambiar el color del texto de un carácter, una palabra o cualquier texto seleccionado.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-color-del-texto-a-medida-que-se-redacta-un-mensaje-de-correo-electr%C3%B3nico-8be7e0d8-61cd-40eb-8db1-5cf94434bd66")),
+            };
+        }
+
+        // Como cambiar el color del texto o la fuente predeterminada de los mensajes de correo
+        public static IList<Attachment> GetCambiarColorTextoFuentePredeterminadoMensajes()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como cambiar el color del texto o la fuente predeterminada de los mensajes de correo",
+                    "Outlook",
+                    "En Outlook, la fuente se establece automáticamente para que crear, responder o reenviar un mensaje de correo electrónico es Calibri de 11 puntos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-color-del-texto-o-la-fuente-predeterminada-de-los-mensajes-de-correo-59b9860e-6dc0-48a1-9b07-6d8ea13ac5ca?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Como cambiar el color de fondo del calendario
+        public static IList<Attachment> GetCambiarColorFondoCalendario()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como cambiar el color de fondo del calendario",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "El cambio del color de fondo es una forma rápida de hacer que su calendario sea diferente. Esto resulta especialmente útil si trabaja con múltiples calendarios.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-color-de-fondo-del-calendario-3c544857-8446-46a5-ab9c-07b6af6e5091")),
+            };
+        }
+
+        // Como cambiar automáticamente las fuentes y los colores de los mensajes entrantes según el remitente, el asunto o los destinatarios
+        public static IList<Attachment> GetCambiarFuenteMensajesEntrantesRemitente()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como cambiar automáticamente las fuentes y los colores de los mensajes entrantes según el remitente, el asunto o los destinatarios",
+                    "Outlook",
+                    "Formato condicional es una forma de hacer que los mensajes entrantes que cumplen las condiciones definidas destaquen en la lista de mensajes mediante el uso de colores, fuentes y estilos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-autom%C3%A1ticamente-las-fuentes-y-los-colores-de-los-mensajes-entrantes-seg%C3%BAn-el-remitente-el-asunto-o-los-destinatarios-ee281b41-5be4-47e4-81fb-1d8a202870df")),
+            };
+        }
+
+        // Cambiar la fuente o el tamaño de fuente en la lista de mensajes
+        public static IList<Attachment> GetCambiarTamanoFuenteListaMensajes()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar la fuente o el tamaño de fuente en la lista de mensajes",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Para buscar más rápidamente a través de la Bandeja de entrada, desea ampliar el texto de las líneas de asunto y el encabezado de columna, o cambiar la fuente para facilitar la lectura.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-la-fuente-o-el-tama%C3%B1o-de-fuente-en-la-lista-de-mensajes-57bd24a6-1f85-45ac-a657-fba877d3fe00?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Como cambiar configuración del grupo de envío o recepción
+        public static IList<Attachment> GetCambiarConfiguracionGruposEnvios()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como cambiar configuración del grupo de envío o recepción",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Una vez que haya agregado cuentas a Outlook, puede cambiar la frecuencia con Outlook comprueba si hay nuevo correo electrónico de cada cuenta, así como la frecuencia con Outlook envía los mensajes salientes de cada cuenta.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-configuraci%C3%B3n-del-grupo-de-env%C3%ADo-o-recepci%C3%B3n-7184f59d-c194-44d7-973a-7af568a918d0?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Como cambiar la ubicación donde se guardan los mensajes de correo electrónico enviado
+        public static IList<Attachment> GetCambiarUbicacionGuardanMensajes()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como cambiar la ubicación donde se guardan los mensajes de correo electrónico enviado",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "En Outlook, puede especificar la carpeta donde se guardan los elementos de correo electrónico enviado.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-la-ubicaci%C3%B3n-donde-se-guardan-los-mensajes-de-correo-electr%C3%B3nico-enviado-bd95ef3b-8c04-466a-8576-d1ce0eabeb2c?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Como cambiar una cita, una reunión o un evento
+        public static IList<Attachment> GetCambiarCitaOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como cambiar una cita, una reunión o un evento",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010",
+                    "Puede cambiar una cita, una reunión o un evento para actualizar el calendario de Outlook y para que otras personas puedan informarse de los cambios de programación.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-una-cita-una-reuni%C3%B3n-o-un-evento-29b44f7a-8938-4b99-b98d-3efcf45f7613")),
+            };
+        }
+
+        // Como cambiar el nivel de protección en el filtro de correo no deseado
+        public static IList<Attachment> GetCambiarNivelProteccionFiltroCorreo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como cambiar el nivel de protección en el filtro de correo no deseado",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Correo electrónico no deseado, también conocido como correo no deseado, puede resultar bastante molesto en su Bandeja de entrada. El filtro de correo electrónico no deseado en Outlook identifica mensajes que probablemente correo no deseado y los mueven a la carpeta Correo no deseado.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-nivel-de-protecci%C3%B3n-en-el-filtro-de-correo-no-deseado-ef21aec7-6eb5-4457-8b94-93f13fc275cb?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Usar las @menciones para llamar la atención de un usuario
+        public static IList<Attachment> GetUsarArrobaLlamarAtencion()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Usar las @menciones para llamar la atención de un usuario",
+                    "Se aplica a: Outlook 2016 Outlook 2016 para Mac Outlook en la web para Office 365 Empresa Outlook.com Outlook en la web para Exchange Server 2016",
+                    "Si desea llamar la atención de alguien en un mensaje de correo electrónico o una invitación a la reunión, puede escribir el símbolo @, seguido por su nombre en el cuerpo del mensaje de correo electrónico o una reunión invitar.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/usar-las-menciones-para-llamar-la-atenci%C3%B3n-de-un-usuario-90701709-5dc1-41c7-aa48-b01d4a46e8c7")),
+            };
+        }
+
+        // Usar el asistente para programación
+        public static IList<Attachment> GetUsarAsistenteProgramacion()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Usar el asistente para programación",
+                    "Outlook",
+                    "En este vídeo aprenderá a usar el Asistente para programación para que le resulte más fácil administrar reuniones complejas con un gran número de asistentes.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/usar-el-asistente-para-programaci%C3%B3n-a7bf1aee-bee6-46d6-a126-194ed04fbe09#ID0EAABAAA=Informaci%C3%B3n_general")),
+                GetVideoCard(
+                    "Office 365 - Outlook",
+                    "Usar el asistente para programación",
+                    "https://videocontent.osi.office.net/8b47f9db-6dc9-4bee-9719-bd52745f8b58/318c1ac2-885d-44ab-a6f5-0ab6dcd75055_1280x720_3400.mp4",
+                    ""),
+            };
+        }
+
+        // Prácticas recomendadas para las organizaciones cuando se usa el calendario de Outlook
+        public static IList<Attachment> GetUsarCalendarioManeraAdecuadaOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Prácticas recomendadas para las organizaciones cuando se usa el calendario de Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "El calendario de Outlook está completamente integrado con el correo electrónico, los contactos y otras características, lo que lo convierte en una de las funciones más apreciadas de Outlook.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Pr%C3%A1cticas-recomendadas-para-las-organizaciones-cuando-se-usa-el-calendario-de-Outlook-d93f72d3-2361-4e0d-8d6a-5c4939c17f39?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Usar los filtros de correo electrónico no deseado para controlar los mensajes que se pueden ver
+        public static IList<Attachment> GetUsarFiltrosCorreoNoDeseadoControlarMensajes()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Usar los filtros de correo electrónico no deseado para controlar los mensajes que se pueden ver",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "El Filtro de correo electrónico no deseado de Outlook comprueba el remitente de todos los mensajes entrantes con las listas de direcciones de correo electrónico y los dominios de Internet: la parte de la dirección de correo electrónico después del símbolo @: designado como seguro o bloqueado.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Usar-los-filtros-de-correo-electr%C3%B3nico-no-deseado-para-controlar-los-mensajes-que-ve-274ae301-5db2-4aad-be21-25413cede077?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Usar la limpieza de conversación para eliminar mensajes redundantes
+        public static IList<Attachment> GetUsarLimpiezaConversacion()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Usar la limpieza de conversación para eliminar mensajes redundantes",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Office 365 Pequeña Empresa",
+                    "La característica Limpieza de conversación de Outlook reduce el número de mensajes contenidos en las carpetas de correo. Los mensajes redundantes de una conversación se mueven a la carpeta Elementos eliminados.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Usar-Limpieza-de-conversaci%C3%B3n-para-eliminar-mensajes-redundantes-70179d54-fa57-48ce-95fd-416d72e5ccd4?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Usar otros correos para organizar mensajes de baja prioridad en Outlook
+        public static IList<Attachment> GetUsarCorreosOrganizarBajaPrioridad()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Usar otros correos para organizar mensajes de baja prioridad en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "En Outlook 2016 para Windows, 'Otros correos'puede ayudarle a filtrar correo electrónico de baja prioridad para que pueda dedicarle más tiempo a los mensajes más importantes.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Usar-Otros-correos-para-organizar-mensajes-de-baja-prioridad-en-Outlook-7b50c5db-7704-4e55-8a1b-dfc7bf1eafa0")),
+            };
+        }
+
         // -------------------------------------------------------------
         // PREGUNTAS NO IMPLEMENTADAS
 
@@ -487,20 +730,6 @@ namespace KlausBot.Models
                     "llegar al destinatario.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Ver-encabezados-de-mensajes-de-correo-electr%C3%B3nico-cd039382-dc6e-4264-ac74-c048563d212c")),
-            };
-        }
-
-        // Cambiar el sonido reproducido cuando se recibe un mensaje de correo
-        public static IList<Attachment> GetCambiarSonidoReproducidoMensajeCorreo()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Cambiar el sonido reproducido cuando se recibe un mensaje de correo",
-                    "Se aplica a: Outlook 2016 Outlook 2013",
-                    "Cambiar el sonido de Windows mediante el Panel de Control. Si desea desactivar el sonido, use la vista Backstage en Outlook.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Cambiar-el-sonido-reproducido-cuando-se-recibe-un-mensaje-de-correo-cbf254a8-008c-4dce-a02f-b9c87fa8097a?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
 
@@ -710,6 +939,345 @@ namespace KlausBot.Models
             };
         }
 
+        // Cambiar vista en Word
+        public static IList<Attachment> GetCambiarVistaWord()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cómo cambiar la vista predeterminada a la vista Borrador en Word",
+                    "Se aplica a: Word 2016 Microsoft Word 2013Microsoft Word 2010Microsoft Office Word 2007",
+                    "Para cambiar la vista predeterminada a la vista borrador cuando se abre un documento de Word 2007",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.microsoft.com/es-es/help/919599/how-to-change-the-default-view-to-draft-view-in-word")),
+            };
+        }
+
+        // -------------------------------------------------------------
+        // TEMAS DESTACADOS
+        // -------------------------------------------------------------´´
+        // Temas destacados de Outlook
+        public static IList<Attachment> GetDestacadosOutlook()
+        {
+            return new List<Attachment>()
+            {
+                // Novedades en Outlook 2016 para Windows
+                GetHeroCardV3(
+                    "Novedades en Outlook 2016 para Windows",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Novedades-en-Outlook-2016-para-Windows-51c81e7a-de25-4a34-a7fe-bd79f8e48647")),
+                // Crear y agregar una firma a los mensajes
+                 GetHeroCardV3(
+                    "Crear y agregar una firma a los mensajes",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-y-agregar-una-firma-a-los-mensajes-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2#ID0EAABAAA=2016,_2013")),
+                // Enviar respuestas automáticas "Fuera de la oficina" de Outlook
+                GetHeroCardV3(
+                    "Enviar respuestas automáticas Fuera de la oficina",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Enviar-respuestas-autom%C3%A1ticas-Fuera-de-la-oficina-de-Outlook-9742f476-5348-4f9f-997f-5e208513bd67?ui=es-ES&rs=es-ES&ad=ES")),
+                // Importar contactos desde Gmail
+                GetHeroCardV3(
+                    "Importar contactos desde Gmail",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Importar-contactos-desde-Gmail-ad99d439-04b6-4001-a266-c170df721291?ui=es-ES&rs=es-ES&ad=ES")),
+                // Importar contactos a Outlook
+                GetHeroCardV3(
+                    "Importar contactos a Outlook",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Importar-contactos-a-Outlook-bb796340-b58a-46c1-90c7-b549b8f3c5f8")),
+                // Recuperar elementos eliminados en Outlook para Windows
+                GetHeroCardV3(
+                    "Recuperar elementos eliminados en Outlook para Windows",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Recuperar-elementos-eliminados-en-Outlook-para-Windows-49e81f3c-c8f4-4426-a0b9-c0fd751d48ce?ui=es-ES&rs=es-ES&ad=ES")),
+                // Recuperar o reemplazar un mensaje después de enviarlo
+                GetHeroCardV3(
+                    "Recuperar o reemplazar un mensaje después de enviarlo",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Recuperar-o-reemplazar-un-mensaje-despu%C3%A9s-de-enviarlo-35027f88-d655-4554-b4f8-6c0729a723a0?ui=es-ES&rs=es-ES&ad=ES")),
+                // Outlook no responde, se detiene en «Procesando», deja de funcionar, se inmoviliza o se bloquea
+                GetHeroCardV3(
+                    "Outlook no responde, se bloquea o deja de funcionar",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Outlook-no-responde-se-detiene-en-%C2%ABProcesando%C2%BB-deja-de-funcionar-se-inmoviliza-o-se-bloquea-5c313d04-64af-4441-82d2-44e5a43eee5a?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Temas destacados de OneDrive
+        public static IList<Attachment> GetDestacadosOneDrive()
+        {
+            return new List<Attachment>()
+            {
+                // ¿Qué es OneDrive para la Empresa?
+                GetHeroCardV3(
+                    "¿Qué es OneDrive para la Empresa?",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/%C2%BFQu%C3%A9-es-OneDrive-para-la-Empresa-187f90af-056f-47c0-9656-cc0ddca7fdc2")),
+                // ¿Qué versión de OneDrive uso?
+                 GetHeroCardV3(
+                    "¿Qué versión de OneDrive uso?",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/%C2%BFQu%C3%A9-versi%C3%B3n-de-OneDrve-uso-19246eae-8a51-490a-8d97-a645c151f2ba?ui=es-ES&rs=es-ES&ad=ES")),
+                // Cargar fotografías y archivos en OneDrive
+                GetHeroCardV3(
+                    "Cargar fotografías y archivos en OneDrive",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Cargar-fotograf%C3%ADas-y-archivos-en-OneDrive-b00ad3fe-6643-4b16-9212-de00ef02b586")),
+                // Recuperar archivos de tu equipo
+                GetHeroCardV3(
+                    "Recuperar archivos de tu equipo",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Recuperar-archivos-de-tu-equipo-70761550-519c-4d45-b780-5a613b2f8822?ui=es-ES&rs=es-ES&ad=ES")),
+                // Compartir archivos y carpetas de OneDrive
+                GetHeroCardV3(
+                    "Compartir archivos y carpetas de OneDrive",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Compartir-archivos-y-carpetas-de-OneDrive-9fcc2f7d-de0c-4cec-93b0-a82024800c07")),
+                // Usar OneDrive para Android
+                GetHeroCardV3(
+                    "Usar OneDrive para Android",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Usar-OneDrive-para-Android-eee1d31c-792d-41d4-8132-f9621b39eb36")),
+                // Solucionar problemas de sincronización de OneDrive
+                GetHeroCardV3(
+                    "Solucionar problemas de sincronización de OneDrive",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Solucionar-problemas-de-sincronizaci%C3%B3n-de-OneDrive-0899b115-05f7-45ec-95b2-e4cc8c4670b2")),
+                // Configurar el equipo para sincronizar los archivos de OneDrive para la Empresa en Office 365
+                GetHeroCardV3(
+                    "Configurar el equipo para sincronizar los archivos",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Configurar-el-equipo-para-sincronizar-los-archivos-de-OneDrive-para-la-Empresa-en-Office-365-23e1f12b-d896-4cb1-a238-f91d19827a16?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Temas destacados de Word
+        public static IList<Attachment> GetDestacadosWord()
+        {
+            return new List<Attachment>()
+            {
+                // Novedades de Word 2016 para Windows
+                GetHeroCardV3(
+                    "Novedades de Word 2016 para Windows",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Novedades-de-Word-2016-para-Windows-4219dfb5-23fc-4853-95aa-b13a674a6670?ui=es-ES&rs=es-ES&ad=ES")),
+                // Descargar plantillas pregeneradas gratuitas
+                 GetHeroCardV3(
+                    "Descargar plantillas pregeneradas gratuitas",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Descargar-plantillas-pregeneradas-gratuitas-29f2a18d-29a6-4a07-998b-cfe5ff7ffbbb")),
+                // Realizar un seguimiento de los cambios en Word
+                GetHeroCardV3(
+                    "Realizar un seguimiento de los cambios en Word",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Realizar-un-seguimiento-de-los-cambios-en-Word-197ba630-0f5f-4a8e-9a77-3712475e806a?ui=es-ES&rs=es-ES&ad=ES")),
+                // Cambiar o establecer la fuente predeterminada
+                GetHeroCardV3(
+                    "Cambiar o establecer la fuente predeterminada",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Cambiar-o-establecer-la-fuente-predeterminada-20f72414-2c42-4b53-9654-d07a92b9294a")),
+                // Agregar un gráfico al documento en Word
+                GetHeroCardV3(
+                    "Agregar un gráfico al documento en Word",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-un-gr%C3%A1fico-al-documento-en-Word-ff48e3eb-5e04-4368-a39e-20df7c798932?ui=es-ES&rs=es-ES&ad=ES")),
+                // Soporte de accesibilidad para Word
+                GetHeroCardV3(
+                    "Soporte de accesibilidad para Word",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Soporte-de-accesibilidad-para-Word-c014d8b8-4ef3-4a7a-935d-295663f3343c")),
+                // Iniciar la numeración de página más adelante en el documento
+                GetHeroCardV3(
+                    "Iniciar la numeración de página más adelante en el documento",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Iniciar-la-numeraci%C3%B3n-de-p%C3%A1ginas-m%C3%A1s-adelante-en-el-documento%C2%A0-c73e3d55-d722-4bd0-886e-0b0bd0eb3f02")),
+                // Eliminar o cambiar un encabezado o pie de página de una sola página
+                GetHeroCardV3(
+                    "Eliminar o cambiar un encabezado o pie de página de una sola página",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Eliminar-o-cambiar-un-encabezado-o-pie-de-p%C3%A1gina-de-una-sola-p%C3%A1gina-a9b6c963-a3e1-4de1-9142-ca1be1dba7ff?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Temas destacados de Excel
+        public static IList<Attachment> GetDestacadosExcel()
+        {
+            return new List<Attachment>()
+            {
+                // Novedades en Excel 2016 para Windows
+                GetHeroCardV3(
+                    "Novedades en Excel 2016 para Windows",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Novedades-en-Excel-2016-para-Windows-5fdb9208-ff33-45b6-9e08-1f5cdb3a6c73")),
+                // Mover o copiar hojas de cálculo o los datos que contienen
+                 GetHeroCardV3(
+                    "Mover o copiar hojas de cálculo o los datos que contienen",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Mover-o-copiar-hojas-de-c%C3%A1lculo-o-los-datos-que-contienen-47207967-bbb2-4e95-9b5c-3c174aa69328?ui=es-ES&rs=es-ES&ad=ES")),
+                // Crear una lista desplegable
+                GetHeroCardV3(
+                    "Crear una lista desplegable",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Crear-una-lista-desplegable-7693307a-59ef-400a-b769-c5402dce407b")),
+                // Calcular la diferencia entre dos fechas
+                GetHeroCardV3(
+                    "Calcular la diferencia entre dos fechas",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Calcular-la-diferencia-entre-dos-fechas-8235e7c9-b430-44ca-9425-46100a162f38")),
+                // Inmovilizar paneles para bloquear filas y columnas
+                GetHeroCardV3(
+                    "Inmovilizar paneles para bloquear filas y columnas",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Inmovilizar-paneles-para-bloquear-filas-y-columnas-dab2ffc9-020d-4026-8121-67dd25f2508f")),
+                // Funciones de Excel (por orden alfabético)
+                GetHeroCardV3(
+                    "Funciones de Excel (por orden alfabético)",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Funciones-de-Excel-por-orden-alfab%C3%A9tico-b3944572-255d-4efb-bb96-c6d90033e188?ui=es-ES&rs=es-ES&ad=ES")),
+                // Cómo evitar la ruptura de las fórmulas
+                GetHeroCardV3(
+                    "Cómo evitar la ruptura de las fórmulas",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/C%C3%B3mo-evitar-la-ruptura-de-las-f%C3%B3rmulas-8309381d-33e8-42f6-b889-84ef6df1d586")),
+                // Soporte de accesibilidad para Excel
+                GetHeroCardV3(
+                    "Soporte de accesibilidad para Excel",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Soporte-de-accesibilidad-para-Excel-0976b140-7033-4e2d-8887-187280701bf8")),
+            };
+        }
+
+        // Temas destacados de PowerPoint
+        public static IList<Attachment> GetDestacadosPowerPoint()
+        {
+            return new List<Attachment>()
+            {
+                // Novedades en Outlook 2016 para Windows
+                GetHeroCardV3(
+                    "Novedades en Outlook 2016 para Windows",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Novedades-en-Outlook-2016-para-Windows-51c81e7a-de25-4a34-a7fe-bd79f8e48647")),
+                // Agregar imágenes prediseñadas a un archivo
+                 GetHeroCardV3(
+                    "Agregar imágenes prediseñadas a un archivo",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-im%C3%A1genes-predise%C3%B1adas-a-un-archivo-0a01ae25-973c-4c2c-8eaf-8c8e1f9ab530?wt.mc_id=ppt_home&ui=es-ES&rs=es-ES&ad=ES")),
+                // Convertir una presentación en un vídeo
+                GetHeroCardV3(
+                    "Convertir una presentación en un vídeo",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Convertir-una-presentaci%C3%B3n-en-un-v%C3%ADdeo-c140551f-cb37-4818-b5d4-3e30815c3e83?wt.mc_id=ppt_home&ui=es-ES&rs=es-ES&ad=ES")),
+                // Agregar una marca de agua "BORRADOR" al fondo de las diapositivas
+                GetHeroCardV3(
+                    "Agregar una marca de agua 'BORRADOR' al fondo de las diapositivas",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-una-marca-de-agua-BORRADOR-al-fondo-de-las-diapositivas-ea4cc5f5-ea5d-4213-9c7d-ed01a7952ed0?wt.mc_id=ppt_home&ui=es-ES&rs=es-ES&ad=ES")),
+                // Importar contactos a Outlook
+                GetHeroCardV3(
+                    "Importar contactos a Outlook",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Importar-contactos-a-Outlook-bb796340-b58a-46c1-90c7-b549b8f3c5f8")),
+                // Reproducir música durante toda la presentación con diapositivas
+                GetHeroCardV3(
+                    "Reproducir música durante toda la presentación con diapositivas",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Reproducir-m%C3%BAsica-durante-toda-la-presentaci%C3%B3n-con-diapositivas-b01ded6a-28c8-473a-971a-6dfa92cc9367?wt.mc_id=ppt_home&ui=es-ES&rs=es-ES&ad=ES")),
+                // ¿Qué es un patrón de diapositivas?
+                GetHeroCardV3(
+                    "¿Qué es un patrón de diapositivas?",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/%C2%BFQu%C3%A9-es-un-patr%C3%B3n-de-diapositivas-b9abb2a0-7aef-4257-a14e-4329c904da54?wt.mc_id=ppt_home")),
+                // Soporte de accesibilidad para PowerPoint
+                GetHeroCardV3(
+                    "Soporte de accesibilidad para PowerPoint",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Soporte-de-accesibilidad-para-PowerPoint-9d2b646d-0b79-4135-a570-b8c7ad33ac2f?wt.mc_id=ppt_home")),
+            };
+        }
+
+        // Temas destacados de OneNote
+        public static IList<Attachment> GetDestacadosOneNote()
+        {
+            return new List<Attachment>()
+            {
+                // Novedades de OneNote para Windows 10
+                GetHeroCardV3(
+                    "Novedades de OneNote para Windows 10",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Novedades-de-OneNote-para-Windows-10-1477d5de-f4fd-4943-b18a-ff17091161ea?ui=es-ES&rs=es-ES&ad=ES")),
+                // Introducción al nuevo OneNote
+                 GetHeroCardV3(
+                    "Introducción al nuevo OneNote",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-ES/article/Introducci%C3%B3n-al-nuevo-OneNote-ab84fcc2-f845-41ac-9c29-89b0720c8eb3")),
+                // Tareas básicas en OneNote para Windows 10
+                GetHeroCardV3(
+                    "Tareas básicas en OneNote para Windows 10",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Tareas-básicas-en-OneNote-para-Windows-10-081573f8-2e8f-45e5-bf16-0900d4d3331f?ui=es-ES&rs=es-ES&ad=ES")),
+                // Enviar fotos e imágenes de otras aplicaciones a OneNote
+                GetHeroCardV3(
+                    "Enviar fotos e imágenes de otras aplicaciones a OneNote",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Enviar-fotos-e-im%C3%A1genes-de-otras-aplicaciones-a-OneNote-para-Windows-10-02e66db1-eb04-4297-a41b-b82648aa843d?ui=es-ES&rs=es-ES&ad=ES")),
+                // Sincronizar blocs de notas en OneNote 
+                GetHeroCardV3(
+                    "Sincronizar blocs de notas en OneNote ",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Sincronizar-blocs-de-notas-en-OneNote-para-Windows-10-21cb4629-3ef4-4220-8539-d01d29491e6a?ui=es-ES&rs=es-ES&ad=ES")),
+                // Compartir una página de notas o un bloc de notas completo
+                GetHeroCardV3(
+                    "Compartir una página de notas o un bloc de notas completo",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Compartir-una-p%C3%A1gina-de-notas-o-un-bloc-de-notas-completo-desde-OneNote-para-Windows-10-d4a74a14-44a3-411e-8fb5-06e73ddf047f?ui=es-ES&rs=es-ES&ad=ES")),
+                // Proteger las notas con contraseña en OneNote para Windows 10
+                GetHeroCardV3(
+                    "Proteger las notas con contraseña en OneNote para Windows 10",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Proteger-las-notas-con-contrase%C3%B1a-en-OneNote-para-Windows-10-a2fd9183-c864-4653-9c4e-714a116a4ab7?ui=es-ES&rs=es-ES&ad=ES")),
+                // Solucionar problemas en OneNote para Windows 10
+                GetHeroCardV3(
+                    "Solucionar problemas en OneNote para Windows 10",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Solucionar-problemas-en-OneNote-para-Windows-10-942b006c-46ac-4300-a629-7fac5ae4dc70?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // -------------------------------------------------------------
+
+        public static IList<Attachment> GetConsulta()
+        {
+            return new List<Attachment>()
+            {
+                GetCardConsulta(
+                    "¿Tienes una consulta?",
+                    "Consulta"),
+            };
+        }
+
+        public static IList<Attachment> GetConsultaV2()
+        {
+            return new List<Attachment>()
+            {
+                GetCardConsulta(
+                    "Para más ayuda seleccione 'consulta'",
+                    "Consulta"),
+            };
+        }
+
+        public static IList<Attachment> GetConfirmacion()
+        {
+            return new List<Attachment>()
+            {
+                GetCardDoubleAction(
+                    "Si",
+                    "si",
+                    "No",
+                    "no"),
+            };
+        }
+
         // -------------------------------------------------------------
 
         private static Attachment GetHeroCard(string title, string subtitle, string text, CardImage cardImage)
@@ -732,6 +1300,16 @@ namespace KlausBot.Models
                 Title = title,
                 Subtitle = subtitle,
                 Text = text,
+                Buttons = new List<CardAction>() { cardAction },
+            };
+            return heroCard.ToAttachment();
+        }
+
+        private static Attachment GetHeroCardV3(string title, CardAction cardAction)
+        {
+            var heroCard = new HeroCard
+            {
+                Title = title,
                 Buttons = new List<CardAction>() { cardAction },
             };
             return heroCard.ToAttachment();
@@ -797,7 +1375,7 @@ namespace KlausBot.Models
         {
             var Saludocard = new ThumbnailCard
             {
-                Title = text,
+                Text = text,
                 Buttons = new List<CardAction>
                 {
                     new CardAction(ActionTypes.PostBack, "Consulta", value: value),
@@ -806,14 +1384,17 @@ namespace KlausBot.Models
             return Saludocard.ToAttachment();
         }
 
-        public static IList<Attachment> GetConsulta()
+        private static Attachment GetCardDoubleAction(string firstAction,string action1 , string secondAction, string action2)
         {
-            return new List<Attachment>()
+            var Saludocard = new ThumbnailCard
             {
-                GetCardConsulta(
-                    "¿Tienes una consulta?",
-                    "Consulta"),
+                Buttons = new List<CardAction>
+                {
+                    new CardAction(ActionTypes.ImBack, firstAction, value: action1),
+                    new CardAction(ActionTypes.ImBack, firstAction, value: action2),
+                }
             };
+            return Saludocard.ToAttachment();
         }
 
     }

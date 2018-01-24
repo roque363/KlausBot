@@ -126,9 +126,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\AgregarDialog.cs" />
+    <Compile Include="Dialogs\CambiarDialog.cs" />
+    <Compile Include="Dialogs\CrearDialog.cs" />
     <Compile Include="Dialogs\DefinicionServicioDialog.cs" />
     <Compile Include="Dialogs\LUISDialog.cs" />
+    <Compile Include="Dialogs\RecuperarDialog.cs" />
     <Compile Include="Dialogs\SaludoDialog.cs" />
+    <Compile Include="Dialogs\UsarDialog.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -15,7 +15,7 @@ namespace KlausBot.Dialogs
     [Serializable]
     public class DefinicionServicioDialog
     {
-        private IDialogContext context;
+        private IDialogContext context; 
         private LuisResult result;
 
         public DefinicionServicioDialog(IDialogContext context, LuisResult result)
@@ -37,35 +37,33 @@ namespace KlausBot.Dialogs
                 if (value == "outlook" || value == "outlok")
                 {
                     reply.Attachments = Respuestas.GetOutlookDefinicionCard();
+                    await context.PostAsync("");
                     await context.PostAsync(reply);
-                    //context.Wait(MessageReceived);
                     return;
                 }
                 else if (value == "excel")
                 {
                     reply.Attachments = Respuestas.GetExcelDefinicionCard();
                     await context.PostAsync(reply);
-                    //context.Wait(MessageReceived);
                     return;
                 }
                 else if (value == "powerpoint" || value == "power point")
                 {
                     reply.Attachments = Respuestas.GetPowerPointDefinicionCard();
                     await context.PostAsync(reply);
-                    //context.Wait(MessageReceived);
                     return;
                 }
                 else if (value == "word")
                 {
                     reply.Attachments = Respuestas.GetWordDefinicionCard();
                     await context.PostAsync(reply);
-                    //context.Wait(MessageReceived);
                     return;
                 }
                 else
                 {
-                    await context.PostAsync($"Lo siento, {value} no esta registrado, consulte otra vez el servicio escribiendo ayuda");
-                    //context.Wait(MessageReceived);
+                    await context.PostAsync($"Lo siento, '{value}' no esta registrado como servicio");
+                    reply.Attachments = Respuestas.GetConsultaV2();
+                    await context.PostAsync(reply);
                     return;
                 }
             }
@@ -103,6 +101,15 @@ namespace KlausBot.Dialogs
                 await context.PostAsync(reply);
                 //context.Wait(MessageReceived);
                 context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                return;
+            }
+            else
+            {
+                // Si el usuario no a ingresado la primera parte de la pregunta
+                await context.PostAsync("Lo siento, su pregunta no esta registrada");
+                reply.Attachments = Respuestas.GetConsultaV2();
+                await context.PostAsync(reply);
+                await context.PostAsync("O tal vez no escribió la pregunta correctamente");
                 return;
             }
         }

@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Internals.Fibers;
+using KlausBot.Models;
+
 
 namespace KlausBot.Dialogs
 {
@@ -31,6 +33,18 @@ namespace KlausBot.Dialogs
 
         private static async Task Respond(IDialogContext context)
         {
+            Random rnd = new Random();
+            // Saludos que puede generar el bot
+            string[] saludos = {
+                "¡Hola! {0}, ¿en qué te puedo ayudar? \U0001F601",
+                "¡Bienvenido! {0} \U0001F601 ¿en qué te puedo ayudar?",
+                "Qué tal {0} \U0001F601, ¿cómo puedo ayudarte?",
+                "Buen día {0} \U0001F601, cuéntame, ¿en que puedo ayudarte?"
+            };
+
+            // Generate random indexes for saludos
+            int mIndex = rnd.Next(0, saludos.Length);
+
             var userName = String.Empty;
             context.UserData.TryGetValue<string>("Name", out userName);
             if (string.IsNullOrEmpty(userName))
@@ -40,7 +54,13 @@ namespace KlausBot.Dialogs
             }
             else
             {
-                await context.PostAsync(String.Format("¡Hola! {0}. ¿Como puedo ayudarte hoy?", userName));
+                var reply = context.MakeMessage();
+                reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+
+                // Display the result.
+                await context.PostAsync(String.Format(saludos[mIndex], userName));
+                reply.Attachments = Respuestas.GetConsulta();
+                await context.PostAsync(reply);
             }
         }
 
@@ -58,7 +78,6 @@ namespace KlausBot.Dialogs
                 context.UserData.SetValue<string>("Name", userName);
                 context.UserData.SetValue<bool>("GetName", false);
             }
-
             await Respond(context);
             context.Done(message);
         }

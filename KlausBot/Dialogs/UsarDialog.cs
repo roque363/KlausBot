@@ -12,12 +12,12 @@ using Microsoft.Bot.Builder.Dialogs;
 
 namespace KlausBot.Dialogs
 {
-    public class AgregarDialog
+    public class UsarDialog
     {
         private IDialogContext context;
         private LuisResult result;
 
-        public AgregarDialog(IDialogContext context, LuisResult result)
+        public UsarDialog(IDialogContext context, LuisResult result)
         {
             this.context = context;
             this.result = result;
@@ -28,32 +28,133 @@ namespace KlausBot.Dialogs
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
-            // Recorrido de la primera parte de la pregunta
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
-                if (palabra1 == "contacto" || palabra1 == "contactos" || palabra1 == "nombres" || palabra1 == "nombre" || palabra1 == "personas" || palabra1 == "persona" || palabra1 == "contactos" || palabra1 == "contacto" || palabra1 == "correos" || palabra1 == "correo" || palabra1 == "emails" || palabra1 == "email" || palabra1 == "correoselectronicos" || palabra1 == "correoselectrónicos" || palabra1 == "correoelectronico" || palabra1 == "correoelectrónico")
+
+                if (palabra1 == "@menciones" || palabra1 == "@" || palabra1 == "@mencion")
                 {
-                    // Recorrido de la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "lista" || palabra2 == "listas" || palabra2 == "grupos" || palabra2 == "grupo")
+
+                        if (palabra2 == "atención" || palabra2 == "atencion")
                         {
-                            // Recorrido de la tercera parte de la pregunta
+                            reply.Attachments = Respuestas.GetUsarArrobaLlamarAtencion();
+                            await context.PostAsync(reply);
+                            //context.Wait(MessageReceived);
+                            return;
+                        }
+                        else
+                        {
+                            await context.PostAsync($"¿{palabra2}?, por favor vuelva a escribir la consulta correctamente");
+                            //context.Wait(MessageReceived);
+                            return;
+                        }
+                    }
+                    // Si el usuario no ingreso la segunda parte de la pregunta
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    reply.Attachments = Respuestas.GetConsultaV2();
+                    await context.PostAsync(reply);
+                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                    return;
+                }
+                else if (palabra1 == "asistente")
+                {
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+
+                        if (palabra2 == "programación" || palabra2 == "programacion")
+                        {
+                            reply.Attachments = Respuestas.GetUsarAsistenteProgramacion();
+                            await context.PostAsync(reply);
+                            //context.Wait(MessageReceived);
+                            return;
+                        }
+                        else
+                        {
+                            await context.PostAsync($"¿{palabra2}?, por favor vuelva a escribir la consulta correctamente");
+                            //context.Wait(MessageReceived);
+                            return;
+                        }
+                    }
+                    // Si el usuario no ingreso la segunda parte de la pregunta
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    reply.Attachments = Respuestas.GetConsultaV2();
+                    await context.PostAsync(reply);
+                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                    return;
+                }
+                else if (palabra1 == "calendarios" || palabra1 == "calendario")
+                {
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+
+                        if (palabra2 == "adecuada" || palabra2 == "recomendados" || palabra2 == "mejorforma" || palabra2 == "adecuadas")
+                        {
+                            reply.Attachments = Respuestas.GetUsarCalendarioManeraAdecuadaOutlook();
+                            await context.PostAsync(reply);
+                            //context.Wait(MessageReceived);
+                            return;
+                        }
+                        else
+                        {
+                            await context.PostAsync($"¿{palabra2}?, por favor vuelva a escribir la consulta correctamente");
+                            //context.Wait(MessageReceived);
+                            return;
+                        }
+                    }
+                    // Si el usuario no ingreso la segunda parte de la pregunta
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    reply.Attachments = Respuestas.GetConsultaV2();
+                    await context.PostAsync(reply);
+                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                    return;
+                }
+                else if (palabra1 == "carpeta" || palabra1 == "carpetas")
+                {
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+
+                        if (palabra2 == "busqueda" || palabra2 == "búsqueda" || palabra2 == "busquedas" || palabra2 == "búsquedas")
+                        {
+                            reply.Attachments = Respuestas.GetUsarCrearCarpetasBusqueda();
+                            await context.PostAsync(reply);
+                            //context.Wait(MessageReceived);
+                            return;
+                        }
+                        else
+                        {
+                            await context.PostAsync($"¿{palabra2}?, por favor vuelva a escribir la consulta correctamente");
+                            //context.Wait(MessageReceived);
+                            return;
+                        }
+                    }
+                    // Si el usuario no ingreso la segunda parte de la pregunta
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    reply.Attachments = Respuestas.GetConsultaV2();
+                    await context.PostAsync(reply);
+                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                    return;
+                }
+                else if (palabra1 == "filtros" || palabra1 == "filtro")
+                {
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+
+                        if (palabra2 == "detestable" || palabra2 == "detestables" || palabra2 == "nodeseado" || palabra2 == "nodeseados")
+                        {
                             foreach (var entityP3 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra3"))
                             {
                                 var palabra3 = entityP3.Entity.ToLower().Replace(" ", "");
-                                if (palabra3 == "bloqueados" || palabra3 == "bloqueado" || palabra3 == "nodeseados" || palabra3 == "nodeseadas" || palabra3 == "detestable" || palabra3 == "detestables")
+
+                                if (palabra3 == "mensajes" || palabra3 == "mensaje" || palabra3 == "correo" || palabra3 == "correos")
                                 {
-                                    reply.Attachments = Respuestas.GetNombresListasBloqueados();
-                                    await context.PostAsync(reply);
-                                    //context.Wait(MessageReceived);
-                                    return;
-                                }
-                                else if (palabra3 == "contacto" || palabra3 == "contactos")
-                                {
-                                    reply.Attachments = Respuestas.GetAgregarContactoListaContactos();
+                                    reply.Attachments = Respuestas.GetUsarFiltrosCorreoNoDeseadoControlarMensajes();
                                     await context.PostAsync(reply);
                                     //context.Wait(MessageReceived);
                                     return;
@@ -65,14 +166,36 @@ namespace KlausBot.Dialogs
                                     return;
                                 }
                             }
-                            reply.Attachments = Respuestas.GetAgregarContactoListaContactos();
+                            // Si el usuario no ingreso la tercera parte de la pregunta
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                            reply.Attachments = Respuestas.GetConsultaV2();
                             await context.PostAsync(reply);
+                            await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                            return;
+                        }
+                        else
+                        {
+                            await context.PostAsync($"¿{palabra2}?, por favor vuelva a escribir la consulta correctamente");
                             //context.Wait(MessageReceived);
                             return;
                         }
-                        else if (palabra2 == "categoria" || palabra2 == "categorias" || palabra2 == "categorías" || palabra2 == "categoría")
+                    }
+                    // Si el usuario no ingreso la segunda parte de la pregunta
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    reply.Attachments = Respuestas.GetConsultaV2();
+                    await context.PostAsync(reply);
+                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                    return;
+                }
+                else if (palabra1 == "limpieza")
+                {
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+
+                        if (palabra2 == "conversación" || palabra2 == "conversaciones" || palabra2 == "charla" || palabra2 == "charlas")
                         {
-                            reply.Attachments = Respuestas.GetAgregarPersonasCategoriasColor();
+                            reply.Attachments = Respuestas.GetUsarLimpiezaConversacion();
                             await context.PostAsync(reply);
                             //context.Wait(MessageReceived);
                             return;
@@ -83,159 +206,23 @@ namespace KlausBot.Dialogs
                             //context.Wait(MessageReceived);
                             return;
                         }
-
                     }
-                    reply.Attachments = Respuestas.GetAgregarContacto();
+                    // Si el usuario no ingreso la segunda parte de la pregunta
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    reply.Attachments = Respuestas.GetConsultaV2();
                     await context.PostAsync(reply);
-                    //context.Wait(MessageReceived);
+                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
                     return;
-
                 }
-                else if (palabra1 == "graficos" || palabra1 == "grafico" || palabra1 == "gráficos" || palabra1 == "gráfico")
+                else if (palabra1 == "correos" || palabra1 == "correo")
                 {
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+
                         if (palabra2 == "mensajes" || palabra2 == "mensaje")
                         {
-                            reply.Attachments = Respuestas.GetAgregarGraficosMensajesOutlook();
-                            await context.PostAsync(reply);
-                            //context.Wait(MessageReceived);
-                            return;
-                        }
-                        else
-                        {
-                            await context.PostAsync($"¿{palabra2}?, por favor vuelva a escribir la consulta correctamente");
-                            //context.Wait(MessageReceived);
-                            return;
-                        }
-                    }
-                    // Si el usuario no ingreso la segunda parte de la pregunta
-                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
-                    reply.Attachments = Respuestas.GetConsultaV2();
-                    await context.PostAsync(reply);
-                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
-                    return;
-                }
-                else if (palabra1 == "tabla" || palabra1 == "tablas")
-                {
-                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
-                    {
-                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "mensajes" || palabra2 == "mensaje")
-                        {
-                            reply.Attachments = Respuestas.GetAgregarTablasMensajeOutlook();
-                            await context.PostAsync(reply);
-                            //context.Wait(MessageReceived);
-                            return;
-                        }
-                        else
-                        {
-                            await context.PostAsync($"¿{palabra2}?, por favor vuelva a escribir la consulta correctamente");
-                            //context.Wait(MessageReceived);
-                            return;
-                        }
-                    }
-                    // Si el usuario no ingreso la segunda parte de la pregunta
-                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
-                    reply.Attachments = Respuestas.GetConsultaV2();
-                    await context.PostAsync(reply);
-                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
-                    return;
-                }
-                else if (palabra1 == "confirmaciones" || palabra1 == "conformación" || palabra1 == "confirmacion")
-                {
-                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
-                    {
-                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "lectura" || palabra2 == "lecturas")
-                        {
-                            reply.Attachments = Respuestas.GetAgregarConfirmacionLecturaNotificacionEntrega();
-                            await context.PostAsync(reply);
-                            //context.Wait(MessageReceived);
-                            return;
-                        }
-                        else if (palabra2 == "entregas" || palabra2 == "entrega")
-                        {
-                            reply.Attachments = Respuestas.GetAgregarConfirmacionEntregaRealizarSeguimiento();
-                            await context.PostAsync(reply);
-                            //context.Wait(MessageReceived);
-                            return;
-                        }
-                        else
-                        {
-                            await context.PostAsync($"¿{palabra2}?, por favor vuelva a escribir la consulta correctamente");
-                            //context.Wait(MessageReceived);
-                            return;
-                        }
-                    }
-                    // Si el usuario no ingreso la segunda parte de la pregunta
-                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
-                    reply.Attachments = Respuestas.GetConsultaV2();
-                    await context.PostAsync(reply);
-                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
-                    return;
-                }
-                else if (palabra1 == "notificaciones" || palabra1 == "notificación" || palabra1 == "notificacion")
-                {
-                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
-                    {
-                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "entrega" || palabra2 == "entregas")
-                        {
-                            reply.Attachments = Respuestas.GetAgregarConfirmacionLecturaNotificacionEntrega();
-                            await context.PostAsync(reply);
-                            //context.Wait(MessageReceived);
-                            return;
-                        }
-                        else
-                        {
-                            await context.PostAsync($"¿{palabra2}?, por favor vuelva a escribir la consulta correctamente");
-                            //context.Wait(MessageReceived);
-                            return;
-                        }
-                    }
-                    // Si el usuario no ingreso la segunda parte de la pregunta
-                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
-                    reply.Attachments = Respuestas.GetConsultaV2();
-                    await context.PostAsync(reply);
-                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
-                    return;
-                }
-                else if (palabra1 == "seguimiento" || palabra1 == "seguimientos")
-                {
-                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
-                    {
-                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "mensaje" || palabra2 == "mensajes")
-                        {
-                            reply.Attachments = Respuestas.GetAgregarSeguimientoMensajesOutlook();
-                            await context.PostAsync(reply);
-                            //context.Wait(MessageReceived);
-                            return;
-                        }
-                        else
-                        {
-                            await context.PostAsync($"¿{palabra2}?, por favor vuelva a escribir la consulta correctamente");
-                            //context.Wait(MessageReceived);
-                            return;
-                        }
-                    }
-                    // Si el usuario no ingreso la segunda parte de la pregunta
-                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
-                    reply.Attachments = Respuestas.GetConsultaV2();
-                    await context.PostAsync(reply);
-                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
-                    return;
-                }
-                else if (palabra1 == "díasnolaborables" || palabra1 == "diasnolaborables" || palabra1 == "feriados" || palabra1 == "feriado")
-                {
-                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
-                    {
-                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "calendario" || palabra2 == "calendarios")
-                        {
-                            reply.Attachments = Respuestas.GetAgregarFeriadosCalendarioOutlook();
+                            reply.Attachments = Respuestas.GetUsarCorreosOrganizarBajaPrioridad();
                             await context.PostAsync(reply);
                             //context.Wait(MessageReceived);
                             return;
@@ -256,7 +243,8 @@ namespace KlausBot.Dialogs
                 }
                 else
                 {
-                    await context.PostAsync($"¿{palabra1}?, por favor vuelva a escribir la consulta correctamente");
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    await context.PostAsync($"O tal vez no escribió correctamente la palabra '{palabra1}'?");
                     //context.Wait(MessageReceived);
                     return;
                 }
