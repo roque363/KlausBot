@@ -639,6 +639,106 @@ namespace KlausBot.Models
             };
         }
 
+        // Crear diseños de fondo para los mensajes de correo electrónico
+        public static IList<Attachment> GetCrearDiseñosFondoParaMensajes()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear diseños de fondo para los mensajes de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "os diseños de fondo y los temas son un conjunto de elementos de diseño unificados y combinaciones de color. " +
+                    "Especifican fuentes, viñetas, colores de fondo, líneas horizontales, imágenes y otros elementos de diseño que " +
+                    "se incluirán en los mensajes de correo electrónico salientes.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-dise%C3%B1os-de-fondo-para-los-mensajes-de-correo-electr%C3%B3nico-b5552ece-8f09-49ce-81a1-c1b7d347914f")),
+            };
+        }
+
+        // Crear un grupo de contactos o una lista de distribución en Outlook
+        public static IList<Attachment> GetCrearGrupoContactosListaDistribucionOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un grupo de contactos o una lista de distribución en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Use un grupo de contactos (anteriormente denominado “lista de distribución”) para enviar un mensaje de correo electrónico " +
+                    "a varias personas (un equipo del proyecto, un comité o incluso solo un grupo de amigos) sin tener que agregar cada nombre " +
+                    "cada vez que desea escribirles.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-un-grupo-de-contactos-o-una-lista-de-distribuci%C3%B3n-en-Outlook-88ff6c60-0a1d-4b54-8c9d-9e1a71bc3023?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Crear tareas y elementos de tarea
+        public static IList<Attachment> GetCrearTareasEelementosTarea()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear tareas y elementos de tarea",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Muchas personas llevan una lista de tareas pendientes, en papel, en una hoja de cálculo, o mediante una combinación " +
+                    "de papel y medios electrónicos. En Outlook, puede combinar sus diversas listas en una, mejorada con avisos y seguimientos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-tareas-y-elementos-de-tarea-45a94e7b-a4ee-46ea-9823-c3423c0eab8e?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Crear una tarea a partir de un mensaje
+        public static IList<Attachment> GetCrearTareaAPartirMensaje()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear una tarea a partir de un mensaje",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Si desea crear una tarea basada en el contenido de un mensaje de correo electrónico, no tiene que volver a especificar " +
+                    "toda la información. En su lugar, haga clic en el mensaje y arrástrelo a tareas en el barra de navegación.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-una-tarea-a-partir-de-un-mensaje-40deff88-941a-4fc0-aba1-7d929d947795")),
+            };
+        }
+
+        // Crear una tarea a partir de un mensaje && Crear tareas y elementos de tarea
+        public static IList<Attachment> GetCrearTareaYAPartirDeMensaje()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear tareas y elementos de tarea",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Muchas personas llevan una lista de tareas pendientes, en papel, en una hoja de cálculo, o mediante una combinación " +
+                    "de papel y medios electrónicos. En Outlook, puede combinar sus diversas listas en una, mejorada con avisos y seguimientos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-tareas-y-elementos-de-tarea-45a94e7b-a4ee-46ea-9823-c3423c0eab8e?ui=es-ES&rs=es-ES&ad=ES")),
+                GetHeroCardV2(
+                    "Crear una tarea a partir de un mensaje",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Si desea crear una tarea basada en el contenido de un mensaje de correo electrónico, no tiene que volver a especificar " +
+                    "toda la información. En su lugar, haga clic en el mensaje y arrástrelo a tareas en el barra de navegación.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-una-tarea-a-partir-de-un-mensaje-40deff88-941a-4fc0-aba1-7d929d947795")),
+            };
+        }
+
+        // Crear un grupo de contactos desde una lista de contactos en Exce
+        public static IList<Attachment> GetCrearGrupoContactosDesdeListaContactosExcel()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un grupo de contactos desde una lista de contactos en Exce",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Use un grupo de contactos (anteriormente denominado “lista de distribución”) para enviar un mensaje de " +
+                    "correo electrónico a varias personas (un equipo del proyecto, un comité o incluso solo un grupo de amigos) sin " +
+                    "tener que agregar cada nombre cada vez que desea escribirles.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-un-grupo-de-contactos-o-una-lista-de-distribuci%C3%B3n-en-Outlook-88ff6c60-0a1d-4b54-8c9d-9e1a71bc3023?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
         // -------------------------------------------------------------
         // PREGUNTAS NO IMPLEMENTADAS
 
@@ -746,22 +846,6 @@ namespace KlausBot.Models
             };
         }
 
-        // Crear un grupo de contactos o una lista de distribución en Outlook
-        public static IList<Attachment> GetCrearGrupoContactosListaDistribucionOutlook()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Crear un grupo de contactos o una lista de distribución en Outlook",
-                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
-                    "Use un grupo de contactos (anteriormente denominado “lista de distribución”) para enviar un mensaje de correo electrónico " +
-                    "a varias personas (un equipo del proyecto, un comité o incluso solo un grupo de amigos) sin tener que agregar cada nombre " +
-                    "cada vez que desea escribirles.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Crear-un-grupo-de-contactos-o-una-lista-de-distribuci%C3%B3n-en-Outlook-88ff6c60-0a1d-4b54-8c9d-9e1a71bc3023?ui=es-ES&rs=es-ES&ad=ES")),
-            };
-        }
-
         // Enviar respuestas automáticas "Fuera de la oficina" de Outlook
         public static IList<Attachment> GetEnviarRespuestasAutomaticas()
         {
@@ -774,37 +858,6 @@ namespace KlausBot.Models
                     "Outlook.com o Exchange. Para el resto de cuentas de correo electrónico, vea Enviar y redirigir correo electrónico automáticamente.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Enviar-respuestas-autom%C3%A1ticas-Fuera-de-la-oficina-de-Outlook-9742f476-5348-4f9f-997f-5e208513bd67?ui=es-ES&rs=es-ES&ad=ES")),
-            };
-        }
-
-        // Crear diseños de fondo para los mensajes de correo electrónico
-        public static IList<Attachment> GetCrearDiseñosFondoParaMensajes()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Crear diseños de fondo para los mensajes de correo electrónico",
-                    "Se aplica a: Outlook 2016 Outlook 2013",
-                    "os diseños de fondo y los temas son un conjunto de elementos de diseño unificados y combinaciones de color. " +
-                    "Especifican fuentes, viñetas, colores de fondo, líneas horizontales, imágenes y otros elementos de diseño que " +
-                    "se incluirán en los mensajes de correo electrónico salientes.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Crear-dise%C3%B1os-de-fondo-para-los-mensajes-de-correo-electr%C3%B3nico-b5552ece-8f09-49ce-81a1-c1b7d347914f")),
-            };
-        }
-
-        // Crear una tarea a partir de un mensaje
-        public static IList<Attachment> GetCrearTareaAPartirMensaje()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Crear una tarea a partir de un mensaje",
-                    "Se aplica a: Outlook 2016 Outlook 2013",
-                    "Si desea crear una tarea basada en el contenido de un mensaje de correo electrónico, no tiene que volver a especificar " +
-                    "toda la información. En su lugar, haga clic en el mensaje y arrástrelo a tareas en el barra de navegación.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Crear-una-tarea-a-partir-de-un-mensaje-40deff88-941a-4fc0-aba1-7d929d947795")),
             };
         }
 
@@ -821,53 +874,6 @@ namespace KlausBot.Models
                     "o exportar las respuestas a una hoja de cálculo Excel.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Crear-sondeos-en-mensajes-de-correo-y-revisar-los-resultados-4d10e079-8ea1-489a-a79c-18cb71ae12dd?ui=es-ES&rs=es-ES&ad=ES")),
-            };
-        }
-
-        // Crear un grupo de contactos o una lista de distribución en Outlook
-        public static IList<Attachment> GetCrearGgrupoContactosListaDistribucion()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Crear un grupo de contactos o una lista de distribución en Outlook",
-                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
-                    "Use un grupo de contactos (anteriormente denominado “lista de distribución”) para enviar un mensaje de " +
-                    "correo electrónico a varias personas (un equipo del proyecto, un comité o incluso solo un grupo de amigos) sin " +
-                    "tener que agregar cada nombre cada vez que desea escribirles.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Crear-un-grupo-de-contactos-o-una-lista-de-distribuci%C3%B3n-en-Outlook-88ff6c60-0a1d-4b54-8c9d-9e1a71bc3023?ui=es-ES&rs=es-ES&ad=ES")),
-            };
-        }
-
-        // Crear un grupo de contactos desde una lista de contactos en Exce
-        public static IList<Attachment> GetCrearGrupoContactosDesdeListaContactosExcel()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Crear un grupo de contactos desde una lista de contactos en Exce",
-                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
-                    "Use un grupo de contactos (anteriormente denominado “lista de distribución”) para enviar un mensaje de " +
-                    "correo electrónico a varias personas (un equipo del proyecto, un comité o incluso solo un grupo de amigos) sin " +
-                    "tener que agregar cada nombre cada vez que desea escribirles.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Crear-un-grupo-de-contactos-o-una-lista-de-distribuci%C3%B3n-en-Outlook-88ff6c60-0a1d-4b54-8c9d-9e1a71bc3023?ui=es-ES&rs=es-ES&ad=ES")),
-            };
-        }
-
-        // Crear tareas y elementos de tarea
-        public static IList<Attachment> GetCrearTareasEelementosTarea()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Crear tareas y elementos de tarea",
-                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
-                    "Muchas personas llevan una lista de tareas pendientes, en papel, en una hoja de cálculo, o mediante una combinación " +
-                    "de papel y medios electrónicos. En Outlook, puede combinar sus diversas listas en una, mejorada con avisos y seguimientos.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Crear-tareas-y-elementos-de-tarea-45a94e7b-a4ee-46ea-9823-c3423c0eab8e?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
 

@@ -30,12 +30,22 @@ namespace KlausBot.Dialogs
         [LuisIntent("")]
         public async Task None(IDialogContext context, LuisResult result)
         {
+            Random rnd = new Random();
+            // Dudas que puede generar el bot
+            string[] none = {
+                "Perdón, no entiendo lo que estas diciendo \U0001F615",
+                "Perdón, no entendí lo que necesitas \U0001F615",
+            };
+
+            // Generate random indexes for none
+            int mIndex = rnd.Next(0, none.Length);
+
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-
-            await context.PostAsync("Perdon, no entiendo lo que estas diciendo");
-
             reply.Attachments = Respuestas.GetConsulta();
+
+            // Display the result.
+            await context.PostAsync(none[mIndex]);
             await context.PostAsync(reply);
             context.Wait(MessageReceived);
             return;
