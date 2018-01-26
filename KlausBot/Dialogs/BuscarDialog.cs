@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Web;
 using System.Configuration;
-using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using KlausBot.Models;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Luis;
@@ -12,12 +12,12 @@ using Microsoft.Bot.Builder.Dialogs;
 
 namespace KlausBot.Dialogs
 {
-    public class RecuperarDialog
+    public class BuscarDialog
     {
         private IDialogContext context;
         private LuisResult result;
 
-        public RecuperarDialog(IDialogContext context, LuisResult result)
+        public BuscarDialog(IDialogContext context, LuisResult result)
         {
             this.context = context;
             this.result = result;
@@ -34,31 +34,36 @@ namespace KlausBot.Dialogs
             string preguntaNoRegistrada2 = "Lo siento, su pregunta no esta registrada";
             string opcionSecundarioDeRespuesta1 = "Pero esta respuesta le podría interesar:";
             string opcionSecundarioDeRespuesta2 = "Pero estas respuestas le podrían interesar:";
+            string preguntaConsulta2 = "si necesita más información por favor hágamelo saber";
+            string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber"; 
 
-            // Recorrido de la segunda parte de la pregunta
+            // Recorrido de la primera parte de la pregunta
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
-
-                // El usuario escribio en su pregunta la palabra elemento 
-                if (palabra1 == "elemento" || palabra1 == "elementos")
+                if (palabra1 == "personas" || palabra1 == "persona" || palabra1 == "contactos" || palabra1 == "contacto")
                 {
-                    // Recorrido de la primera parte de la pregunta
+                    reply.Attachments = Respuestas.GetBuscarPersonasOutlook();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    return;
+                }
+                else if (palabra1 == "mensajes" || palabra1 == "mensaje")
+                {
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-
-                        // El usuario escribio en su pregunta la palabra eliminado
-                        if (palabra2 == "eliminado" || palabra2 == "eliminados")
+                        if (palabra2 == "busquedainstantanea" || palabra2 == "búsquedainstantánea" || palabra2 == "búsquedainstantanea" || palabra2 == "busquedainstantánea" || palabra2 == "búsqueda" || palabra2 == "busqueda")
                         {
-                            reply.Attachments = Respuestas.GetRecuperarElementosEliminados();
+                            reply.Attachments = Respuestas.GetBuscarMensajeBusquedaInstantanea();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetRecuperarElementosEliminados();
+                            reply.Attachments = Respuestas.GetBuscarMensajeBusquedaInstantanea();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -66,17 +71,39 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetRecuperarElementosEliminados();
+                    reply.Attachments = Respuestas.GetBuscarMensajeBusquedaInstantanea();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
                     return;
+
                 }
-                // El usuario escribio en su pregunta la palabra mensaje
-                else if (palabra1 == "mensaje" || palabra1 == "mensajes" || palabra1 == "correo" || palabra1 == "correos")
+                else if (palabra1 == "elementos" || palabra1 == "elemento")
                 {
-                    reply.Attachments = Respuestas.GetRecuperarMensajeDespuésEnviarlo();
-                    await context.PostAsync(confirmacionRespuesta1);
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "archivos" || palabra2 == "archivo")
+                        {
+                            reply.Attachments = Respuestas.GetBuscarElementosArchivosDatos();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = Respuestas.GetBuscarElementosArchivosDatos();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    reply.Attachments = Respuestas.GetBuscarElementosArchivosDatos();
+                    await context.PostAsync(preguntaNoRegistrada1);
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
                     return;
                 }

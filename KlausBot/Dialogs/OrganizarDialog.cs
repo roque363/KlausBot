@@ -12,12 +12,12 @@ using Microsoft.Bot.Builder.Dialogs;
 
 namespace KlausBot.Dialogs
 {
-    public class RecuperarDialog
+    public class OrganizarDialog
     {
         private IDialogContext context;
         private LuisResult result;
 
-        public RecuperarDialog(IDialogContext context, LuisResult result)
+        public OrganizarDialog(IDialogContext context, LuisResult result)
         {
             this.context = context;
             this.result = result;
@@ -34,50 +34,67 @@ namespace KlausBot.Dialogs
             string preguntaNoRegistrada2 = "Lo siento, su pregunta no esta registrada";
             string opcionSecundarioDeRespuesta1 = "Pero esta respuesta le podría interesar:";
             string opcionSecundarioDeRespuesta2 = "Pero estas respuestas le podrían interesar:";
+            string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber";
 
-            // Recorrido de la segunda parte de la pregunta
+            // Recorrido de la primera parte de la pregunta
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
-
-                // El usuario escribio en su pregunta la palabra elemento 
-                if (palabra1 == "elemento" || palabra1 == "elementos")
+                if (palabra1 == "calendarios" || palabra1 == "calendario")
                 {
-                    // Recorrido de la primera parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-
-                        // El usuario escribio en su pregunta la palabra eliminado
-                        if (palabra2 == "eliminado" || palabra2 == "eliminados")
+                        if (palabra2 == "categoría" || palabra2 == "categorías" || palabra2 == "categoria" || palabra2 == "categorias")
                         {
-                            reply.Attachments = Respuestas.GetRecuperarElementosEliminados();
+                            reply.Attachments = Respuestas.GetOrganizarCalendariosCategorias();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetRecuperarElementosEliminados();
+                            reply.Attachments = Respuestas.GetOrganizarCalendariosCategorias();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
                             return;
                         }
                     }
-                    // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetRecuperarElementosEliminados();
-                    await context.PostAsync(preguntaNoRegistrada1);
-                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync($"Quizás desea saber como organizar su calendario con la opción de categorías de color, tengo esto: ");
+                    reply.Attachments = Respuestas.GetOrganizarCalendariosCategorias();
                     await context.PostAsync(reply);
+                    await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;
+
                 }
-                // El usuario escribio en su pregunta la palabra mensaje
-                else if (palabra1 == "mensaje" || palabra1 == "mensajes" || palabra1 == "correo" || palabra1 == "correos")
+                else if (palabra1 == "mensajes" || palabra1 == "mensaje")
                 {
-                    reply.Attachments = Respuestas.GetRecuperarMensajeDespuésEnviarlo();
-                    await context.PostAsync(confirmacionRespuesta1);
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "bajaprioridad")
+                        {
+                            reply.Attachments = Respuestas.GetUsarCorreosOrganizarBajaPrioridad();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = Respuestas.GetUsarCorreosOrganizarBajaPrioridad();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                    }
+                    await context.PostAsync($"Quizás desea saber como organizar sus mensajes de baja prioridad en Outlook, tengo esto: ");
+                    reply.Attachments = Respuestas.GetUsarCorreosOrganizarBajaPrioridad();
                     await context.PostAsync(reply);
+                    await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;
                 }
                 else

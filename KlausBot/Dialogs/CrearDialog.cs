@@ -34,6 +34,7 @@ namespace KlausBot.Dialogs
             string preguntaNoRegistrada2 = "Lo siento, su pregunta no esta registrada";
             string opcionSecundarioDeRespuesta1 = "Pero esta respuesta le podría interesar:";
             string opcionSecundarioDeRespuesta2 = "Pero estas respuestas le podrían interesar:";
+            string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber";
 
             // Se detectó la primera parte de la pregunta
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
@@ -51,9 +52,10 @@ namespace KlausBot.Dialogs
                         // La segunda parte de la prgunta es mensaje o correo
                         if (palabra2 == "mensaje" || palabra2 == "mensajes" || palabra2 == "correo" || palabra2 == "correos")
                         {
-                            await context.PostAsync(confirmacionRespuesta1);
                             reply.Attachments = Respuestas.GetCrearFirmaMensaje();
+                            await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -86,6 +88,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetCrearAsignarCategoriasColor();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -118,6 +121,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(confirmacionRespuesta1);
                             reply.Attachments = Respuestas.GetCrearPlantillaMensajeCorreoElectronico();
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else if (palabra2 == "correo" || palabra2 == "correos")
@@ -125,6 +129,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(confirmacionRespuesta1);
                             reply.Attachments = Respuestas.GetCrearPlantillaCorreoElectronico();
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -157,6 +162,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(confirmacionRespuesta1);
                             reply.Attachments = Respuestas.GetUsarCrearCarpetasBusqueda();
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -189,6 +195,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(confirmacionRespuesta1);
                             reply.Attachments = Respuestas.GetCrearTareaAPartirMensaje();
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -204,6 +211,7 @@ namespace KlausBot.Dialogs
                     reply.Attachments = Respuestas.GetCrearTareaYAPartirDeMensaje();
                     await context.PostAsync(confirmacionRespuesta2);
                     await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
                     return;
                 }
                 // -------------------------------------------------------------------
@@ -220,6 +228,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(confirmacionRespuesta1);
                             reply.Attachments = Respuestas.GetCrearGrupoContactosListaDistribucionOutlook();
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -249,9 +258,10 @@ namespace KlausBot.Dialogs
                         // La segunda parte de la pregunta es colores
                         if (palabra3 == "mensaje" || palabra3 == "mensajes" || palabra3 == "correo" || palabra3 == "correos")
                         {
-                            await context.PostAsync(confirmacionRespuesta1);
                             reply.Attachments = Respuestas.GetCrearDiseñosFondoParaMensajes();
+                            await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -277,6 +287,7 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(confirmacionRespuesta1);
                     reply.Attachments = Respuestas.GetCrearEventoQueDureTodoDia();
                     await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
                     return;
                 }
                 // -------------------------------------------------------------------
@@ -286,11 +297,12 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(confirmacionRespuesta1);
                     reply.Attachments = Respuestas.GetCrearCambiarPersonalizarVista();
                     await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
                     return;
                 }
                 // -------------------------------------------------------------------
                 // La primera parte de la pregunta es correo
-                else if (palabra1 == "correo" || palabra1 == "correos")
+                else if (palabra1 == "correo" || palabra1 == "correos" || palabra1 == "mensaje" || palabra1 == "mensajes" || palabra1 == "correoelectronico")
                 {
                     await context.PostAsync(confirmacionRespuesta1);
                     reply.Attachments = Respuestas.GetCrearMensajeCorreoElectronico();
@@ -301,9 +313,10 @@ namespace KlausBot.Dialogs
                 // La primera parte de la pregunta es cita
                 else if (palabra1 == "cita" || palabra1 == "citas")
                 {
-                    await context.PostAsync(confirmacionRespuesta1);
                     reply.Attachments = Respuestas.GetCrearProgramarCita();
+                    await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
                     return;
                 }
                 // -------------------------------------------------------------------
