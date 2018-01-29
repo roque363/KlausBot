@@ -77,6 +77,13 @@ namespace KlausBot.Dialogs
             await new DespedidaDialog(context, result).StartAsync();
         }
 
+        // La accion del usuario es de una consulta secundaria
+        [LuisIntent("Consulta.Secundaria")]
+        public async Task ConsultaSecundaria(IDialogContext context, LuisResult result)
+        {
+            await new ConsultaSecundariaDialog(context, result).StartAsync();
+        }
+
         [LuisIntent("Consulta.Guardar")]
         public async Task ConsultaGuardar(IDialogContext context, LuisResult result)
         {

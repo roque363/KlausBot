@@ -40,6 +40,7 @@ namespace KlausBot.Dialogs
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
+                context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
                 if (palabra1 == "correoelectrónico" || palabra1 == "correoelectronico" || palabra1 == "correoselectrónicos" || palabra1 == "correoselectronicos" || palabra1 == "correos" || palabra1 == "correo" || palabra1 == "mensajes" || palabra1 == "mensaje")
                 {
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))

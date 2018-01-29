@@ -26,10 +26,12 @@ namespace KlausBot.Dialogs
         public async Task StartAsync()
         {
             Random rnd = new Random();
+
             // Despedida que puede generar el bot
             string[] despe = {
                 "Espero poder ayudarle la prónxima vez, estoy dispinible las 24 horas del día",
                 "¡Hasta pronto!",
+                "¡Nos vemos pronto! \U0001F917",
                 "¡Hasta la proxima!",
             };
 

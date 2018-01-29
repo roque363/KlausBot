@@ -31,6 +31,7 @@ namespace KlausBot.Models
                     "https://support.office.com/es-es/article/Video-What-is-Outlook-10f1fa35-f33a-4cb7-838c-a7f3e6228b20?ui=es-ES&rs=es-ES&ad=ES"),
             };
         }
+
         // Crear y enviar correo electrónico
         public static IList<Attachment> GetCrearEnviarCorreoElectronico()
         {
@@ -1209,7 +1210,7 @@ namespace KlausBot.Models
             };
         }
 
-        //Abrir y cerrar archivos de datos de Outlook (.pst)
+        // Abrir y cerrar archivos de datos de Outlook (.pst)
         public static IList<Attachment> GetAbrirArchivosDatosOutlook()
         {
             return new List<Attachment>()
@@ -1224,7 +1225,7 @@ namespace KlausBot.Models
             };
         }
 
-        //Abrir y cerrar archivos de datos de Outlook (.pst)
+        // Abrir y cerrar archivos de datos de Outlook (.pst)
         public static IList<Attachment> GetRespuestaAbrirDialog()
         {
             return new List<Attachment>()
@@ -1246,8 +1247,7 @@ namespace KlausBot.Models
         }
 
         //----------GUARDAR-OUTLOOK----------------
-        //-----------------------------------------
-        //Guardar mensaje en outlook
+        // Guardar mensaje en outlook
         public static IList<Attachment> GetGuardarMensajeOutlook()
         {
             return new List<Attachment>()
@@ -1262,9 +1262,8 @@ namespace KlausBot.Models
             };
         }
 
-        //----------IMPRIMIR-OUTLOOK-------------
-        //---------------------------------------
-        //Imprimir contactos, mensajes u otros elementos de Outlook
+        // ----------IMPRIMIR-OUTLOOK-------------
+        // Imprimir contactos, mensajes u otros elementos de Outlook
         public static IList<Attachment> GetImprimirContactosMensajesOutlook()
         {
             return new List<Attachment>()
@@ -1280,8 +1279,7 @@ namespace KlausBot.Models
         }
 
         //----------OBTENER-OUTLOOK----------------
-        //-----------------------------------------
-        //Obtener un id digital
+        // Obtener un id digital
         public static IList<Attachment> GetObtenerIdDigitalOutlook()
         {
             return new List<Attachment>()
@@ -1534,7 +1532,6 @@ namespace KlausBot.Models
         // -------------------------------------------------------------
         // PREGUNTAS DE ONE NOTE
         // -------------------------------------------------------------
-
         // Adjuntar archivos en one note
         public static IList<Attachment> GetAgregarArchivosOneNote()
         {
