@@ -55,7 +55,7 @@ namespace KlausBot.Dialogs
                                 var palabra3 = entityP3.Entity.ToLower().Replace(" ", "");
                                 if (palabra3 == "bloqueados" || palabra3 == "bloqueado" || palabra3 == "nodeseados" || palabra3 == "nodeseadas" || palabra3 == "detestable" || palabra3 == "detestables")
                                 {
-                                    reply.Attachments = Respuestas.GetNombresListasBloqueados();
+                                    reply.Attachments = RespuestasOutlook.GetNombresListasBloqueados();
                                     await context.PostAsync(confirmacionRespuesta1);
                                     await context.PostAsync(reply);
                                     await context.PostAsync(preguntaConsulta);
@@ -63,7 +63,7 @@ namespace KlausBot.Dialogs
                                 }
                                 else if (palabra3 == "contacto" || palabra3 == "contactos")
                                 {
-                                    reply.Attachments = Respuestas.GetAgregarContactoListaContactos();
+                                    reply.Attachments = RespuestasOutlook.GetAgregarContactoListaContactos();
                                     await context.PostAsync(confirmacionRespuesta1);
                                     await context.PostAsync(reply);
                                     await context.PostAsync(preguntaConsulta);
@@ -71,7 +71,7 @@ namespace KlausBot.Dialogs
                                 }
                                 else
                                 {
-                                    reply.Attachments = Respuestas.GetContactoYLista();
+                                    reply.Attachments = RespuestasOutlook.GetContactoYLista();
                                     await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra3}'?");
                                     await context.PostAsync(opcionSecundarioDeRespuesta2);
                                     await context.PostAsync(reply);
@@ -79,7 +79,7 @@ namespace KlausBot.Dialogs
                                 }
                             }
                             // No se detectó la tercera parte de la pregunta
-                            reply.Attachments = Respuestas.GetContactoYLista();
+                            reply.Attachments = RespuestasOutlook.GetContactoYLista();
                             await context.PostAsync(preguntaNoRegistrada1);
                             await context.PostAsync(opcionSecundarioDeRespuesta2);
                             await context.PostAsync(reply);
@@ -87,7 +87,7 @@ namespace KlausBot.Dialogs
                         }
                         else if (palabra2 == "categoria" || palabra2 == "categorias" || palabra2 == "categorías" || palabra2 == "categoría")
                         {
-                            reply.Attachments = Respuestas.GetAgregarPersonasCategoriasColor();
+                            reply.Attachments = RespuestasOutlook.GetAgregarPersonasCategoriasColor();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -95,7 +95,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetContactoYListaYCategorias();
+                            reply.Attachments = RespuestasOutlook.GetContactoYListaYCategorias();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta2);
                             await context.PostAsync(reply);
@@ -104,7 +104,7 @@ namespace KlausBot.Dialogs
 
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetContactoYListaYCategorias();
+                    reply.Attachments = RespuestasOutlook.GetContactoYListaYCategorias();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta2);
                     await context.PostAsync(reply);
@@ -117,7 +117,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "mensajes" || palabra2 == "mensaje")
                         {
-                            reply.Attachments = Respuestas.GetAgregarGraficosMensajesOutlook();
+                            reply.Attachments = RespuestasOutlook.GetAgregarGraficosMensajesOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -125,7 +125,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetAgregarGraficosMensajesOutlook();
+                            reply.Attachments = RespuestasOutlook.GetAgregarGraficosMensajesOutlook();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -133,7 +133,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetAgregarGraficosMensajesOutlook();
+                    reply.Attachments = RespuestasOutlook.GetAgregarGraficosMensajesOutlook();
                     await context.PostAsync($"Quizás desees saber como agregar gráficos a tus mensajes de Outlook, mira, tengo esto: ");
                     await context.PostAsync(reply);
                     return;
@@ -145,7 +145,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "mensajes" || palabra2 == "mensaje")
                         {
-                            reply.Attachments = Respuestas.GetAgregarTablasMensajeOutlook();
+                            reply.Attachments = RespuestasOutlook.GetAgregarTablasMensajeOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -153,7 +153,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetAgregarTablasMensajeOutlook();
+                            reply.Attachments = RespuestasOutlook.GetAgregarTablasMensajeOutlook();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -161,7 +161,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetAgregarTablasMensajeOutlook();
+                    reply.Attachments = RespuestasOutlook.GetAgregarTablasMensajeOutlook();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
@@ -174,7 +174,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "lectura" || palabra2 == "lecturas")
                         {
-                            reply.Attachments = Respuestas.GetAgregarConfirmacionLecturaNotificacionEntrega();
+                            reply.Attachments = RespuestasOutlook.GetAgregarConfirmacionLecturaNotificacionEntrega();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -182,7 +182,7 @@ namespace KlausBot.Dialogs
                         }
                         else if (palabra2 == "entregas" || palabra2 == "entrega")
                         {
-                            reply.Attachments = Respuestas.GetAgregarConfirmacionEntregaRealizarSeguimiento();
+                            reply.Attachments = RespuestasOutlook.GetAgregarConfirmacionEntregaRealizarSeguimiento();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -190,7 +190,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetAgregarConfirmacionLecturaNotificacionEntregaYLectura();
+                            reply.Attachments = RespuestasOutlook.GetAgregarConfirmacionLecturaNotificacionEntregaYLectura();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -198,7 +198,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetAgregarConfirmacionLecturaNotificacionEntregaYLectura();
+                    reply.Attachments = RespuestasOutlook.GetAgregarConfirmacionLecturaNotificacionEntregaYLectura();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta2);
                     await context.PostAsync(reply);
@@ -211,7 +211,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "entrega" || palabra2 == "entregas")
                         {
-                            reply.Attachments = Respuestas.GetAgregarConfirmacionLecturaNotificacionEntrega();
+                            reply.Attachments = RespuestasOutlook.GetAgregarConfirmacionLecturaNotificacionEntrega();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -219,7 +219,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetAgregarConfirmacionLecturaNotificacionEntrega();
+                            reply.Attachments = RespuestasOutlook.GetAgregarConfirmacionLecturaNotificacionEntrega();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -227,7 +227,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetAgregarConfirmacionLecturaNotificacionEntrega();
+                    reply.Attachments = RespuestasOutlook.GetAgregarConfirmacionLecturaNotificacionEntrega();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
@@ -240,7 +240,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "mensaje" || palabra2 == "mensajes")
                         {
-                            reply.Attachments = Respuestas.GetAgregarSeguimientoMensajesOutlook();
+                            reply.Attachments = RespuestasOutlook.GetAgregarSeguimientoMensajesOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -248,7 +248,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetAgregarSeguimientoMensajesOutlook();
+                            reply.Attachments = RespuestasOutlook.GetAgregarSeguimientoMensajesOutlook();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -256,7 +256,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetAgregarSeguimientoMensajesOutlook();
+                    reply.Attachments = RespuestasOutlook.GetAgregarSeguimientoMensajesOutlook();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
@@ -269,7 +269,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "calendario" || palabra2 == "calendarios")
                         {
-                            reply.Attachments = Respuestas.GetAgregarFeriadosCalendarioOutlook();
+                            reply.Attachments = RespuestasOutlook.GetAgregarFeriadosCalendarioOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -277,7 +277,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetAgregarFeriadosCalendarioOutlook();
+                            reply.Attachments = RespuestasOutlook.GetAgregarFeriadosCalendarioOutlook();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -285,7 +285,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetAgregarFeriadosCalendarioOutlook();
+                    reply.Attachments = RespuestasOutlook.GetAgregarFeriadosCalendarioOutlook();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
@@ -298,7 +298,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "mensajes" || palabra2 == "mensaje")
                         {
-                            reply.Attachments = Respuestas.GetCrearFirmaMensaje();
+                            reply.Attachments = RespuestasOutlook.GetCrearFirmaMensaje();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -306,7 +306,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetCrearFirmaMensaje();
+                            reply.Attachments = RespuestasOutlook.GetCrearFirmaMensaje();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -314,7 +314,7 @@ namespace KlausBot.Dialogs
                         }
 
                     }
-                    reply.Attachments = Respuestas.GetCrearFirmaMensaje();
+                    reply.Attachments = RespuestasOutlook.GetCrearFirmaMensaje();
                     await context.PostAsync($"Quizás desea saber como agregar una firma en mensajes de correo, acá tengo esto:");
                     await context.PostAsync(reply);
                     await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
@@ -327,7 +327,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "firma" || palabra2 == "firmas")
                         {
-                            reply.Attachments = Respuestas.GetIncluirTarjetaPresentacionFirmaCorreo();
+                            reply.Attachments = RespuestasOutlook.GetIncluirTarjetaPresentacionFirmaCorreo();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -335,7 +335,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetIncluirTarjetaPresentacionFirmaCorreo();
+                            reply.Attachments = RespuestasOutlook.GetIncluirTarjetaPresentacionFirmaCorreo();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -344,7 +344,7 @@ namespace KlausBot.Dialogs
 
                     }
                     await context.PostAsync($"Quizás desea saber como añadir una tarjeta de presentación electrónica en una firma de correo, acá tengo esto:");
-                    reply.Attachments = Respuestas.GetIncluirTarjetaPresentacionFirmaCorreo();
+                    reply.Attachments = RespuestasOutlook.GetIncluirTarjetaPresentacionFirmaCorreo();
                     await context.PostAsync(reply);
                     await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;
@@ -356,7 +356,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "firma" || palabra2 == "firmas")
                         {
-                            reply.Attachments = Respuestas.GetInsertarHipervinculosFirmaCorreo();
+                            reply.Attachments = RespuestasOutlook.GetInsertarHipervinculosFirmaCorreo();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -364,7 +364,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetInsertarHipervinculosFirmaCorreo();
+                            reply.Attachments = RespuestasOutlook.GetInsertarHipervinculosFirmaCorreo();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -373,7 +373,7 @@ namespace KlausBot.Dialogs
 
                     }
                     await context.PostAsync($"Quizás desea saber como incluir un hipervínculo de una red social a tu firma de correo electrónico, tengo esto: ");
-                    reply.Attachments = Respuestas.GetInsertarHipervinculosFirmaCorreo();
+                    reply.Attachments = RespuestasOutlook.GetInsertarHipervinculosFirmaCorreo();
                     await context.PostAsync(reply);
                     await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;
@@ -385,7 +385,7 @@ namespace KlausBot.Dialogs
                         var serv = entity.Entity.ToLower().Replace(" ", "");
                         if (serv == "outlook" || serv == "outlok")
                         {
-                            reply.Attachments = Respuestas.GetAdjuntarArchivosOutlook();
+                            reply.Attachments = RespuestasOutlook.GetAdjuntarArchivosOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -424,7 +424,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetCrearCambiarPersonalizarVista();
+                            reply.Attachments = RespuestasOutlook.GetCrearCambiarPersonalizarVista();
                             await context.PostAsync($"Lo siento, {serv} no esta registrado, consulte otra vez el servicio escribiendo ayuda");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -446,7 +446,7 @@ namespace KlausBot.Dialogs
                             return;
 
                         case "Outlook":
-                            reply.Attachments = Respuestas.GetAdjuntarArchivosOutlook();
+                            reply.Attachments = RespuestasOutlook.GetAdjuntarArchivosOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -484,7 +484,7 @@ namespace KlausBot.Dialogs
                 else
                 {
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetCambiarNivelProteccionFiltroCorreo();
+                    reply.Attachments = RespuestasOutlook.GetCambiarNivelProteccionFiltroCorreo();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);

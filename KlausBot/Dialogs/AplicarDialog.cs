@@ -47,7 +47,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "color")
                         {
-                            reply.Attachments = Respuestas.GetCrearAsignarCategoriasColor();
+                            reply.Attachments = RespuestasOutlook.GetCrearAsignarCategoriasColor();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -55,7 +55,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetCrearAsignarCategoriasColor();
+                            reply.Attachments = RespuestasOutlook.GetCrearAsignarCategoriasColor();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -63,7 +63,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     await context.PostAsync($"Quizás desea saber como asignar categorías de color, tengo esto: ");
-                    reply.Attachments = Respuestas.GetCrearAsignarCategoriasColor();
+                    reply.Attachments = RespuestasOutlook.GetCrearAsignarCategoriasColor();
                     await context.PostAsync(reply);
                     await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;
@@ -76,7 +76,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "mensajes" || palabra2 == "mensaje")
                         {
-                            reply.Attachments = Respuestas.GetAplicarFondosTemasMensajes();
+                            reply.Attachments = RespuestasOutlook.GetAplicarFondosTemasMensajes();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -84,7 +84,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetAplicarFondosTemasMensajes();
+                            reply.Attachments = RespuestasOutlook.GetAplicarFondosTemasMensajes();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -92,7 +92,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     await context.PostAsync($"Quizás desea saber como aplicar un tema a mensajes de correo, tengo esto: ");
-                    reply.Attachments = Respuestas.GetAplicarFondosTemasMensajes();
+                    reply.Attachments = RespuestasOutlook.GetAplicarFondosTemasMensajes();
                     await context.PostAsync(reply);
                     await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;

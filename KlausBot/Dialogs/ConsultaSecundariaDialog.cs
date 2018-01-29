@@ -33,6 +33,17 @@ namespace KlausBot.Dialogs
             var palabra1 = "Palabra1";
             context.PrivateConversationData.TryGetValue<string>("Palabra1", out palabra1);
 
+            if (servicio == "Outlook")
+            {
+                if (palabra1 == "firma")
+                {
+
+                }
+            }
+            else
+            {
+                await context.PostAsync("Lo siento, ocurrio un error inesperado");
+            }
             await context.PostAsync(servicio);
             await context.PostAsync(palabra1);
         }

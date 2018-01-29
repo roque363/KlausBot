@@ -44,7 +44,7 @@ namespace KlausBot.Dialogs
 
                 if (value == "outlook" || value == "outlok")
                 {
-                    reply.Attachments = Respuestas.GetOutlookDefinicionCard();
+                    reply.Attachments = RespuestasOutlook.GetOutlookDefinicionCard();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
@@ -106,7 +106,7 @@ namespace KlausBot.Dialogs
             }
             else if (servicio == "Outlook")
             {
-                reply.Attachments = Respuestas.GetOutlookDefinicionCard();
+                reply.Attachments = RespuestasOutlook.GetOutlookDefinicionCard();
                 await context.PostAsync(confirmacionRespuesta1);
                 await context.PostAsync(reply);
                 await context.PostAsync(preguntaConsulta);

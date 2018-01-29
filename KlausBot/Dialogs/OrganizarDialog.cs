@@ -48,7 +48,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "categoría" || palabra2 == "categorías" || palabra2 == "categoria" || palabra2 == "categorias")
                         {
-                            reply.Attachments = Respuestas.GetOrganizarCalendariosCategorias();
+                            reply.Attachments = RespuestasOutlook.GetOrganizarCalendariosCategorias();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -56,7 +56,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetOrganizarCalendariosCategorias();
+                            reply.Attachments = RespuestasOutlook.GetOrganizarCalendariosCategorias();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -64,7 +64,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     await context.PostAsync($"Quizás desea saber como organizar su calendario con la opción de categorías de color, tengo esto: ");
-                    reply.Attachments = Respuestas.GetOrganizarCalendariosCategorias();
+                    reply.Attachments = RespuestasOutlook.GetOrganizarCalendariosCategorias();
                     await context.PostAsync(reply);
                     await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;
@@ -77,7 +77,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "bajaprioridad")
                         {
-                            reply.Attachments = Respuestas.GetUsarCorreosOrganizarBajaPrioridad();
+                            reply.Attachments = RespuestasOutlook.GetUsarCorreosOrganizarBajaPrioridad();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -85,7 +85,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetUsarCorreosOrganizarBajaPrioridad();
+                            reply.Attachments = RespuestasOutlook.GetUsarCorreosOrganizarBajaPrioridad();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -93,7 +93,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     await context.PostAsync($"Quizás desea saber como organizar sus mensajes de baja prioridad en Outlook, tengo esto: ");
-                    reply.Attachments = Respuestas.GetUsarCorreosOrganizarBajaPrioridad();
+                    reply.Attachments = RespuestasOutlook.GetUsarCorreosOrganizarBajaPrioridad();
                     await context.PostAsync(reply);
                     await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;

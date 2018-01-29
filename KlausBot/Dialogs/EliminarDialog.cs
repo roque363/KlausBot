@@ -48,7 +48,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "color")
                         {
-                            reply.Attachments = Respuestas.GetEliminarCategoriaColor();
+                            reply.Attachments = RespuestasOutlook.GetEliminarCategoriaColor();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -56,7 +56,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetEliminarCategoriaColor();
+                            reply.Attachments = RespuestasOutlook.GetEliminarCategoriaColor();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -64,7 +64,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetEliminarCategoriaColor();
+                    reply.Attachments = RespuestasOutlook.GetEliminarCategoriaColor();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
@@ -72,7 +72,7 @@ namespace KlausBot.Dialogs
                 }
                 else
                 {
-                    reply.Attachments = Respuestas.GetEliminarCategoriaColor();
+                    reply.Attachments = RespuestasOutlook.GetEliminarCategoriaColor();
                     await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra1}'?");
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);

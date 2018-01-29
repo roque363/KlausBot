@@ -83,5 +83,4 @@ namespace KlausBot.Dialogs
         }
 
     }
-
 }

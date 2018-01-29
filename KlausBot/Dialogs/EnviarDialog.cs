@@ -48,7 +48,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "plantillas" || palabra2 == "plantillas")
                         {
-                            reply.Attachments = Respuestas.GetEnviarMensajeBasadoPlantilla();
+                            reply.Attachments = RespuestasOutlook.GetEnviarMensajeBasadoPlantilla();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -56,7 +56,7 @@ namespace KlausBot.Dialogs
                         }
                         else if (palabra2 == "lista" || palabra2 == "listas" || palabra2 == "grupo" || palabra2 == "grupos")
                         {
-                            reply.Attachments = Respuestas.GetEnviarMensajeGrupoContactos();
+                            reply.Attachments = RespuestasOutlook.GetEnviarMensajeGrupoContactos();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -64,7 +64,7 @@ namespace KlausBot.Dialogs
                         }
                         else if (palabra2 == "reunión" || palabra2 == "reunion" || palabra2 == "reuniones")
                         {
-                            reply.Attachments = Respuestas.GetReenviarReuniónOutlook();
+                            reply.Attachments = RespuestasOutlook.GetReenviarReuniónOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -72,7 +72,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetEnviarRespuestasIntencio2();
+                            reply.Attachments = RespuestasOutlook.GetEnviarRespuestasIntencio2();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta2);
                             await context.PostAsync(reply);
@@ -80,7 +80,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetReenviarYEnviarMensajeOutlook();
+                    reply.Attachments = RespuestasOutlook.GetReenviarYEnviarMensajeOutlook();
                     await context.PostAsync(confirmacionRespuesta2);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
@@ -88,7 +88,7 @@ namespace KlausBot.Dialogs
                 }
                 else if (palabra1 == "respuestasautomaticas" || palabra1 == "respuestaautomatica" || palabra1 == "respuestasautomáticas" || palabra1 == "respuestaautomática" || palabra1 == "respuestasfuera" || palabra1 == "respuestafuera")
                 {
-                    reply.Attachments = Respuestas.GetEnviarRespuestasAutomaticasFueraOficinaOutlook();
+                    reply.Attachments = RespuestasOutlook.GetEnviarRespuestasAutomaticasFueraOficinaOutlook();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
@@ -101,7 +101,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "reunión" || palabra2 == "reunion" || palabra2 == "reuniones")
                         {
-                            reply.Attachments = Respuestas.GetReenviarReuniónOutlook();
+                            reply.Attachments = RespuestasOutlook.GetReenviarReuniónOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -109,7 +109,7 @@ namespace KlausBot.Dialogs
                         }
                         else if (palabra2 == "correoelectrónico" || palabra2 == "correoelectronico" || palabra2 == "correoselectrónicos" || palabra2 == "correoselectronicos" || palabra2 == "correos" || palabra2 == "correo" || palabra2 == "mensajes" || palabra2 == "mensaje")
                         {
-                            reply.Attachments = Respuestas.GetReenviarMensajeOutlook();
+                            reply.Attachments = RespuestasOutlook.GetReenviarMensajeOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -117,7 +117,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetReenviarReuniónOutlookYMensajeOutlook();
+                            reply.Attachments = RespuestasOutlook.GetReenviarReuniónOutlookYMensajeOutlook();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta2);
                             await context.PostAsync(reply);
@@ -125,7 +125,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetReenviarReuniónOutlookYMensajeOutlook();
+                    reply.Attachments = RespuestasOutlook.GetReenviarReuniónOutlookYMensajeOutlook();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta2);
                     await context.PostAsync(reply);

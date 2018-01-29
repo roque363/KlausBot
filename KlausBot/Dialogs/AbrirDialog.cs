@@ -48,7 +48,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "archivo" || palabra2 == "archivos")
                         {
-                            reply.Attachments = Respuestas.GetBuscarElementosArchivosDatos();
+                            reply.Attachments = RespuestasOutlook.GetBuscarElementosArchivosDatos();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -56,7 +56,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetBuscarElementosArchivosDatos();
+                            reply.Attachments = RespuestasOutlook.GetBuscarElementosArchivosDatos();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -65,7 +65,7 @@ namespace KlausBot.Dialogs
                     }
                     // No se detectó la segunda parte de la pregunta
                     await context.PostAsync($"Quizás desea saber como abrir elementos en un archivo de datos de Outlook, tengo esto: ");
-                    reply.Attachments = Respuestas.GetBuscarElementosArchivosDatos();
+                    reply.Attachments = RespuestasOutlook.GetBuscarElementosArchivosDatos();
                     await context.PostAsync(reply);
                     await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;
@@ -77,7 +77,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "dato" || palabra2 == "datos")
                         {
-                            reply.Attachments = Respuestas.GetAbrirArchivosDatosOutlook();
+                            reply.Attachments = RespuestasOutlook.GetAbrirArchivosDatosOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -85,7 +85,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetAbrirArchivosDatosOutlook();
+                            reply.Attachments = RespuestasOutlook.GetAbrirArchivosDatosOutlook();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -94,14 +94,14 @@ namespace KlausBot.Dialogs
                     }
                     // No se detectó la segunda parte de la pregunta
                     await context.PostAsync($"Quizás desea saber como abrir archivos de datos de Outlook (.pst), tengo esto: ");
-                    reply.Attachments = Respuestas.GetAbrirArchivosDatosOutlook();
+                    reply.Attachments = RespuestasOutlook.GetAbrirArchivosDatosOutlook();
                     await context.PostAsync(reply);
                     await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;
                 }
                 else
                 {
-                    reply.Attachments = Respuestas.GetRespuestaAbrirDialog();
+                    reply.Attachments = RespuestasOutlook.GetRespuestaAbrirDialog();
                     await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra1}'?");
                     await context.PostAsync(opcionSecundarioDeRespuesta2);
                     await context.PostAsync(reply);

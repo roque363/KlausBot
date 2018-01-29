@@ -42,7 +42,7 @@ namespace KlausBot.Dialogs
                 context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
                 if (palabra1 == "aviso" || palabra1 == "avisos")
                 {
-                    reply.Attachments = Respuestas.GetEstablecerAvisoOutlook();
+                    reply.Attachments = RespuestasOutlook.GetEstablecerAvisoOutlook();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
@@ -50,7 +50,7 @@ namespace KlausBot.Dialogs
                 }
                 else
                 {
-                    reply.Attachments = Respuestas.GetEstablecerAvisoOutlook();
+                    reply.Attachments = RespuestasOutlook.GetEstablecerAvisoOutlook();
                     await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra1}'?");
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);

@@ -52,7 +52,7 @@ namespace KlausBot.Dialogs
                         // El usuario escribio en su pregunta la palabra eliminado
                         if (palabra2 == "eliminado" || palabra2 == "eliminados")
                         {
-                            reply.Attachments = Respuestas.GetRecuperarElementosEliminados();
+                            reply.Attachments = RespuestasOutlook.GetRecuperarElementosEliminados();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -60,7 +60,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetRecuperarElementosEliminados();
+                            reply.Attachments = RespuestasOutlook.GetRecuperarElementosEliminados();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -68,7 +68,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetRecuperarElementosEliminados();
+                    reply.Attachments = RespuestasOutlook.GetRecuperarElementosEliminados();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
@@ -77,7 +77,7 @@ namespace KlausBot.Dialogs
                 // El usuario escribio en su pregunta la palabra mensaje
                 else if (palabra1 == "mensaje" || palabra1 == "mensajes" || palabra1 == "correo" || palabra1 == "correos")
                 {
-                    reply.Attachments = Respuestas.GetRecuperarMensajeDespuésEnviarlo();
+                    reply.Attachments = RespuestasOutlook.GetRecuperarMensajeDespuésEnviarlo();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);

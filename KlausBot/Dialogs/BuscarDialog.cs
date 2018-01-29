@@ -44,7 +44,7 @@ namespace KlausBot.Dialogs
                 context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
                 if (palabra1 == "personas" || palabra1 == "persona" || palabra1 == "contactos" || palabra1 == "contacto")
                 {
-                    reply.Attachments = Respuestas.GetBuscarPersonasOutlook();
+                    reply.Attachments = RespuestasOutlook.GetBuscarPersonasOutlook();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
@@ -57,7 +57,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "busquedainstantanea" || palabra2 == "búsquedainstantánea" || palabra2 == "búsquedainstantanea" || palabra2 == "busquedainstantánea" || palabra2 == "búsqueda" || palabra2 == "busqueda")
                         {
-                            reply.Attachments = Respuestas.GetBuscarMensajeBusquedaInstantanea();
+                            reply.Attachments = RespuestasOutlook.GetBuscarMensajeBusquedaInstantanea();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -65,7 +65,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetBuscarMensajeBusquedaInstantanea();
+                            reply.Attachments = RespuestasOutlook.GetBuscarMensajeBusquedaInstantanea();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -73,7 +73,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetBuscarMensajeBusquedaInstantanea();
+                    reply.Attachments = RespuestasOutlook.GetBuscarMensajeBusquedaInstantanea();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
@@ -87,7 +87,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "archivos" || palabra2 == "archivo")
                         {
-                            reply.Attachments = Respuestas.GetBuscarElementosArchivosDatos();
+                            reply.Attachments = RespuestasOutlook.GetBuscarElementosArchivosDatos();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -95,7 +95,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetBuscarElementosArchivosDatos();
+                            reply.Attachments = RespuestasOutlook.GetBuscarElementosArchivosDatos();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -103,7 +103,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetBuscarElementosArchivosDatos();
+                    reply.Attachments = RespuestasOutlook.GetBuscarElementosArchivosDatos();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
