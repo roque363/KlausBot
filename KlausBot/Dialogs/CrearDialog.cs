@@ -304,9 +304,10 @@ namespace KlausBot.Dialogs
                 // La primera parte de la pregunta es correo
                 else if (palabra1 == "correo" || palabra1 == "correos" || palabra1 == "mensaje" || palabra1 == "mensajes" || palabra1 == "correoelectronico")
                 {
-                    await context.PostAsync(confirmacionRespuesta1);
                     reply.Attachments = Respuestas.GetCrearMensajeCorreoElectronico();
+                    await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
                     return;
                 }
                 // -------------------------------------------------------------------

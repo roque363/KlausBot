@@ -125,15 +125,18 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Dialogs\AbrirDialog.cs" />
     <Compile Include="Dialogs\AgregarDialog.cs" />
     <Compile Include="Dialogs\AplicarDialog.cs" />
     <Compile Include="Dialogs\BuscarDialog.cs" />
     <Compile Include="Dialogs\CambiarDialog.cs" />
     <Compile Include="Dialogs\CrearDialog.cs" />
     <Compile Include="Dialogs\DefinicionServicioDialog.cs" />
+    <Compile Include="Dialogs\DespedidaDialog.cs" />
     <Compile Include="Dialogs\EliminarDialog.cs" />
     <Compile Include="Dialogs\EnviarDialog.cs" />
     <Compile Include="Dialogs\EstablecerDialog.cs" />
+    <Compile Include="Dialogs\GuardarDialog.cs" />
     <Compile Include="Dialogs\LUISDialog.cs" />
     <Compile Include="Dialogs\OrganizarDialog.cs" />
     <Compile Include="Dialogs\RecuperarDialog.cs" />

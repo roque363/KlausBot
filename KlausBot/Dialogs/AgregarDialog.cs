@@ -34,6 +34,7 @@ namespace KlausBot.Dialogs
             string preguntaNoRegistrada2 = "Lo siento, su pregunta no esta registrada";
             string opcionSecundarioDeRespuesta1 = "Pero esta respuesta le podría interesar:";
             string opcionSecundarioDeRespuesta2 = "Pero estas respuestas le podrían interesar:";
+            string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber";
 
             // Recorrido de la primera parte de la pregunta
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
@@ -56,6 +57,7 @@ namespace KlausBot.Dialogs
                                     reply.Attachments = Respuestas.GetNombresListasBloqueados();
                                     await context.PostAsync(confirmacionRespuesta1);
                                     await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
                                     return;
                                 }
                                 else if (palabra3 == "contacto" || palabra3 == "contactos")
@@ -63,6 +65,7 @@ namespace KlausBot.Dialogs
                                     reply.Attachments = Respuestas.GetAgregarContactoListaContactos();
                                     await context.PostAsync(confirmacionRespuesta1);
                                     await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
                                     return;
                                 }
                                 else
@@ -86,6 +89,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAgregarPersonasCategoriasColor();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -115,7 +119,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAgregarGraficosMensajesOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
-                            //context.Wait(MessageReceived);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -143,6 +147,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAgregarTablasMensajeOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -171,6 +176,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAgregarConfirmacionLecturaNotificacionEntrega();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else if (palabra2 == "entregas" || palabra2 == "entrega")
@@ -178,6 +184,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAgregarConfirmacionEntregaRealizarSeguimiento();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -206,6 +213,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAgregarConfirmacionLecturaNotificacionEntrega();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -234,6 +242,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAgregarSeguimientoMensajesOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -262,6 +271,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAgregarFeriadosCalendarioOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -290,6 +300,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetCrearFirmaMensaje();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -318,6 +329,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetIncluirTarjetaPresentacionFirmaCorreo();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -346,6 +358,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetInsertarHipervinculosFirmaCorreo();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -374,6 +387,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAdjuntarArchivosOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else if (serv == "word" || serv == "wrd")
@@ -388,6 +402,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAdjuntarArchivosExcel();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else if (serv == "powerpoint" || serv == "pwrpoint" || serv == "pwrpt" || serv == "powerpt")
@@ -395,6 +410,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAdjuntarArchivosPowerPoint();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else if (serv == "onenote" || serv == "noenote" || serv == "note")
@@ -402,6 +418,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAgregarArchivosOneNote();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -423,6 +440,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAgregarArchivosWord();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
                             return;
 
@@ -430,24 +448,28 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetAdjuntarArchivosOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
                             return;
                         case "Excel":
                             reply.Attachments = Respuestas.GetAdjuntarArchivosExcel();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
                             return;
                         case "PowerPoint":
                             reply.Attachments = Respuestas.GetAdjuntarArchivosPowerPoint();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
                             return;
                         case "OneNote":
                             reply.Attachments = Respuestas.GetAgregarArchivosOneNote();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
                             return;
                     }

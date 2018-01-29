@@ -11,6 +11,26 @@ namespace KlausBot.Models
         // ------------------------------------------------------------- 
         // PREGUNTAS DE OUTLOOK                                          
         // ------------------------------------------------------------- 
+
+        // Definicon de Outlook
+        public static IList<Attachment> GetOutlookDefinicionCard()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCard(
+                    "¿Qué es Outlook?",
+                    "",
+                    "El nuevo Outlook es más que solo correo electrónico. Le mostraremos cómo organizar automáticamente su bandeja de entrada y " +
+                    "lo ayudará a enfocarse en los correos electrónicos que más le importan. También obtienes un poderoso calendario para " +
+                    "administrar tu día.",
+                    new CardImage(url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIFH5814W1-9WxdGlN1QJHCxV-yKKwIeXu2hSnnLylJxsfp-NU")),
+                GetVideoCard(
+                    "Office 365 - Outlook",
+                    "Video sobre Outlook",
+                    "https://videocontent.osi.office.net/cccda7b4-2f70-4420-9409-c231ee8312ea/e05255a3-3279-464e-a0a1-237440b26c48_1280x720_3400.mp4",
+                    "https://support.office.com/es-es/article/Video-What-is-Outlook-10f1fa35-f33a-4cb7-838c-a7f3e6228b20?ui=es-ES&rs=es-ES&ad=ES"),
+            };
+        }
         // Crear y enviar correo electrónico
         public static IList<Attachment> GetCrearEnviarCorreoElectronico()
         {
@@ -36,26 +56,6 @@ namespace KlausBot.Models
                     "",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Crear-un-mensaje-de-correo-electr%C3%B3nico-147208af-ca8e-4cdf-b71f-77ba81a54069?ui=es-ES&rs=es-ES&ad=ES")),
-            };
-        }
-
-        // Definicon de Outlook
-        public static IList<Attachment> GetOutlookDefinicionCard()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCard(
-                    "¿Qué es Outlook?",
-                    "",
-                    "El nuevo Outlook es más que solo correo electrónico. Le mostraremos cómo organizar automáticamente su bandeja de entrada y " +
-                    "lo ayudará a enfocarse en los correos electrónicos que más le importan. También obtienes un poderoso calendario para " +
-                    "administrar tu día.",
-                    new CardImage(url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIFH5814W1-9WxdGlN1QJHCxV-yKKwIeXu2hSnnLylJxsfp-NU")),
-                GetVideoCard(
-                    "Office 365 - Outlook",
-                    "Video sobre Outlook",
-                    "https://videocontent.osi.office.net/cccda7b4-2f70-4420-9409-c231ee8312ea/e05255a3-3279-464e-a0a1-237440b26c48_1280x720_3400.mp4",
-                    "https://support.office.com/es-es/article/Video-What-is-Outlook-10f1fa35-f33a-4cb7-838c-a7f3e6228b20?ui=es-ES&rs=es-ES&ad=ES"),
             };
         }
 
@@ -1209,8 +1209,112 @@ namespace KlausBot.Models
             };
         }
 
+        //Abrir y cerrar archivos de datos de Outlook (.pst)
+        public static IList<Attachment> GetAbrirArchivosDatosOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Abrir y cerrar archivos de datos de Outlook (.pst)",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Outlook es parte de su rutina diaria. Se usa para enviar mensajes de correo electrónico, configurar eventos del calendario y crear tareas y otros elementos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Abrir-y-cerrar-Archivos-de-datos-de-Outlook-pst-381b776d-7511-45a0-953a-0935c79d24f2")),
+
+            };
+        }
+
+        //Abrir y cerrar archivos de datos de Outlook (.pst)
+        public static IList<Attachment> GetRespuestaAbrirDialog()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Abrir y cerrar archivos de datos de Outlook (.pst)",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Outlook es parte de su rutina diaria. Se usa para enviar mensajes de correo electrónico, configurar eventos del calendario y crear tareas y otros elementos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Abrir-y-cerrar-Archivos-de-datos-de-Outlook-pst-381b776d-7511-45a0-953a-0935c79d24f2")),
+                GetHeroCardV2(
+                    "Abrir y buscar elementos en un archivo de datos de Outlook (.pst)",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Si usa una cuenta POP o IMAP, toda la información de Outlook se almacenan en un archivo de datos de Outlook, también conocido como un Archivo de carpetas personales (.pst).",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Abrir-y-buscar-elementos-en-un-Archivo-de-datos-de-Outlook-pst-2e2b55a4-f681-4b93-90cb-31d39349fb95")),
+
+            };
+        }
+
+        //----------GUARDAR-OUTLOOK----------------
+        //-----------------------------------------
+        //Guardar mensaje en outlook
+        public static IList<Attachment> GetGuardarMensajeOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Guardar un mensaje",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Outlook ofrece varias opciones para guardar un mensaje de correo electrónico. Un mensaje que recibe, por ejemplo, se puede guardar como un archivo en el equipo.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Guardar-un-mensaje-4821bcd4-7687-4d6d-a486-b89a291a56e2")),
+
+            };
+        }
+
+        //----------IMPRIMIR-OUTLOOK-------------
+        //---------------------------------------
+        //Imprimir contactos, mensajes u otros elementos de Outlook
+        public static IList<Attachment> GetImprimirContactosMensajesOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Imprimir contactos, mensajes u otros elementos de Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Office 365 Pequeña Empresa Outlook 2010 Outlook 2007",
+                    "Puede imprimir mensajes, contactos, calendarios, reuniones y tareas en Outlook. Cada tipo de elemento de Outlook tiene varias opciones de impresión.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Imprimir-contactos-mensajes-u-otros-elementos-de-Outlook-d2c0b12b-e308-41ce-9016-a3089ebdbe38?ui=es-ES&rs=es-HN&ad=PE")),
+
+            };
+        }
+
+        //----------OBTENER-OUTLOOK----------------
+        //-----------------------------------------
+        //Obtener un id digital
+        public static IList<Attachment> GetObtenerIdDigitalOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                     "Obtener un id. digital",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Un identificador digital le permite enviar mensajes firmados digitalmente con Microsoft Outlook. Un identificador digital, también "+
+                    "denominado certificado digital, le ayuda a demostrar su identidad y a evitar la manipulación de mensajes para proteger la autenticidad "+
+                    "de un mensaje de correo electrónico.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Obtener-un-Id-digital-0eaa0ab9-b8a2-4a7e-828b-9bded6370b7b")),
+
+            };
+        }
+
+        //Obtener información sobre cómo navegar en Outlook con características de accesibilidad
+        public static IList<Attachment> GetObtenerInformacionNavegarOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Obtener información sobre cómo navegar en Outlook con características de accesibilidad",
+                    "Se aplica a: Outlook 2016 Outlook 2016 para Mac Outlook en la web para Office 365 Empresa Outlook.com Calendario de Outlook para Windows 10 Outlook para iOS y Android Outlook para Windows Phone 10 ...",
+                    "Este artículo va dirigido a los usuarios que usan un programa de lector de pantalla con los productos de Office y forma parte del conjunto de contenido de accesibilidad de Office.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Obtener-informaci%C3%B3n-sobre-c%C3%B3mo-navegar-en-Outlook-con-caracter%C3%ADsticas-de-accesibilidad-3dfe1380-ee04-4399-a3ff-800d3d4362a1?ui=es-ES&rs=es-ES&ad=ES")),
+
+            };
+        }
+
         // -------------------------------------------------------------
-        // PREGUNTAS NO IMPLEMENTADAS
+        // PREGUNTAS NO IMPLEMENTADAS 
 
         // Mantener las próximas citas y reuniones siempre a la vista
         public static IList<Attachment> GetMantenerCitasReunionesVista()

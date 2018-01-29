@@ -12,12 +12,12 @@ using Microsoft.Bot.Builder.Dialogs;
 
 namespace KlausBot.Dialogs
 {
-    public class RecuperarDialog
+    public class ObtenerDialog
     {
         private IDialogContext context;
         private LuisResult result;
 
-        public RecuperarDialog(IDialogContext context, LuisResult result)
+        public ObtenerDialog(IDialogContext context, LuisResult result)
         {
             this.context = context;
             this.result = result;
@@ -36,23 +36,18 @@ namespace KlausBot.Dialogs
             string opcionSecundarioDeRespuesta2 = "Pero estas respuestas le podrían interesar:";
             string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber";
 
-            // Recorrido de la segunda parte de la pregunta
+            // Recorrido de la primera parte de la pregunta
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
-
-                // El usuario escribio en su pregunta la palabra elemento 
-                if (palabra1 == "elemento" || palabra1 == "elementos")
+                if (palabra1 == "información" || palabra1 == "informacion")
                 {
-                    // Recorrido de la primera parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-
-                        // El usuario escribio en su pregunta la palabra eliminado
-                        if (palabra2 == "eliminado" || palabra2 == "eliminados")
+                        if (palabra2 == "navegar" || palabra2 == "nvegar")
                         {
-                            reply.Attachments = Respuestas.GetRecuperarElementosEliminados();
+                            reply.Attachments = Respuestas.GetObtenerInformacionNavegarOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -60,24 +55,22 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = Respuestas.GetRecuperarElementosEliminados();
+                            reply.Attachments = Respuestas.GetObtenerInformacionNavegarOutlook();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
                             return;
                         }
                     }
-                    // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetRecuperarElementosEliminados();
-                    await context.PostAsync(preguntaNoRegistrada1);
-                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync($"Quizás desea saber como obtener información sobre cómo navegar en Outlook con características de accesibilidad, tengo esto: ");
+                    reply.Attachments = Respuestas.GetObtenerInformacionNavegarOutlook();
                     await context.PostAsync(reply);
+                    await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;
                 }
-                // El usuario escribio en su pregunta la palabra mensaje
-                else if (palabra1 == "mensaje" || palabra1 == "mensajes" || palabra1 == "correo" || palabra1 == "correos")
+                else if (palabra1 == "id" || palabra1 == "iddigital")
                 {
-                    reply.Attachments = Respuestas.GetRecuperarMensajeDespuésEnviarlo();
+                    reply.Attachments = Respuestas.GetObtenerIdDigitalOutlook();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
@@ -85,8 +78,10 @@ namespace KlausBot.Dialogs
                 }
                 else
                 {
-                    await context.PostAsync(preguntaNoRegistrada2);
-                    await context.PostAsync($"O tal vez no escribió correctamente la palabra '{palabra1}'?");
+                    reply.Attachments = Respuestas.GetObtenerInformacionNavegarOutlook();
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra1}'?");
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync(reply);
                     return;
                 }
             }

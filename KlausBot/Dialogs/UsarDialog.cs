@@ -34,6 +34,7 @@ namespace KlausBot.Dialogs
             string preguntaNoRegistrada2 = "Lo siento, su pregunta no esta registrada";
             string opcionSecundarioDeRespuesta1 = "Pero esta respuesta le podría interesar:";
             string opcionSecundarioDeRespuesta2 = "Pero estas respuestas le podrían interesar:";
+            string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber";
 
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
@@ -50,6 +51,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetUsarArrobaLlamarAtencion();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -79,6 +81,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetUsarAsistenteProgramacion();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -108,6 +111,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetUsarCalendarioManeraAdecuadaOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -137,6 +141,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetUsarCrearCarpetasBusqueda();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -172,6 +177,7 @@ namespace KlausBot.Dialogs
                                     reply.Attachments = Respuestas.GetUsarFiltrosCorreoNoDeseadoControlarMensajes();
                                     await context.PostAsync(confirmacionRespuesta1);
                                     await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
                                     return;
                                 }
                                 else
@@ -186,6 +192,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetUsarFiltrosCorreoNoDeseadoControlarMensajes();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -215,6 +222,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetUsarLimpiezaConversacion();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else
@@ -244,6 +252,7 @@ namespace KlausBot.Dialogs
                             reply.Attachments = Respuestas.GetUsarCorreosOrganizarBajaPrioridad();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             return;
                         }
                         else

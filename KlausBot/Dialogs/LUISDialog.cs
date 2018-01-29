@@ -35,6 +35,7 @@ namespace KlausBot.Dialogs
             string[] none = {
                 "Perdón, no entiendo lo que estas diciendo \U0001F615",
                 "Perdón, no entendí lo que necesitas \U0001F615",
+                "Perdón, no entendí lo que quieres decir \U0001F615",
             };
 
             // Generate random indexes for none
@@ -70,13 +71,16 @@ namespace KlausBot.Dialogs
             context.Call<ConsultaServicio>(formularioRegistro, Callback);
         }
 
-        [LuisIntent("Otros")]
-        public async Task Pregunta(IDialogContext context, LuisResult result)
+        [LuisIntent("Despedida")]
+        public async Task Despedida(IDialogContext context, LuisResult result)
         {
-            await context.PostAsync($"Lo siento, pero solo te veo como un amigo");
-            await context.PostAsync("ademas no quiero arruinar la bonita amistad que tenemos");
-            context.Wait(MessageReceived);
-            return;
+            await new DespedidaDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Guardar")]
+        public async Task ConsultaGuardar(IDialogContext context, LuisResult result)
+        {
+            await new GuardarDialog(context, result).StartAsync();
         }
 
         [LuisIntent("Consulta.DefinicionServicio")]
@@ -133,16 +137,19 @@ namespace KlausBot.Dialogs
         {
             await new BuscarDialog(context, result).StartAsync();
         }
+
         [LuisIntent("Consulta.Enviar")]
         public async Task ConsultaEnviar(IDialogContext context, LuisResult result)
         {
             await new EnviarDialog(context, result).StartAsync();
         }
+
         [LuisIntent("Consulta.Eliminar")]
         public async Task ConsultaEliminar(IDialogContext context, LuisResult result)
         {
             await new EliminarDialog(context, result).StartAsync();
         }
+
         [LuisIntent("Consulta.Aplicar")]
         public async Task ConsultaAplicar(IDialogContext context, LuisResult result)
         {
@@ -159,6 +166,18 @@ namespace KlausBot.Dialogs
         public async Task ConsultaOrganizar(IDialogContext context, LuisResult result)
         {
             await new OrganizarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Abrir")]
+        public async Task ConsultaAbrir(IDialogContext context, LuisResult result)
+        {
+            await new AbrirDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Imprimir")]
+        public async Task ConsultaImprimir(IDialogContext context, LuisResult result)
+        {
+            await new ImprimirDialog(context, result).StartAsync();
         }
 
     }

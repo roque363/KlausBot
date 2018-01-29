@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Web;
 using System.Configuration;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using KlausBot.Models;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Luis;
@@ -12,12 +12,12 @@ using Microsoft.Bot.Builder.Dialogs;
 
 namespace KlausBot.Dialogs
 {
-    public class BuscarDialog
+    public class AbrirDialog
     {
         private IDialogContext context;
         private LuisResult result;
 
-        public BuscarDialog(IDialogContext context, LuisResult result)
+        public AbrirDialog(IDialogContext context, LuisResult result)
         {
             this.context = context;
             this.result = result;
@@ -34,57 +34,18 @@ namespace KlausBot.Dialogs
             string preguntaNoRegistrada2 = "Lo siento, su pregunta no esta registrada";
             string opcionSecundarioDeRespuesta1 = "Pero esta respuesta le podría interesar:";
             string opcionSecundarioDeRespuesta2 = "Pero estas respuestas le podrían interesar:";
-            string preguntaConsulta2 = "si necesita más información por favor hágamelo saber";
-            string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber"; 
+            string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber";
 
             // Recorrido de la primera parte de la pregunta
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
-                if (palabra1 == "personas" || palabra1 == "persona" || palabra1 == "contactos" || palabra1 == "contacto")
-                {
-                    reply.Attachments = Respuestas.GetBuscarPersonasOutlook();
-                    await context.PostAsync(confirmacionRespuesta1);
-                    await context.PostAsync(reply);
-                    await context.PostAsync(preguntaConsulta);
-                    return;
-                }
-                else if (palabra1 == "mensajes" || palabra1 == "mensaje")
+                if (palabra1 == "elemento" || palabra1 == "elementos")
                 {
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "busquedainstantanea" || palabra2 == "búsquedainstantánea" || palabra2 == "búsquedainstantanea" || palabra2 == "busquedainstantánea" || palabra2 == "búsqueda" || palabra2 == "busqueda")
-                        {
-                            reply.Attachments = Respuestas.GetBuscarMensajeBusquedaInstantanea();
-                            await context.PostAsync(confirmacionRespuesta1);
-                            await context.PostAsync(reply);
-                            await context.PostAsync(preguntaConsulta);
-                            return;
-                        }
-                        else
-                        {
-                            reply.Attachments = Respuestas.GetBuscarMensajeBusquedaInstantanea();
-                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
-                            await context.PostAsync(opcionSecundarioDeRespuesta1);
-                            await context.PostAsync(reply);
-                            return;
-                        }
-                    }
-                    // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = Respuestas.GetBuscarMensajeBusquedaInstantanea();
-                    await context.PostAsync(preguntaNoRegistrada1);
-                    await context.PostAsync(opcionSecundarioDeRespuesta1);
-                    await context.PostAsync(reply);
-                    return;
-
-                }
-                else if (palabra1 == "elementos" || palabra1 == "elemento")
-                {
-                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
-                    {
-                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "archivos" || palabra2 == "archivo")
+                        if (palabra2 == "archivo" || palabra2 == "archivos")
                         {
                             reply.Attachments = Respuestas.GetBuscarElementosArchivosDatos();
                             await context.PostAsync(confirmacionRespuesta1);
@@ -102,16 +63,47 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
+                    await context.PostAsync($"Quizás desea saber como abrir elementos en un archivo de datos de Outlook, tengo esto: ");
                     reply.Attachments = Respuestas.GetBuscarElementosArchivosDatos();
-                    await context.PostAsync(preguntaNoRegistrada1);
-                    await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
+                    await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
+                    return;
+                }
+                else if (palabra1 == "archivos" || palabra1 == "archivo")
+                {
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "dato" || palabra2 == "datos")
+                        {
+                            reply.Attachments = Respuestas.GetAbrirArchivosDatosOutlook();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = Respuestas.GetAbrirArchivosDatosOutlook();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    await context.PostAsync($"Quizás desea saber como abrir archivos de datos de Outlook (.pst), tengo esto: ");
+                    reply.Attachments = Respuestas.GetAbrirArchivosDatosOutlook();
+                    await context.PostAsync(reply);
+                    await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;
                 }
                 else
                 {
-                    await context.PostAsync(preguntaNoRegistrada2);
-                    await context.PostAsync($"O tal vez no escribió correctamente la palabra '{palabra1}'?");
+                    reply.Attachments = Respuestas.GetRespuestaAbrirDialog();
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra1}'?");
+                    await context.PostAsync(opcionSecundarioDeRespuesta2);
+                    await context.PostAsync(reply);
                     return;
                 }
             }
