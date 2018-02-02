@@ -219,6 +219,28 @@ namespace KlausBot.Models
             };
         }
 
+        // Crear diseños de fondo para los mensajes de correo electrónico
+        public static IList<Attachment> GetCrearDiseñosDePlantillaParaMensajesV2()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear diseños de fondo para los mensajes de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "os diseños de fondo y los temas son un conjunto de elementos de diseño unificados y combinaciones de color. " +
+                    "Especifican fuentes, viñetas, colores de fondo, líneas horizontales, imágenes y otros elementos de diseño que " +
+                    "se incluirán en los mensajes de correo electrónico salientes.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-dise%C3%B1os-de-fondo-para-los-mensajes-de-correo-electr%C3%B3nico-b5552ece-8f09-49ce-81a1-c1b7d347914f")),
+               GetVideoCard(
+                    " Diseña tu propia plantilla para los emails",
+                    "Puede diseñar, crear y usar diseños de fondo personales en un mensaje de correo electrónico de Outlook.",
+                    "https://videocontent.osi.office.net/f9a2eaa7-3903-4c08-ab17-e657ea6d5313/b49b96b9-9bfd-4db0-be61-f33bc9159f2b_1280x720_3400.mp4",
+                    "https://support.office.com/es-es/article/dise%C3%B1ar-dise%C3%B1os-de-fondo-personales-b059b1be-5875-40ca-8399-ad0fb7dd21cd"),
+
+            };
+        }
+
         // Crear un grupo de contactos o una lista de distribución en Outlook
         public static IList<Attachment> GetCrearGrupoContactosListaDistribucionOutlook()
         {
@@ -287,13 +309,13 @@ namespace KlausBot.Models
             };
         }
 
-        // Crear un grupo de contactos desde una lista de contactos en Exce
+        // Crear un grupo de contactos desde una lista de contactos en Excel
         public static IList<Attachment> GetCrearGrupoContactosDesdeListaContactosExcel()
         {
             return new List<Attachment>()
             {
                 GetHeroCardV2(
-                    "Crear un grupo de contactos desde una lista de contactos en Exce",
+                    "Crear un grupo de contactos desde una lista de contactos en Excel",
                     "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
                     "Use un grupo de contactos (anteriormente denominado “lista de distribución”) para enviar un mensaje de " +
                     "correo electrónico a varias personas (un equipo del proyecto, un comité o incluso solo un grupo de amigos) sin " +
@@ -303,7 +325,7 @@ namespace KlausBot.Models
             };
         }
 
-        // Crear un grupo de contactos desde una lista de contactos en Exce
+        // Crear o Agregar color
         public static IList<Attachment> GetAgregarColor()
         {
             return new List<Attachment>()
@@ -392,7 +414,7 @@ namespace KlausBot.Models
         }
 
         // ---------------------
-        // AGREGAR
+        // AGREGAR Y INCLUIR Y INSERTAR
         // ---------------------
         // Agregar algun contacto en outlook
         public static IList<Attachment> GetAgregarContacto()
@@ -468,7 +490,6 @@ namespace KlausBot.Models
                     "Si ha intentado alguna vez alinear filas y columnas de texto manualmente con espacios, sabrá lo frustrante que puede ser.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Agregar-una-tabla-a-un-mensaje-59766ab4-0fe5-4520-ba0b-e34f8b8cd025")),
-
             };
         }
 
@@ -502,7 +523,8 @@ namespace KlausBot.Models
             };
         }
 
-        // Agregar una confirmacion de lectura o una notificación de entreega
+        // Agregar una confirmacion de lectura o una notificación de entrega
+        // Agregar la confirmación de entrega para realizar un seguimiento de un mensaje de correo electrónico
         public static IList<Attachment> GetAgregarConfirmacionLecturaNotificacionEntregaYLectura()
         {
             return new List<Attachment>()
@@ -544,11 +566,12 @@ namespace KlausBot.Models
             return new List<Attachment>()
             {
                 GetHeroCardV2(
-                    "Como agregar días no laborables a tu calendario en Outlook",
-                    "Se aplica a: Outlook 2016 Outlook 2013",
-                    "Cuando exporta su calendario de Outlook a Google Calendar, está exportando una instantánea del calendario. Cualquier cambio que realice en su calendario de Outlook no se reflejará automáticamente en Google Calendar.",
+                    "Agregar días festivos a su calendario de Outlook para Windows",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010",
+                    "Al empezar a usar Outlook 2013 o Outlook 2016 para Windows, allí no se encuentran los días no laborables" +
+                    " en el calendario. Aunque puede agregar días no laborables para uno o varios países.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Exportar-un-Calendario-de-Outlook-a-Google-Calendar-662fa3bb-0794-4b18-add8-9968b665f4e6")),
+                    value: "https://support.office.com/es-es/article/agregar-d%C3%ADas-festivos-a-su-calendario-de-outlook-para-windows-f16d872f-8dad-4750-bb7c-166e72c26977")),
 
             };
         }
@@ -565,6 +588,53 @@ namespace KlausBot.Models
                     +" realiza un seguimiento de los documentos con los que ha trabajado recientemente, independientemente de que estén almacenados en el equipo o se guarden en OneDrive (solo en la nube).",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Adjuntar-archivos-o-insertar-im%C3%A1genes-en-mensajes-de-correo-de-Outlook-bdfafef5-792a-42b1-9a7b-84512d7de7fc?ui=es-ES&rs=es-HN&ad=PE")),
+
+            };
+        }
+
+        // Incluir una tarjeta de presentación electrónica en una firma de correo electrónico
+        public static IList<Attachment> GetIncluirTarjetaPresentacionFirmaCorreo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Incluir una tarjeta de presentación electrónica en una firma de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Agregando su Tarjeta de presentación electrónica a su firma de correo electrónico,"
+                    +" puede incluir la información de contacto en cada mensaje que envíe.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Incluir-una-tarjeta-de-presentaci%C3%B3n-electr%C3%B3nica-en-una-firma-de-correo-electr%C3%B3nico-fe50a63b-34e5-44c5-b68f-849afdc28ab0?ui=es-ES&rs=es-HN&ad=PE")),
+
+            };
+        }
+
+        // Crear o modificar o insertar un hipervínculo
+        public static IList<Attachment> GetCrearModificarHipervínculo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear o modificar un hipervínculo",
+                    "Se aplica a: Excel, Word, Outlook, PowerPoint, Office",
+                    "La forma más rápida de crear un hipervínculo básico en un documento de Office es presionar ENTRAR o la barra espaciadora después de escribir la dirección de una página web existente, como http://www.contoso.com. Office convierte automáticamente la dirección en un vínculo.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-o-modificar-un-hiperv%C3%ADnculo-5d8c0804-f998-4143-86b1-1199735e07bf")),
+
+            };
+        }
+
+        // Insertar hipervínculos de Facebook o Twitter en la firma de correo electrónico
+        public static IList<Attachment> GetInsertarHipervinculosFirmaCorreo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Insertar hipervínculos de Facebook o Twitter en la firma de correo electrónico",
+                    "SSe aplica a: Outlook 2016 Outlook 2013",
+                    "Puede modificar su firma de correo electrónico o cree uno nuevo para incluir "
+                    +"vínculos a perfiles de Facebook o Twitter. Para empezar, asegúrese de que guarde copias de los iconos de Facebook y Twitter en su equipo.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Insertar-hiperv%C3%ADnculos-a-Facebook-y-Twitter-en-la-firma-de-correo-electr%C3%B3nico-40833df1-9459-48f0-b90f-0f6e66536206")),
 
             };
         }
@@ -601,6 +671,59 @@ namespace KlausBot.Models
                     "",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Cambiar el nombre para mostrar lo que ven los destinatarios de correo electrónico
+        public static IList<Attachment> GetCambiarNombre()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar el nombre para mostrar lo que ven los destinatarios de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Si los destinatarios de correo electrónico ven solo una parte de su nombre, pero quiere que vean el " +
+                    "nombre completo, puede realizar fácilmente el cambio deseado. La presentación puede mostrar solo una " +
+                    "parte del nombre si no escribió su nombre completo al configurar su cuenta de correo por primera vez.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/cambiar-el-nombre-para-mostrar-lo-que-ven-los-destinatarios-de-correo-electr%C3%B3nico-2b53331a-ba2a-4803-88dc-ac9fe376c8a9")),
+            };
+        }
+
+        // Mover o cambiar el nombre de una carpeta en Outlook.com
+        public static IList<Attachment> GetCambiarNombreCarpeta()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Mover o cambiar el nombre de una carpeta en Outlook.com",
+                    "Se aplica a: Outlook.com",
+                    "Puede arrastrar una carpeta en Outlook.com a un nuevo lugar en la jerarquía de carpetas, o bien " +
+                    "puede usar la opción mover en el menú contextual. También puede cambiar el nombre de las carpetas que cree.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Mover-o-cambiar-el-nombre-de-una-carpeta-en-Outlook-com-c9c66fed-8a7c-426a-afc6-0d46a72080fb")),
+            };
+        }
+
+        // Mover o cambiar el nombre de una carpeta en Outlook.com
+        // Como cambiar el nombre de una categoría de color
+        public static IList<Attachment> GetCambiarNombreCarpetaYCategoria()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Mover o cambiar el nombre de una carpeta en Outlook.com",
+                    "Se aplica a: Outlook.com",
+                    "Puede arrastrar una carpeta en Outlook.com a un nuevo lugar en la jerarquía de carpetas, o bien " +
+                    "puede usar la opción mover en el menú contextual. También puede cambiar el nombre de las carpetas que cree.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Mover-o-cambiar-el-nombre-de-una-carpeta-en-Outlook-com-c9c66fed-8a7c-426a-afc6-0d46a72080fb")),
+                 GetHeroCardV2(
+                    "Como cambiar el nombre de una categoría de color",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Las categorías de color son una excelente forma de agrupar visualmente mensajes, tareas, contactos o eventos de calendario que se parecen.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-nombre-de-una-categor%C3%ADa-de-color-692ab131-525a-467b-8cbd-4b08346d5346")),
             };
         }
 
@@ -772,6 +895,21 @@ namespace KlausBot.Models
             };
         }
 
+        // Configuración de Correo
+        public static IList<Attachment> GetCambiarConfiguracionCorreo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Configuración de Correo",
+                    "Se aplica a: Outlook Web App",
+                    "Personalizar la configuración para los mensajes que envía y recibe con Outlook Web App. Puede hacer cosas como configurar una firma se agregue a los mensajes que envíe o controlar el seguimiento de mensajes.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/cambiar-la-foto-y-la-informaci%C3%B3n-de-cuenta-en-outlook-en-la-web-b2dbb289-851d-4bed-93c3-3e136f5659ec")),
+
+            };
+        }
+
         // ---------------------
         // USAR
         // ---------------------
@@ -847,44 +985,6 @@ namespace KlausBot.Models
                     "Usar el asistente para programación",
                     "https://videocontent.osi.office.net/8b47f9db-6dc9-4bee-9719-bd52745f8b58/318c1ac2-885d-44ab-a6f5-0ab6dcd75055_1280x720_3400.mp4",
                     ""),
-            };
-        }
-
-        // --------------------
-        // INCLUIR
-        // --------------------
-        // Incluir una tarjeta de presentación electrónica en una firma de correo electrónico
-        public static IList<Attachment> GetIncluirTarjetaPresentacionFirmaCorreo()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Incluir una tarjeta de presentación electrónica en una firma de correo electrónico",
-                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
-                    "Agregando su Tarjeta de presentación electrónica a su firma de correo electrónico,"
-                    +" puede incluir la información de contacto en cada mensaje que envíe.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Incluir-una-tarjeta-de-presentaci%C3%B3n-electr%C3%B3nica-en-una-firma-de-correo-electr%C3%B3nico-fe50a63b-34e5-44c5-b68f-849afdc28ab0?ui=es-ES&rs=es-HN&ad=PE")),
-
-            };
-        }
-
-        // ---------------------
-        // INSERTAR
-        // ---------------------
-        // Insertar hipervínculos de Facebook o Twitter en la firma de correo electrónico
-        public static IList<Attachment> GetInsertarHipervinculosFirmaCorreo()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Insertar hipervínculos de Facebook o Twitter en la firma de correo electrónico",
-                    "SSe aplica a: Outlook 2016 Outlook 2013",
-                    "Puede modificar su firma de correo electrónico o cree uno nuevo para incluir "
-                    +"vínculos a perfiles de Facebook o Twitter. Para empezar, asegúrese de que guarde copias de los iconos de Facebook y Twitter en su equipo.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Insertar-hiperv%C3%ADnculos-a-Facebook-y-Twitter-en-la-firma-de-correo-electr%C3%B3nico-40833df1-9459-48f0-b90f-0f6e66536206")),
-
             };
         }
 
@@ -1271,7 +1371,7 @@ namespace KlausBot.Models
         }
 
         // GetContacto Y Lista
-        public static IList<Attachment> GetContactoYLista()
+        public static IList<Attachment> GetContactoYBloqueados()
         {
             return new List<Attachment>()
             {
@@ -1336,7 +1436,7 @@ namespace KlausBot.Models
             };
         }
 
-        // Abrir y cerrar archivos de datos de Outlook (.pst)
+        // Abrir y cerrar archivos
         public static IList<Attachment> GetRespuestaAbrirDialog()
         {
             return new List<Attachment>()
@@ -1444,7 +1544,7 @@ namespace KlausBot.Models
                     value: "https://support.office.com/es-es/article/Mantener-las-pr%C3%B3ximas-citas-y-reuniones-siempre-a-la-vista-0dc3d54c-9ae9-4285-9439-4f675244aae0")),
             };
         }
-
+                    
         // Mostrar, ocultar y ver el campo de copia carbón oculta (CCO)
         public static IList<Attachment> GetMostrarOcultarVerCampoCopiaCarbonOculta()
         {
@@ -1493,7 +1593,449 @@ namespace KlausBot.Models
         // PREGUNTAS SECUNDARIAS DE OUTLOOK                                                    
         // ----------------------------------------------------------------------- 
 
+        // Firma en los mensajes
+        public static IList<Attachment> GetFirma()
+        {
+            return new List<Attachment>()
+            {
+              GetVideoCard(
+                    "Agrega firmas a los correos eléctrónicos",
+                    "Cree, edite y adjunte una firma a los mensajes de correo electrónico que envíe, responda y reenvíe.",
+                    "https://videocontent.osi.office.net/fb74c9d6-32b8-4fef-9b86-aac0b12abee5/00662c0a-de3a-4378-a16e-01369b724b1b_1280x720_3400.mp4",
+                    "https://support.office.com/es-es/article/Agregar-firmas-a-los-mensajes-31fb24f9-e698-4789-b92a-f0e777f774ca#ID0EAABAAA=P%C3%B3ngalo_en_pr%C3%A1ctica"),
+            };
+        }
 
+        // Utilice las categorías en Outlook.com o en Outlook en la web
+        public static IList<Attachment> GetUtiliceCategoriasOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Utilice las categorías en Outlook.com o en Outlook en la web",
+                    "Se aplica a: Outlook en la web para Office 365 Empresa Outlook.com Outlook en la web para Exchange Server 2016",
+                    "Categorías le permiten identificar y agrupar mensajes en Outlook.com o Outlook en la Web fácilmente. " +
+                    "Elegir entre categorías predeterminadas o crear sus propios y asignar una o varias categorías a sus mensajes.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/utilice-las-categor%C3%ADas-en-outlook-com-o-en-outlook-en-la-web-a0f709a4-9bd8-45d7-a2b3-b6f8c299e079")),
+            };
+        }
+
+        // Enviar un mensaje de correo basado en una plantilla
+        public static IList<Attachment> GetCrearPlantilla()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Enviar un mensaje de correo basado en una plantilla",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Usar plantillas de correo electrónico para enviar mensajes que incluyen información que no cambia",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/enviar-un-mensaje-de-correo-basado-en-una-plantilla-56c645fc-1b25-4059-808b-55ee72b6bc2d")),
+            };
+        }
+
+        // Creando y asignando tareas
+        public static IList<Attachment> GetCreandoAsignandoTareas()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Creando y asignando tareas",
+                    "Se aplica a: Outlook",
+                    "Cree, edite y marque como completadas las tareas o elimine una tarea.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-y-actualizar-tareas-6de6ee52-751b-4405-b389-850572b15306")),
+            };
+        }
+
+        // Crear Grupo
+        public static IList<Attachment> GetCrearGrupo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un grupo en Outlook",
+                    "Última actualización: Octubre de 2017",
+                    "Grupos es una característica de Office 365 que proporciona un área de trabajo compartida para colaborar y compartir.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-un-grupo-en-outlook-04d0c9cf-6864-423c-a380-4fa858f27102")),
+            };
+        }
+
+        // Crear diseños en Outlook
+        public static IList<Attachment> GetCrearDiseños()
+        {
+            return new List<Attachment>()
+            {
+                GetVideoCard(
+                    "Diseña tu propia plantilla para los emails",
+                    "Puede diseñar, crear y usar diseños de fondo personales en un mensaje de correo electrónico de Outlook.",
+                    "https://videocontent.osi.office.net/f9a2eaa7-3903-4c08-ab17-e657ea6d5313/b49b96b9-9bfd-4db0-be61-f33bc9159f2b_1280x720_3400.mp4",
+                    "https://support.office.com/es-es/article/dise%C3%B1ar-dise%C3%B1os-de-fondo-personales-b059b1be-5875-40ca-8399-ad0fb7dd21cd"),
+            };
+        }
+
+        // Crear, modificar o eliminar una convocatoria de reunión o una cita en Outlook en la web o Outlook.com
+        public static IList<Attachment> GetCrearEvento()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear, modificar o eliminar una convocatoria de reunión o una cita en Outlook en la web o Outlook.com",
+                    "Se aplica a: Office para empresas Office 365 Pequeña Empresa Outlook en la web para Office 365 Empresa Outlook.com",
+                    "Puede crear, modificar o eliminar una convocatoria de reunión o una cita enOutlook.com yOutlook en la Web.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-modificar-o-eliminar-una-convocatoria-de-reuni%C3%B3n-o-una-cita-en-outlook-en-la-web-o-outlook-com-541383fd-35b7-49a6-b4c8-2ee75af2f40a")),
+            };
+        }
+
+        // Crear un mensaje de correo electrónico
+        public static IList<Attachment> GetCrearMensaje()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un mensaje de correo electrónico",
+                    "Se aplica a: Outlook 2010",
+                    "",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-un-mensaje-de-correo-electr%C3%B3nico-83eb5c08-15e1-4936-8bf9-f476d38a5182")),
+            };
+        }
+
+        // Crear o Agregar una cita o un evento
+        public static IList<Attachment> GetCrearAgregarCitaEvento()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear una cita o un evento",
+                    "Se aplica a: Outlook",
+                    "Programe una cita para informar a otros usuarios de Outlook de su disponibilidad (libre, ocupado, provisional o fuera de la oficina).",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/programar-citas-6e6ddec6-5983-4c42-9652-b99e120206fb")),
+            };
+        }
+
+        // Buscar elementos
+        public static IList<Attachment> GetBuscarElemento()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Abrir o importar elementos desde un archivo de datos de Outlook sin conexión (.ost)",
+                    "Se aplica a: Outlook 2016 Outlook 2010",
+                    "Microsoft Outlook 2010 no admite abrir o importar elementos de un Archivo de datos de Outlook sin conexión (.ost) manualmente.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/abrir-o-importar-elementos-desde-un-archivo-de-datos-de-outlook-sin-conexi%C3%B3n-ost-a584963e-a66d-4d9d-8845-31cb270f6880")),
+                GetHeroCardV2(
+                    "Buscar elementos mediante una búsqueda básica en Outlook para Mac",
+                    "Se aplica a: Office para empresas Office 365 Pequeña Empresa Outlook 2016 para Mac Office 2016 para Mac Outlook para Mac 2011",
+                    "Realizar una búsqueda básica en Outlook.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/buscar-elementos-mediante-una-b%C3%BAsqueda-b%C3%A1sica-en-outlook-para-mac-53b60f65-25b7-4582-9c5e-4adf16e503a1")),
+            };
+        }
+
+        // Agregar rápidamente nuevos contactos en Outlook
+        public static IList<Attachment> GetAgregarRapidamenteContactos()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar rápidamente nuevos contactos en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "En muchos casos, no hay tener que escribir toda la información de un nuevo contacto en Microsoft Office Outlook 2007. Estos algunos métodos abreviados para simplificar su trabajo.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-r%C3%A1pidamente-nuevos-contactos-en-outlook-6a18568a-73c7-42c8-957c-a59ae1175976")),
+            };
+        }
+
+        // Usar gráficos en mensajes de correo electrónico
+        public static IList<Attachment> GetUsarGráficos()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Usar gráficos en mensajes de correo electrónico",
+                    "Se aplica a: Outlook 2007",
+                    "En este artículo:Acerca de los diagramas y gráficos en Outlook 2007, Elija un tipo de gráfico e insertar datos, Organizar los datos para un gráfico",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/usar-gr%C3%A1ficos-en-mensajes-de-correo-electr%C3%B3nico-126637af-c599-4378-adf9-3adaa66c307e")),
+            };
+        }
+
+        // Insertar o crear tablas
+        // Insertar, cambiar o eliminar una tabla en Outlook.com
+        public static IList<Attachment> GetAgregarTablas()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Insertar o crear tablas",
+                    "Se aplica a: Outlook 2007",
+                    "En Microsoft Outlook, puede insertar una tabla en un mensaje de correo electrónico, o puede insertar una tabla en otra tabla para crear una tabla más compleja.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/insertar-o-crear-tablas-8a638153-3149-4185-995c-3e11faae93f4")),
+                 GetHeroCardV2(
+                    "Insertar, cambiar o eliminar una tabla en Outlook.com",
+                    "Se aplica a: Outlook en la web para Office 365 Empresa Outlook.com",
+                    "Puede insertar una tabla en mensajes de correo electrónico Outlook en la Web o calendarios para ayudarle a organizar los datos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/insertar-cambiar-o-eliminar-una-tabla-en-outlook-com-8a2916f7-a2f5-4c71-944a-658d56342d4c")),
+            };
+        }
+
+        // Agregar y solicitar confirmaciones de lectura y notificaciones de entrega
+        public static IList<Attachment> GetAgregarConfirmacion()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar y solicitar confirmaciones de lectura y notificaciones de entrega",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Una confirmación de entrega confirma la entrega del mensaje de correo electrónico al buzón del destinatario",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-y-solicitar-confirmaciones-de-lectura-y-notificaciones-de-entrega-a34bf70a-4c2c-4461-b2a1-12e4a7a92141")),
+            };
+        }
+
+        // Activar y desactivar las alertas de escritorio
+        public static IList<Attachment> GetActivarDesactivarAlertas()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Activar y desactivar las alertas de escritorio",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Una Alerta de escritorio es una notificación que aparece en su escritorio cuando recibe un nuevo mensaje de " +
+                    "correo electrónico, una convocatoria de reunión o una solicitud de tarea. De manera predeterminada, las Alertas " +
+                    "de escritorio están activadas.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/activar-y-desactivar-las-alertas-de-escritorio-9940c70e-b306-442e-a856-d94b20318481")),
+            };
+        }
+
+        // Agregar la confirmación de entrega para realizar un seguimiento de un mensaje de correo electrónico
+        public static IList<Attachment> GetSeguimiento()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar la confirmación de entrega para realizar un seguimiento de un mensaje de correo electrónico",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Una confirmación de entrega indica que un mensaje de correo se ha enviado al buzón del destinatario, pero no si el destinatario lo ha visto o leído. Una confirmación de lectura avisa cuando se abre un mensaje. En ambos casos, recibirá un mensaje de notificación en la Bandeja de entrada.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-la-confirmaci%C3%B3n-de-entrega-para-realizar-un-seguimiento-de-un-mensaje-de-correo-electr%C3%B3nico-69cd1b39-2300-482d-96c6-22e2f4a96848")),
+            };
+        }
+
+        // Agregar tiempo de fuera de la oficina en los calendarios de Outlook de compañeros
+        // Agregar días no laborables o festividades al calendario
+        public static IList<Attachment> GetAgregarDiasNoLaborables()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar tiempo de fuera de la oficina en los calendarios de Outlook de compañeros",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Este artículo explica cómo agregar personalizada las convocatorias de reunión de todo el día a " +
+                    "calendarios de compañeros de trabajo, sin que ello afecte el tiempo libre disponible en sus calendarios.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-la-confirmaci%C3%B3n-de-entrega-para-realizar-un-seguimiento-de-un-mensaje-de-correo-electr%C3%B3nico-69cd1b39-2300-482d-96c6-22e2f4a96848")),
+                GetHeroCardV2(
+                    "Agregar días no laborables o festividades al calendario",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Un calendario personal no está completo sin los días no laborables. Y puede agregarlos con Outlook. " +
+                    "O quizás quiera agregar sus propios días no laborables y fechas importantes, como cumpleaños, fechas " +
+                    "escolares y vacaciones de la empresa. ",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-la-confirmaci%C3%B3n-de-entrega-para-realizar-un-seguimiento-de-un-mensaje-de-correo-electr%C3%B3nico-69cd1b39-2300-482d-96c6-22e2f4a96848")),
+            };
+        }
+
+        // Agregar o editar una imagen de una tarjeta de presentación electrónica
+        public static IList<Attachment> GetTarjeta()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar o editar una imagen de una tarjeta de presentación electrónica",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Si está creando una tarjeta para usted o edita una tarjeta que ha recibido de otra persona, puede " +
+                    "agregar o cambiar las imágenes en una tarjeta de presentación electrónica.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-o-editar-una-imagen-de-una-tarjeta-de-presentaci%C3%B3n-electr%C3%B3nica-92939924-fa42-4756-b4d5-b3b5ad762b35")),
+            };
+        }
+
+        // Crear o quitar un hipervínculo en un mensaje en Outlook para Mac
+        public static IList<Attachment> GetCrearQUitarHipervínculoParaMac()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear o quitar un hipervínculo en un mensaje en Outlook para Mac",
+                    "Se aplica a: Office para empresas Office 365 Pequeña Empresa Outlook 2016 para Mac Office 2016 para Mac Outlook para Mac 2011",
+                    "Suede agregar vínculos al cuerpo de los mensajes de correo electrónico y mostrarlos como direcciones URL completas o como cualquier texto que elija.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-o-quitar-un-hiperv%C3%ADnculo-en-un-mensaje-en-outlook-para-mac-956c3c5a-d331-4669-bfdb-e735d37bf7fc")),
+
+            };
+        }
+
+        // Crear diseños de fondo para los mensajes de correo electrónico
+        public static IList<Attachment> GetCrearDiseñosParaMensajes()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear diseños de fondo para los mensajes de correo electrónico",
+                    "Se aplica a: Outlook 2010",
+                    "Los diseños de fondo y los temas son un conjunto de elementos de diseño unificados y combinaciones de color. Especifican fuentes, viñetas, colores de fondo, líneas horizontales, imágenes y otros elementos de diseño que se incluirán en los mensajes de correo electrónico salientes.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-dise%C3%B1os-de-fondo-para-los-mensajes-de-correo-electr%C3%B3nico-6742573e-4bdf-411e-99cf-b358a79ac3ff")),
+
+            };
+        }
+
+        // Buscar en Correo y Contactos en Outlook.com
+        public static IList<Attachment> GetBuscarsCorreoContactos()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Buscar en Correo y Contactos en Outlook.com",
+                    "Se aplica a: Outlook.com",
+                    "Busque mensajes y contactos en Outlook.com usando el cuadro Buscar en Correo y en Contactos de la parte superior de la página.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/buscar-en-correo-y-contactos-en-outlook-com-88108edf-028e-4306-b87e-7400bbb40aa7")),
+
+            };
+        }
+
+        // Administrar el correo electrónico no deseado
+        // Administrar los contactos y la lista de contactos
+        // Agregar rápidamente nuevos contactos en Outlook
+        public static IList<Attachment> GetAgregarYBloquearContactos()
+        {
+            return new List<Attachment>()
+            {
+                GetVideoCard(
+                    " Administrar el correo electrónico no deseado",
+                    "Para poner automáticamente el spam en la carpeta Correo no deseado, utilice la lista Remitentes bloqueados. " +
+                    "Para evitar que determinados mensajes se marquen como correo no deseado, agregue personas a la lista " +
+                    "Remitentes seguros.",
+                    "https://videocontent.osi.office.net/27093c65-8438-4202-b9b0-0e72305b6407/4abaadc5-edfd-402c-b25a-900546654fc8_1280x720_3400.mp4",
+                    "https://support.office.com/es-es/article/administrar-correo-no-deseado-con-las-listas-remitentes-bloqueados-y-remitentes-seguros-ed960552-eac9-41e5-a9bf-e7e706fefa88"),
+                GetHeroCardV2(
+                    "Agregar rápidamente nuevos contactos en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "En muchos casos, no hay tener que escribir toda la información de un nuevo contacto en Microsoft Office Outlook 2007. Estos algunos métodos abreviados para simplificar su trabajo.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-r%C3%A1pidamente-nuevos-contactos-en-outlook-6a18568a-73c7-42c8-957c-a59ae1175976")),
+                GetHeroCardV2(
+                    "Agregar personas a la Libreta de direcciones",
+                    "Se aplica a: Outlook 2010",
+                    "El Libreta de direcciones es un contenedor para todos los contactos. Esto significa que cada carpeta de " +
+                    "contactos, como el trabajo, casa, sociales, clientes potenciales, etc., es un subconjunto de la libreta " +
+                    "de direcciones.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/buscar-en-correo-y-contactos-en-outlook-com-88108edf-028e-4306-b87e-7400bbb40aa7")),
+
+            };
+        }
+
+        // Cambiar un tema y establecerlo como predeterminado en Outlook o en Access
+        public static IList<Attachment> GetCambiarTema()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar un tema y establecerlo como predeterminado en Outlook o en Access",
+                    "Se aplica a: Outlook 2016 Access 2016 Outlook 2013 Access 2013",
+                    "Cambiar una combinación de color o el tema de documento puede ser confusa. Para cambiar el tema actual, cambie a otro, o crear un nuevo tema, use los comandos ligeramente diferentes, dependiendo de qué aplicación esté utilizando:",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/buscar-en-correo-y-contactos-en-outlook-com-88108edf-028e-4306-b87e-7400bbb40aa7")),
+
+            };
+        }
+
+        // Definir la fuente o el color del texto de los mensajes enviados
+        public static IList<Attachment> GetDefinirFuente()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Definir la fuente o el color del texto de los mensajes enviados",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Office 365 Pequeña Empresa Outlook 2010",
+                    "Puede cambiar la fuente y el color, tamaño y el estilo, como negrita o cursiva para todos los mensajes que envíe. Por ejemplo, puede cambiar el color del texto del mensaje o usar la fuente Arial en lugar de la predeterminada Calibri.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/definir-la-fuente-o-el-color-del-texto-de-los-mensajes-enviados-83425b7b-4acc-4e94-8c04-fa1e31790318")),
+
+            };
+        }
+
+        // Cambiar la foto o el nombre de perfil en Outlook.com
+        public static IList<Attachment> GetCambiarNombrePerfil()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar la foto o el nombre de perfil en Outlook.com",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Office 365 Pequeña Empresa Outlook 2010",
+                    "",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/cambiar-la-foto-y-la-informaci%C3%B3n-de-cuenta-en-outlook-en-la-web-b2dbb289-851d-4bed-93c3-3e136f5659ec")),
+
+            };
+        }
+
+        // Camabiar configuración de la visualización del correo
+        public static IList<Attachment> GetCambiarConfiguracionVisualizacionCorreo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Configuración de la visualización del correo",
+                    "Se aplica a: Outlook Web App",
+                    "Use la configuración de la visualización para establecer la apariencia de la lista de mensajes, el panel de lectura y la vista de conversación.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Configuraci%C3%B3n-de-la-visualizaci%C3%B3n-del-correo-a62ead01-4e64-45a8-a497-f462589956de")),
+
+            };
+        }
+
+        // Cambiar la zona horaria para una cita o reunión
+        public static IList<Attachment> GetCambiarZonaHorariaCita()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar la zona horaria para una cita o reunión",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Puede cambiar la zona horaria para una sola reunión o cita y mantener no afecta la zona horaria de su PC.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-la-zona-horaria-para-una-cita-o-reuni%C3%B3n-C5485AB4-9DDD-4EAB-92B3-10217FE5FB08")),
+
+            };
+        }
+
+        // Agregar, editar o eliminar una categoría en Business Contact Manager
+        public static IList<Attachment> GetAgregarEditarEliminarCategoriaBusiness()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar, editar o eliminar una categoría en Business Contact Manager",
+                    "Se aplica a: Outlook 2007 Office 2007",
+                    "Puede usar categorías en Business Contact Manager para Outlook para realizar un seguimiento de sus cuentas, contactos profesionales, oportunidades y proyectos profesionales modo significativo relacionadas con sus interacciones de negocio con ellos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-editar-o-eliminar-una-categor%C3%ADa-en-Business-Contact-Manager-d0e58768-87d8-4c68-b824-580b093c4e81")),
+
+            };
+        }
 
         // ----------------------------------------------------------------------- 
 

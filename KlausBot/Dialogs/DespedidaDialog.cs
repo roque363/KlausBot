@@ -4,8 +4,6 @@ using System.Web;
 using System.Configuration;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using KlausBot.Models;
-using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using Microsoft.Bot.Builder.Dialogs;
@@ -38,7 +36,7 @@ namespace KlausBot.Dialogs
             // Generate random indexes for despe
             int mIndex = rnd.Next(0, despe.Length);
 
-            // Display the result.
+            // Display the result
             await context.PostAsync(despe[mIndex]);
             return;
         }

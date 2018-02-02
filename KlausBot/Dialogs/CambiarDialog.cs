@@ -28,6 +28,9 @@ namespace KlausBot.Dialogs
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
+            var accion = "Cambiar";
+            context.PrivateConversationData.SetValue<string>("Accion", accion);
+
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
             string preguntaNoRegistrada1 = "Lo siento, su pregunta no esta registrada, tal vez no escribió la pregunta correctamente";
@@ -450,19 +453,25 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(reply);
                             return;
                         }
+                        else if (palabra2 == "carpeta" || palabra2 == "carpetas")
+                        {
+                            reply.Attachments = RespuestasOutlook.GetCambiarNombreCarpeta();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            return;
+                        }
                         else
                         {
-                            reply.Attachments = RespuestasOutlook.GetCambiarNombreCategoriaColor();
+                            reply.Attachments = RespuestasOutlook.GetCambiarNombreCarpetaYCategoria();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
-                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(opcionSecundarioDeRespuesta2);
                             await context.PostAsync(reply);
                             return;
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = RespuestasOutlook.GetCambiarNombreCategoriaColor();
-                    await context.PostAsync(preguntaNoRegistrada1);
-                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    reply.Attachments = RespuestasOutlook.GetCambiarNombre();
+                    await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     return;
                 }
@@ -544,9 +553,10 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = RespuestasOutlook.GetCambiarConfiguracionGruposEnvios();
-                    await context.PostAsync(preguntaNoRegistrada1);
-                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    reply.Attachments = RespuestasOutlook.GetCambiarConfiguracionCorreo();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(preguntaConsulta);
+                    await context.PostAsync(reply);
                     await context.PostAsync(reply);
                     return;
                 }
@@ -605,7 +615,7 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(reply);
                     return;
                 }
-                else if (palabra1 == "nivel" || palabra1 == "niveles" || palabra1 == "level" || palabra1 == "levels")
+                else if (palabra1 == "nivel" || palabra1 == "niveles")
                 {
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
@@ -627,9 +637,11 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
-                    // Si el usuario no ingreso la segunda parte de la pregunta
-                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
-                    await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                    // No se detectó la segunda parte de la pregunta
+                    reply.Attachments = RespuestasOutlook.GetCambiarNivelProteccionFiltroCorreo();
+                    await context.PostAsync(preguntaNoRegistrada1);
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync(reply);
                     return;
                 }
                 else

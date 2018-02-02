@@ -28,6 +28,9 @@ namespace KlausBot.Dialogs
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
+            var accion = "Crear";
+            context.PrivateConversationData.SetValue<string>("Accion", accion);
+
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
             string preguntaNoRegistrada1 = "Lo siento, su pregunta no esta registrada, tal vez no escribió la pregunta correctamente";
@@ -259,8 +262,8 @@ namespace KlausBot.Dialogs
                         // La segunda parte de la pregunta es colores
                         if (palabra3 == "mensaje" || palabra3 == "mensajes" || palabra3 == "correo" || palabra3 == "correos")
                         {
-                            reply.Attachments = RespuestasOutlook.GetCrearDiseñosFondoParaMensajes();
-                            await context.PostAsync(confirmacionRespuesta1);
+                            reply.Attachments = RespuestasOutlook.GetCrearDiseñosDePlantillaParaMensajesV2();
+                            await context.PostAsync(confirmacionRespuesta2);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             return;
@@ -306,6 +309,16 @@ namespace KlausBot.Dialogs
                 else if (palabra1 == "correo" || palabra1 == "correos" || palabra1 == "mensaje" || palabra1 == "mensajes" || palabra1 == "correoelectronico")
                 {
                     reply.Attachments = RespuestasOutlook.GetCrearMensajeCorreoElectronico();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
+                // -------------------------------------------------------------------
+                // La primera parte de la pregunta es correo
+                else if (palabra1 == "hipervínculo" || palabra1 == "hipervinculo" || palabra1 == "hipervínculos" || palabra1 == "hipervinculos")
+                {
+                    reply.Attachments = RespuestasOutlook.GetCrearModificarHipervínculo();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);

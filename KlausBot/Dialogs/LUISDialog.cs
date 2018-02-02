@@ -82,6 +82,7 @@ namespace KlausBot.Dialogs
         public async Task ConsultaSecundaria(IDialogContext context, LuisResult result)
         {
             await new ConsultaSecundariaDialog(context, result).StartAsync();
+            // --------> Se tiene respuesta hasta EliminarDialog <----------
         }
 
         [LuisIntent("Consulta.Guardar")]

@@ -27,6 +27,9 @@ namespace KlausBot.Dialogs
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
+            var accion = "Aplicar";
+            context.PrivateConversationData.SetValue<string>("Accion", accion);
+
             string preguntaConsulta = "¿Tiene alguna otra consulta?";
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
@@ -69,15 +72,15 @@ namespace KlausBot.Dialogs
                     return;
 
                 }
-                else if (palabra1 == "diseñosdefondo" || palabra1 == "diseñosdefondos" || palabra1 == "fondos" || palabra1 == "fondo" || palabra1 == "mensajes" || palabra1 == "mensaje")
+                else if (palabra1 == "diseñosdefondo" || palabra1 == "diseñosdefondos" || palabra1 == "fondos" || palabra1 == "fondo" || palabra1 == "diseño" || palabra1 == "diseños")
                 {
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "mensajes" || palabra2 == "mensaje")
                         {
-                            reply.Attachments = RespuestasOutlook.GetAplicarFondosTemasMensajes();
-                            await context.PostAsync(confirmacionRespuesta1);
+                            reply.Attachments = RespuestasOutlook.GetCrearDiseñosDePlantillaParaMensajesV2();
+                            await context.PostAsync(confirmacionRespuesta2);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             return;

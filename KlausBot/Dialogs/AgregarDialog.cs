@@ -28,6 +28,9 @@ namespace KlausBot.Dialogs
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
+            var accion = "Agregar";
+            context.PrivateConversationData.SetValue<string>("Accion", accion);
+
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
             string preguntaNoRegistrada1 = "Lo siento, su pregunta no esta registrada, tal vez no escribió la pregunta correctamente";
@@ -40,8 +43,9 @@ namespace KlausBot.Dialogs
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
+                // Se guarda la Pregunta::Palabra1 en cache
                 context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
-                if (palabra1 == "contacto" || palabra1 == "contactos" || palabra1 == "nombres" || palabra1 == "nombre" || palabra1 == "personas" || palabra1 == "persona" || palabra1 == "contactos" || palabra1 == "contacto" || palabra1 == "correos" || palabra1 == "correo" || palabra1 == "emails" || palabra1 == "email" || palabra1 == "correoselectronicos" || palabra1 == "correoselectrónicos" || palabra1 == "correoelectronico" || palabra1 == "correoelectrónico")
+                if (palabra1 == "contacto" || palabra1 == "contactos" || palabra1 == "correos" || palabra1 == "correo" || palabra1 == "emails" || palabra1 == "email")
                 {
                     // Recorrido de la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
@@ -71,7 +75,7 @@ namespace KlausBot.Dialogs
                                 }
                                 else
                                 {
-                                    reply.Attachments = RespuestasOutlook.GetContactoYLista();
+                                    reply.Attachments = RespuestasOutlook.GetContactoYBloqueados();
                                     await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra3}'?");
                                     await context.PostAsync(opcionSecundarioDeRespuesta2);
                                     await context.PostAsync(reply);
@@ -79,7 +83,7 @@ namespace KlausBot.Dialogs
                                 }
                             }
                             // No se detectó la tercera parte de la pregunta
-                            reply.Attachments = RespuestasOutlook.GetContactoYLista();
+                            reply.Attachments = RespuestasOutlook.GetContactoYBloqueados();
                             await context.PostAsync(preguntaNoRegistrada1);
                             await context.PostAsync(opcionSecundarioDeRespuesta2);
                             await context.PostAsync(reply);
@@ -110,8 +114,69 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(reply);
                     return;
                 }
+                else if (palabra1 == "nombres" || palabra1 == "nombre" || palabra1 == "personas" || palabra1 == "persona")
+                {
+                    // Recorrido de la segunda parte de la pregunta
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "lista" || palabra2 == "listas" || palabra2 == "grupos" || palabra2 == "grupo")
+                        {
+                            // Recorrido de la tercera parte de la pregunta
+                            foreach (var entityP3 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra3"))
+                            {
+                                var palabra3 = entityP3.Entity.ToLower().Replace(" ", "");
+                                if (palabra3 == "bloqueados" || palabra3 == "bloqueado" || palabra3 == "nodeseados" || palabra3 == "nodeseadas" || palabra3 == "detestable" || palabra3 == "detestables")
+                                {
+                                    reply.Attachments = RespuestasOutlook.GetNombresListasBloqueados();
+                                    await context.PostAsync(confirmacionRespuesta1);
+                                    await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
+                                    return;
+                                }
+                                else if (palabra3 == "contactos" || palabra3 == "contacto")
+                                {
+                                    reply.Attachments = RespuestasOutlook.GetAgregarContactoListaContactos();
+                                    await context.PostAsync(confirmacionRespuesta1);
+                                    await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
+                                    return;
+                                }
+                                else
+                                {
+                                    reply.Attachments = RespuestasOutlook.GetContactoYBloqueados();
+                                    await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra3}'?");
+                                    await context.PostAsync(opcionSecundarioDeRespuesta2);
+                                    await context.PostAsync(reply);
+                                    return;
+                                }
+                            }
+                            // No se detectó la tercera parte de la pregunta
+                            reply.Attachments = RespuestasOutlook.GetContactoYBloqueados();
+                            await context.PostAsync(preguntaNoRegistrada1);
+                            await context.PostAsync(opcionSecundarioDeRespuesta2);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasOutlook.GetContactoYBloqueados();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta2);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    reply.Attachments = RespuestasOutlook.GetContactoYBloqueados();
+                    await context.PostAsync(preguntaNoRegistrada1);
+                    await context.PostAsync(opcionSecundarioDeRespuesta2);
+                    await context.PostAsync(reply);
+                    return;
+                }
                 else if (palabra1 == "graficos" || palabra1 == "grafico" || palabra1 == "gráficos" || palabra1 == "gráfico")
                 {
+                    // Recorrido de la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
@@ -161,7 +226,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = RespuestasOutlook.GetAgregarTablasMensajeOutlook();
+                    reply.Attachments = RespuestasOutlook.GetAgregarTablas();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
@@ -169,6 +234,7 @@ namespace KlausBot.Dialogs
                 }
                 else if (palabra1 == "confirmaciones" || palabra1 == "conformación" || palabra1 == "confirmacion")
                 {
+                    // Recorrido de la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
@@ -206,6 +272,7 @@ namespace KlausBot.Dialogs
                 }
                 else if (palabra1 == "notificaciones" || palabra1 == "notificación" || palabra1 == "notificacion")
                 {
+                    // Recorrido de la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
@@ -235,6 +302,7 @@ namespace KlausBot.Dialogs
                 }
                 else if (palabra1 == "seguimiento" || palabra1 == "seguimientos")
                 {
+                    // Recorrido de la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
@@ -264,6 +332,7 @@ namespace KlausBot.Dialogs
                 }
                 else if (palabra1 == "díasnolaborables" || palabra1 == "diasnolaborables" || palabra1 == "feriados" || palabra1 == "feriado")
                 {
+                    // Recorrido de la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
@@ -293,6 +362,7 @@ namespace KlausBot.Dialogs
                 }
                 else if (palabra1 == "firmas" || palabra1 == "firma")
                 {
+                    // Recorrido de la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
@@ -322,6 +392,7 @@ namespace KlausBot.Dialogs
                 }
                 else if (palabra1 == "tarjetas" || palabra1 == "tarjeta")
                 {
+                    // Recorrido de la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
@@ -351,6 +422,7 @@ namespace KlausBot.Dialogs
                 }
                 else if (palabra1 == "hipervínculo" || palabra1 == "hipervinculo" || palabra1 == "hipervínculos" || palabra1 == "hipervinculos")
                 {
+                    // Recorrido de la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
@@ -370,16 +442,16 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(reply);
                             return;
                         }
-
                     }
-                    await context.PostAsync($"Quizás desea saber como incluir un hipervínculo de una red social a tu firma de correo electrónico, tengo esto: ");
-                    reply.Attachments = RespuestasOutlook.GetInsertarHipervinculosFirmaCorreo();
+                    reply.Attachments = RespuestasOutlook.GetCrearModificarHipervínculo();
+                    await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
-                    await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
+                    await context.PostAsync(preguntaConsulta);
                     return;
                 }
                 else if (palabra1 == "archivos" || palabra1 == "archivo")
                 {
+                    // Recorrido de la segunda parte de la pregunta
                     foreach (var entity in result.Entities.Where(Entity => Entity.Type == "Servicio"))
                     {
                         var serv = entity.Entity.ToLower().Replace(" ", "");
