@@ -1,10 +1,14 @@
-﻿using System;
+﻿// Se tiene implementado 
+// - AbrirDialog - AgregarDialog - AplicarDialog - BuscarDialog - CambiarDialog - CrearDialog - EliminarDialog - EnviarDialog
+
+using System;
 using System.Linq;
 using System.Web;
 using System.Configuration;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using KlausBot.Models;
+using KlausBot.Util;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;

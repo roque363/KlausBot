@@ -5,6 +5,7 @@ using System.Web;
 using System.Configuration;
 using System.Threading.Tasks;
 using KlausBot.Models;
+using KlausBot.Util;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
@@ -44,7 +45,15 @@ namespace KlausBot.Dialogs
 
                 if (value == "outlook" || value == "outlok")
                 {
-                    reply.Attachments = RespuestasOutlook.GetOutlookDefinicionCard();
+                    reply.Attachments = RespuestasOutlook.GetOutlookDefinicion();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
+                else if (value == "OneDrive" || value == "One Drive")
+                {
+                    reply.Attachments = RespuestasOneDrive.GetOneDriveDefinicion();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
@@ -106,7 +115,16 @@ namespace KlausBot.Dialogs
             }
             else if (servicio == "Outlook")
             {
-                reply.Attachments = RespuestasOutlook.GetOutlookDefinicionCard();
+                reply.Attachments = RespuestasOutlook.GetOutlookDefinicion();
+                await context.PostAsync(confirmacionRespuesta1);
+                await context.PostAsync(reply);
+                await context.PostAsync(preguntaConsulta);
+                context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                return;
+            }
+            else if (servicio == "OneDrive")
+            {
+                reply.Attachments = RespuestasOneDrive.GetOneDriveDefinicion();
                 await context.PostAsync(confirmacionRespuesta1);
                 await context.PostAsync(reply);
                 await context.PostAsync(preguntaConsulta);

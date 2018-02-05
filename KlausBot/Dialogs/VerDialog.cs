@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KlausBot.Models;
+using KlausBot.Util;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;

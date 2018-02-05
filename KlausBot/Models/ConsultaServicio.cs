@@ -5,14 +5,14 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using KlausBot.Models;
-using Microsoft.Bot.Connector;
 using System.Linq;
 using System.Web;
-using Newtonsoft.Json.Linq;
+using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.FormFlow;
 using Microsoft.Bot.Builder.FormFlow.Advanced;
+using Newtonsoft.Json.Linq;
+using KlausBot.Util;
 
 
 namespace KlausBot.Models

@@ -7,6 +7,7 @@ using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Internals.Fibers;
 using KlausBot.Models;
+using KlausBot.Util;
 
 
 namespace KlausBot.Dialogs

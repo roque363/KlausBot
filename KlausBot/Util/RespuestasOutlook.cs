@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Bot.Connector;
 
-namespace KlausBot.Models
+namespace KlausBot.Util
 {
     public class RespuestasOutlook
     {
@@ -14,7 +14,7 @@ namespace KlausBot.Models
         // DEFINICION
         // ---------------------
         // Definicion de Outlook
-        public static IList<Attachment> GetOutlookDefinicionCard()
+        public static IList<Attachment> GetOutlookDefinicion()
         {
             return new List<Attachment>()
             {
@@ -1154,6 +1154,22 @@ namespace KlausBot.Models
             };
         }
 
+        // Mostrar, ocultar y ver el campo de copia carbón oculta (CCO)
+        public static IList<Attachment> GetMostrarOcultarVerCampoCopiaCarbonOculta()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Mostrar, ocultar y ver el campo de copia carbón oculta (CCO)",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Si agrega el nombre de un destinatario al cuadro CCO (copia carbón oculta) en un mensaje de correo electrónico, " +
+                    "se enviará una copia del mensaje al destinatario que especifique. Los destinatarios que se agreguen al cuadro CCO no se " +
+                    "mostrarán al resto de los destinatarios que reciban el mensaje.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Mostrar-ocultar-y-ver-el-campo-de-copia-carb%C3%B3n-oculta-CCO-04304e27-63a2-4276-8884-5077fba0e229?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
         // ---------------------
         // REENVIAR Y ENVIAR Y RESPONDER
         // ---------------------
@@ -1528,6 +1544,95 @@ namespace KlausBot.Models
             };
         }
 
+        // ---------------------
+        // COMPARTIR
+        // ---------------------
+        //Compartir una carpeta de contactos con otros usuarios
+        public static IList<Attachment> GetCompartirCarpetaContactosUsuarios()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Compartir una carpeta de contactos con otros usuarios",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Office 365 Pequeña Empresa Outlook 2010 Outlook 2007",
+                    "Puede compartir cualquiera de las carpetas de contactos de cuenta de Exchange Server con otra persona que también está usando una cuenta de Exchange Server en su organización.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Compartir-una-carpeta-de-contactos-con-otros-usuarios-ce5a40d1-bc9f-4f5d-a2aa-5ec388573821")),
+
+            };
+        }
+
+        // ---------------------
+        //EXPORTAR
+        //----------------------
+        //Exportar un calendario de Outlook a Google Calendar
+        public static IList<Attachment> GetExportarCalendarioGoogleCalendar()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Exportar un calendario de Outlook a Google Calendar",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Cuando exporta su calendario de Outlook a Google Calendar, está exportando una instantánea del calendario. Cualquier cambio que realice en su calendario de Outlook no se reflejará automáticamente en Google Calendar.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Exportar-un-Calendario-de-Outlook-a-Google-Calendar-662fa3bb-0794-4b18-add8-9968b665f4e6")),
+
+            };
+        }
+
+        //Exportar o hacer una copia de seguridad del correo electrónico, los contactos y el calendario a un archivo .pst de Outlook
+        public static IList<Attachment> GetExportarCorreoContactosCalendarioOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Exportar o hacer una copia de seguridad del correo electrónico, los contactos y el calendario a un archivo .pst de Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Administración de Office 365, ...",
+                    "Cuando en el equipo se instala una aplicación Outlook, como Outlook 2016, puede usarla para transferir el correo electrónico, los contactos y los elementos de calendario desde una cuenta de correo a otra.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Exportar-o-hacer-una-copia-de-seguridad-del-correo-electr%C3%B3nico-los-contactos-y-el-calendario-a-un-archivo-pst-de-Outlook-14252b52-3075-4e9b-be4e-ff9ef1068f91")),
+
+            };
+        }
+
+        //---------------------
+        //IMPORTAR
+        //---------------------
+        //Importar Gmail a Outlook
+        public static IList<Attachment> GetImportarGmailOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Importar Gmail a Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Administración de Office 365, ...",
+                    "Cuando cambia al correo electrónico de Office 365 desde otro servicio como Gmail (o Yahoo! o AOL) tiene dos opciones: Importar una copia de todos los mensajes antiguos a la cuenta de Office 365 y conectar una cuenta de correo antigua a Outlook",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Imprimir-contactos-mensajes-u-otros-elementos-de-Outlook-d2c0b12b-e308-41ce-9016-a3089ebdbe38?ui=es-ES&rs=es-HN&ad=PE")),
+                GetVideoCard(
+                    "Office 365 - Outlook",
+                    "Importar Gmail a Outlook",
+                    "https://videocontent.osi.office.net/50d42c82-ee90-4ef8-995a-a36eb8a04a8a/1ca01592-9571-4fd4-bb2b-dab502ad3bf0__H264_3400kbps_AAC_und_ch2_96kbps.mp4",
+                    "https://support.office.com/es-es/article/Imprimir-contactos-mensajes-u-otros-elementos-de-Outlook-d2c0b12b-e308-41ce-9016-a3089ebdbe38?ui=es-ES&rs=es-HN&ad=PE"),
+
+            };
+        }
+
+        //Importar contactos a Outlook
+        public static IList<Attachment> GetImportarContactosOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Importar contactos a Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Administración de Office 365, ...",
+                    "Outlook dispone de un asistente para importar y exportar que facilita la importación de contactos desde un archivo CSV.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/importar-contactos-a-outlook-bb796340-b58a-46c1-90c7-b549b8f3c5f8")),
+
+            };
+        }
+
         // ----------------------------------------------------------------------- 
         // PREGUNTAS NO IMPLEMENTADAS 
 
@@ -1542,22 +1647,6 @@ namespace KlausBot.Models
                     "",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Mantener-las-pr%C3%B3ximas-citas-y-reuniones-siempre-a-la-vista-0dc3d54c-9ae9-4285-9439-4f675244aae0")),
-            };
-        }
-                    
-        // Mostrar, ocultar y ver el campo de copia carbón oculta (CCO)
-        public static IList<Attachment> GetMostrarOcultarVerCampoCopiaCarbonOculta()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Mostrar, ocultar y ver el campo de copia carbón oculta (CCO)",
-                    "Se aplica a: Outlook 2016 Outlook 2013",
-                    "Si agrega el nombre de un destinatario al cuadro CCO (copia carbón oculta) en un mensaje de correo electrónico, " +
-                    "se enviará una copia del mensaje al destinatario que especifique. Los destinatarios que se agreguen al cuadro CCO no se " +
-                    "mostrarán al resto de los destinatarios que reciban el mensaje.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Mostrar-ocultar-y-ver-el-campo-de-copia-carb%C3%B3n-oculta-CCO-04304e27-63a2-4276-8884-5077fba0e229?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
 
@@ -2128,19 +2217,6 @@ namespace KlausBot.Models
                 }
             };
             return videoCard.ToAttachment();
-        }
-
-        private static Attachment GetCardConsulta(string text, String value)
-        {
-            var Saludocard = new ThumbnailCard
-            {
-                Text = text,
-                Buttons = new List<CardAction>
-                {
-                    new CardAction(ActionTypes.PostBack, "Consulta", value: value),
-                }
-            };
-            return Saludocard.ToAttachment();
         }
 
         private static Attachment GetCardDoubleAction(string firstAction, string action1, string secondAction, string action2)

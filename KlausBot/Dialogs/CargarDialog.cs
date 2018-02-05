@@ -11,24 +11,26 @@ using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using Microsoft.Bot.Builder.Dialogs;
 
+
 namespace KlausBot.Dialogs
 {
-    public class EstablecerDialog
+    public class CargarDialog
     {
         private IDialogContext context;
         private LuisResult result;
 
-        public EstablecerDialog(IDialogContext context, LuisResult result)
+        public CargarDialog(IDialogContext context, LuisResult result)
         {
             this.context = context;
             this.result = result;
         }
+
         public async Task StartAsync()
         {
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
-            var accion = "Establecer";
+            var accion = "Cargar";
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
@@ -39,14 +41,13 @@ namespace KlausBot.Dialogs
             string opcionSecundarioDeRespuesta2 = "Pero estas respuestas le podrían interesar:";
             string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber";
 
-            // Recorrido de la primera parte de la pregunta
+            // Se detectó la primera parte de la pregunta
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
-                context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
-                if (palabra1 == "aviso" || palabra1 == "avisos")
+                if (palabra1 == "archivo" || palabra1 == "archivos" || palabra1 == "carpetas" || palabra1 == "carpeta" || palabra1 == "fotografías" || palabra1 == "fotografía" || palabra1 == "fotografias" || palabra1 == "fotografia")
                 {
-                    reply.Attachments = RespuestasOutlook.GetEstablecerAvisoOutlook();
+                    reply.Attachments = RespuestasOneDrive.GetCargarArchivosOneDrive();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
@@ -54,7 +55,7 @@ namespace KlausBot.Dialogs
                 }
                 else
                 {
-                    reply.Attachments = RespuestasOutlook.GetEstablecerAvisoOutlook();
+                    reply.Attachments = RespuestasOneDrive.GetCargarArchivosOneDrive();
                     await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra1}'?");
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
@@ -68,5 +69,6 @@ namespace KlausBot.Dialogs
             await context.PostAsync("O tal vez no escribió la pregunta correctamente");
             return;
         }
+
     }
 }

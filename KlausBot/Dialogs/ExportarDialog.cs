@@ -13,12 +13,12 @@ using Microsoft.Bot.Builder.Dialogs;
 
 namespace KlausBot.Dialogs
 {
-    public class RecuperarDialog
+    public class ExportarDialog
     {
         private IDialogContext context;
         private LuisResult result;
 
-        public RecuperarDialog(IDialogContext context, LuisResult result)
+        public ExportarDialog(IDialogContext context, LuisResult result)
         {
             this.context = context;
             this.result = result;
@@ -29,6 +29,9 @@ namespace KlausBot.Dialogs
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
+            var accion = "Exportar";
+            context.PrivateConversationData.SetValue<string>("Accion", accion);
+
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
             string preguntaNoRegistrada1 = "Lo siento, su pregunta no esta registrada, tal vez no escribió la pregunta correctamente";
@@ -37,23 +40,19 @@ namespace KlausBot.Dialogs
             string opcionSecundarioDeRespuesta2 = "Pero estas respuestas le podrían interesar:";
             string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber";
 
-            // Recorrido de la segunda parte de la pregunta
+            // Se detectó la primera parte de la pregunta
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
-                context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
-                // El usuario escribio en su pregunta la palabra elemento 
-                if (palabra1 == "elemento" || palabra1 == "elementos")
+                if (palabra1 == "calendario" || palabra1 == "calendarios")
                 {
-                    // Recorrido de la primera parte de la pregunta
-                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    // Se detectó  la segunda parte de la pregunta
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Servicio"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-
-                        // El usuario escribio en su pregunta la palabra eliminado
-                        if (palabra2 == "eliminado" || palabra2 == "eliminados")
+                        if (palabra2 == "google" || palabra2 == "googol")
                         {
-                            reply.Attachments = RespuestasOutlook.GetRecuperarElementosEliminados();
+                            reply.Attachments = RespuestasOutlook.GetExportarCalendarioGoogleCalendar();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -61,7 +60,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = RespuestasOutlook.GetRecuperarElementosEliminados();
+                            reply.Attachments = RespuestasOutlook.GetExportarCalendarioGoogleCalendar();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -69,16 +68,16 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = RespuestasOutlook.GetRecuperarElementosEliminados();
+                    reply.Attachments = RespuestasOutlook.GetExportarCalendarioGoogleCalendar();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
                     return;
+
                 }
-                // El usuario escribio en su pregunta la palabra mensaje
-                else if (palabra1 == "mensaje" || palabra1 == "mensajes" || palabra1 == "correo" || palabra1 == "correos")
+                else if (palabra1 == "correoelectrónico" || palabra1 == "correoelectrónicos" || palabra1 == "correoelectronico" || palabra1 == "correoelectronicos" || palabra1 == "contacto" || palabra1 == "contactos" || palabra1 == "calendario" || palabra1 == "calendarios" || palabra1 == "correo" || palabra1 == "correos")
                 {
-                    reply.Attachments = RespuestasOutlook.GetRecuperarMensajeDespuésEnviarlo();
+                    reply.Attachments = RespuestasOutlook.GetExportarCorreoContactosCalendarioOutlook();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);

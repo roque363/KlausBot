@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KlausBot.Models;
+using KlausBot.Util;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
@@ -81,8 +82,21 @@ namespace KlausBot.Dialogs
         [LuisIntent("Consulta.Secundaria")]
         public async Task ConsultaSecundaria(IDialogContext context, LuisResult result)
         {
+            // --------> Se tiene respuesta hasta EliminarDialog <----------
             await new ConsultaSecundariaDialog(context, result).StartAsync();
             // --------> Se tiene respuesta hasta EliminarDialog <----------
+        }
+
+        [LuisIntent("Consulta.Cargar")]
+        public async Task ConsultaCargar(IDialogContext context, LuisResult result)
+        {
+            await new CargarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Compartir")]
+        public async Task CompartiraEditar(IDialogContext context, LuisResult result)
+        {
+            await new CompartirDialog(context, result).StartAsync();
         }
 
         [LuisIntent("Consulta.Guardar")]
@@ -186,6 +200,18 @@ namespace KlausBot.Dialogs
         public async Task ConsultaImprimir(IDialogContext context, LuisResult result)
         {
             await new ImprimirDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Importar")]
+        public async Task ConsultaImportar(IDialogContext context, LuisResult result)
+        {
+            await new ImportarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Exportar")]
+        public async Task ConsultaExportar(IDialogContext context, LuisResult result)
+        {
+            await new ExportarDialog(context, result).StartAsync();
         }
 
     }
