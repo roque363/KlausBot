@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Linq;
+using System.Drawing;
 using System.Collections.Generic;
 using Microsoft.Bot.Connector;
 
@@ -30,6 +31,12 @@ namespace KlausBot.Util
                     "Video sobre Outlook",
                     "https://videocontent.osi.office.net/cccda7b4-2f70-4420-9409-c231ee8312ea/e05255a3-3279-464e-a0a1-237440b26c48_1280x720_3400.mp4",
                     "https://support.office.com/es-es/article/Video-What-is-Outlook-10f1fa35-f33a-4cb7-838c-a7f3e6228b20?ui=es-ES&rs=es-ES&ad=ES"),
+                GetHeroCardV4(
+                     new CardImage(
+                         url: HttpContext.Current.Server.MapPath("~/Images/aprendizajeDeOutlook.png")),
+                    new CardAction(
+                        ActionTypes.OpenUrl, "Ver más información",
+                        value: "https://support.office.com/es-es/article/aprendizaje-de-outlook-8a5b816d-9052-4190-a5eb-494512343cca?wt.mc_id=otc_home&ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
 
@@ -2163,6 +2170,16 @@ namespace KlausBot.Util
             return heroCard.ToAttachment();
         }
 
+        private static Attachment GetHeroCardV4(CardImage cardImage, CardAction cardAction)
+        {
+            var heroCard = new HeroCard
+            {
+                Images = new List<CardImage>() { cardImage },
+                Buttons = new List<CardAction>() { cardAction },
+            };
+            return heroCard.ToAttachment();
+        }
+
         private static Attachment GetThumbnailCard(string title, string subtitle, string text, CardImage cardImage, CardAction cardAction)
         {
             var heroCard = new ThumbnailCard
@@ -2230,6 +2247,41 @@ namespace KlausBot.Util
                 }
             };
             return Saludocard.ToAttachment();
+        }
+
+        private Image DrawText(String text, Font font, Color textColor, Color backColor)
+        {
+            //first, create a dummy bitmap just to get a graphics object
+            Image img = new Bitmap(1, 1);
+            Graphics drawing = Graphics.FromImage(img);
+
+            //measure the string to see how big the image needs to be
+            SizeF textSize = drawing.MeasureString(text, font);
+
+            //free up the dummy image and old graphics object
+            img.Dispose();
+            drawing.Dispose();
+
+            //create a new image of the right size
+            img = new Bitmap((int)textSize.Width, (int)textSize.Height);
+
+            drawing = Graphics.FromImage(img);
+
+            //paint the background
+            drawing.Clear(backColor);
+
+            //create a brush for the text
+            Brush textBrush = new SolidBrush(textColor);
+
+            drawing.DrawString(text, font, textBrush, 0, 0);
+
+            drawing.Save();
+
+            textBrush.Dispose();
+            drawing.Dispose();
+
+            return img;
+
         }
 
     }

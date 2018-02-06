@@ -105,10 +105,10 @@ namespace KlausBot.Dialogs
             await new GuardarDialog(context, result).StartAsync();
         }
 
-        [LuisIntent("Consulta.DefinicionServicio")]
-        public async Task DefinicionServicio(IDialogContext context, LuisResult result)
+        [LuisIntent("Consulta.Definicion")]
+        public async Task ConsultaDefinicion(IDialogContext context, LuisResult result)
         {
-            await new DefinicionServicioDialog(context, result).StartAsync();
+            await new DefinicionDialog(context, result).StartAsync();
         }
 
         // La accion del usuario es crear 

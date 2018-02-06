@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using KlausBot.Models;
+using KlausBot.Util;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
@@ -170,39 +171,6 @@ namespace KlausBot.Dialogs
                     }
                     // No se detectó la segunda parte de la pregunta
                     reply.Attachments = RespuestasOutlook.GetCambiarSonidoReproducidoMensajeCorreo();
-                    await context.PostAsync(preguntaNoRegistrada1);
-                    await context.PostAsync(opcionSecundarioDeRespuesta1);
-                    await context.PostAsync(reply);
-                    return;
-                }
-                // -------------------------------------------------------------------
-                // La primera parte de la pregunta es nombre
-                else if (palabra1 == "nombre" || palabra1 == "nombres")
-                {
-                    // Se detectó  la segunda parte de la pregunta
-                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
-                    {
-                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "categoria" || palabra2 == "categoría" || palabra2 == "categorias" || palabra2 == "categorías" || palabra2 == "clases" || palabra2 == "clase")
-                        {
-                            reply.Attachments = RespuestasOutlook.GetCambiarNombreCategoriaColor();
-                            await context.PostAsync(confirmacionRespuesta1);
-                            await context.PostAsync(reply);
-                            await context.PostAsync(preguntaConsulta);
-                            return;
-                        }
-                        else
-                        {
-                            reply.Attachments = RespuestasOutlook.GetCambiarNombreCategoriaColor();
-                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
-                            await context.PostAsync(opcionSecundarioDeRespuesta1);
-                            await context.PostAsync(reply);
-                            await context.PostAsync(preguntaConsulta);
-                            return;
-                        }
-                    }
-                    // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = RespuestasOutlook.GetCambiarNombreCategoriaColor();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);

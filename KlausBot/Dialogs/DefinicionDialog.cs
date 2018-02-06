@@ -14,12 +14,12 @@ using Microsoft.Bot.Builder.Dialogs;
 namespace KlausBot.Dialogs
 {
     [Serializable]
-    public class DefinicionServicioDialog
+    public class DefinicionDialog
     {
         private IDialogContext context; 
         private LuisResult result;
 
-        public DefinicionServicioDialog(IDialogContext context, LuisResult result)
+        public DefinicionDialog(IDialogContext context, LuisResult result)
         {
             this.context = context;
             this.result = result;

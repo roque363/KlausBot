@@ -118,6 +118,56 @@
   <ItemGroup>
     <Content Include="default.htm" />
     <Content Include="Global.asax" />
+    <Content Include="Images\aprendizajeDeOutlook.png" />
+    <Content Include="Images\Excel\Destacados\1.png" />
+    <Content Include="Images\Excel\Destacados\2.png" />
+    <Content Include="Images\Excel\Destacados\3.png" />
+    <Content Include="Images\Excel\Destacados\4.png" />
+    <Content Include="Images\Excel\Destacados\5.png" />
+    <Content Include="Images\Excel\Destacados\6.png" />
+    <Content Include="Images\Excel\Destacados\7.png" />
+    <Content Include="Images\Excel\Destacados\8.png" />
+    <Content Include="Images\Excel\Destacados\9.png" />
+    <Content Include="Images\OneDrive\Destacados\1.png" />
+    <Content Include="Images\OneDrive\Destacados\2.png" />
+    <Content Include="Images\OneDrive\Destacados\3.png" />
+    <Content Include="Images\OneDrive\Destacados\4.png" />
+    <Content Include="Images\OneDrive\Destacados\5.png" />
+    <Content Include="Images\OneDrive\Destacados\6.png" />
+    <Content Include="Images\OneDrive\Destacados\7.png" />
+    <Content Include="Images\OneDrive\Destacados\8.png" />
+    <Content Include="Images\OneNote\Destacados\1.png" />
+    <Content Include="Images\OneNote\Destacados\2.png" />
+    <Content Include="Images\OneNote\Destacados\3.png" />
+    <Content Include="Images\OneNote\Destacados\4.png" />
+    <Content Include="Images\OneNote\Destacados\5.png" />
+    <Content Include="Images\OneNote\Destacados\6.png" />
+    <Content Include="Images\OneNote\Destacados\7.png" />
+    <Content Include="Images\OneNote\Destacados\8.png" />
+    <Content Include="Images\Outlook\Destacados\destacadosOutlook1.png" />
+    <Content Include="Images\Outlook\Destacados\destacadosOutlook2.png" />
+    <Content Include="Images\Outlook\Destacados\destacadosOutlook3.png" />
+    <Content Include="Images\Outlook\Destacados\destacadosOutlook4.png" />
+    <Content Include="Images\Outlook\Destacados\destacadosOutlook5.png" />
+    <Content Include="Images\Outlook\Destacados\destacadosOutlook6.png" />
+    <Content Include="Images\Outlook\Destacados\destacadosOutlook7.png" />
+    <Content Include="Images\Outlook\Destacados\destacadosOutlook8.png" />
+    <Content Include="Images\PowerPoint\Destacados\1.png" />
+    <Content Include="Images\PowerPoint\Destacados\2.png" />
+    <Content Include="Images\PowerPoint\Destacados\3.png" />
+    <Content Include="Images\PowerPoint\Destacados\4.png" />
+    <Content Include="Images\PowerPoint\Destacados\5.png" />
+    <Content Include="Images\PowerPoint\Destacados\6.png" />
+    <Content Include="Images\PowerPoint\Destacados\7.png" />
+    <Content Include="Images\PowerPoint\Destacados\8.png" />
+    <Content Include="Images\Word\Destacados\1.png" />
+    <Content Include="Images\Word\Destacados\2.png" />
+    <Content Include="Images\Word\Destacados\3.png" />
+    <Content Include="Images\Word\Destacados\4.png" />
+    <Content Include="Images\Word\Destacados\5.png" />
+    <Content Include="Images\Word\Destacados\6.png" />
+    <Content Include="Images\Word\Destacados\7.png" />
+    <Content Include="Images\Word\Destacados\8.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -130,14 +180,18 @@
     <Compile Include="Dialogs\AplicarDialog.cs" />
     <Compile Include="Dialogs\BuscarDialog.cs" />
     <Compile Include="Dialogs\CambiarDialog.cs" />
+    <Compile Include="Dialogs\CargarDialog.cs" />
+    <Compile Include="Dialogs\CompartirDialog.cs" />
     <Compile Include="Dialogs\ConsultaSecundariaDialog.cs" />
     <Compile Include="Dialogs\CrearDialog.cs" />
-    <Compile Include="Dialogs\DefinicionServicioDialog.cs" />
+    <Compile Include="Dialogs\DefinicionDialog.cs" />
     <Compile Include="Dialogs\DespedidaDialog.cs" />
     <Compile Include="Dialogs\EliminarDialog.cs" />
     <Compile Include="Dialogs\EnviarDialog.cs" />
     <Compile Include="Dialogs\EstablecerDialog.cs" />
+    <Compile Include="Dialogs\ExportarDialog.cs" />
     <Compile Include="Dialogs\GuardarDialog.cs" />
+    <Compile Include="Dialogs\ImportarDialog.cs" />
     <Compile Include="Dialogs\ImprimirDialog.cs" />
     <Compile Include="Dialogs\LUISDialog.cs" />
     <Compile Include="Dialogs\ObtenerDialog.cs" />
@@ -150,9 +204,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ConsultaServicio.cs" />
-    <Compile Include="Models\Respuestas.cs" />
-    <Compile Include="Models\RespuestasOutlook.cs" />
+    <Compile Include="Util\Respuestas.cs" />
+    <Compile Include="Util\RespuestasOutlook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\RespuestasOneDrive.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
