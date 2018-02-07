@@ -612,6 +612,35 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(reply);
                     return;
                 }
+                else if (palabra1 == "usocompartido")
+                {
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "archivos" || palabra2 == "archivo" || palabra2 == "carpetas" || palabra2 == "carpeta")
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetCambiarUsoCompartidoArchivoOneDrive();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(preguntaConsulta);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetCambiarUsoCompartidoArchivoOneDrive();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    reply.Attachments = RespuestasOneDrive.GetCambiarUsoCompartidoArchivoOneDrive();
+                    await context.PostAsync(preguntaNoRegistrada1);
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync(reply);
+                    return;
+                }
                 else
                 {
                     // No se detectó la segunda parte de la pregunta

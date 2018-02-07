@@ -664,6 +664,79 @@ namespace KlausBot.Util
             };
         }
 
+        //--------------------
+        //DESACTIVAR
+        // ---------------------
+        //Activar o desactivar las alertas de escritorio
+        public static IList<Attachment> GetDesactivarActivarAlertasEscritorio()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCard(
+                    "Activar o desactivar las alertas de escritorio",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Una Alerta de escritorio es una notificación que aparece en su escritorio cuando recibe un nuevo mensaje de correo " +
+                    "electrónico, una convocatoria de reunión o una solicitud de tarea. De manera predeterminada, las Alertas de escritorio están activadas.",
+                    new CardImage(url: "https://support.content.office.net/es-es/media/4162fda4-1b30-407d-bf2d-56ac8dabcee3.jpg")),
+                GetVideoCard(
+                    "Activar o desactivar las alertas de escritorio",
+                    "Desactivar ventana de alerta",
+                    "https://videocontent.osi.office.net/367cb3e3-121b-4e18-9662-1055bf6757ab/7a6cc676-5ef0-44c6-a7be-aa84ebd2bd08_1280x720_3400.mp4",
+                    "https://support.office.com/es-es/article/activar-y-desactivar-las-alertas-de-escritorio-9940c70e-b306-442e-a856-d94b20318481?ui=es-ES&rs=es-ES&ad=ES"),
+            };
+        }
+
+        //Activar o desactivar Otros correos en Outlook
+        public static IList<Attachment> GetDesactivarActivarOtrosCorreosOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Activar o desactivar Otros correos en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Administración de Office 365, ...",
+                    "Outlook brinda la posibilidad de que el usuario pueda administrar la opción 'Otros correos' libremente.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/activar-o-desactivar-otros-correos-en-outlook-a9c72a77-1bc4-40e6-ba6d-103c1d1aba4c?ui=es-ES&rs=es-ES&ad=ES")),
+
+            };
+        }
+
+        //--------------------
+        //MOVER
+        // ---------------------
+        //Mover un archivo de datos de Outlook
+        public static IList<Attachment> GetMoverArchivoDatosOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Mover un archivo de datos de Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "En este artículo se explica cómo mover un archivo de datos de Outlook. Se supone que sabe cómo hacer copia "+
+                    "de seguridad de los archivos de datos de Outlook y que han hecho antes de seguir estos procedimientos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Mover-un-Archivo-de-datos-de-Outlook-e7b2e7b2-fb87-406c-85c7-04d4b69cf9a0")),
+
+            };
+        }
+
+        //--------------------
+        //SINCRONIZAR
+        //Sincronizar Outlook con los contactos de iPhone o iPod touch de Apple
+        public static IList<Attachment> GetSincronizarContactosOutlookApple()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                "Sincronizar Outlook con los contactos de iPhone o iPod touch de Apple",
+                "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                "Sincronización de contactos entre su cuenta de Outlook y su iPhone o iPod touch de Apple requiere Apple iTunes. Puede configurar los elementos que se sincronizan durante un conjunto único de proceso."+
+                "Después de la instalación inicial, cada vez que se conecte el iPhone o iPod touch a su equipo, se sincronizan los cambios realizados en su equipo o dispositivo.",
+                new CardAction(ActionTypes.OpenUrl, "Ver información",
+                value: "https://support.office.com/es-es/article/Sincronizar-Outlook-con-los-contactos-de-iPhone-o-iPod-Touch-de-Apple-149cbfc5-4396-4ab3-8b65-22915e4043dc")),
+            };
+        }
+
         // ---------------------
         // CAMBIAR
         // ---------------------

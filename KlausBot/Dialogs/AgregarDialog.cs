@@ -556,6 +556,22 @@ namespace KlausBot.Dialogs
                     reply.Attachments = Respuestas.GetConsulta();
                     return;
                 }
+                else if (palabra1 == "carpetascompartidas" || palabra1 == "carpetacompartida" || palabra1 == "carpeta")
+                {
+                    reply.Attachments = RespuestasOneDrive.GetAgregarCarpetasCompartidasOneDrive();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
+                else if (palabra1 == "cuenta" || palabra1 == "cuentas")
+                {
+                    reply.Attachments = RespuestasOneDrive.GetAgregarCuentaOneDriveAndroid();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
                 else
                 {
                     await context.PostAsync(preguntaNoRegistrada2);
