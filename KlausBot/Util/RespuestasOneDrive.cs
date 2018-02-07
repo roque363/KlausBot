@@ -11,7 +11,7 @@ namespace KlausBot.Util
         // ----------------------------------------------------------------------- 
         // PREGUNTAS DE ONE DRIVE                                               
         // ----------------------------------------------------------------------- 
-        // ---------- DEFINICION ----------
+        // ----------- DEFINICION -----------
         // ----------------------------------------
         // Descripcion de One Drive
         public static IList<Attachment> GetOneDriveDefinicion()
@@ -47,7 +47,7 @@ namespace KlausBot.Util
             };
         }
 
-        //---------- CARGAR ----------
+        //----------- CARGAR -----------
         //------------------------------------
 
         // Cargar archivos en One Drive
@@ -65,7 +65,7 @@ namespace KlausBot.Util
             };
         }
 
-        //---------- CREAR ----------
+        //----------- CREAR -----------
         //-----------------------------------
 
         // Crear archivos y carpetas en One Drive
@@ -204,7 +204,7 @@ namespace KlausBot.Util
             };
         }
 
-        //Compartir archivos o carpetas en One Drive
+        // Compartir archivos o carpetas en One Drive
         public static IList<Attachment> GetCompartirArchivosCarpetasOneDrive()
         {
             return new List<Attachment>()
@@ -217,7 +217,7 @@ namespace KlausBot.Util
             };
         }
 
-        //Compartir archivos One Drive para Android
+        // Compartir archivos One Drive para Android
         public static IList<Attachment> GetCompartirArchivosOneDriveAndroid()
         {
             return new List<Attachment>()
@@ -233,7 +233,7 @@ namespace KlausBot.Util
         //-------- AGREGAR ----------
         //-----------------------------------
 
-        //Agregar carpetas compartidas a OneDrive y sincronizarlas
+        // Agregar carpetas compartidas a OneDrive y sincronizarlas
         public static IList<Attachment> GetAgregarCarpetasCompartidasOneDrive()
         {
             return new List<Attachment>()
@@ -246,7 +246,7 @@ namespace KlausBot.Util
             };
         }
 
-        //Agregar cuenta de OneDrive para la empresa en Android
+        // Agregar cuenta de OneDrive para la empresa en Android
         public static IList<Attachment> GetAgregarCuentaOneDriveAndroid()
         {
             return new List<Attachment>()
@@ -259,7 +259,7 @@ namespace KlausBot.Util
             };
         }
 
-        //Insertar archivos directamente en tu sitio web o blog
+        // Insertar archivos directamente en tu sitio web o blog
         public static IList<Attachment> GetInsertarArchivosSitioWebBlog()
         {
             return new List<Attachment>()
@@ -277,7 +277,7 @@ namespace KlausBot.Util
         //-------- ABRIR ----------
         //---------------------------------
 
-        //Abrir archivos en su dispositivo móvil
+        // Abrir archivos en su dispositivo móvil
         public static IList<Attachment> GetAbrirArchivosDispositivoMovilOneDrive()
         {
             return new List<Attachment>()
@@ -294,7 +294,7 @@ namespace KlausBot.Util
         //----- ESTABLECER --------
         //---------------------------------
 
-        //Establecer la ubicación de almacenamiento de los archivos
+        // Establecer la ubicación de almacenamiento de los archivos
         public static IList<Attachment> GetEstablecerUbicacionAlmacenamientoArchivosOneDrive()
         {
             return new List<Attachment>()
@@ -311,8 +311,8 @@ namespace KlausBot.Util
         //--------- BUSCAR --------
         //---------------------------------
 
-        //Buscar y mover los archivos
-        public static IList<Attachment> GetBuscarMoverArchivosOneDrive()
+        // Buscar y mover los archivos
+        public static IList<Attachment> GetBuscarOMoverArchivosOneDrive()
         {
             return new List<Attachment>()
             {
@@ -328,7 +328,7 @@ namespace KlausBot.Util
             };
         }
 
-        //Buscar archivos en OneDrive o buscar archivos de datos de Outlook
+        // Buscar archivos en OneDrive o buscar archivos de datos de Outlook
         public static IList<Attachment> GetBuscarArchivosOneDriveBuscarArchivosDatosOutlook()
         {
             return new List<Attachment>()
@@ -353,7 +353,7 @@ namespace KlausBot.Util
             };
         }
 
-        //Buscar archivos de SharePoint en One Drive
+        // Buscar archivos de SharePoint en One Drive
 
         public static IList<Attachment> GetBuscarArchivosSharePointOneDrive()
         {
@@ -370,7 +370,7 @@ namespace KlausBot.Util
 
             };
         }
-        //Buscar y trabajar con archivos de OneDrive en iOS
+        // Buscar y trabajar con archivos de OneDrive en iOS
         public static IList<Attachment> GetBuscarTrabajarArchivosOneDriveIos()
         {
             return new List<Attachment>()
@@ -385,7 +385,7 @@ namespace KlausBot.Util
             };
         }
 
-        //Buscar y trabajar con archivos de OneDrive en Android
+        // Buscar y trabajar con archivos de OneDrive en Android
         public static IList<Attachment> GetBuscarTrabajarArchivosOneDriveAndroid()
         {
             return new List<Attachment>()
@@ -631,6 +631,34 @@ namespace KlausBot.Util
                 " y trabajar con archivos en su cuenta de OneDrive para la Empresa es la misma que está trabajando con su cuenta personal.",
                 new CardAction(ActionTypes.OpenUrl, "Ver más información",
                 value: "https://support.office.com/es-es/article/usar-onedrive-para-la-empresa-en-windows-phone-6b0e1e05-2b8c-48fa-8820-7f25e2290fca?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Usar OneDrive en iOS
+        // Usar OneDrive para Android
+        // Usar OneDrive en Windows Phone
+        public static IList<Attachment> GetUsarOneDrive()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                "Usar OneDrive en iOS",
+                "Se aplica a: Office para empresas OneDrive para la Empresa OneDrive",
+                "A continuación se muestran los conceptos básicos sobre el uso de la aplicación OneDrive para iPhone, iPad y iPod Touch. Descarga la aplicación para iOS.",
+                new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                value: "https://support.office.com/es-es/article/Usar-OneDrive-en-iOS-08d5c5b2-ccc6-40eb-a244-fe3597a3c247")),
+                GetHeroCardV2(
+                "Usar OneDrive para Android",
+                "Se aplica a: Office para empresas OneDrive para la Empresa OneDrive",
+                "Después de que descargue la aplicación OneDrive, expanda las secciones siguientes para obtener información sobre cómo usarla.",
+                new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                value: "https://support.office.com/es-es/article/Usar-OneDrive-para-Android-eee1d31c-792d-41d4-8132-f9621b39eb36")),
+                GetHeroCardV2(
+                "Usar OneDrive en Windows Phone",
+                "Se aplica a: OneDrive para la Empresa OneDrive",
+                "Los pasos y sugerencias para las tareas más comunes con la aplicación OneDrive para Windows Phone, se enceuntran dentro del link.",
+                new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                value: "https://support.office.com/es-es/article/Usar-OneDrive-en-Windows-Phone-6d8496dd-7e1e-44fa-8dc8-b8cf6ef6a1a9")),
             };
         }
 

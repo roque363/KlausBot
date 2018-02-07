@@ -1062,6 +1062,41 @@ namespace KlausBot.Util
             };
         }
 
+        //Buscar y transferir archivos de datos de Outlook de un equipo a otro
+        public static IList<Attachment> GetBuscarArchivosDatosOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Buscar y transferir archivos de datos de Outlook de un equipo a otro",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Outlook guarda información de copia de seguridad en varias ubicaciones diferentes. Dependiendo "+
+                    "del tipo de cuenta que tenga, puede hacer una copia de los correos electrónicos, la libreta "+
+                    "personal de direcciones, la configuración del panel de navegación, las firmas, las plantillas y más.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Buscar-y-transferir-archivos-de-datos-de-Outlook-de-un-equipo-a-otro-0996ece3-57c6-49bc-977b-0d1892e2aacc?ui=es-ES&rs=es-ES&ad=ES")),
+
+            };
+        }
+
+        // ---------------------
+        // EDITAR
+        // ---------------------
+        //Editar un contacto
+        public static IList<Attachment> GetEditarContactosOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Editar un contacto",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Puede agregar información acerca de los contactos, como sus cumpleaños y aniversarios, o los nombres de sus esposos e hijos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Editar-un-contacto-2925f5d8-6092-4c74-9331-e6915df59fc2")),
+
+            };
+        }
+
         // ---------------------
         // VER
         // ---------------------
@@ -1641,51 +1676,6 @@ namespace KlausBot.Util
         }
 
         // ----------------------------------------------------------------------- 
-        // PREGUNTAS NO IMPLEMENTADAS 
-
-        // Mantener las próximas citas y reuniones siempre a la vista
-        public static IList<Attachment> GetMantenerCitasReunionesVista()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Mantener las próximas citas y reuniones siempre a la vista",
-                    "Se aplica a: Outlook 2016 Outlook 2013",
-                    "",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Mantener-las-pr%C3%B3ximas-citas-y-reuniones-siempre-a-la-vista-0dc3d54c-9ae9-4285-9439-4f675244aae0")),
-            };
-        }
-
-        // Marcar un mensaje como leído o como no leído
-        public static IList<Attachment> GetMarcarMensajeComoLeidoONoLeido()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Marcar un mensaje como leído o como no leído",
-                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
-                    "En la Bandeja de entrada, los mensajes no leídos aparecen en negrita. Cuando haga clic en ellos y, después, en otro elemento, " +
-                    "el título del mensaje dejará de estar en negrita, lo que pone de manifiesto que se ha leído.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Marcar-un-mensaje-como-le%C3%ADdo-o-como-no-le%C3%ADdo-59b44298-08c2-4eb7-8128-ea0fb7f52720")),
-            };
-        }
-
-        // Activar y desactivar las alertas de escritorio
-        public static IList<Attachment> GetActivarDesactivarAlertasEscritorio()
-        {
-            return new List<Attachment>()
-            {
-                GetVideoCard(
-                    "Activar y desactivar las alertas de escritorio",
-                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
-                    "https://videocontent.osi.office.net/367cb3e3-121b-4e18-9662-1055bf6757ab/7a6cc676-5ef0-44c6-a7be-aa84ebd2bd08_1280x720_3400.mp4",
-                    "https://support.office.com/es-es/article/Activar-y-desactivar-las-alertas-de-escritorio-9940c70e-b306-442e-a856-d94b20318481?ui=es-ES&rs=es-ES&ad=ES"),
-            };
-        }
-
-        // ----------------------------------------------------------------------- 
         // PREGUNTAS SECUNDARIAS DE OUTLOOK                                                    
         // ----------------------------------------------------------------------- 
 
@@ -2130,6 +2120,51 @@ namespace KlausBot.Util
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Agregar-editar-o-eliminar-una-categor%C3%ADa-en-Business-Contact-Manager-d0e58768-87d8-4c68-b824-580b093c4e81")),
 
+            };
+        }
+
+        // ----------------------------------------------------------------------- 
+        // PREGUNTAS NO IMPLEMENTADAS 
+
+        // Mantener las próximas citas y reuniones siempre a la vista
+        public static IList<Attachment> GetMantenerCitasReunionesVista()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Mantener las próximas citas y reuniones siempre a la vista",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Mantener-las-pr%C3%B3ximas-citas-y-reuniones-siempre-a-la-vista-0dc3d54c-9ae9-4285-9439-4f675244aae0")),
+            };
+        }
+
+        // Marcar un mensaje como leído o como no leído
+        public static IList<Attachment> GetMarcarMensajeComoLeidoONoLeido()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Marcar un mensaje como leído o como no leído",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "En la Bandeja de entrada, los mensajes no leídos aparecen en negrita. Cuando haga clic en ellos y, después, en otro elemento, " +
+                    "el título del mensaje dejará de estar en negrita, lo que pone de manifiesto que se ha leído.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Marcar-un-mensaje-como-le%C3%ADdo-o-como-no-le%C3%ADdo-59b44298-08c2-4eb7-8128-ea0fb7f52720")),
+            };
+        }
+
+        // Activar y desactivar las alertas de escritorio
+        public static IList<Attachment> GetActivarDesactivarAlertasEscritorio()
+        {
+            return new List<Attachment>()
+            {
+                GetVideoCard(
+                    "Activar y desactivar las alertas de escritorio",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "https://videocontent.osi.office.net/367cb3e3-121b-4e18-9662-1055bf6757ab/7a6cc676-5ef0-44c6-a7be-aa84ebd2bd08_1280x720_3400.mp4",
+                    "https://support.office.com/es-es/article/Activar-y-desactivar-las-alertas-de-escritorio-9940c70e-b306-442e-a856-d94b20318481?ui=es-ES&rs=es-ES&ad=ES"),
             };
         }
 

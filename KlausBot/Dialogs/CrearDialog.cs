@@ -157,6 +157,35 @@ namespace KlausBot.Dialogs
                 // La primera parte de la pregunta es carpetas
                 else if (palabra1 == "carpeta" || palabra1 == "carpetas")
                 {
+                    // Se detectó el Servicio de la pregunta
+                    foreach (var entity in result.Entities.Where(Entity => Entity.Type == "Servicio"))
+                    {
+                        var serv = entity.Entity.ToLower().Replace(" ", "");
+                        if (serv == "outlook" || serv == "outlok")
+                        {
+                            reply.Attachments = RespuestasOutlook.GetUsarCrearCarpetasBusqueda();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else if (serv == "onedrive")
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetCrearArchivosCarpetasOneDrive();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasOutlook.GetCrearCambiarPersonalizarVista();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{serv}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                    }
                     // Se detectó la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
@@ -286,6 +315,96 @@ namespace KlausBot.Dialogs
                     return;
                 }
                 // -------------------------------------------------------------------
+                // La primera parte de la pregunta es archivo
+                else if (palabra1 == "archivos" || palabra1 == "archivo")
+                {
+                    // Se detectó el servicio de la pregunta
+                    foreach (var serv in result.Entities.Where(Entity => Entity.Type == "Servicio"))
+                    {
+                        var servicioU = serv.Entity.ToLower().Replace(" ", "");
+                        // El servicio de la pregunta es word
+                        if (servicioU == "onedrive" || servicioU == "OneDrive")
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetCrearArchivosCarpetasOneDrive();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetCrearArchivosCarpetasOneDrive();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{servicioU }'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                    }
+
+                    // obtener el producto si este a sido escodigo anteriormente
+                    var servicio = "Servicio";
+                    context.PrivateConversationData.TryGetValue<string>("tipoDeServicio", out servicio);
+                    if (servicio == "OneDrive")
+                    {
+                        reply.Attachments = RespuestasOneDrive.GetCrearArchivosCarpetasOneDrive();
+                        await context.PostAsync(confirmacionRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                        return;
+                    }
+                    else
+                    {
+                        reply.Attachments = RespuestasOneDrive.GetCrearArchivosCarpetasOneDrive();
+                        await context.PostAsync($"Lo siento, su pregunta no esta registrada, debe escribir un servicio?");
+                        await context.PostAsync(opcionSecundarioDeRespuesta1);
+                        await context.PostAsync(reply);
+                        return;
+                    }
+                }
+                // -------------------------------------------------------------------
+                // La primera parte de la pregunta es documentos
+                else if (palabra1 == "documentos" || palabra1 == "documento")
+                {
+                    // Se detectó la segunda parte de la pregunta
+                    foreach (var serv in result.Entities.Where(Entity => Entity.Type == "Servicio"))
+                    {
+                        var servicio = serv.Entity.ToLower().Replace(" ", "");
+                        // La segunda parte de la pregunta es colores
+                        if (servicio == "word" || servicio == "Word")
+                        {
+                            reply.Attachments = Respuestas.GetCrearDocumentoWord();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else if (servicio == "onedrive" || servicio == "OneDrive")
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetCrearDocumentoDesdeOneDrive();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetCrearArchivosCarpetasOneDrive();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{servicio}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    reply.Attachments = RespuestasOneDrive.GetCrearDocumentoDesdeOneDrive();
+                    await context.PostAsync(preguntaNoRegistrada1);
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync(reply);
+                    return;
+                }
+                // -------------------------------------------------------------------
                 // La primera parte de la pregunta es vista
                 else if (palabra1 == "evento" || palabra1 == "eventos")
                 {
@@ -330,6 +449,16 @@ namespace KlausBot.Dialogs
                 else if (palabra1 == "cita" || palabra1 == "citas")
                 {
                     reply.Attachments = RespuestasOutlook.GetCrearProgramarCita();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
+                // -------------------------------------------------------------------
+                // La primera parte de la pregunta es cuenta
+                else if (palabra1 == "cuentas" || palabra1 == "cuenta")
+                {
+                    reply.Attachments = RespuestasOneDrive.GetCrearCuentaOneDrive();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);

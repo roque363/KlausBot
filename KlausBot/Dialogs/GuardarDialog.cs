@@ -50,6 +50,31 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(preguntaConsulta);
                     return;
                 }
+                else if (palabra1 == "archivos" || palabra1 == "archivo" || palabra1 == "documentos" || palabra1 == "documento")
+                {
+                    await context.PostAsync($"Quizás desea saber como guardar un documento en One Drive");
+                    reply.Attachments = RespuestasOneDrive.GetGuardarDocumentoOneDrive();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
+                else if (palabra1 == "fotos" || palabra1 == "foto" || palabra1 == "videos" || palabra1 == "video" || palabra1 == "vídeos" || palabra1 == "vídeo")
+                {
+                    reply.Attachments = RespuestasOneDrive.GetGuardarFotosVideosOneDrive();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
+                else if (palabra1 == "capturasdepantalla" || palabra1 == "capturadepantalla" || palabra1 == "capturas" || palabra1 == "captura")
+                {
+                    reply.Attachments = RespuestasOneDrive.GetGuardarCapturasPantallaOneDrive();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
                 else
                 {
                     reply.Attachments = RespuestasOutlook.GetGuardarMensajeOutlook();

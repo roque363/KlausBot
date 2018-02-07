@@ -99,6 +99,14 @@ namespace KlausBot.Dialogs
                     await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;
                 }
+                else if (palabra1 == "fotos" || palabra1 == "foto")
+                {
+                    reply.Attachments = RespuestasOneDrive.GetOrganizarBuscarFotosOneDrive();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
                 else
                 {
                     await context.PostAsync(preguntaNoRegistrada2);

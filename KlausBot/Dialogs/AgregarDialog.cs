@@ -44,8 +44,9 @@ namespace KlausBot.Dialogs
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
-                // Se guarda la Pregunta::Palabra1 en cache
+                // Se guarda la primera parte de la pregunta
                 context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
+
                 if (palabra1 == "contacto" || palabra1 == "contactos" || palabra1 == "correos" || palabra1 == "correo" || palabra1 == "emails" || palabra1 == "email")
                 {
                     // Recorrido de la segunda parte de la pregunta
@@ -497,8 +498,8 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = RespuestasOutlook.GetCrearCambiarPersonalizarVista();
-                            await context.PostAsync($"Lo siento, {serv} no esta registrado, consulte otra vez el servicio escribiendo ayuda");
+                            reply.Attachments = RespuestasOutlook.GetAdjuntarArchivosOutlook();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{serv}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
                             return;
@@ -547,20 +548,18 @@ namespace KlausBot.Dialogs
                             context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
                             return;
                     }
-
-                    await context.PostAsync("Por favor haga click en 'Consulta' o escribalo, seleccione el servicio y vuelva a hacer la pregunta.");
-                    reply.Attachments = Respuestas.GetConsulta();
-                    await context.PostAsync(reply);
-                    return;
-
-                }
-                else
-                {
-                    // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = RespuestasOutlook.GetCambiarNivelProteccionFiltroCorreo();
+                    // No se detectó el servicio de la pregunta
+                    reply.Attachments = RespuestasOutlook.GetAdjuntarArchivosOutlook();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
+                    reply.Attachments = Respuestas.GetConsulta();
+                    return;
+                }
+                else
+                {
+                    await context.PostAsync(preguntaNoRegistrada2);
+                    await context.PostAsync($"O tal vez no escribió correctamente la palabra '{palabra1}'?");
                     return;
                 }
 

@@ -10,15 +10,14 @@ using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using Microsoft.Bot.Builder.Dialogs;
-
 namespace KlausBot.Dialogs
 {
-    public class EliminarDialog
+    public class EditarDialog
     {
         private IDialogContext context;
         private LuisResult result;
 
-        public EliminarDialog(IDialogContext context, LuisResult result)
+        public EditarDialog(IDialogContext context, LuisResult result)
         {
             this.context = context;
             this.result = result;
@@ -29,7 +28,7 @@ namespace KlausBot.Dialogs
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
-            var accion = "Eliminar";
+            var accion = "Editar";
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
@@ -40,19 +39,28 @@ namespace KlausBot.Dialogs
             string opcionSecundarioDeRespuesta2 = "Pero estas respuestas le podrían interesar:";
             string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber";
 
+
             // Recorrido de la primera parte de la pregunta
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
-                context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
-                if (palabra1 == "categoría" || palabra1 == "categorías" || palabra1 == "categoria" || palabra1 == "categorias")
+                if (palabra1 == "contacto" || palabra1 == "contactos")
                 {
-                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    reply.Attachments = RespuestasOutlook.GetEditarContactosOutlook();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
+                else if (palabra1 == "grupos" || palabra1 == "grupo")
+                {
+                    // Recorrido de la segunda parte de la pregunta
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Servicio"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "color")
+                        if (palabra2 == "contactos" || palabra2 == "contacto")
                         {
-                            reply.Attachments = RespuestasOutlook.GetEliminarCategoriaColor();
+                            reply.Attachments = RespuestasOutlook.GetCrearGrupoContactosListaDistribucionOutlook();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -60,7 +68,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = RespuestasOutlook.GetEliminarCategoriaColor();
+                            reply.Attachments = RespuestasOutlook.GetCrearGrupoContactosListaDistribucionOutlook();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -68,24 +76,46 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = RespuestasOutlook.GetEliminarCategoriaColor();
+                    reply.Attachments = RespuestasOutlook.GetCrearGrupoContactosListaDistribucionOutlook();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
                     return;
                 }
-                else if (palabra1 == "archivos" || palabra1 == "archivo" || palabra1 == "carpetas" || palabra1 == "carpeta")
+                else if (palabra1 == "listas" || palabra1 == "lista")
                 {
-                    reply.Attachments = RespuestasOneDrive.GetEliminarArchivosCarpetasOneDrive();
-                    await context.PostAsync(confirmacionRespuesta1);
+                    // Recorrido de la segunda parte de la pregunta
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Servicio"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "distribucion" || palabra2 == "distribución")
+                        {
+                            reply.Attachments = RespuestasOutlook.GetCrearGrupoContactosListaDistribucionOutlook();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasOutlook.GetCrearGrupoContactosListaDistribucionOutlook();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    reply.Attachments = RespuestasOutlook.GetCrearGrupoContactosListaDistribucionOutlook();
+                    await context.PostAsync(preguntaNoRegistrada1);
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
-                    await context.PostAsync(preguntaConsulta);
                     return;
                 }
                 else
                 {
-                    await context.PostAsync(preguntaNoRegistrada2);
-                    await context.PostAsync($"O tal vez no escribió correctamente la palabra '{palabra1}'?");
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    await context.PostAsync($"O tal vez no la escribió correctamente, ¿{palabra1}?");
                     return;
                 }
             }

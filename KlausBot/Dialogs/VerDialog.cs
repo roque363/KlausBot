@@ -201,6 +201,14 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(preguntaConsulta);
                     return;
                 }
+                else if (palabra1 == "archivos" || palabra1 == "archivo")
+                {
+                    reply.Attachments = RespuestasOneDrive.GetVerArchivosCompartidosOneDrive();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
                 else
                 {
                     reply.Attachments = RespuestasOutlook.GetVerTareasOutlook();

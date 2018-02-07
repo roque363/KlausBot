@@ -278,14 +278,119 @@ namespace KlausBot.Dialogs
                     await context.PostAsync($"O tal vez no escribió correctamente la palabra '{palabra1}'?");
                     return;
                 }
-
             }
-            // Si el usuario no ingreso la primera parte de la pregunta
-            await context.PostAsync(preguntaNoRegistrada2);
-            reply.Attachments = Respuestas.GetConsultaV2();
-            await context.PostAsync(reply);
-            await context.PostAsync("O tal vez no escribió la pregunta correctamente");
-            return;
+            foreach (var serv in result.Entities.Where(Entity => Entity.Type == "Servicio"))
+            {
+                var servicioU = serv.Entity.ToLower().Replace(" ", "");
+                if (servicioU == "onedrive")
+                {
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "windowsphone")
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetUsarOneDriveEmpresaOneDriveWindowsPhone();
+                            await context.PostAsync(preguntaNoRegistrada1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else if (palabra2 == "android")
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetUsarOneDriveAndroid();
+                            await context.PostAsync(preguntaNoRegistrada1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else if (palabra2 == "ios")
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetUsarOneDriveEmpresaOneDriveIos();
+                            await context.PostAsync(preguntaNoRegistrada1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetUsarOneDrive();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    reply.Attachments = RespuestasOneDrive.GetUsarOneDrive();
+                    await context.PostAsync(preguntaNoRegistrada1);
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync(reply);
+                    return;
+                }
+                else
+                {
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada");
+                    await context.PostAsync($"O tal vez no la escribió correctamente, ¿{servicioU}?");
+                    return;
+                }
+            }
+            //obtener el producto si este a sido escodigo anteriormente
+            var servicio = "Servicio";
+            context.PrivateConversationData.TryGetValue<string>("tipoDeServicio", out servicio);
+            if (servicio == "OneDrive")
+            {
+                foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                {
+                    var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                    if (palabra2 == "windowsphone")
+                    {
+                        reply.Attachments = RespuestasOneDrive.GetUsarOneDriveEmpresaOneDriveWindowsPhone();
+                        await context.PostAsync(preguntaNoRegistrada1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        return;
+                    }
+                    else if (palabra2 == "android")
+                    {
+                        reply.Attachments = RespuestasOneDrive.GetUsarOneDriveAndroid();
+                        await context.PostAsync(preguntaNoRegistrada1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        return;
+                    }
+                    else if (palabra2 == "ios")
+                    {
+                        reply.Attachments = RespuestasOneDrive.GetUsarOneDriveEmpresaOneDriveIos();
+                        await context.PostAsync(preguntaNoRegistrada1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        return;
+                    }
+                    else
+                    {
+                        reply.Attachments = RespuestasOneDrive.GetUsarOneDrive();
+                        await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                        await context.PostAsync(opcionSecundarioDeRespuesta1);
+                        await context.PostAsync(reply);
+                        return;
+                    }
+                }
+                // No se detectó la segunda parte de la pregunta
+                reply.Attachments = RespuestasOneDrive.GetUsarOneDrive();
+                await context.PostAsync(preguntaNoRegistrada1);
+                await context.PostAsync(opcionSecundarioDeRespuesta1);
+                await context.PostAsync(reply);
+                return;
+            }
+            else
+            {
+                // Si el usuario no ingreso la primera parte de la pregunta
+                await context.PostAsync(preguntaNoRegistrada2);
+                reply.Attachments = Respuestas.GetConsultaV2();
+                await context.PostAsync(reply);
+                await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+                return;
+            }
         }
     }
 }

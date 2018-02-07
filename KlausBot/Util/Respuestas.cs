@@ -127,6 +127,20 @@ namespace KlausBot.Util
             };
         }
 
+        // Crear un documento Word
+        public static IList<Attachment> GetCrearDocumentoWord()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un documento",
+                    "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007 Word Online",
+                    "Empezar a usar un documento básico en Microsoft Office Word es tan fácil como abrir un documento nuevo o existente, y empezar a escribir. ",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-un-documento-3aa3c766-9733-4f60-9efa-de245467c13d")),
+            };
+        }
+
         // Cambiar vista en Word
         public static IList<Attachment> GetCambiarVistaWord()
         {
@@ -452,6 +466,30 @@ namespace KlausBot.Util
         }
 
         // -------------------------------------------------------------
+        // PREGUNTAS CON VARIOS SERVICIOS
+        // -------------------------------------------------------------
+        // Abrir archivos en su dispositivo móvil
+        // Abrir y cerrar archivos de datos de Outlook (.pst)
+        public static IList<Attachment> GetAbrirArchivosOneDriveOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                "Abrir archivos en su dispositivo móvil",
+                "Se aplica a: OneDrive para la Empresa OneDrive",
+                "Primero: pulse el archivo para obtener una vista previa. Segundo: Pulse el icono de la aplicación de Office en la parte superior para abrir el archivo.",
+                new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                value: "https://support.office.com/es-es/article/inicio-r%C3%A1pido-de-onedrive-a5710114-6aeb-4bf5-a336-dffa7cc0b77a?ui=es-ES&rs=es-ES&ad=ES#ID0EAABAAA=Seguir_conectado")),
+                GetHeroCardV2(
+                    "Abrir y cerrar archivos de datos de Outlook (.pst)",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Outlook es parte de su rutina diaria. Se usa para enviar mensajes de correo electrónico, configurar eventos del calendario y crear tareas y otros elementos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Abrir-y-cerrar-Archivos-de-datos-de-Outlook-pst-381b776d-7511-45a0-953a-0935c79d24f2")),
+            };
+        }
+
+        // -------------------------------------------------------------
 
         public static IList<Attachment> GetConsulta()
         {
@@ -514,7 +552,7 @@ namespace KlausBot.Util
             return heroCard.ToAttachment();
         }
 
-        // Titulo y Accion (No recomendado de usar *demasiado simple*)
+        // Titulo y Accion (No recomendado de usar *demasiado simple*) 
         private static Attachment GetHeroCardV3(string title, CardAction cardAction)
         {
             var heroCard = new HeroCard

@@ -113,6 +113,142 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(reply);
                     return;
                 }
+                else if (palabra1 == "archivos" || palabra1 == "archivo")
+                {
+                    foreach (var servicio in result.Entities.Where(Entity => Entity.Type == "Servicio"))
+                    {
+                        var serv = servicio.Entity.ToLower().Replace(" ", "");
+                        if (serv == "onedrive")
+                        {
+                            foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                            {
+                                var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                                if (palabra2 == "ios")
+                                {
+                                    reply.Attachments = RespuestasOneDrive.GetBuscarTrabajarArchivosOneDriveIos();
+                                    await context.PostAsync(confirmacionRespuesta1);
+                                    await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
+                                    return;
+                                }
+                                else if (palabra2 == "android")
+                                {
+                                    reply.Attachments = RespuestasOneDrive.GetBuscarTrabajarArchivosOneDriveAndroid();
+                                    await context.PostAsync(confirmacionRespuesta1);
+                                    await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
+                                    return;
+                                }
+                                else if (palabra2 == "windowsphone")
+                                {
+                                    reply.Attachments = RespuestasOneDrive.GetBuscarTrabajarArchivosOneDriveWindowsPhone();
+                                    await context.PostAsync(confirmacionRespuesta1);
+                                    await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
+                                    return;
+                                }
+                                else
+                                {
+                                    reply.Attachments = RespuestasOneDrive.GetBuscarTrabajarArchivosOneDriveAndroid();
+                                    await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                                    await context.PostAsync(reply);
+                                    return;
+                                }
+                            }
+                            reply.Attachments = RespuestasOneDrive.GetBuscarOMoverArchivosOneDrive();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else if (serv == "outlook")
+                        {
+                            foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                            {
+                                var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                                if (palabra2 == "datos" || palabra2 == "dato")
+                                {
+                                    reply.Attachments = RespuestasOutlook.GetBuscarArchivosDatosOutlook();
+                                    await context.PostAsync(confirmacionRespuesta1);
+                                    await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
+                                    return;
+                                }
+                                else if (palabra2 == "sharepoint")
+                                {
+                                    reply.Attachments = RespuestasOneDrive.GetBuscarArchivosSharePointOneDrive();
+                                    await context.PostAsync(confirmacionRespuesta1);
+                                    await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
+                                    return;
+                                }
+                                else
+                                {
+                                    reply.Attachments = RespuestasOutlook.GetBuscarArchivosDatosOutlook();
+                                    await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                                    await context.PostAsync(reply);
+                                    return;
+                                }
+                            }
+                            reply.Attachments = RespuestasOutlook.GetBuscarArchivosDatosOutlook();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetBuscarTrabajarArchivosOneDriveAndroid();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{serv}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                    }
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "datos" || palabra2 == "dato")
+                        {
+                            reply.Attachments = RespuestasOutlook.GetBuscarArchivosDatosOutlook();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else if (palabra2 == "sharepoint")
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetBuscarArchivosSharePointOneDrive();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasOutlook.GetBuscarArchivosDatosOutlook();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            return;
+                        }
+                    }
+                    reply.Attachments = RespuestasOneDrive.GetBuscarArchivosOneDriveBuscarArchivosDatosOutlook();
+                    await context.PostAsync(preguntaNoRegistrada1);
+                    await context.PostAsync(opcionSecundarioDeRespuesta2);
+                    await context.PostAsync(reply);
+                    return;
+                }
+                else if (palabra1 == "fotos" || palabra1 == "foto")
+                {
+                    reply.Attachments = RespuestasOneDrive.GetOrganizarBuscarFotosOneDrive();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
                 else
                 {
                     await context.PostAsync(preguntaNoRegistrada2);
