@@ -467,14 +467,14 @@ namespace KlausBot.Dialogs
                         }
                         else if (serv == "word" || serv == "wrd")
                         {
-                            reply.Attachments = Respuestas.GetAgregarArchivosWord();
+                            reply.Attachments = RespuestasWord.GetAgregarArchivosWord();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             return;
                         }
                         else if (serv == "excel" || serv == "excl")
                         {
-                            reply.Attachments = Respuestas.GetAdjuntarArchivosExcel();
+                            reply.Attachments = RespuestasExcel.GetAdjuntarArchivosExcel();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -482,7 +482,7 @@ namespace KlausBot.Dialogs
                         }
                         else if (serv == "powerpoint" || serv == "pwrpoint" || serv == "pwrpt" || serv == "powerpt")
                         {
-                            reply.Attachments = Respuestas.GetAdjuntarArchivosPowerPoint();
+                            reply.Attachments = RespuestasPowerPoint.GetAdjuntarArchivosPowerPoint();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -490,7 +490,7 @@ namespace KlausBot.Dialogs
                         }
                         else if (serv == "onenote" || serv == "noenote" || serv == "note")
                         {
-                            reply.Attachments = Respuestas.GetAgregarArchivosOneNote();
+                            reply.Attachments = RespuestasOneNote.GetAgregarArchivosOneNote();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -512,7 +512,7 @@ namespace KlausBot.Dialogs
                     switch (servicio)
                     {
                         case "Word":
-                            reply.Attachments = Respuestas.GetAgregarArchivosWord();
+                            reply.Attachments = RespuestasWord.GetAgregarArchivosWord();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -527,21 +527,21 @@ namespace KlausBot.Dialogs
                             context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
                             return;
                         case "Excel":
-                            reply.Attachments = Respuestas.GetAdjuntarArchivosExcel();
+                            reply.Attachments = RespuestasExcel.GetAdjuntarArchivosExcel();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
                             return;
                         case "PowerPoint":
-                            reply.Attachments = Respuestas.GetAdjuntarArchivosPowerPoint();
+                            reply.Attachments = RespuestasPowerPoint.GetAdjuntarArchivosPowerPoint();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
                             return;
                         case "OneNote":
-                            reply.Attachments = Respuestas.GetAgregarArchivosOneNote();
+                            reply.Attachments = RespuestasOneNote.GetAgregarArchivosOneNote();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);

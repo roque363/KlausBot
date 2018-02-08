@@ -170,7 +170,7 @@ namespace KlausBot.Dialogs
                 }
                 else if (value == "excel")
                 {
-                    reply.Attachments = Respuestas.GetExcelDefinicionCard();
+                    reply.Attachments = RespuestasExcel.GetExcelDefinicionCard();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
@@ -178,7 +178,7 @@ namespace KlausBot.Dialogs
                 }
                 else if (value == "powerpoint" || value == "power point")
                 {
-                    reply.Attachments = Respuestas.GetPowerPointDefinicionCard();
+                    reply.Attachments = RespuestasPowerPoint.GetPowerPointDefinicionCard();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
@@ -186,7 +186,7 @@ namespace KlausBot.Dialogs
                 }
                 else if (value == "word")
                 {
-                    reply.Attachments = Respuestas.GetWordDefinicionCard();
+                    reply.Attachments = RespuestasWord.GetWordDefinicionCard();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
@@ -206,7 +206,7 @@ namespace KlausBot.Dialogs
             context.PrivateConversationData.TryGetValue<string>("tipoDeServicio", out servicio);
             if (servicio == "Word")
             {
-                reply.Attachments = Respuestas.GetWordDefinicionCard();
+                reply.Attachments = RespuestasWord.GetWordDefinicionCard();
                 await context.PostAsync(confirmacionRespuesta1);
                 await context.PostAsync(reply);
                 await context.PostAsync(preguntaConsulta);
@@ -215,7 +215,7 @@ namespace KlausBot.Dialogs
             }
             else if (servicio == "Excel")
             {
-                reply.Attachments = Respuestas.GetExcelDefinicionCard();
+                reply.Attachments = RespuestasExcel.GetExcelDefinicionCard();
                 await context.PostAsync(confirmacionRespuesta1);
                 await context.PostAsync(reply);
                 await context.PostAsync(preguntaConsulta);
@@ -242,7 +242,7 @@ namespace KlausBot.Dialogs
             }
             else if (servicio == "PowerPoint")
             {
-                reply.Attachments = Respuestas.GetPowerPointDefinicionCard();
+                reply.Attachments = RespuestasPowerPoint.GetPowerPointDefinicionCard();
                 await context.PostAsync(confirmacionRespuesta1);
                 await context.PostAsync(reply);
                 await context.PostAsync(preguntaConsulta);

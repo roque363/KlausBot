@@ -37,6 +37,10 @@ namespace KlausBot.Dialogs
             string preguntaNoEncontrada = "Lo siento, no tengo otra respuesta para su pregunta";
             string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber";
 
+            //obtener el estado de la pregunta (*Saber si el usuario a realizado una pregunta o no*)
+            var estadoPregunta = "EstadoPregunta";
+            context.PrivateConversationData.TryGetValue<string>("EstadoPregunta", out estadoPregunta);
+
             //obtener la Accion si este a sido escodigo anteriormente
             var acccion = "Accion";
             context.PrivateConversationData.TryGetValue<string>("Accion", out acccion);
@@ -416,11 +420,22 @@ namespace KlausBot.Dialogs
             // -----------------------------------------------------------
             else
             {
-                // Si el usuario no ingreso la primera parte de la pregunta
-                reply.Attachments = Respuestas.GetConsultaV2();
-                await context.PostAsync("Lo siento, ocurrio un error inesperado");
-                await context.PostAsync(reply);
-                return;
+                if (estadoPregunta == "1")
+                {
+                    // Si el usuario no ingreso la primera parte de la pregunta
+                    reply.Attachments = Respuestas.GetConsultaV2();
+                    await context.PostAsync("Lo siento, no tengo otra respuesta");
+                    await context.PostAsync(reply);
+                    return;
+                }
+                else
+                {
+                    // El usuario no a registrado ninguna pregunta
+                    reply.Attachments = Respuestas.GetConsultaV2();
+                    await context.PostAsync("Lo siento, acaso tienes una consulta");
+                    await context.PostAsync(reply);
+                    return;
+                }
             }
         }
     }

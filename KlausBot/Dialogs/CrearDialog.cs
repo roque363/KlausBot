@@ -374,7 +374,7 @@ namespace KlausBot.Dialogs
                         // La segunda parte de la pregunta es colores
                         if (servicio == "word" || servicio == "Word")
                         {
-                            reply.Attachments = Respuestas.GetCrearDocumentoWord();
+                            reply.Attachments = RespuestasWord.GetCrearDocumentoWord();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);

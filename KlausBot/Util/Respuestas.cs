@@ -10,166 +10,6 @@ namespace KlausBot.Util
     {
         // Imagenes en 600px - 300px
         // -------------------------------------------------------------
-        // PREGUNTAS DE EXCEL
-        // -------------------------------------------------------------
-        // DEFINICION        // ---------------------
-        // Definicon de Excel
-        public static IList<Attachment> GetExcelDefinicionCard()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCard(
-                    "¿Qué es Excel?",
-                    "Significad e historia de  Excel",
-                    "Excel es un programa informático desarrollado por Microsoft y forma parte de Office que es una suite ofimática la cual incluye " +
-                    "otros programas como Word y PowerPoint. Excel se distingue de los demás programas porque nos permite trabajar con datos " +
-                    "numéricos, es decir, podemos realizar cálculos, crear tablas o gráficos y también podemos analizar los datos con herramientas " +
-                    "tan avanzadas como las tablas dinámicas.",
-                    new CardImage(url: "https://policyviz.com/wp-content/uploads/2017/07/Excel-Logo.png")),
-                GetVideoCard(
-                    "Office 365 - Excel",
-                    "Video sobre excel",
-                    "https://wus-streaming-video-rt-microsoft-com.akamaized.net/ad1ced2a-75fd-4e49-9cbd-099a618cb778/f44d7b46-f1aa-4246-8c2d-b6aa6cd1_1920x1080_2762.mp4",
-                    "https://support.office.com/es-es/article/Inicio-r%C3%A1pido-de-Excel-2016-94b00f50-5896-479c-b0c5-ff74603b35a3?ui=es-ES&rs=es-ES&ad=ES"),
-            };
-        }
-
-        // Adjuntar archivos en excel
-        public static IList<Attachment> GetAdjuntarArchivosExcel()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Insertar un objeto en la hoja de cálculo de Excel",
-                    "Se aplica a: Excel 2016 Excel 2013 Excel 2010 Excel 2007",
-                    "Puede usar vinculación e incrustación de objetos (OLE) para incluir contenido de otros programas, como Word o Excel.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/insertar-un-objeto-en-la-hoja-de-c%C3%A1lculo-de-excel-e73867b2-2988-4116-8d85-f5769ea435ba")),
-            };
-        }
-
-        // -------------------------------------------------------------
-        // PREGUNTAS DE POWER POINT
-        // -------------------------------------------------------------
-        // DEFINICION
-        // --------------------
-        // Definicon de Power Point
-        public static IList<Attachment> GetPowerPointDefinicionCard()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCard(
-                    "¿Qué es PowerPoint?",
-                    "",
-                    "PowerPoint es un programa de presentación con diapositivas que forma parte del conjunto de herramientas de Microsoft Office. " +
-                    "Con PowerPoint, es fácil crear y presentar ideas, así como colaborar en ellas, de una forma visualmente atractiva y dinámica.",
-                    new CardImage(url: "http://tdescargas.org/wp-content/uploads/2017/07/C%C3%B3mo-mejorar-un-Power-Point.png")),
-                GetVideoCard(
-                    "Office 365 - PowerPoint",
-                    "Video sobre PowerPoint",
-                    "https://videocontent.osi.office.net/f8bfaba3-fab6-400f-b58a-f8d80b455682/2c0bd7ad-139b-45d7-932a-12f38dd4a01c_1280x720_3400.mp4",
-                    "https://products.office.com/es-mx/what-is-powerpoint"),
-            };
-        }
-
-        // Adjuntar archivos en power point
-        public static IList<Attachment> GetAdjuntarArchivosPowerPoint()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Insertar una hoja de cálculo o algún archivo en PowerPoint",
-                    "Se aplica a: PowerPoint 2016 PowerPoint 2013",
-                    "Puede vincular datos de una hoja de cálculo guardada Excel a la presentación de PowerPoint si tiene PowerPoint 2013 o posterior.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/insertar-una-hoja-de-c%C3%A1lculo-de-excel-en-powerpoint-0690708a-5ce6-41b4-923f-11d57554138d")),
-            };
-        }
-
-        // -------------------------------------------------------------
-        // PREGUNTAS DE ONE NOTE
-        // -------------------------------------------------------------
-        // Adjuntar archivos en one note
-        public static IList<Attachment> GetAgregarArchivosOneNote()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Cómo adjuntar un arhivo en One Note",
-                    "Se aplica a: OneNote 2013",
-                    "OneNote puede conservar toda la información acerca de un asunto o un proyecto en un único lugar, incluidas las copias de archivos y documentos relacionados.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/tareas-b%C3%A1sicas-en-microsoft-onenote-2013-da73c095-e082-4276-acf9-8728ca8b08ab")),
-            };
-        }
-
-        // -------------------------------------------------------------
-        // PREGUNTAS DE WORD
-        // -------------------------------------------------------------
-        // DEFINICION
-        // --------------------
-        // Definicon de Word
-        public static IList<Attachment> GetWordDefinicionCard()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCard(
-                    "¿Qué es Word?",
-                    "",
-                    "Microsoft Word es un programa informático orientado al procesamiento de textos. Fue creado por la empresa Microsoft, y viene " +
-                    "integrado predeterminadamente en el paquete ofimático denominado Microsoft Office.",
-                    new CardImage(url: "https://www.adslzone.net/app/uploads/2017/01/word-ms.jpg")),
-                GetVideoCard(
-                    "Office 365 - Word",
-                    "Video sobre Word",
-                    "https://videocontent.osi.office.net/92cbca43-f999-4546-9aa4-e9a0a0494579/626d11f6-fbdf-4f5c-987f-952a73376352_1280x720_3400.mp4",
-                    "https://support.office.com/es-es/article/V%C3%ADdeo-%C2%BFQu%C3%A9-es-Word-aee9c7ff-f9c5-415f-80dc-103ad5e344d7"),
-            };
-        }
-
-        // Crear un documento Word
-        public static IList<Attachment> GetCrearDocumentoWord()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Crear un documento",
-                    "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007 Word Online",
-                    "Empezar a usar un documento básico en Microsoft Office Word es tan fácil como abrir un documento nuevo o existente, y empezar a escribir. ",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/crear-un-documento-3aa3c766-9733-4f60-9efa-de245467c13d")),
-            };
-        }
-
-        // Cambiar vista en Word
-        public static IList<Attachment> GetCambiarVistaWord()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Cómo cambiar la vista predeterminada a la vista Borrador en Word",
-                    "Se aplica a: Word 2016 Microsoft Word 2013Microsoft Word 2010Microsoft Office Word 2007",
-                    "Para cambiar la vista predeterminada a la vista borrador cuando se abre un documento de Word 2007",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.microsoft.com/es-es/help/919599/how-to-change-the-default-view-to-draft-view-in-word")),
-            };
-        }
-
-        // Adjuntar archivos en word
-        public static IList<Attachment> GetAgregarArchivosWord()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Insertar un documento en Word",
-                    "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007",
-                    "Puede insertar el contenido de documentos de Microsoft Office Word creados previamente en un documento de Microsoft Office Word nuevo o diferente.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/insertar-un-documento-en-word-274128e5-4da7-4cb8-b65f-3d8b585e03f1")),
-            };
-        }
-
-        // -------------------------------------------------------------
         // TEMAS DESTACADOS
         // -------------------------------------------------------------
         // Temas destacados de Outlook
@@ -466,6 +306,37 @@ namespace KlausBot.Util
         }
 
         // -------------------------------------------------------------
+        // PREGUNTAS GENERALES
+        // -------------------------------------------------------------
+        // Recuperar la cuenta de Microsoft
+        public static IList<Attachment> GetRecuperarCuentaMicrosoft()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                "Recuperar la cuenta de Microsoft",
+                "Se aplica a: Microsoft account",
+                "El formulario de recuperación de cuenta es la última opción que debes usar para recuperar tu cuenta.",
+                new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                value: "https://support.microsoft.com/es-es/help/17875/microsoft-account-recover")),
+            };
+        }
+
+        // Cómo restablecer la contraseña de tu cuenta de Microsoft
+        public static IList<Attachment> GetRecuperarContraseñaMicrosoft()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                "Cómo restablecer la contraseña de tu cuenta de Microsoft",
+                "Se aplica a: Microsoft account",
+                "Si has olvidado la contraseña que usas para iniciar sesión en servicios como, por ejemplo, Outlook.com, Skype, OneDrive y Xbox Live, quizás tengas que restablecerla.",
+                new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                value: "https://support.microsoft.com/es-es/help/4026971/microsoft-account-how-to-reset-your-password")),
+            };
+        }
+
+        // -------------------------------------------------------------
         // PREGUNTAS CON VARIOS SERVICIOS
         // -------------------------------------------------------------
         // Abrir archivos en su dispositivo móvil
@@ -490,7 +361,6 @@ namespace KlausBot.Util
         }
 
         // -------------------------------------------------------------
-
         public static IList<Attachment> GetConsulta()
         {
             return new List<Attachment>()

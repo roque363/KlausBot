@@ -44,6 +44,9 @@ namespace KlausBot.Dialogs
                 // Se guarda la primera parte de la pregunta
                 context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
 
+                var estadoPregunta = "1";
+                context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+
                 if (palabra1 == "elemento" || palabra1 == "elementos")
                 {
                     // Se detectó  la Segunda parte de la pregunta

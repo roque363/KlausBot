@@ -401,7 +401,7 @@ namespace KlausBot.Util
             };
         }
 
-        //------TRABAJAR-ONE DRIVE--------
+        //------ TRABAJAR --------
         //--------------------------------
         //Trabajar de manera conjunta en documentos de Office en OneDrive
         public static IList<Attachment> GetTrabajarManeraConjuntaOfficeOneDrive()

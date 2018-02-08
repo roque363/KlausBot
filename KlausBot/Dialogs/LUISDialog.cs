@@ -72,19 +72,41 @@ namespace KlausBot.Dialogs
             context.Call<ConsultaServicio>(formularioRegistro, Callback);
         }
 
-        [LuisIntent("Despedida")]
-        public async Task Despedida(IDialogContext context, LuisResult result)
+        // -------------------------------------------------------------------------------------
+
+        [LuisIntent("Consulta.Abrir")]
+        public async Task ConsultaAbrir(IDialogContext context, LuisResult result)
         {
-            await new DespedidaDialog(context, result).StartAsync();
+            await new AbrirDialog(context, result).StartAsync();
         }
 
-        // La accion del usuario es de una consulta secundaria
-        [LuisIntent("Consulta.Secundaria")]
-        public async Task ConsultaSecundaria(IDialogContext context, LuisResult result)
+        // La accion del usuairo es agregar
+        [LuisIntent("Consulta.Agregar")]
+        public async Task ConsultaAgregar(IDialogContext context, LuisResult result)
         {
-            // --------> Se tiene respuesta hasta EliminarDialog <----------
-            await new ConsultaSecundariaDialog(context, result).StartAsync();
-            // --------> Se tiene respuesta hasta EliminarDialog <----------
+            await new AgregarDialog(context, result).StartAsync();
+
+        }
+
+        [LuisIntent("Consulta.Aplicar")]
+        public async Task ConsultaAplicar(IDialogContext context, LuisResult result)
+        {
+            await new AplicarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Buscar")]
+        public async Task ConsultaBuscar(IDialogContext context, LuisResult result)
+        {
+            await new BuscarDialog(context, result).StartAsync();
+        }
+
+        // La accion del usuario es cambiar
+        [LuisIntent("Consulta.Cambiar")]
+        public async Task ConsultaCambiar(IDialogContext context, LuisResult result)
+        {
+            // ---------> Verificar esta pregunta color - fuente (Se necesitan 4 Entities)<----------
+            await new CambiarDialog(context, result).StartAsync();
+            // ---------> Verificar esta pregunta color - fuente (Se necesitan 4 Entities)<----------
         }
 
         [LuisIntent("Consulta.Cargar")]
@@ -99,16 +121,19 @@ namespace KlausBot.Dialogs
             await new CompartirDialog(context, result).StartAsync();
         }
 
-        [LuisIntent("Consulta.Guardar")]
-        public async Task ConsultaGuardar(IDialogContext context, LuisResult result)
+        // La accion del usuario es de una consulta secundaria
+        [LuisIntent("Consulta.Secundaria")]
+        public async Task ConsultaSecundaria(IDialogContext context, LuisResult result)
         {
-            await new GuardarDialog(context, result).StartAsync();
+            // --------> Se tiene respuesta hasta EliminarDialog <----------
+            await new ConsultaSecundariaDialog(context, result).StartAsync();
+            // --------> Se tiene respuesta hasta EliminarDialog <----------
         }
 
-        [LuisIntent("Consulta.Definicion")]
-        public async Task ConsultaDefinicion(IDialogContext context, LuisResult result)
+        [LuisIntent("Consulta.Copiar")]
+        public async Task ConsultaCopiar(IDialogContext context, LuisResult result)
         {
-            await new DefinicionDialog(context, result).StartAsync();
+            await new CopiarDialog(context, result).StartAsync();
         }
 
         // La accion del usuario es crear 
@@ -118,13 +143,94 @@ namespace KlausBot.Dialogs
             await new CrearDialog(context, result).StartAsync();
         }
 
-        // La accion del usuario es cambiar
-        [LuisIntent("Consulta.Cambiar")]
-        public async Task ConsultaCambiar(IDialogContext context, LuisResult result)
+        [LuisIntent("Consulta.Definicion")]
+        public async Task ConsultaDefinicion(IDialogContext context, LuisResult result)
         {
-            // ---------> Verificar esta pregunta color - fuente (Se necesitan 4 Entities)<----------
-            await new CambiarDialog(context, result).StartAsync();
-            // ---------> Verificar esta pregunta color - fuente (Se necesitan 4 Entities)<----------
+            await new DefinicionDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Desactivar")]
+        public async Task ConsultaDesactivar(IDialogContext context, LuisResult result)
+        {
+            await new DesactivarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Despedida")]
+        public async Task Despedida(IDialogContext context, LuisResult result)
+        {
+            await new DespedidaDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Editar")]
+        public async Task ConsultaEditar(IDialogContext context, LuisResult result)
+        {
+            await new EditarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Eliminar")]
+        public async Task ConsultaEliminar(IDialogContext context, LuisResult result)
+        {
+            await new EliminarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Encontrar")]
+        public async Task ConsultaEncontrar(IDialogContext context, LuisResult result)
+        {
+            await new EncontrarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Enviar")]
+        public async Task ConsultaEnviar(IDialogContext context, LuisResult result)
+        {
+            await new EnviarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Establecer")]
+        public async Task ConsultaEstablecer(IDialogContext context, LuisResult result)
+        {
+            await new EstablecerDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Exportar")]
+        public async Task ConsultaExportar(IDialogContext context, LuisResult result)
+        {
+            await new ExportarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Guardar")]
+        public async Task ConsultaGuardar(IDialogContext context, LuisResult result)
+        {
+            await new GuardarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Importar")]
+        public async Task ConsultaImportar(IDialogContext context, LuisResult result)
+        {
+            await new ImportarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Imprimir")]
+        public async Task ConsultaImprimir(IDialogContext context, LuisResult result)
+        {
+            await new ImprimirDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Mover")]
+        public async Task ConsultaMover(IDialogContext context, LuisResult result)
+        {
+            await new MoverDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Obtener")]
+        public async Task ConsultaObtener(IDialogContext context, LuisResult result)
+        {
+            await new ObtenerDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Organizar")]
+        public async Task ConsultaOrganizar(IDialogContext context, LuisResult result)
+        {
+            await new OrganizarDialog(context, result).StartAsync();
         }
 
         // La accion del usuairo es recuperar 
@@ -133,12 +239,17 @@ namespace KlausBot.Dialogs
         {
             await new RecuperarDialog(context, result).StartAsync();
         }
-
-        // La accion del usuairo es agregar
-        [LuisIntent("Consulta.Agregar")]
-        public async Task ConsultaAgregar(IDialogContext context, LuisResult result)
+        // La accion del usuairo es recuperar 
+        [LuisIntent("Consulta.Sincronizar")]
+        public async Task ConsultaSincronizar(IDialogContext context, LuisResult result)
         {
-            await new AgregarDialog(context, result).StartAsync();
+            await new SincronizarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Trabajar")]
+        public async Task ConsultaTrabajar(IDialogContext context, LuisResult result)
+        {
+            await new TrabajarDialog(context, result).StartAsync();
         }
 
         // La accion del usuairo es usar
@@ -152,66 +263,6 @@ namespace KlausBot.Dialogs
         public async Task ConsultaVer(IDialogContext context, LuisResult result)
         {
             await new VerDialog(context, result).StartAsync();
-        }
-
-        [LuisIntent("Consulta.Buscar")]
-        public async Task ConsultaBuscar(IDialogContext context, LuisResult result)
-        {
-            await new BuscarDialog(context, result).StartAsync();
-        }
-
-        [LuisIntent("Consulta.Enviar")]
-        public async Task ConsultaEnviar(IDialogContext context, LuisResult result)
-        {
-            await new EnviarDialog(context, result).StartAsync();
-        }
-
-        [LuisIntent("Consulta.Eliminar")]
-        public async Task ConsultaEliminar(IDialogContext context, LuisResult result)
-        {
-            await new EliminarDialog(context, result).StartAsync();
-        }
-
-        [LuisIntent("Consulta.Aplicar")]
-        public async Task ConsultaAplicar(IDialogContext context, LuisResult result)
-        {
-            await new AplicarDialog(context, result).StartAsync();
-        }
-
-        [LuisIntent("Consulta.Establecer")]
-        public async Task ConsultaEstablecer(IDialogContext context, LuisResult result)
-        {
-            await new EstablecerDialog(context, result).StartAsync();
-        }
-
-        [LuisIntent("Consulta.Organizar")]
-        public async Task ConsultaOrganizar(IDialogContext context, LuisResult result)
-        {
-            await new OrganizarDialog(context, result).StartAsync();
-        }
-
-        [LuisIntent("Consulta.Abrir")]
-        public async Task ConsultaAbrir(IDialogContext context, LuisResult result)
-        {
-            await new AbrirDialog(context, result).StartAsync();
-        }
-
-        [LuisIntent("Consulta.Imprimir")]
-        public async Task ConsultaImprimir(IDialogContext context, LuisResult result)
-        {
-            await new ImprimirDialog(context, result).StartAsync();
-        }
-
-        [LuisIntent("Consulta.Importar")]
-        public async Task ConsultaImportar(IDialogContext context, LuisResult result)
-        {
-            await new ImportarDialog(context, result).StartAsync();
-        }
-
-        [LuisIntent("Consulta.Exportar")]
-        public async Task ConsultaExportar(IDialogContext context, LuisResult result)
-        {
-            await new ExportarDialog(context, result).StartAsync();
         }
 
     }

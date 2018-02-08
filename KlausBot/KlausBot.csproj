@@ -183,10 +183,14 @@
     <Compile Include="Dialogs\CargarDialog.cs" />
     <Compile Include="Dialogs\CompartirDialog.cs" />
     <Compile Include="Dialogs\ConsultaSecundariaDialog.cs" />
+    <Compile Include="Dialogs\CopiarDialog.cs" />
     <Compile Include="Dialogs\CrearDialog.cs" />
     <Compile Include="Dialogs\DefinicionDialog.cs" />
+    <Compile Include="Dialogs\DesactivarDialog.cs" />
     <Compile Include="Dialogs\DespedidaDialog.cs" />
+    <Compile Include="Dialogs\EditarDialog.cs" />
     <Compile Include="Dialogs\EliminarDialog.cs" />
+    <Compile Include="Dialogs\EncontrarDialog.cs" />
     <Compile Include="Dialogs\EnviarDialog.cs" />
     <Compile Include="Dialogs\EstablecerDialog.cs" />
     <Compile Include="Dialogs\ExportarDialog.cs" />
@@ -194,10 +198,13 @@
     <Compile Include="Dialogs\ImportarDialog.cs" />
     <Compile Include="Dialogs\ImprimirDialog.cs" />
     <Compile Include="Dialogs\LUISDialog.cs" />
+    <Compile Include="Dialogs\MoverDialog.cs" />
     <Compile Include="Dialogs\ObtenerDialog.cs" />
     <Compile Include="Dialogs\OrganizarDialog.cs" />
     <Compile Include="Dialogs\RecuperarDialog.cs" />
     <Compile Include="Dialogs\SaludoDialog.cs" />
+    <Compile Include="Dialogs\SincronizarDialog.cs" />
+    <Compile Include="Dialogs\TrabajarDialog.cs" />
     <Compile Include="Dialogs\UsarDialog.cs" />
     <Compile Include="Dialogs\VerDialog.cs" />
     <Compile Include="Global.asax.cs">
@@ -205,9 +212,13 @@
     </Compile>
     <Compile Include="Models\ConsultaServicio.cs" />
     <Compile Include="Util\Respuestas.cs" />
+    <Compile Include="Util\RespuestasExcel.cs" />
+    <Compile Include="Util\RespuestasOneNote.cs" />
     <Compile Include="Util\RespuestasOutlook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\RespuestasOneDrive.cs" />
+    <Compile Include="Util\RespuestasPowerPoint.cs" />
+    <Compile Include="Util\RespuestasWord.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

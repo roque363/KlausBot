@@ -97,7 +97,7 @@ namespace KlausBot.Dialogs
                         }
                         else if (serv == "word" || serv == "wrd")
                         {
-                            reply.Attachments = Respuestas.GetCambiarVistaWord();
+                            reply.Attachments = RespuestasWord.GetCambiarVistaWord();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -118,7 +118,7 @@ namespace KlausBot.Dialogs
                     context.PrivateConversationData.TryGetValue<string>("tipoServicio", out servicio);
                     if (servicio == "Word")
                     {
-                        reply.Attachments = Respuestas.GetCambiarVistaWord();
+                        reply.Attachments = RespuestasWord.GetCambiarVistaWord();
                         await context.PostAsync(confirmacionRespuesta1);
                         await context.PostAsync(reply);
                         context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
