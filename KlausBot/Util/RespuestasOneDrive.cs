@@ -329,11 +329,13 @@ namespace KlausBot.Util
         {
             return new List<Attachment>()
             {
-                GetHeroCardV2("Agregar cuenta de OneDrive para la empresa en Android",
-                "Se aplica a: OneDrive para la Empresa OneDrive",
-                "Usar la aplicación OneDrive en su dispositivo Android para trabajar con su cuenta personal OneDrive, así como las cuentas de OneDrive para la empresa.",
-                new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                value: "https://support.office.com/es-es/article/Agregar-OneDrive-para-la-Empresa-en-Android-babc9692-fb53-40b4-8b24-6b83ff95455e")),
+                GetHeroCardV2(
+                    "Agregar cuenta de OneDrive para la empresa en Android",
+                    "Se aplica a: OneDrive para la Empresa OneDrive",
+                    "Usar la aplicación OneDrive en su dispositivo Android para trabajar con su cuenta personal OneDrive, así " +
+                    "como las cuentas de OneDrive para la empresa.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-OneDrive-para-la-Empresa-en-Android-babc9692-fb53-40b4-8b24-6b83ff95455e")),
             };
         }
 

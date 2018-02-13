@@ -338,6 +338,56 @@ namespace KlausBot.Util
             };
         }
 
+        //----------- PREGUNTAS SOBRE OFFICE -----------
+        //----------------------------------------------
+        // Insertar imágenes
+        public static IList<Attachment> GetAgregarImagen()
+        {
+            return new List<Attachment>()
+            {
+               GetHeroCardV2(
+                    "Insertar imágenes",
+                    "Se aplica a: Excel, Word, Outlook, PowerPoint, OneNote, Publisher",
+                    "Office ya no ofrece imágenes prediseñadas en sus aplicaciones, pero le ayuda a buscar imágenes " +
+                    "en línea para que las inserte en sus archivos. ",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Insertar-im%C3%A1genes-3c51edf4-22e1-460a-b372-9329a8724344")),
+            };
+        }
+
+        // Insertar un símbolo o carácter especial 
+        public static IList<Attachment> GetInsertarCaracterEspecialOffice()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Insertar un símbolo o carácter especial",
+                    "Se aplica a: Excel 2016, Word 2016, Outlook 2016, Publisher 2010,  Word Starter 2010",
+                    "**¿Qué desea hacer?:**\r\r"+
+                    ">1. [Insertar un símbolo](https://support.office.com/es-es/article/Insertar-un-s%C3%ADmbolo-o-car%C3%A1cter-especial-81e64967-74c0-4fd9-814a-3aa867d4cfce#bm1)\r\r"+
+                    ">2. [Insertar un carácter especial](https://support.office.com/es-es/article/Insertar-un-s%C3%ADmbolo-o-car%C3%A1cter-especial-81e64967-74c0-4fd9-814a-3aa867d4cfce#bm2)\r\r"+
+                    ">3. [Insertar un carácter Unicode](https://support.office.com/es-es/article/Insertar-un-s%C3%ADmbolo-o-car%C3%A1cter-especial-81e64967-74c0-4fd9-814a-3aa867d4cfce#bm3)",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Insertar-un-s%C3%ADmbolo-o-car%C3%A1cter-especial-81e64967-74c0-4fd9-814a-3aa867d4cfce")),
+            };
+        }
+
+        // Agregar un PDF a un archivo de Office
+        public static IList<Attachment> GetAgregarPDFArchivoOffice()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar un PDF a un archivo de Office",
+                    "Se aplica a: Excel 2016 Word 2016 Outlook 2016 PowerPoint 2016 OneNote 2016 Publisher 2016",
+                    "Vea cómo insertar un archivo en formato PDF en un archivo de Office como un objeto. Puede "+
+                    "cambiar el tamaño de un objeto, pero no puede editarlo después de insertarlo. Necesitará tener "+
+                    "instalado Adobe Acrobat o Adobe Reader para ver o leer archivos PDF.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-un-PDF-a-un-archivo-de-Office-74819342-8f00-4ab4-bcbe-0f3df15ab0dc#ID0EAABAAA=2016,_2013,_2010")),
+            };
+        }
+
         //------- PREGUNTAS CON VARIOS SERVICIOS -------
         //----------------------------------------------
         // Abrir archivos en su dispositivo móvil
@@ -386,7 +436,6 @@ namespace KlausBot.Util
             };
         }
 
-        // Accion imprimir Outlook - OneNote
         // Imprimir notas en OneNote para Windows 10
         // Imprimir contactos, mensajes u otros elementos de Outlook
         public static IList<Attachment> GetImprimirOutlookOneNote()
@@ -466,6 +515,30 @@ namespace KlausBot.Util
             };
         }
 
+        // Agregar firma a los mensajes Outlook
+        // Agregar o quitar una firma digital en archivos de Office
+        public static IList<Attachment> GetAgregarFirma()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar o quitar una firma digital en archivos de Office",
+                    "Se aplica a: Excel 2016 Word 2016 PowerPoint 2016 Word Starter 2010",
+                    "En este artículo se explican las firmas digitales , para qué se puede usar y cómo se pueden usar " +
+                    "firmas digitales en los siguientes programas de Microsoft Office: Word, Excel y PowerPoint.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-o-quitar-una-firma-digital-en-archivos-de-Office-70d26dc9-be10-46f1-8efa-719c8b3f1a2d#__toc311526848")),
+                GetVideoCard(
+                    "Agregar una firma a los mensajes en Outlook",
+                    "En Outlook puede crear firmas personalizadas para sus mensajes de correo electrónico. Puede incluir texto, imágenes, su tarjeta " +
+                    "de presentación electrónica, un logotipo o incluso una imagen con su firma manuscrita. Puede configurarlo para que las firmas " +
+                    "se agreguen automáticamente a todos los mensajes salientes o puede elegir qué mensajes incluirán una firma.",
+                    "https://videocontent.osi.office.net/f6ae6849-cbd6-4863-a3c5-546e90246c45/dcb8a228-ebbc-47fe-a315-d62959b5de1a_1280x720_3400.mp4",
+                    "https://support.office.com/es-es/article/Crear-y-agregar-una-firma-a-los-mensajes-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2#ID0EAABAAA=2016,_2013"),
+
+            };
+        }
+
         //----------- CARDS DE CONSULTA -------------
         //-------------------------------------------
         public static IList<Attachment> GetConsulta()
@@ -489,7 +562,6 @@ namespace KlausBot.Util
         }
 
         // -------------------------------------------------------------
-
         // Titulo, Subtitulo, Texto y Imagen
         private static Attachment GetHeroCard(string title, string subtitle, string text, CardImage cardImage)
         {

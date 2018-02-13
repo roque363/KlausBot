@@ -45,7 +45,7 @@ namespace KlausBot.Dialogs
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
                 // Se guarda la primera parte de la pregunta
                 context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
-
+                // ---------------------------------------------------------------------
                 if (palabra1 == "elemento" || palabra1 == "elementos")
                 {
                     // Se detectó  la Segunda parte de la pregunta
@@ -78,6 +78,7 @@ namespace KlausBot.Dialogs
                     await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                     return;
                 }
+                // ---------------------------------------------------------------------
                 else if (palabra1 == "archivos" || palabra1 == "archivo" || palabra1 == "carpeta")
                 {
                     // Se detectó el Servico de la pregunta
@@ -125,6 +126,15 @@ namespace KlausBot.Dialogs
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                             return;
                         }
+                        else if (palabra2 == "dispositivomovil" || palabra2 == "dispositivomóvil" || palabra2 == "dispositivo" || palabra2 == "dispositivos" || palabra2 == "dispositivosmóviles" || palabra2 == "dispositivosmoviles" || palabra2 == "celular")
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetAbrirArchivosDispositivoMovilOneDrive();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
                         else
                         {
                             reply.Attachments = RespuestasOutlook.GetAbrirArchivosDatosOutlook();
@@ -144,7 +154,7 @@ namespace KlausBot.Dialogs
                         await context.PostAsync(confirmacionRespuesta1);
                         await context.PostAsync(reply);
                         await context.PostAsync(preguntaConsulta);
-                        context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                        context.PrivateConversationData.SetValue<string>("tipoServicio", servicio);
                         context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                         return;
                     }
@@ -154,7 +164,7 @@ namespace KlausBot.Dialogs
                         await context.PostAsync(confirmacionRespuesta1);
                         await context.PostAsync(reply);
                         await context.PostAsync(preguntaConsulta);
-                        context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                        context.PrivateConversationData.SetValue<string>("tipoServicio", servicio);
                         context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                         return;
                     }
@@ -169,6 +179,7 @@ namespace KlausBot.Dialogs
                         return;
                     }
                 }
+                // ---------------------------------------------------------------------
                 else if (palabra1 == "notas" || palabra1 == "nota" || palabra1 == "blocs de notas" || palabra1 == "bloc de notas" || palabra1 == "bloc" || palabra1 == "block")
                 {
                     reply.Attachments = RespuestasOneNote.GetAbrirBlocNotasOneNote();
@@ -178,6 +189,7 @@ namespace KlausBot.Dialogs
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                     return;
                 }
+                // ---------------------------------------------------------------------
                 else
                 {
                     reply.Attachments = RespuestasOutlook.GetRespuestaAbrirDialog();
