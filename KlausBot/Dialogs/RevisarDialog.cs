@@ -3,22 +3,19 @@ using System.Linq;
 using System.Web;
 using System.Configuration;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using KlausBot.Models;
 using KlausBot.Util;
 using Microsoft.Bot.Connector;
-using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using Microsoft.Bot.Builder.Dialogs;
 
 namespace KlausBot.Dialogs
 {
-    public class ObtenerDialog
+    public class RevisarDialog
     {
         private IDialogContext context;
         private LuisResult result;
 
-        public ObtenerDialog(IDialogContext context, LuisResult result)
+        public RevisarDialog(IDialogContext context, LuisResult result)
         {
             this.context = context;
             this.result = result;
@@ -31,7 +28,7 @@ namespace KlausBot.Dialogs
 
             var estadoPregunta = "True";
             var estadoPregunta2 = "False";
-            var accion = "Obtener";
+            var accion = "Revisar";
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
@@ -46,16 +43,18 @@ namespace KlausBot.Dialogs
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
+                // Se guarda la primera parte de la pregunta
                 context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
                 // -------------------------------------------------------------------
-                if (palabra1 == "información" || palabra1 == "informacion")
+                if (palabra1 == "ortografia" || palabra1 == "ortografía")
                 {
-                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    // Se detectó el Servico de la pregunta
+                    foreach (var serv in result.Entities.Where(Entity => Entity.Type == "Servicio"))
                     {
-                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "navegar" || palabra2 == "nvegar")
+                        var servicio1 = serv.Entity.ToLower().Replace(" ", "");
+                        if (servicio1 == "onenote" || servicio1 == "OneNote")
                         {
-                            reply.Attachments = RespuestasOutlook.GetObtenerInformacionNavegarOutlook();
+                            reply.Attachments = RespuestasOneNote.GetRevisarOrtografiAOneNote();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -64,36 +63,42 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = RespuestasOutlook.GetObtenerInformacionNavegarOutlook();
-                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            reply.Attachments = RespuestasOneNote.GetRevisarOrtografiAOneNote();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente el servicio '{servicio1}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                             return;
                         }
                     }
-                    await context.PostAsync($"Quizás desea saber como obtener información sobre cómo navegar en Outlook con características de accesibilidad, tengo esto: ");
-                    reply.Attachments = RespuestasOutlook.GetObtenerInformacionNavegarOutlook();
-                    await context.PostAsync(reply);
-                    await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
-                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
-                    return;
-                }
-                else if (palabra1 == "id" || palabra1 == "iddigital")
-                {
-                    reply.Attachments = RespuestasOutlook.GetObtenerIdDigitalOutlook();
-                    await context.PostAsync(confirmacionRespuesta1);
-                    await context.PostAsync(reply);
-                    await context.PostAsync(preguntaConsulta);
-                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
-                    return;
+                    // No se detectó el Servicio de la pregunta
+                    // Se obtiene el servicio que esta guardado en cache
+                    var servicio = "Servicio";
+                    context.PrivateConversationData.TryGetValue<string>("tipoServicio", out servicio);
+                    if (servicio == "OneNote" || servicio == "onenote")
+                    {
+                        reply.Attachments = RespuestasOneNote.GetRevisarOrtografiAOneNote();
+                        await context.PostAsync(confirmacionRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        return;
+                    }
+                    else
+                    {
+                        reply.Attachments = RespuestasOneNote.GetRevisarOrtografiAOneNote();
+                        await context.PostAsync(preguntaNoRegistrada1);
+                        await context.PostAsync(opcionSecundarioDeRespuesta1);
+                        await context.PostAsync(reply);
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        return;
+                    }
                 }
                 else
                 {
-                    reply.Attachments = RespuestasOutlook.GetObtenerInformacionNavegarOutlook();
-                    await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra1}'?");
-                    await context.PostAsync(opcionSecundarioDeRespuesta1);
-                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaNoRegistrada2);
+                    await context.PostAsync($"O tal vez no escribió correctamente la palabra '{palabra1}'?");
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
                     return;
                 }

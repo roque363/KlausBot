@@ -420,7 +420,7 @@ namespace KlausBot.Dialogs
             // -----------------------------------------------------------
             else
             {
-                if (estadoPregunta == "1")
+                if (estadoPregunta == "True")
                 {
                     // Si el usuario no ingreso la primera parte de la pregunta
                     reply.Attachments = Respuestas.GetConsultaV2();

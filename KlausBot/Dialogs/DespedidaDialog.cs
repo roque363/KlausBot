@@ -24,6 +24,9 @@ namespace KlausBot.Dialogs
 
         public async Task StartAsync()
         {
+            var estadoPregunta = "True";
+            var estadoPregunta2 = "False";
+
             Random rnd = new Random();
 
             // Despedida que puede generar el bot
@@ -39,6 +42,7 @@ namespace KlausBot.Dialogs
 
             // Display the result
             await context.PostAsync(despe[mIndex]);
+            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
             return;
         }
     }

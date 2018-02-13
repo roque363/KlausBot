@@ -201,9 +201,12 @@
     <Compile Include="Dialogs\MoverDialog.cs" />
     <Compile Include="Dialogs\ObtenerDialog.cs" />
     <Compile Include="Dialogs\OrganizarDialog.cs" />
+    <Compile Include="Dialogs\ProtegerDialog.cs" />
     <Compile Include="Dialogs\RecuperarDialog.cs" />
+    <Compile Include="Dialogs\RevisarDialog.cs" />
     <Compile Include="Dialogs\SaludoDialog.cs" />
     <Compile Include="Dialogs\SincronizarDialog.cs" />
+    <Compile Include="Dialogs\SolucionarDialog.cs" />
     <Compile Include="Dialogs\TrabajarDialog.cs" />
     <Compile Include="Dialogs\UsarDialog.cs" />
     <Compile Include="Dialogs\VerDialog.cs" />

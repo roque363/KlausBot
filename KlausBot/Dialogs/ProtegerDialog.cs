@@ -13,12 +13,12 @@ using Microsoft.Bot.Builder.Dialogs;
 
 namespace KlausBot.Dialogs
 {
-    public class EncontrarDialog
+    public class ProtegerDialog
     {
         private IDialogContext context;
         private LuisResult result;
 
-        public EncontrarDialog(IDialogContext context, LuisResult result)
+        public ProtegerDialog(IDialogContext context, LuisResult result)
         {
             this.context = context;
             this.result = result;
@@ -26,13 +26,12 @@ namespace KlausBot.Dialogs
 
         public async Task StartAsync()
         {
-
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
             var estadoPregunta = "True";
             var estadoPregunta2 = "False";
-            var accion = "Encontrar";
+            var accion = "Proteger";
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
@@ -47,35 +46,14 @@ namespace KlausBot.Dialogs
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
+                // Se guarda la primera parte de la pregunta
                 context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
                 // -------------------------------------------------------------------
-                if (palabra1 == "archivos" || palabra1 == "archivo")
+
+                if (palabra1 == "nota" || palabra1 == "notas" || palabra1 == "blocdenotas" || palabra1 == "bloc")
                 {
-                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
-                    {
-                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "perdido" || palabra2 == "perdidos" || palabra2 == "faltan")
-                        {
-                            reply.Attachments = RespuestasOneDrive.GetEncontrarArchivosPerdidosFaltanOneDrive();
-                            await context.PostAsync(confirmacionRespuesta1);
-                            await context.PostAsync(reply);
-                            await context.PostAsync(preguntaConsulta);
-                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
-                            return;
-                        }
-                        else
-                        {
-                            reply.Attachments = RespuestasOneDrive.GetEncontrarArchivosPerdidosFaltanOneDrive();
-                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
-                            await context.PostAsync(opcionSecundarioDeRespuesta2);
-                            await context.PostAsync(reply);
-                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
-                            return;
-                        }
-                    }
-                    // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = RespuestasOneDrive.GetEncontrarArchivosPerdidosFaltanOneDrive();
-                    await context.PostAsync(confirmacionRespuesta2);
+                    reply.Attachments = RespuestasOneNote.GetProtegerNotasContraseñaOneNote();
+                    await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
@@ -90,8 +68,8 @@ namespace KlausBot.Dialogs
                 }
             }
             // No se detectó la primera parte de la pregunta
-            await context.PostAsync(preguntaNoRegistrada2);
             reply.Attachments = Respuestas.GetConsultaV2();
+            await context.PostAsync(preguntaNoRegistrada2);
             await context.PostAsync(reply);
             await context.PostAsync("O tal vez no escribió la pregunta correctamente");
             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);

@@ -26,6 +26,8 @@ namespace KlausBot.Dialogs
 
         public async Task StartAsync()
         {
+            var estadoPregunta = "True";
+            var estadoPregunta2 = "False";
             var accion = "Trabajar";
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
@@ -44,28 +46,41 @@ namespace KlausBot.Dialogs
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
+                // Se guarda la primera parte de la pregunta
+                context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
+                // -------------------------------------------------------------------
                 if (palabra1 == "conjunta" || palabra1 == "colaborativa")
                 {
                     reply.Attachments = RespuestasOneDrive.GetTrabajarManeraConjuntaOfficeOneDrive();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    return;
+                }
+                else if (palabra1 == "páginas" || palabra1 == "página" || palabra1 == "paginas" || palabra1 == "seccion" || palabra1 == "secciones")
+                {
+                    reply.Attachments = RespuestasOneNote.GetTrabajarPaginasSeccionesOneNote();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                     return;
                 }
                 else
                 {
-                    reply.Attachments = RespuestasOneDrive.GetTrabajarManeraConjuntaOfficeOneDrive();
-                    await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra1}'?");
-                    await context.PostAsync(opcionSecundarioDeRespuesta1);
-                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaNoRegistrada2);
+                    await context.PostAsync($"O tal vez no escribió correctamente la palabra '{palabra1}'?");
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
                     return;
                 }
             }
             // No se detectó la primera parte de la pregunta
-            await context.PostAsync(preguntaNoRegistrada2);
             reply.Attachments = Respuestas.GetConsultaV2();
+            await context.PostAsync(preguntaNoRegistrada2);
             await context.PostAsync(reply);
             await context.PostAsync("O tal vez no escribió la pregunta correctamente");
+            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
             return;
         }
     }

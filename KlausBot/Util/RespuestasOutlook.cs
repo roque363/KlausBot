@@ -871,7 +871,8 @@ namespace KlausBot.Util
                 GetHeroCardV2(
                     "Como cambiar el color de fondo del calendario",
                     "Se aplica a: Outlook 2016 Outlook 2013",
-                    "El cambio del color de fondo es una forma rápida de hacer que su calendario sea diferente. Esto resulta especialmente útil si trabaja con múltiples calendarios.",
+                    "El cambio del color de fondo es una forma rápida de hacer que su calendario sea diferente. Esto resulta " +
+                    "especialmente útil si trabaja con [múltiples calendarios](https://support.office.com/es-es/article/crear-calendarios-adicionales-4b5570c4-e95d-4673-b38a-2b8ead5f00ee?ui=es-ES&rs=es-ES&ad=ES).",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Cambiar-el-color-de-fondo-del-calendario-3c544857-8446-46a5-ab9c-07b6af6e5091")),
             };
@@ -1617,7 +1618,8 @@ namespace KlausBot.Util
                 GetHeroCardV2(
                     "Imprimir contactos, mensajes u otros elementos de Outlook",
                     "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Office 365 Pequeña Empresa Outlook 2010 Outlook 2007",
-                    "Puede imprimir mensajes, contactos, calendarios, reuniones y tareas en Outlook. Cada tipo de elemento de Outlook tiene varias opciones de impresión.",
+                    "Puede imprimir mensajes, contactos, calendarios, reuniones y tareas en Outlook. Cada tipo de elemento de " +
+                    "Outlook tiene varias opciones de impresión.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Imprimir-contactos-mensajes-u-otros-elementos-de-Outlook-d2c0b12b-e308-41ce-9016-a3089ebdbe38?ui=es-ES&rs=es-HN&ad=PE")),
 

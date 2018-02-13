@@ -8,10 +8,13 @@ namespace KlausBot.Util
 {
     public class Respuestas
     {
+        // -------------------------------------------------------------
+        // PREGUNTAS GENERALES
+        // -------------------------------------------------------------
         // Imagenes en 600px - 300px
-        // -------------------------------------------------------------
-        // TEMAS DESTACADOS
-        // -------------------------------------------------------------
+
+        //------------ TEMAS DESTACADOS --------------
+        //--------------------------------------------
         // Temas destacados de Outlook
         public static IList<Attachment> GetDestacadosOutlook()
         {
@@ -305,9 +308,8 @@ namespace KlausBot.Util
             };
         }
 
-        // -------------------------------------------------------------
-        // PREGUNTAS GENERALES
-        // -------------------------------------------------------------
+        //-------- PREGUNTAS SOBRE MICROSOFT ----------
+        //---------------------------------------------
         // Recuperar la cuenta de Microsoft
         public static IList<Attachment> GetRecuperarCuentaMicrosoft()
         {
@@ -336,9 +338,8 @@ namespace KlausBot.Util
             };
         }
 
-        // -------------------------------------------------------------
-        // PREGUNTAS CON VARIOS SERVICIOS
-        // -------------------------------------------------------------
+        //------- PREGUNTAS CON VARIOS SERVICIOS -------
+        //----------------------------------------------
         // Abrir archivos en su dispositivo móvil
         // Abrir y cerrar archivos de datos de Outlook (.pst)
         public static IList<Attachment> GetAbrirArchivosOneDriveOutlook()
@@ -360,7 +361,113 @@ namespace KlausBot.Util
             };
         }
 
-        // -------------------------------------------------------------
+        // Como cambiar el color de fondo del calendario
+        // Cambiar el color de fondo de una página en OneNote para Windows 10
+        public static IList<Attachment> GetCambiarColorFondoOutlookOneDrive()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Como cambiar el color de fondo del calendario",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "El cambio del color de fondo es una forma rápida de hacer que su calendario sea diferente. Esto resulta " +
+                    "especialmente útil si trabaja con [múltiples calendarios](https://support.office.com/es-es/article/crear-calendarios-adicionales-4b5570c4-e95d-4673-b38a-2b8ead5f00ee?ui=es-ES&rs=es-ES&ad=ES).",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-color-de-fondo-del-calendario-3c544857-8446-46a5-ab9c-07b6af6e5091")),
+                GetHeroCardV2(
+                    "Cambiar el color de fondo de una página en OneNote",
+                    "Se aplica a: OneNote para Windows 10",
+                    "Para elegir un nuevo color para el fondo de la página actual, haga lo siguiente:\r\r" +
+                    ">1. Abra la página cuyo color de fondo que desee cambiar.\r\r" +
+                    ">2. En la ficha vista, haga clic o puntee en Color de página.\r\r" +
+                    ">3. Haga clic o puntee en el color que desee.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/cambiar-el-color-de-fondo-de-una-p%C3%A1gina-en-onenote-para-windows-10-c9265c78-a9b4-4cce-9ee3-46a2bb9e50f6?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Accion imprimir Outlook - OneNote
+        // Imprimir notas en OneNote para Windows 10
+        // Imprimir contactos, mensajes u otros elementos de Outlook
+        public static IList<Attachment> GetImprimirOutlookOneNote()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Imprimir notas en OneNote",
+                    "Se aplica a: OneNote para Windows 10",
+                    "siempre que sea necesaria una copia impresa de las notas, puede imprimir fácilmente una sola página, " +
+                    "una sección completa o un bloc de notas completo.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/imprimir-notas-en-onenote-para-windows-10-45edbbc5-fbb8-453f-99c7-aaadebe5c06a?ui=es-ES&rs=es-ES&ad=ES")),
+                GetHeroCardV2(
+                    "Imprimir contactos, mensajes u otros elementos de Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Office 365 Pequeña Empresa Outlook 2010 Outlook 2007",
+                    "Puede imprimir mensajes, contactos, calendarios, reuniones y tareas en Outlook. Cada tipo de elemento de " +
+                    "Outlook tiene varias opciones de impresión.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Imprimir-contactos-mensajes-u-otros-elementos-de-Outlook-d2c0b12b-e308-41ce-9016-a3089ebdbe38?ui=es-ES&rs=es-HN&ad=PE")),
+            };
+        }
+
+        // Insertar Archivos
+        public static IList<Attachment> GetInsertarArchivo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Insertar un archivo en OneNote para Windows 10",
+                    "Se aplica a: OneNote para Windows 10",
+                    "Insertar un archivo en OneNote para Windows 10 facilita la mantener todas sus notas organizadas. " +
+                    "Puede insertar un archivo como datos adjuntos para que pueda abrir una copia del archivo en OneNote.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/insertar-un-archivo-en-onenote-para-windows-10-5fc09a27-71b3-4e92-9eb6-3b0be9380374?ui=es-ES&rs=es-ES&ad=ES")),
+                GetHeroCardV2(
+                    "Insertar un objeto en la hoja de cálculo de Excel",
+                    "Se aplica a: Excel 2016 Excel 2013 Excel 2010 Excel 2007",
+                    "Puede usar vinculación e incrustación de objetos (OLE) para incluir contenido de otros programas, como Word o Excel.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/insertar-un-objeto-en-la-hoja-de-c%C3%A1lculo-de-excel-e73867b2-2988-4116-8d85-f5769ea435ba")),
+                GetHeroCardV2(
+                    "Adjuntar archivos o insertar imágenes en mensajes de correo de Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Es fácil adjuntar imágenes, archivos, contactos, mensajes de correo y muchos otros elementos a los mensajes de Outlook. Outlook"
+                    +" realiza un seguimiento de los documentos con los que ha trabajado recientemente, independientemente de que estén almacenados en el equipo o se guarden en OneDrive (solo en la nube).",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Adjuntar-archivos-o-insertar-im%C3%A1genes-en-mensajes-de-correo-de-Outlook-bdfafef5-792a-42b1-9a7b-84512d7de7fc?ui=es-ES&rs=es-HN&ad=PE")),
+                GetHeroCardV2(
+                    "Insertar una hoja de cálculo o algún archivo en PowerPoint",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013",
+                    "Puede vincular datos de una hoja de cálculo guardada Excel a la presentación de PowerPoint si tiene PowerPoint 2013 o posterior.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/insertar-una-hoja-de-c%C3%A1lculo-de-excel-en-powerpoint-0690708a-5ce6-41b4-923f-11d57554138d")),
+            };
+        }
+
+        // Insertar una tabla en OneNote para Windows 10
+        // Como agregar tablas a mensajes en Outlook
+        public static IList<Attachment> GetInsertarTabla()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Insertar una tabla en OneNote",
+                    "Se aplica a: OneNote para Windows 10",
+                    "Si desea organizar visualmente la información en las notas, puede insertar y dar formato " +
+                    "a una tabla en OneNote para Windows 10.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/insertar-una-tabla-en-onenote-para-windows-10-35052542-ca8e-42fe-be3f-bc5c748a14b1?ui=es-ES&rs=es-ES&ad=ES")),
+                 GetHeroCardV2(
+                    "Como agregar tablas a mensajes en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010",
+                    "Si ha intentado alguna vez alinear filas y columnas de texto manualmente con espacios, sabrá lo frustrante que puede ser.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-una-tabla-a-un-mensaje-59766ab4-0fe5-4520-ba0b-e34f8b8cd025")),
+            };
+        }
+
+        //----------- CARDS DE CONSULTA -------------
+        //-------------------------------------------
         public static IList<Attachment> GetConsulta()
         {
             return new List<Attachment>()
@@ -378,18 +485,6 @@ namespace KlausBot.Util
                 GetCardConsulta(
                     "Para más ayuda seleccione 'consulta'",
                     "Consulta"),
-            };
-        }
-
-        public static IList<Attachment> GetConfirmacion()
-        {
-            return new List<Attachment>()
-            {
-                GetCardDoubleAction(
-                    "Si",
-                    "si",
-                    "No",
-                    "no"),
             };
         }
 
@@ -513,19 +608,5 @@ namespace KlausBot.Util
             return Saludocard.ToAttachment();
         }
 
-        private static Attachment GetCardDoubleAction(string firstAction,string action1 , string secondAction, string action2)
-        {
-            var Saludocard = new ThumbnailCard
-            {
-                Buttons = new List<CardAction>
-                {
-                    new CardAction(ActionTypes.ImBack, firstAction, value: action1),
-                    new CardAction(ActionTypes.ImBack, firstAction, value: action2),
-                }
-            };
-            return Saludocard.ToAttachment();
-        }
-
     }
-
 }

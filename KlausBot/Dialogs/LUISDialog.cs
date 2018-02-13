@@ -31,6 +31,8 @@ namespace KlausBot.Dialogs
         [LuisIntent("")]
         public async Task None(IDialogContext context, LuisResult result)
         {
+            var estadoPregunta2 = "False";
+
             Random rnd = new Random();
             // Dudas que puede generar el bot
             string[] none = {
@@ -50,6 +52,7 @@ namespace KlausBot.Dialogs
             await context.PostAsync(none[mIndex]);
             await context.PostAsync(reply);
             context.Wait(MessageReceived);
+            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
             return;
         }
 
@@ -72,7 +75,14 @@ namespace KlausBot.Dialogs
             context.Call<ConsultaServicio>(formularioRegistro, Callback);
         }
 
+        [LuisIntent("Despedida")]
+        public async Task Despedida(IDialogContext context, LuisResult result)
+        {
+            await new DespedidaDialog(context, result).StartAsync();
+        }
+
         // -------------------------------------------------------------------------------------
+        // Acciones que puede tomar el usuario
 
         [LuisIntent("Consulta.Abrir")]
         public async Task ConsultaAbrir(IDialogContext context, LuisResult result)
@@ -155,12 +165,6 @@ namespace KlausBot.Dialogs
             await new DesactivarDialog(context, result).StartAsync();
         }
 
-        [LuisIntent("Despedida")]
-        public async Task Despedida(IDialogContext context, LuisResult result)
-        {
-            await new DespedidaDialog(context, result).StartAsync();
-        }
-
         [LuisIntent("Consulta.Editar")]
         public async Task ConsultaEditar(IDialogContext context, LuisResult result)
         {
@@ -233,17 +237,36 @@ namespace KlausBot.Dialogs
             await new OrganizarDialog(context, result).StartAsync();
         }
 
+        [LuisIntent("Consulta.Proteger")]
+        public async Task ConsultaProteger(IDialogContext context, LuisResult result)
+        {
+            await new ProtegerDialog(context, result).StartAsync();
+        }
+
         // La accion del usuairo es recuperar 
         [LuisIntent("Consulta.Recuperar")]
         public async Task ConsultaRecuperar(IDialogContext context, LuisResult result)
         {
             await new RecuperarDialog(context, result).StartAsync();
         }
+
+        [LuisIntent("Consulta.Revisar")]
+        public async Task ConsultaRevisar(IDialogContext context, LuisResult result)
+        {
+            await new RevisarDialog(context, result).StartAsync();
+        }
+
         // La accion del usuairo es recuperar 
         [LuisIntent("Consulta.Sincronizar")]
         public async Task ConsultaSincronizar(IDialogContext context, LuisResult result)
         {
             await new SincronizarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Solucionar")]
+        public async Task ConsultaSolucionar(IDialogContext context, LuisResult result)
+        {
+            await new SolucionarDialog(context, result).StartAsync();
         }
 
         [LuisIntent("Consulta.Trabajar")]
