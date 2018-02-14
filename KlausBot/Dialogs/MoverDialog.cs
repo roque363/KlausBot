@@ -119,7 +119,7 @@ namespace KlausBot.Dialogs
                         await context.PostAsync(confirmacionRespuesta1);
                         await context.PostAsync(reply);
                         await context.PostAsync(preguntaConsulta);
-                        context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                        context.PrivateConversationData.SetValue<string>("tipoServicio", "Outlook");
                         context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                         return;
                     }
@@ -129,7 +129,7 @@ namespace KlausBot.Dialogs
                         await context.PostAsync(confirmacionRespuesta1);
                         await context.PostAsync(reply);
                         await context.PostAsync(preguntaConsulta);
-                        context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                        context.PrivateConversationData.SetValue<string>("tipoServicio", "OneDrive");
                         context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                         return;
                     }

@@ -13,12 +13,12 @@ using Microsoft.Bot.Builder.Dialogs;
 
 namespace KlausBot.Dialogs
 {
-    public class TrabajarDialog
+    public class AjustarDialog
     {
         private IDialogContext context;
         private LuisResult result;
 
-        public TrabajarDialog(IDialogContext context, LuisResult result)
+        public AjustarDialog(IDialogContext context, LuisResult result)
         {
             this.context = context;
             this.result = result;
@@ -26,47 +26,39 @@ namespace KlausBot.Dialogs
 
         public async Task StartAsync()
         {
+            var reply = context.MakeMessage();
+            reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+
             var estadoPregunta = "True";
             var estadoPregunta2 = "False";
-            var accion = "Trabajar";
+            var accion = "Ajustar";
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
-            string preguntaConsulta = "¿Tiene alguna otra consulta?";
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
             string preguntaNoRegistrada1 = "Lo siento, su pregunta no esta registrada, tal vez no escribió la pregunta correctamente";
             string preguntaNoRegistrada2 = "Lo siento, su pregunta no esta registrada";
             string opcionSecundarioDeRespuesta1 = "Pero esta respuesta le podría interesar:";
             string opcionSecundarioDeRespuesta2 = "Pero estas respuestas le podrían interesar:";
+            string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber";
 
-            var reply = context.MakeMessage();
-            reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
-            // Recorrido de la primera parte de la pregunta
+            // Se detectó la primera parte de la pregunta
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
-                // Se guarda la primera parte de la pregunta
                 context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
                 // -------------------------------------------------------------------
-                if (palabra1 == "conjunta" || palabra1 == "colaborativa")
+                // La primera parte de la pregunta es modo o apariencia
+                if (palabra1 == "texto" || palabra1 == "textos")
                 {
+                    // Recorrido del Servicio de la pregunta
                     foreach (var entity in result.Entities.Where(Entity => Entity.Type == "Servicio"))
                     {
-                        var service = entity.Entity.ToLower().Replace(" ", "");
-
-                        if (service == "word")
+                        var serv = entity.Entity.ToLower().Replace(" ", "");
+                        if (serv == "word" || serv == "Word" || serv == "outlook" || serv == "Outlook")
                         {
-                            reply.Attachments = RespuestasWord.GetTrabajarCoAutoriaTiempoReal();
-                            await context.PostAsync(confirmacionRespuesta1);
-                            await context.PostAsync(reply);
-                            await context.PostAsync(preguntaConsulta);
-                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
-                            return;
-                        }
-                        else if (service == "onedrive")
-                        {
-                            reply.Attachments = RespuestasOneDrive.GetTrabajarManeraConjuntaOneDrive();
+                            reply.Attachments = RespuestasWord.GetAjustarTextoWord();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -75,88 +67,30 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            await context.PostAsync($"Lo siento, '{service}' no esta registrado como servicio");
-                            reply.Attachments = Respuestas.GetTrabajarManeraConjunta();
-                            await context.PostAsync(opcionSecundarioDeRespuesta2);
+                            reply.Attachments = RespuestasWord.GetAjustarTextoWord();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, no se tiene registrado el servicio '{serv}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                             return;
                         }
                     }
-                    //obtener el producto si este a sido escogido anteriormente
-                    var servicio = "Servicio";
-                    context.PrivateConversationData.TryGetValue<string>("tipoServicio", out servicio);
-                    if (servicio == "Word")
-                    {
-                        reply.Attachments = RespuestasWord.GetTrabajarCoAutoriaTiempoReal();
-                        await context.PostAsync(confirmacionRespuesta1);
-                        await context.PostAsync(reply);
-                        await context.PostAsync(preguntaConsulta);
-                        context.PrivateConversationData.SetValue<string>("tipoServicio", "Word");
-                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
-                        return;
-                    }
-                    else if (servicio == "OneDrive")
-                    {
-                        reply.Attachments = RespuestasOneDrive.GetTrabajarManeraConjuntaOneDrive();
-                        await context.PostAsync(confirmacionRespuesta1);
-                        await context.PostAsync(reply);
-                        await context.PostAsync(preguntaConsulta);
-                        context.PrivateConversationData.SetValue<string>("tipoServicio", "OneNote");
-                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
-                        return;
-                    }
-                    else
-                    {
-                        reply.Attachments = Respuestas.GetTrabajarManeraConjunta();
-                        await context.PostAsync(confirmacionRespuesta1);
-                        await context.PostAsync(reply);
-                        await context.PostAsync(preguntaConsulta);
-                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
-                        return;
-                    }
-                }
-                else if (palabra1 == "coautoría" || palabra1 == "co-autoría" || palabra1 == "coautoria" || palabra1 == "co-autoria")
-                {
-                    // Se detecto el Servicio de la pregunta
-                    foreach (var entity in result.Entities.Where(Entity => Entity.Type == "Servicio"))
-                    {
-                        var service = entity.Entity.ToLower().Replace(" ", "");
-
-                        if (service == "word")
-                        {
-                            reply.Attachments = RespuestasWord.GetTrabajarCoAutoriaTiempoReal();
-                            await context.PostAsync(confirmacionRespuesta1);
-                            await context.PostAsync(reply);
-                            await context.PostAsync(preguntaConsulta);
-                            return;
-                        }
-                        else
-                        {
-                            await context.PostAsync($"Lo siento, '{service}' no esta registrado como servicio");
-                            reply.Attachments = RespuestasWord.GetTrabajarCoAutoriaTiempoReal();
-                            await context.PostAsync(opcionSecundarioDeRespuesta2);
-                            await context.PostAsync(reply);
-                            return;
-                        }
-                    }
-                    // No se detectó el Servicio de la pregunta
                     //obtener el producto si este a sido escodigo anteriormente
                     var servicio = "Servicio";
                     context.PrivateConversationData.TryGetValue<string>("tipoDeServicio", out servicio);
-                    if (servicio == "Word")
+                    if (servicio == "Word" || servicio == "Outlook")
                     {
-                        reply.Attachments = RespuestasWord.GetTrabajarCoAutoriaTiempoReal();
+                        reply.Attachments = RespuestasWord.GetAjustarTextoWord();
                         await context.PostAsync(confirmacionRespuesta1);
                         await context.PostAsync(reply);
                         await context.PostAsync(preguntaConsulta);
-                        context.PrivateConversationData.SetValue<string>("tipoServicio", "Word");
                         context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                         return;
                     }
                     else
                     {
-                        reply.Attachments = RespuestasWord.GetTrabajarCoAutoriaTiempoReal();
+                        // No se detectó la segunda parte de la pregunta
+                        reply.Attachments = RespuestasWord.GetAjustarTextoWord();
                         await context.PostAsync(preguntaNoRegistrada1);
                         await context.PostAsync(opcionSecundarioDeRespuesta1);
                         await context.PostAsync(reply);
@@ -164,14 +98,71 @@ namespace KlausBot.Dialogs
                         return;
                     }
                 }
-                else if (palabra1 == "páginas" || palabra1 == "página" || palabra1 == "paginas" || palabra1 == "seccion" || palabra1 == "secciones")
+                else if (palabra1 == "espaciado" || palabra1 == "espaciado")
                 {
-                    reply.Attachments = RespuestasOneNote.GetTrabajarPaginasSeccionesOneNote();
+                    reply.Attachments = Respuestas.GetAjustarSangriaEspaciado();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                     return;
+                }
+                else if (palabra1 == "sangría" || palabra1 == "sangrías")
+                {
+                    // Recorrido del Servicio de la pregunta
+                    foreach (var entity in result.Entities.Where(Entity => Entity.Type == "Servicio"))
+                    {
+                        var serv = entity.Entity.ToLower().Replace(" ", "");
+                        if (serv == "word" || serv == "Word" || serv == "outlook" || serv == "Outlook")
+                        {
+                            reply.Attachments = RespuestasWord.GetAjustarSangriaEspaciado();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else if (serv == "outlook" || serv == "Outlook")
+                        {
+                            reply.Attachments = Respuestas.GetAjustarSangriaEspaciado();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = Respuestas.GetAjustarSangriaEspaciado();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, no se tiene registrado el servicio '{serv}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                    }
+                    //obtener el producto si este a sido escodigo anteriormente
+                    var servicio = "Servicio";
+                    context.PrivateConversationData.TryGetValue<string>("tipoDeServicio", out servicio);
+                    if (servicio == "Word" || servicio == "Outlook")
+                    {
+                        reply.Attachments = RespuestasWord.GetAjustarSangriaEspaciado();
+                        await context.PostAsync(confirmacionRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        return;
+                    }
+                    else
+                    {
+                        // No se detectó la segunda parte de la pregunta
+                        reply.Attachments = Respuestas.GetAjustarSangriaEspaciado();
+                        await context.PostAsync(preguntaNoRegistrada1);
+                        await context.PostAsync(opcionSecundarioDeRespuesta1);
+                        await context.PostAsync(reply);
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        return;
+                    }
                 }
                 else
                 {
@@ -181,9 +172,9 @@ namespace KlausBot.Dialogs
                     return;
                 }
             }
-            // No se detectó la primera parte de la pregunta
-            reply.Attachments = Respuestas.GetConsultaV2();
+            // Si el usuario no ingreso la primera parte de la pregunta
             await context.PostAsync(preguntaNoRegistrada2);
+            reply.Attachments = Respuestas.GetConsultaV2();
             await context.PostAsync(reply);
             await context.PostAsync("O tal vez no escribió la pregunta correctamente");
             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);

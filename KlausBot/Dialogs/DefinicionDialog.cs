@@ -157,6 +157,14 @@ namespace KlausBot.Dialogs
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                     return;
                 }
+                else if (palabra1 == "firma" || palabra1 == "firmas")
+                {
+                    reply.Attachments = Respuestas.GetDefinicionFirmaDigital();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
                 else
                 {
                     await context.PostAsync(preguntaNoRegistrada2);

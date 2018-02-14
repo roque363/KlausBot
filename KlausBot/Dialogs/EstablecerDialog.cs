@@ -56,6 +56,87 @@ namespace KlausBot.Dialogs
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                     return;
                 }
+                // -------------------------------------------------------------------
+                else if (palabra1 == "márgen" || palabra1 == "márgenes" || palabra1 == "margen" || palabra1 == "margenes")
+                {
+                    // Se detectó la segunda parte de la pregunta
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "página" || palabra2 == "pagina" || palabra2 == "páginas" || palabra2 == "paginas")
+                        {
+                            reply.Attachments = RespuestasWord.GetEstablecerMargenesPaginaWord();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasWord.GetEstablecerMargenesPaginaWord();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    reply.Attachments = RespuestasWord.GetEstablecerMargenesPaginaWord();
+                    await context.PostAsync(preguntaNoRegistrada1);
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync(reply);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    return;
+                }
+                // -------------------------------------------------------------------
+                else if (palabra1 == "tabulación" || palabra1 == "tabulacion" || palabra1 == "tabulaciones")
+                {
+                    reply.Attachments = RespuestasWord.GetEstablecerDesactivarQuitarTabulaciones();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    return;
+                }
+                // -------------------------------------------------------------------
+                else if (palabra1 == "regla" || palabra1 == "reglas")
+                {
+                    // Se detectó la segunda parte de la pregunta
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "combinación" || palabra2 == "combinacion" || palabra2 == "combinaciones")
+                        {
+                            reply.Attachments = RespuestasWord.GetEstablecerReglasCombinacionCorrespondencia();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasWord.GetEstablecerReglasCombinacionCorrespondencia();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    reply.Attachments = RespuestasWord.GetEstablecerReglasCombinacionCorrespondencia();
+                    await context.PostAsync(preguntaNoRegistrada1);
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync(reply);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    return;
+                }
+                // -------------------------------------------------------------------
                 else
                 {
                     reply.Attachments = RespuestasOutlook.GetEstablecerAvisoOutlook();

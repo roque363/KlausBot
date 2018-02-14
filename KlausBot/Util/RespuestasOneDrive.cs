@@ -406,7 +406,7 @@ namespace KlausBot.Util
         //------ TRABAJAR --------
         //--------------------------------
         //Trabajar de manera conjunta en documentos de Office en OneDrive
-        public static IList<Attachment> GetTrabajarManeraConjuntaOfficeOneDrive()
+        public static IList<Attachment> GetTrabajarManeraConjuntaOneDrive()
         {
             return new List<Attachment>()
             {

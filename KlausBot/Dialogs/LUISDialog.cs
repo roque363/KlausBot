@@ -81,8 +81,8 @@ namespace KlausBot.Dialogs
             await new DespedidaDialog(context, result).StartAsync();
         }
 
-        // -------------------------------------------------------------------------------------
-        // Acciones que puede tomar el usuario
+        // ------------------------------------------------------------
+        //------------ ACCIONES QUE PUEDE TOMAR EL USUARIO ------------
 
         [LuisIntent("Consulta.Abrir")]
         public async Task ConsultaAbrir(IDialogContext context, LuisResult result)
@@ -96,6 +96,12 @@ namespace KlausBot.Dialogs
         {
             await new AgregarDialog(context, result).StartAsync();
 
+        }
+
+        [LuisIntent("Consulta.Ajustar")]
+        public async Task ConsultaAjustar(IDialogContext context, LuisResult result)
+        {
+            await new AjustarDialog(context, result).StartAsync();
         }
 
         [LuisIntent("Consulta.Aplicar")]
@@ -125,6 +131,12 @@ namespace KlausBot.Dialogs
             await new CargarDialog(context, result).StartAsync();
         }
 
+        [LuisIntent("Consulta.Combinar")]
+        public async Task ConsultaCombinar(IDialogContext context, LuisResult result)
+        {
+            await new CombinarDialog(context, result).StartAsync();
+        }
+
         [LuisIntent("Consulta.Compartir")]
         public async Task CompartiraEditar(IDialogContext context, LuisResult result)
         {
@@ -138,6 +150,12 @@ namespace KlausBot.Dialogs
             // --------> Se tiene respuesta hasta EliminarDialog <----------
             await new ConsultaSecundariaDialog(context, result).StartAsync();
             // --------> Se tiene respuesta hasta EliminarDialog <----------
+        }
+
+        [LuisIntent("Consulta.Convertir")]
+        public async Task ConvertirCopiar(IDialogContext context, LuisResult result)
+        {
+            await new ConvertirDialog(context, result).StartAsync();
         }
 
         [LuisIntent("Consulta.Copiar")]

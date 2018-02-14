@@ -517,6 +517,8 @@ namespace KlausBot.Dialogs
                         }
 
                     }
+                    // No se detectó la Segunda parte de la pregunta
+                    // Se detecto el Servicio de la pregunta
                     foreach (var entity in result.Entities.Where(Entity => Entity.Type == "Servicio"))
                     {
                         var serv = entity.Entity.ToLower().Replace(" ", "");
@@ -558,7 +560,8 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
-                    //obtener el producto si este a sido escodigo anteriormente
+                    // No se detecto el Servicio de la pregunta
+                    // Obtener el producto si este a sido escodigo anteriormente
                     var servicio = "Servicio";
                     context.PrivateConversationData.TryGetValue<string>("tipoDeServicio", out servicio);
                     if (servicio == "Outlook")

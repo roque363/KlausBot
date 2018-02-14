@@ -48,7 +48,7 @@ namespace KlausBot.Dialogs
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
                 context.PrivateConversationData.SetValue<string>("Palabra1", palabra1);
-
+                // -------------------------------------------------------------------
                 if (palabra1 == "personas" || palabra1 == "persona" || palabra1 == "contactos" || palabra1 == "contacto")
                 {
                     reply.Attachments = RespuestasOutlook.GetBuscarPersonasOutlook();
@@ -159,6 +159,15 @@ namespace KlausBot.Dialogs
                                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                                     return;
                                 }
+                                else if (palabra2 == "sharepoint")
+                                {
+                                    reply.Attachments = RespuestasOneDrive.GetBuscarArchivosSharePointOneDrive();
+                                    await context.PostAsync(confirmacionRespuesta1);
+                                    await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
+                                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                                    return;
+                                }
                                 else
                                 {
                                     reply.Attachments = RespuestasOneDrive.GetBuscarTrabajarArchivosOneDriveAndroid();
@@ -184,15 +193,6 @@ namespace KlausBot.Dialogs
                                 if (palabra2 == "datos" || palabra2 == "dato")
                                 {
                                     reply.Attachments = RespuestasOutlook.GetBuscarArchivosDatosOutlook();
-                                    await context.PostAsync(confirmacionRespuesta1);
-                                    await context.PostAsync(reply);
-                                    await context.PostAsync(preguntaConsulta);
-                                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
-                                    return;
-                                }
-                                else if (palabra2 == "sharepoint")
-                                {
-                                    reply.Attachments = RespuestasOneDrive.GetBuscarArchivosSharePointOneDrive();
                                     await context.PostAsync(confirmacionRespuesta1);
                                     await context.PostAsync(reply);
                                     await context.PostAsync(preguntaConsulta);
@@ -322,12 +322,29 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
-                    reply.Attachments = RespuestasOneNote.GetBuscarNotasOneNote();
-                    await context.PostAsync(confirmacionRespuesta1);
-                    await context.PostAsync(reply);
-                    await context.PostAsync(preguntaConsulta);
-                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
-                    return;
+                    //obtener el producto si este a sido escodigo anteriormente
+                    var servicio = "Servicio";
+                    context.PrivateConversationData.TryGetValue<string>("tipoDeServicio", out servicio);
+                    if (servicio == "OneNote" )
+                    {
+                        reply.Attachments = RespuestasOneNote.GetBuscarNotasOneNote();
+                        await context.PostAsync(confirmacionRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        return;
+                    }
+                    else
+                    {
+                        // No se detectó la segunda parte de la pregunta
+                        reply.Attachments = RespuestasOneNote.GetBuscarNotasOneNote();
+                        await context.PostAsync(preguntaNoRegistrada1);
+                        await context.PostAsync(opcionSecundarioDeRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        return;
+                    }
                 }
                 else if (palabra1 == "fotos" || palabra1 == "foto")
                 {
@@ -337,6 +354,88 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(preguntaConsulta);
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                     return;
+                }
+                else if (palabra1 == "regla")
+                {
+                    reply.Attachments = RespuestasWord.GetMostrarOcultarReglaWord();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    return;
+                }
+                else if (palabra1 == "texto" || palabra1 == "texto" || palabra1 == "datos" || palabra1 == "dato")
+                {
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "documentos" || palabra2 == "documento" || palabra2 == "archivo" || palabra2 == "archivos")
+                        {
+                            reply.Attachments = RespuestasWord.GetBuscarReemplazarTextoDatosDocumentoWord();
+                            await context.PostAsync(confirmacionRespuesta2);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasWord.GetBuscarReemplazarTextoDatosDocumentoWord();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta2);
+                            await context.PostAsync(reply);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    // Se detecto el Servicio de la pregunta
+                    foreach (var serv in result.Entities.Where(Entity => Entity.Type == "Servicio"))
+                    {
+                        var servicio1 = serv.Entity.ToLower().Replace(" ", "");
+
+                        if (servicio1 == "word")
+                        {
+                            reply.Attachments = RespuestasWord.GetBuscarReemplazarTextoDatosDocumentoWord();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasWord.GetBuscarReemplazarTextoDatosDocumentoWord();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, no se encuentra el servicio '{servicio1}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                    }
+                    //obtener el producto si este a sido escodigo anteriormente
+                    var servicio = "Servicio";
+                    context.PrivateConversationData.TryGetValue<string>("tipoDeServicio", out servicio);
+                    if (servicio == "Word" || servicio == "Outlook")
+                    {
+                        reply.Attachments = RespuestasWord.GetBuscarReemplazarTextoDatosDocumentoWord();
+                        await context.PostAsync(confirmacionRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        return;
+                    }
+                    else
+                    {
+                        reply.Attachments = RespuestasWord.GetBuscarReemplazarTextoDatosDocumentoWord();
+                        await context.PostAsync(preguntaNoRegistrada1);
+                        await context.PostAsync(opcionSecundarioDeRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        return;
+                    }
                 }
                 else
                 {

@@ -31,21 +31,6 @@ namespace KlausBot.Util
             };
         }
 
-        // Firmas digitales y certificados
-        public static IList<Attachment> GetQueEsFirmaDigital()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "¿Qué es una firma digital?",
-                    "Se aplica a: Excel 2016 Word 2016 PowerPoint 2016 Access 2016 Visio Professional 2016",
-                    "Una firma digital es un sello de autenticación electrónico cifrado en información digital, como mensajes de correo, "+
-                    "macros o documentos electrónicos. La firma constata que la información proviene del firmante y no se ha modificado.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Firmas-digitales-y-certificados-8186cd15-e7ac-4a16-8597-22bd163e8e96#__toc311530578")),
-            };
-        }
-
         //--------- TRABAJAR ---------
         //----------------------------
         //Colaborar en documentos de Word con coautoría en tiempo real
@@ -56,35 +41,11 @@ namespace KlausBot.Util
 
                 GetHeroCardV2(
                     "Colaborar en documentos de Word con coautoría en tiempo real",
-                    "Se aplica a: Word 2016 Word 2016 para Mac Word para Mac 2011 Word Online Word para iPad Word para iPhone Word para tabletas Android Word para teléfonos Android",
-                    "La colaboración es un proceso simple de tres pasos:\r\r 1-Guarde el documento en OneDrive o SharePoint Online, de modo que otros usuarios puedan trabajar"+
-                    " en él.\r\r 2-Invite a personas para editarlo con usted.\r\r 3-Cuando abran o trabajen en el documento en Word 2016, Word Online y Word Android verán los"+
-                    " cambios de otros usuarios tan pronto como se realicen.",
+                    "Se aplica a: Word 2016, Word para Mac, Word Online, Word para iPad, Word para iPhone, Word para teléfonos y tabletas Android",
+                    "Si usted y sus compañeros desean colaborar en un documento, use la coautoría en tiempo real para ver los cambios " +
+                    "de todos los usuarios al mismo tiempo que se producen. La colaboración es un proceso simple de tres pasos:",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/colaborar-en-documentos-de-word-con-coautor%C3%ADa-en-tiempo-real-7dd3040c-3f30-4fdd-bab0-8586492a1f1d?ui=es-ES&rs=es-ES&ad=ES")),
-            };
-        }
-
-        //Colaborar en documentos de Word con coautoría en tiempo real y trabajar de manera conjunta en documentos de Office en OneDrive
-        public static IList<Attachment> GetTrabajarManeraConjuntaOneDriveTrabajarCoAutoriaWord()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Colaborar en documentos de Word con coautoría en tiempo real",
-                    "Se aplica a: Word 2016 Word 2016 para Mac Word para Mac 2011 Word Online Word para iPad Word para iPhone Word para tabletas Android Word para teléfonos Android",
-                    "La colaboración es un proceso simple de tres pasos:\r\r 1-Guarde el documento en OneDrive o SharePoint Online, de modo que otros usuarios puedan trabajar"+
-                    " en él.\r\r 2-Invite a personas para editarlo con usted.\r\r 3-Cuando abran o trabajen en el documento en Word 2016, Word Online y Word Android verán los"+
-                    " cambios de otros usuarios tan pronto como se realicen.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/colaborar-en-documentos-de-word-con-coautor%C3%ADa-en-tiempo-real-7dd3040c-3f30-4fdd-bab0-8586492a1f1d?ui=es-ES&rs=es-ES&ad=ES")),
-                GetHeroCardV2(
-                    "Trabajar de manera conjunta en documentos de Office en One Drive",
-                    "Se aplica a: Excel Online Word Online PowerPoint Online OneNote Online Office.com",
-                    "Con Office Online es fácil trabajar con otras personas porque puede enviar vínculos a documentos en lugar de enviar datos adjuntos. De este modo, ahorrará almacenamiento "+
-                    "de correo electrónico y evitará tener que conciliar varias versiones del mismo documento.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver información",
-                    value: "https://support.office.com/es-es/article/trabajar-de-manera-conjunta-en-documentos-de-office-en-onedrive-ea3807bc-2b73-406f-a8c9-a493de18258b")),
             };
         }
 
@@ -107,7 +68,7 @@ namespace KlausBot.Util
         }
 
         //Combinar correspondencia con una hoja de cálculo de Excel
-        public static IList<Attachment> GetCombinarCorrespondenciaHojaExcelWord()
+        public static IList<Attachment> GetCombinarCorrespondenciaHojaCalculo()
         {
             return new List<Attachment>()
             {
@@ -117,7 +78,7 @@ namespace KlausBot.Util
                     "La combinación de correspondencia se usa para crear varios documentos a la vez. Estos documentos " +
                     "tienen un diseño, formato, texto y gráficos idénticos.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Combinar-correspondencia-con-una-hoja-de-c%C3%A1lculo-de-Excel-858c7d7f-5cc0-4ba1-9a7b-0a948fa3d7d3")),
+                    value: "https://support.office.com/es-es/article/combinar-correspondencia-con-una-hoja-de-c%C3%A1lculo-de-excel-858c7d7f-5cc0-4ba1-9a7b-0a948fa3d7d3")),
             };
         }
 
@@ -611,13 +572,15 @@ namespace KlausBot.Util
             {
                 GetHeroCardV2(
                     "Crear un documento",
-                    "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007 Word Online",
-                    "Empezar a usar un documento básico en Microsoft Office Word es tan fácil como abrir un documento nuevo o existente, y empezar a escribir. ",
+                    "Se aplica a: Word 2016, Word 2013, Word 2010, Word 2007, Word Online",
+                    "Empezar a usar un documento básico en Microsoft Office Word es tan fácil como abrir un documento nuevo o " +
+                    "existente, y empezar a escribir. ",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/crear-un-documento-3aa3c766-9733-4f60-9efa-de245467c13d")),
             };
         }
-        // Crear un documento Word
+
+        // Crear o modificar un hipervínculo
         public static IList<Attachment> GetCrearHipervinculo()
         {
             return new List<Attachment>()
@@ -625,13 +588,13 @@ namespace KlausBot.Util
                 GetHeroCardV2(
                     "Crear o modificar un hipervínculo",
                     "Se aplica a: Excel 2016 Word 2016 Outlook 2016 PowerPoint 2016 Office 2016",
-                    "La forma más rápida de crear un hipervínculo básico en un documento de Office es presionar **ENTRAR** o la barra"+
-                    " espaciadora después de escribir la dirección de una página web existente, como http://www.contoso.com. Office"+
-                    " convierte automáticamente la dirección en un vínculo.",
+                    "La forma más rápida de crear un hipervínculo básico en un documento de Office es presionar **ENTER** " +
+                    "o la **barra espaciadora** después de escribir la dirección de una página web existente.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/crear-o-modificar-un-hiperv%C3%ADnculo-5d8c0804-f998-4143-86b1-1199735e07bf?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
+
         // Crear una sangría de primera línea
         public static IList<Attachment> GetCrearSangria()
         {
@@ -640,15 +603,14 @@ namespace KlausBot.Util
                 GetHeroCardV2(
                     "Crear una sangría de primera línea",
                     "Se aplica a: Word 2016 Word 2013",
-                    "Siga los siguientes pasos:\r\r"+
-                    ">1. Seleccione el texto donde quiere agregar la sangría de primera línea.\r\r"+
-                    ">2. Haga clic en **Inicio** y, luego, en el grupo **Párrafo**, haga clic en el selector de cuadro de diálogo para abrir el cuadro de diálogo **Párrafo**.\r\r"+
-                    ">3. En la pestaña **Sangría y espacio**, en **Sangría**, seleccione **Primera línea** y haga clic en **Aceptar**\r\r"+
+                    "Con una sangría de primera línea, la primera línea de un párrafo tiene una sangría superior a la de las " +
+                    "demás líneas del párrafo.\r\r"+
                     "Si desea saber como crear una sangría francesa haga clic [aquí](https://support.office.com/es-es/article/Crear-una-sangr%C3%ADa-francesa-7bdfb86a-c714-41a8-ac7a-3782a91ccad5).",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/crear-una-sangr%C3%ADa-de-primera-l%C3%ADnea-b3721167-e1c8-40c3-8a97-3f046fc72d6d")),
             };
         }
+
         // Crear una tabla de contenido en Word
         public static IList<Attachment> GetCrearTablaContenidoWord()
         {
@@ -657,13 +619,13 @@ namespace KlausBot.Util
                 GetHeroCardV2(
                     "Crear una tabla de contenido en Word",
                     "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007",
-                    "Para crear una tabla de contenido que podrá mantener actualizada con gran facilidad, "+
-                    "en primer lugar, necesitará aplicar los estilos de título al texto que desea incluir "+
-                    "en dicha tabla. Luego, **Word** la generará automáticamente a partir de esos títulos.",
+                    "Para crear una tabla de contenido, en primer lugar, necesitará aplicar los estilos de título al texto " +
+                    "que desea incluir en dicha tabla.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Crear-una-tabla-de-contenido-en-Word-882e8564-0edb-435e-84b5-1d8552ccf0c0")),
             };
         }
+
         // Crear un gráfico de Excel en Word
         public static IList<Attachment> GetCrearGraficoWord()
         {
@@ -727,22 +689,23 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/hacer-una-lista-de-comprobaci%C3%B3n-en-word-dd04fa4f-2ca7-4543-8818-c469eca9f45c?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
+
         // Crear un estilo basado en el formato del documento
-        public static IList<Attachment> GetCrearEstiloFormatoDocumento()
+        public static IList<Attachment> GetCrearEstiloDocumento()
         {
             return new List<Attachment>()
             {
                 GetHeroCardV2(
-                    "Crear un estilo basado en el formato del documento",
-                    "Se aplica a: Word 2016 Outlook 2016 Word 2013 Outlook 2013 Word 2010 Word 2007",
-                    "Siga los siguientes pasos:\r\r"+
-                    ">1. Haga clic con el botón derecho en el texto en el que quiere basar un nuevo estilo.\r\r"+
-                    ">2. En la minibarra de herramientas que aparece, haga clic en **Estilos** y luego en **Crear un estilo**.\r\r"+
-                    ">3. En el cuadro de diálogo **Crear nuevo estilo a partir del formato**, asigne un nombre al estilo y haga clic en **Aceptar**.",
+                    "Personalizar o crear estilos en Word",
+                    "Se aplica a: Word, Outlook",
+                    "Hay dos maneras de modificar un estilo existente en la galería de estilos:\r\r"+
+                    ">* [Modificar un estilo actualizándolo para que coincida con el formato del documento](https://support.office.com/es-es/article/personalizar-o-crear-estilos-en-word-d38d6e47-f6fc-48eb-a607-1eb120dec563?ui=es-ES&rs=es-ES&ad=ES#update)\r\r"+
+                    ">* [Modificar un estilo de forma manual en el cuadro de diálogo Modificar estilo](https://support.office.com/es-es/article/personalizar-o-crear-estilos-en-word-d38d6e47-f6fc-48eb-a607-1eb120dec563?ui=es-ES&rs=es-ES&ad=ES#manual)",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/personalizar-o-crear-estilos-en-word-d38d6e47-f6fc-48eb-a607-1eb120dec563?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
+
         // Crear una nueva lista de combinación de correspondencia
         public static IList<Attachment> GetCrearListaCombinacionCorrespondencia()
         {
@@ -759,6 +722,7 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/Configurar-una-nueva-lista-de-combinaci%C3%B3n-de-correspondencia-con-Word-1a752328-b1b5-4865-96a2-e0acd561fe6f")),
             };
         }
+
         // Crear lista de comprobacion - Crear lista de combinacion de correspondencia
         public static IList<Attachment> GetCrearListaComprobacionListaCombinacion()
         {
@@ -784,25 +748,6 @@ namespace KlausBot.Util
 
             };
         }
-        // Combinar correspondencia con una hoja de cálculo de Excel
-        public static IList<Attachment> GetCombinarCorrespondenciaHojaCalculoExcel()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Combinar correspondencia con una hoja de cálculo de Excel",
-                    "Se aplica a: Word 2016 Word 2013 Word 2010",
-                    "Entre los documentos que Word puede crear con la combinación de correspondencia se incluyen etiquetas, cartas, sobres y "+
-                    "mensajes de correo. Existen tres documentos relacionados con el proceso de combinación de correspondencia:\r\r"+
-                    ">* Su documento principal\r\r"+
-                    ">* Su origen de datos\r\r"+
-                    ">* El documento combinado",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/combinar-correspondencia-con-una-hoja-de-c%C3%A1lculo-de-excel-858c7d7f-5cc0-4ba1-9a7b-0a948fa3d7d3")),
-                };
-        }
-
-
 
         // COMPARTIR
         //----------------------
@@ -856,8 +801,8 @@ namespace KlausBot.Util
             };
         }
 
-        // CAMBIAR
-        //----------------------
+        //---- CAMBIAR / MODIFICAR ----
+        //-----------------------------
         //Cambiar el nombre del autor de los documentos
         public static IList<Attachment> GetCambiarNombreAutorDocumento()
         {
@@ -865,26 +810,22 @@ namespace KlausBot.Util
             {
                 GetHeroCardV2(
                     "Cambiar el nombre del autor de los documentos",
-                    "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007",
-                    "**Cambiar el nombre de autor para nuevos documentos**\r\r"+
-                    ">1. Haga clic en **Archivo** > **Opciones**.\r\r"+
-                    ">2. En Personalizar la copia de Microsoft Office, escriba un nombre nuevo en el cuadro nombre de usuario.\r\r"+
-                    "**Modificar el nombre de autor sólo en un documento existente**\r\r"+
-                    ">1. Haga clic en archivo y, a continuación, busque autor en Personas relacionadas a la derecha.\r\r"+
-                    ">2. Haga clic en el nombre del autor y, a continuación, haga clic en Editar propiedades.\r\r"+
-                    ">3. Escriba un nombre nuevo en el cuadro de diálogo Editar persona.",
+                    "Se aplica a: Word 2016, Word 2013, Word 2010, Word 2007",
+                    "Cada vez que cree un nuevo documento, Word establece la propiedad del autor basándose en la configuración " +
+                    "de nombre de usuario que aparece en el cuadro de diálogo **Opciones de Word**.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/cambiar-el-nombre-del-autor-de-los-documentos-0ad23fe7-b82e-40c4-b9d9-391fec971a54")),
             };
         }
-        //Cambiar mayúsculas en el texto
+
+        // Cambiar mayúsculas en el texto
         public static IList<Attachment> GetCambiarMayusculasTextoWord()
         {
             return new List<Attachment>()
             {
                 GetHeroCardV2(
                     "Cambiar mayúsculas en el texto",
-                    "Se aplica a: Word 2016 PowerPoint 2016 Word 2013 PowerPoint 2013 Word 2010 PowerPoint 2010 Word 2007 PowerPoint 2007 Word 2016 para Mac Word Starter 2010",
+                    "Se aplica a: Word, PowerPoint, Word para Mac, Word Starter 2010",
                     "Para cambiar el texto seleccionado en un documento, haga lo siguiente:\r\r"+
                     ">1. Seleccione el texto que desea cambiar.\r\r"+
                     ">2. En la ficha Inicio, en el grupo fuente, haga clic en Cambiar mayúsculas y minúsculas (g ).\r\r"+
@@ -893,39 +834,37 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/Cambiar-el-uso-de-may%C3%BAsculas-en-el-texto-1d86cf80-fbef-4380-8d6f-59a6b77db749")),
             };
         }
-        //Cambiar el interlineado en Word
+
+        // Cambiar el interlineado en Word
         public static IList<Attachment> GetCambiarInterlineadoWord()
         {
             return new List<Attachment>()
             {
                 GetHeroCardV2(
                     "Cambiar el interlineado en Word",
-                    "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007 Word Starter 2010",
-                    "Para cambiar el interlineado en una parte de su documento, haga lo siguiente:\r\r"+
-                    ">1. Seleccione los párrafos que desea cambiar.\r\r"+
-                    ">2. Elija **Inicio** > **Espaciado** entre líneas y párrafos.\r\r"+
-                    ">3. Elija el número de espacios entre líneas que quiera u opciones de interlineado en la parte inferior del menú y después seleccione las opciones que quiera en el cuadro de diálogo **Párrafo en Espaciado**.",
+                    "Se aplica a: Word 2016, Word 2013, Word 2010, Word 2007, Word Starter 2010",
+                    "El modo más rápido de cambiar la cantidad de espacio que aparece entre las líneas de texto o " +
+                    "entre párrafos en un documento entero es usar la opción Espaciado entre párrafos de la pestaña Diseño.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Cambiar-el-interlineado-en-Word-1970e24a-441c-473d-918f-c6805237fbf4")),
             };
         }
-        //Cambiar los espacios entre texto
+
+        // Cambiar los espacios entre texto
         public static IList<Attachment> GetCambiarEspaciosTextoWord()
         {
             return new List<Attachment>()
             {
                 GetHeroCardV2(
                     "Cambiar los espacios entre texto",
-                    "Se aplica a: Word 2016 Outlook 2016 Word 2013 Outlook 2013 Word 2010 Outlook 2010 Word 2007 Outlook 2007",
-                    "Expandir o comprimir uniformemente el espacio entre todos los caracteres seleccionados\r\r"+
-                    ">1. Seleccione el texto que desea cambiar.\r\r"+
-                    ">2. En la pestaña Inicio, haga clic en el Selector de cuadro de diálogo Fuente y, a continuación, en la pestaña Avanzado.\r\r"+
-                    ">3. En el cuadro Espaciado, haga clic en Expandido o Comprimido y, después, especifique el valor deseado en el cuadro **En**.",
+                    "Se aplica a: Word, Outlook",
+                    "Puede cambiar el espaciado entre caracteres para el texto seleccionado o solo para determinados caracteres. ",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Cambiar-los-espacios-entre-texto-e9b96011-1c42-45c0-ad8f-e8a6e4a33462")),
             };
         }
-        //Cambiar el fondo o el color de un documento en Word 2016 para Windows
+
+        // Cambiar el fondo o el color de un documento en Word 2016 para Windows
         public static IList<Attachment> GetCambiarColorFondoDocumentoWord()
         {
             return new List<Attachment>()
@@ -933,63 +872,67 @@ namespace KlausBot.Util
                 GetHeroCardV2(
                     "Cambiar el fondo o el color de un documento en Word 2016 para Windows",
                     "Se aplica a: Word 2016",
-                    "Para agregar interés visual adicional a su documento, agregue un color de fondo con el botón **Color de página**.\r\r"+
+                    "Agregue un color de fondo con el botón **Color de página**.\r\r"+
                     ">1. Haga clic en Diseño > Color de página.\r\r"+
                     ">2. Haga clic en el color deseado en Colores del tema o en Colores estándar.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Cambiar-el-fondo-o-el-color-de-un-documento-en-Word-2016-para-Windows-db481e61-7af6-4063-bbcd-b276054a5515")),
             };
         }
-        //Cambiar borde de un documento word
+
+        // Cambiar borde de un documento word
         public static IList<Attachment> GetCambiarBordeDocumentoWord()
         {
             return new List<Attachment>()
             {
                 GetHeroCardV2(
-                    "Cambiar el color de un borde de página",
-                    "Se aplica a: Word 2016 Outlook 2016 PowerPoint 2016 Word 2013 Outlook 2013 PowerPoint 2013 Word 2010 Word 2007 Outlook 2007 Office 2007 Word Starter 2010",
-                    "Para cambiar el color de una página existente borde vaya a la pestaña **Diseño** de la cinta de opciones, haga clic en **Bordes de página** y use el control de lista desplegable de **Color** para seleccionar otro color. Haga clic en **Aceptar** para aplicar el cambio.",
+                    "Decorar los documentos o las imágenes con bordes",
+                    "Se aplica a: Word, Outlook, PowerPoint, Office 2007, Word Starter 2010",
+                    "Los bordes pueden agregar interés y énfasis a diferentes partes del documento o mensaje de correo electrónico. " +
+                    "Puede agregar bordes a páginas, texto, tablas y celdas de tabla, objetos gráficos e imágenes.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/decorar-los-documentos-o-las-im%C3%A1genes-con-bordes-70e0af47-31c7-47ae-89f3-9ec587f1e49f?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
-        //Cambiar o quitar el borde de un cuadro de texto
+
+        // Cambiar o quitar el borde de un cuadro de texto
         public static IList<Attachment> GetCambiarBordeCuadroTextoWord()
         {
             return new List<Attachment>()
             {
                 GetHeroCardV2(
                     "Cambiar o quitar el borde de un cuadro de texto, una forma o un gráfico SmartArt",
-                    "Se aplica a: Excel 2016 Word 2016 Outlook 2016 PowerPoint 2016 Project Professional 2016 Excel 2013 ",
-                    "Cambiar el color del borde de un cuadro de texto.\r\r"+
-                    ">1. Seleccione el borde del cuadro de texto o de la forma que desea cambiar.\r\r"+
-                    ">2. Haga clic en la pestaña Formato, después, en Contorno de forma y, en Colores del tema, seleccione el color que quiera.",
+                    "Se aplica a: Excel 2016,, Word 2016, Outlook 2016, PowerPoint 2016, Project Professional 2016, Excel 2013 ",
+                    "Puede cambiar el color, el grosor o el estilo de un borde exterior de un gráfico SmartArt, de una forma o " +
+                    "de un cuadro de texto, o bien puede quitar el borde por completo.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/cambiar-o-quitar-el-borde-de-un-cuadro-de-texto-una-forma-o-un-gr%C3%A1fico-smartart-ec2e4491-d3bf-4266-beac-f6298fdfde9f?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
-        //Cambiar borde de un documento word y cambiar el borde de cuadro de texto
-        public static IList<Attachment> GetCambiarBordeDocumentoCuadroTextoWord()
+
+        // Cambiar borde de un documento word
+        // Cambiar o quitar el borde de un cuadro de texto
+        public static IList<Attachment> GetCambiarBordeWord()
         {
             return new List<Attachment>()
             {
                 GetHeroCardV2(
-                    "Cambiar el color de un borde de página",
-                    "Se aplica a: Word 2016 Outlook 2016 PowerPoint 2016 Word 2013 Outlook 2013 PowerPoint 2013 Word 2010 Word 2007 Outlook 2007 Office 2007 Word Starter 2010",
-                    "Para cambiar el color de una página existente borde vaya a la pestaña Diseño de la cinta de opciones, haga clic en Bordes de página y use el control de lista desplegable de Color para seleccionar otro color. Haga clic en Aceptar para aplicar el cambio.",
+                    "Decorar los documentos o las imágenes con bordes",
+                    "Se aplica a: Word, Outlook, PowerPoint, Office 2007, Word Starter 2010",
+                    "Los bordes pueden agregar interés y énfasis a diferentes partes del documento o mensaje de correo electrónico. " +
+                    "Puede agregar bordes a páginas, texto, tablas y celdas de tabla, objetos gráficos e imágenes.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/decorar-los-documentos-o-las-im%C3%A1genes-con-bordes-70e0af47-31c7-47ae-89f3-9ec587f1e49f?ui=es-ES&rs=es-ES&ad=ES")),
-
                 GetHeroCardV2(
                     "Cambiar o quitar el borde de un cuadro de texto, una forma o un gráfico SmartArt",
-                    "Se aplica a: Excel 2016 Word 2016 Outlook 2016 PowerPoint 2016 Project Professional 2016 Excel 2013 Word 2013 Outlook 2013 PowerPoint 2013 Excel 2010",
-                    "Cambiar el color del borde de un cuadro de texto.\r\r"+
-                    ">1. Seleccione el borde del cuadro de texto o de la forma que desea cambiar.\r\r"+
-                    ">2. Haga clic en la pestaña Formato, después, en Contorno de forma y, en Colores del tema, seleccione el color que quiera.",
+                    "Se aplica a: Excel 2016,, Word 2016, Outlook 2016, PowerPoint 2016, Project Professional 2016, Excel 2013 ",
+                    "Puede cambiar el color, el grosor o el estilo de un borde exterior de un gráfico SmartArt, de una forma o " +
+                    "de un cuadro de texto, o bien puede quitar el borde por completo.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/cambiar-o-quitar-el-borde-de-un-cuadro-de-texto-una-forma-o-un-gr%C3%A1fico-smartart-ec2e4491-d3bf-4266-beac-f6298fdfde9f?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
+
         //Modificar un encabezado o pie de página
         public static IList<Attachment> GetModificarEncabezadoPiePagina()
         {
@@ -1006,23 +949,7 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/agregar-o-editar-encabezados-y-pies-de-p%C3%A1gina-en-word-para-mac-98a28ebf-8bf5-478c-a91f-548aebe87725")),
             };
         }
-        //Ajustar la sangría y el espaciado
-        public static IList<Attachment> GetAjustarSangriaEspaciado()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Ajustar la sangría y el espaciado",
-                    "Se aplica a: Word 2016 Outlook 2016 Word 2013 Outlook 2013",
-                    "Siga los siguientes pasos:\r\r"+
-                    ">1. Seleccione un párrafo o un grupo de párrafos que quiera ajustar.\r\r"+
-                    ">2. Haga clic en el selector de cuadro de diálogo **Párrafo** en la pestaña **Diseño de página** o **Presentación**.\r\r"+
-                    ">3. Si fuera necesario, haga clic en la pestaña **Sangría y espacio**.\r\r"+
-                    ">4. Elija la configuración y, después, haga clic en **Aceptar**.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Ajustar-la-sangr%C3%ADa-y-el-espaciado-36239d98-14c5-411e-a880-1ddf25d65cd6")),
-            };
-        }
+
         //Modificar un estilo existente
         public static IList<Attachment> GetModificarEstiloExistente()
         {
@@ -1030,8 +957,7 @@ namespace KlausBot.Util
             {
                 GetHeroCardV2(
                     "Personalizar o crear estilos en Word",
-                    "Se aplica a: Word 2016 Outlook 2016 Word 2013 Outlook 2013 Word 2010 Word 2007",
-                    "Modificar un estilo existente\r\r"+
+                    "Se aplica a: Word, Outlook",
                     "Hay dos maneras de modificar un estilo existente en la galería de estilos:\r\r"+
                     ">* [Modificar un estilo actualizándolo para que coincida con el formato del documento](https://support.office.com/es-es/article/personalizar-o-crear-estilos-en-word-d38d6e47-f6fc-48eb-a607-1eb120dec563?ui=es-ES&rs=es-ES&ad=ES#update)\r\r"+
                     ">* [Modificar un estilo de forma manual en el cuadro de diálogo Modificar estilo](https://support.office.com/es-es/article/personalizar-o-crear-estilos-en-word-d38d6e47-f6fc-48eb-a607-1eb120dec563?ui=es-ES&rs=es-ES&ad=ES#manual)",
@@ -1171,6 +1097,7 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/eliminar-o-cambiar-un-encabezado-o-pie-de-p%C3%A1gina-de-una-sola-p%C3%A1gina-a9b6c963-a3e1-4de1-9142-ca1be1dba7ff?ui=es-ES&rs=es-HN&ad=PE")),
             };
         }
+
         // Quitar una marca de agua
         public static IList<Attachment> GetQuitarMarcaAgua()
         {
@@ -1220,8 +1147,8 @@ namespace KlausBot.Util
             };
         }
 
-        // MOSTRAR
-        //--------------------
+        //---------- MOSTRAR ----------
+        //-----------------------------
         // Mostrar u ocultar las reglas horizontales y verticales
         public static IList<Attachment> GetMostrarOcultarReglaWord()
         {
@@ -1230,8 +1157,8 @@ namespace KlausBot.Util
                 GetHeroCardV2(
                     "Mostrar u ocultar las reglas horizontales y verticales",
                     "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007",
-                    "Para ver ambas reglas, asegúrese de que está en la vista Diseño de impresión y que la opción de regla vertical está activada.\r\r"+
-                    ">* **Opción 1**: Elija **Ver regla** en la parte superior de la barra de [desplazamiento vertical](https://support.content.office.net/es-es/media/4316d720-10e8-4261-bf6e-2f3a09dd0588.jpg).\r\r"+
+                    "Asegúrese de que está en la vista Diseño de impresión y que la opción de regla vertical está activada.\r\r"+
+                    ">* **Opción 1**: Elija **Ver regla** en la parte superior de la barra de desplazamiento vertical.\r\r"+
                     ">* **Opción 2**: Elija **Vista** y seleccione la casilla **Regla**.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/mostrar-u-ocultar-las-reglas-horizontales-y-verticales-dc8a4e0d-209f-43b8-b967-8e65da24d4c7")),
@@ -1264,12 +1191,9 @@ namespace KlausBot.Util
             {
                 GetHeroCardV2(
                     "Convertir texto en tabla o viceversa",
-                    "Se aplica a: Word 2016 Outlook 2016",
-                    "Convertir texto en una tabla\r\r"+
-                    ">1. Inserte caracteres separadores, como comas o tabulaciones, para indicar dónde dividir el texto en columnas de tabla.\r\r"+
-                    ">2. Use marcas de párrafo para indicar dónde desea comenzar una nueva fila de la tabla.\r\r"+
-                    ">3. Seleccione el texto que quiere convertir y, después, haga clic en **Insertar** > **Tabla** > **Convertir texto en tabla**.\r\r"+
-                    ">4. Elija las opciones que quiera en el cuadro **Convertir texto en tabla**.",
+                    "Se aplica a: Word, Outlook",
+                    "Para convertir texto en tabla o viceversa, empiece haciendo clic en la marca de párrafo **Mostrar u ocultar** " +
+                    "en la pestaña Inicio para poder ver cómo se separa el texto del documento.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Convertir-texto-en-tabla-o-viceversa-b5ce45db-52d5-4fe3-8e9c-e04b62f189e1")),
             };
@@ -1282,18 +1206,9 @@ namespace KlausBot.Util
         {
             return new List<Attachment>()
             {
-                GetHeroCardV2(
-                    "Editar contenido de PDF en Word",
-                    "Se aplica a: Word 2016 Word 2013",
-                    "Para convertir un PDF en un documento de Word editable, ábralo como cualquier otro documento.\r\r"+
-                    ">1. Haga clic en **Archivo** > **Abrir**.\r\r"+
-                    ">2. Elija la ubicación del PDF y haga clic en **Buscar**.\r\r"+
-                    ">3. Encuentre el PDF y haga clic en **Abrir**.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/editar-contenido-de-pdf-en-word-b2d1d729-6b79-499a-bcdb-233379c2f63a?ui=es-ES&rs=es-ES&ad=ES")),
                 GetVideoCard(
-                    "Office 365 - Word",
-                    "Convertir archivo PDF en Word",
+                    "Editar contenido de PDF en Word",
+                    "Con Word 2013 y 2016, puede convertir un PDF en un documento de Word que se puede editar.",
                     "https://videocontent.osi.office.net/b44dad88-b993-4b1b-b992-eb226581a717/fae01964-f530-402d-a142-3889647ac5ba__H264_3400kbps_AAC_und_ch2_96kbps.mp4",
                     "https://support.office.com/es-es/article/editar-contenido-de-pdf-en-word-b2d1d729-6b79-499a-bcdb-233379c2f63a?ui=es-ES&rs=es-ES&ad=ES"),
             };
@@ -1346,8 +1261,8 @@ namespace KlausBot.Util
                 };
         }
 
-        // APLICAR
-        //-------------------
+        //---------- APLICAR ----------
+        //-----------------------------
         // Aplicar espacio simple a las líneas de un documento
         public static IList<Attachment> GetAplicarEspacioSimpleLineasDocumento()
         {
@@ -1355,7 +1270,7 @@ namespace KlausBot.Util
             {
                 GetHeroCardV2(
                     "Aplicar espacio simple a las líneas de un documento",
-                    "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007 Word 2016 para Mac",
+                    "Se aplica a: Word 2016, Word 2013, Word 2010, Word 2007, Word para Mac",
                     "Aplicar espacio simple al documento:\r\r"+
                     ">1. Elija **Diseño** > **Espacio entre párrafos**.\r\r"+
                     ">2. Elija **Sin espacio entre párrafos**.",
@@ -1364,30 +1279,51 @@ namespace KlausBot.Util
                 };
         }
 
-        // BUSCAR
-        //-------------------
+        // Aplicar un estilo a texto en Word
+        public static IList<Attachment> GetAplicarEstiloTextoWord()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Aplicar un estilo a texto en Word",
+                    "Se aplica a: Word 2016, Word 2013, Word 2010, Word 2007",
+                    "Siga los suigientes pasos:\r\r"+
+                    ">1. Seleccione el texto al que desea aplicar un estilo.\r\r"+
+                    ">2. En la ficha **Inicio**, en el grupo **estilos**, haga clic en el estilo que desee.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/aplicar-un-estilo-a-texto-en-word-f8b96097-4d25-4fac-8200-6139c8093109")),
+               };
+        }
+
+        // Aplicar o quitar estilos y efectos de los objetos
+        public static IList<Attachment> GetAplicarEstilosObjetos()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Aplicar o quitar estilos y efectos de los objetos",
+                    "Se aplica a: Excel para Mac, PowerPoint para Mac, Word para Mac",
+                    "**Aplicar un estilo**\r\r"+
+                    ">1. Haga clic en el objeto que desea cambiar y, a continuación, haga clic en la ficha **formato**.\r\r"+
+                    ">2. Haga clic en la opción que quiera.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/aplicar-o-quitar-estilos-y-efectos-de-los-objetos-6f916fb0-5b31-4d5d-8de7-11d44abfd0c7")),
+               };
+        }
+
+        //----------- BUSCAR ----------
+        //-----------------------------
         // Buscar y reemplazar texto y otros datos en un documento de Word
         public static IList<Attachment> GetBuscarReemplazarTextoDatosDocumentoWord()
         {
             return new List<Attachment>()
             {
                 GetHeroCardV2(
-                    "Buscar texto en Word",
-                    "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007 Word Online Word Starter 2010",
-                    "Puede buscar rápidamente todas las repeticiones de una palabra o frase específica.\r\r"+
-                    ">1. En la pestaña **Inicio**, en el grupo **Edición**, elija **Buscar**. O presione Ctrl+F en el teclado.\r\r"+
-                    ">2. En el cuadro de búsqueda, escriba el texto que quiere buscar.\r\r"+
-                    ">3. Examine los resultados mediante los controles de flecha hacia arriba y hacia abajo.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Buscar-y-reemplazar-texto-y-otros-datos-en-un-documento-de-Word-c6728c16-469e-43cd-afe4-7708c6c779b7")),
-                GetHeroCardV2(
-                    "Buscar y reemplazar texto en Word",
-                    "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007 Word Online Word Starter 2010",
-                    "Siga los siguientes pasos:\r\r"+
-                    ">1. En la pestaña **Inicio**, en el grupo **Edición**, elija **Reemplazar**. O presione Ctrl+H en el teclado.\r\r"+
-                    ">2. En el cuadro **Buscar**, escriba el texto que quiera buscar y reemplazar.\r\r"+
-                    ">3. En el cuadro **Reemplazar con**, escriba el texto de reemplazo.\r\r"+
-                    ">4. Elija **Buscar siguiente** y, después, haga clic en la opción que usted necesite.",
+                    "Buscar y reemplazar texto y otros datos en un documento de Word",
+                    "Se aplica a: Word 2016, Word 2013, Word 2010, Word 2007, Word Online, Word Starter 2010",
+                    "Word ofrece varias opciones para buscar contenido específico en su documento. Puede buscar y " +
+                    "reemplazar elementos como texto, imágenes, títulos, marcadores o ciertos tipos de formato, como " +
+                    "párrafos o saltos de página.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Buscar-y-reemplazar-texto-y-otros-datos-en-un-documento-de-Word-c6728c16-469e-43cd-afe4-7708c6c779b7")),
                 };
@@ -1413,8 +1349,8 @@ namespace KlausBot.Util
                 };
         }
 
-        // AJUSTAR
-        //------------------
+        //---------- AJUSTAR ----------
+        //-----------------------------
         // Ajustar texto en Word
         public static IList<Attachment> GetAjustarTextoWord()
         {
@@ -1429,7 +1365,25 @@ namespace KlausBot.Util
                     ">3. Elija el estilo de ajuste que quiere usar.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Ajustar-texto-en-Word-bdbbe1fe-c089-4b5c-b85c-43997da64a12")),
-                };
+            };
+        }
+
+        // Ajustar la sangría y el espaciado
+        public static IList<Attachment> GetAjustarSangriaEspaciado()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Ajustar la sangría y el espaciado",
+                    "Se aplica a: Word 2016, Outlook 2016, Word 2013, Outlook 2013",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. Seleccione un párrafo o un grupo de párrafos que quiera ajustar.\r\r"+
+                    ">2. Haga clic en el selector de cuadro de diálogo **Párrafo** en la pestaña **Diseño de página** o **Presentación**.\r\r"+
+                    ">3. Si fuera necesario, haga clic en la pestaña **Sangría y espacio**.\r\r"+
+                    ">4. Elija la configuración y, después, haga clic en **Aceptar**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Ajustar-la-sangr%C3%ADa-y-el-espaciado-36239d98-14c5-411e-a880-1ddf25d65cd6")),
+            };
         }
 
         // REVISAR
@@ -1452,22 +1406,6 @@ namespace KlausBot.Util
                 };
         }
 
-        // USAR
-        //------------------
-        // Usar una plantilla en Word
-        public static IList<Attachment> GetUsarPlantillaWord()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Usar una plantilla en Word",
-                    "Se aplica a: Excel 2016 para Mac PowerPoint 2016 para Mac Word 2016 para Mac",
-                    "Para empezar un nuevo documento basado en su plantilla, en el menú **Archivo**, haga clic en"+
-                    " **Nuevo a partir de plantilla** y, a continuación, seleccione la plantilla que desee usar.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/crear-y-usar-su-propia-plantilla-en-office-para-mac-a1b72758-61a0-4215-80eb-165c6c4bed04?ui=es-ES&rs=es-ES&ad=ES")),
-               };
-        }
         // Usar las opciones de diseño de Word para mover imágenes
         public static IList<Attachment> GetUsarOpcionesDiseñoWord()
         {
@@ -1500,39 +1438,6 @@ namespace KlausBot.Util
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Usar-la-combinaci%C3%B3n-de-correspondencia-para-crear-y-enviar-correo-masivo-etiquetas-y-sobres-f488ed5b-b849-4c11-9cff-932c49474705")),
                 };
-        }
-
-        // APLICAR
-        //-----------------
-        // Aplicar un estilo a texto en Word
-        public static IList<Attachment> GetAplicarEstiloTextoWord()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Aplicar un estilo a texto en Word",
-                    "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007",
-                    "Siga los suigientes pasos:\r\r"+
-                    ">1. Seleccione el texto al que desea aplicar un estilo.\r\r"+
-                    ">2. En la ficha **Inicio**, en el grupo **estilos**, haga clic en el estilo que desee.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/aplicar-un-estilo-a-texto-en-word-f8b96097-4d25-4fac-8200-6139c8093109")),
-               };
-        }
-        // Aplicar o quitar estilos y efectos de los objetos
-        public static IList<Attachment> GetAplicarEstilosObjetos()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Aplicar o quitar estilos y efectos de los objetos",
-                    "Se aplica a: Excel 2016 para Mac PowerPoint 2016 para Mac Word 2016 para Mac",
-                    "**Aplicar un estilo**\r\r"+
-                    ">1. Haga clic en el objeto que desea cambiar y, a continuación, haga clic en la ficha **formato**.\r\r"+
-                    ">2. Haga clic en la opción que quiera.",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/aplicar-o-quitar-estilos-y-efectos-de-los-objetos-6f916fb0-5b31-4d5d-8de7-11d44abfd0c7")),
-               };
         }
 
         // ----------------------------------------------------------------------- 

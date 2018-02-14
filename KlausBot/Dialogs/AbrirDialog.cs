@@ -113,6 +113,7 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
+                    // No se detecto el Servicio de la pregunta
                     // Se detectó  la Segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
@@ -145,7 +146,8 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
-                    //obtener el producto si este a sido escodigo anteriormente
+                    // No se detectó la segunda parte de la pregunta
+                    // Obtener el producto si este a sido escodigo anteriormente
                     var servicio = "Servicio";
                     context.PrivateConversationData.TryGetValue<string>("tipoDeServicio", out servicio);
                     if (servicio == "Outlook")

@@ -13,8 +13,8 @@ namespace KlausBot.Util
         // -------------------------------------------------------------
         // Imagenes en 600px - 300px
 
-        //------------ TEMAS DESTACADOS --------------
-        //--------------------------------------------
+        //------------- TEMAS DESTACADOS ---------------
+        //----------------------------------------------
         // Temas destacados de Outlook
         public static IList<Attachment> GetDestacadosOutlook()
         {
@@ -308,8 +308,8 @@ namespace KlausBot.Util
             };
         }
 
-        //-------- PREGUNTAS SOBRE MICROSOFT ----------
-        //---------------------------------------------
+        //--------- PREGUNTAS SOBRE MICROSOFT -----------
+        //-----------------------------------------------
         // Recuperar la cuenta de Microsoft
         public static IList<Attachment> GetRecuperarCuentaMicrosoft()
         {
@@ -338,8 +338,8 @@ namespace KlausBot.Util
             };
         }
 
-        //----------- PREGUNTAS SOBRE OFFICE -----------
-        //----------------------------------------------
+        //------------ PREGUNTAS SOBRE OFFICE ------------
+        //------------------------------------------------
         // Insertar imágenes
         public static IList<Attachment> GetAgregarImagen()
         {
@@ -388,8 +388,57 @@ namespace KlausBot.Util
             };
         }
 
-        //------- PREGUNTAS CON VARIOS SERVICIOS -------
-        //----------------------------------------------
+        // Aplicar o quitar estilos y efectos de los objetos
+        public static IList<Attachment> GetAplicarEstilos()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Aplicar o quitar estilos y efectos de los objetos",
+                    "Se aplica a: Excel para Mac, PowerPoint para Mac, Word para Mac",
+                    "**Aplicar un estilo**\r\r"+
+                    ">1. Haga clic en el objeto que desea cambiar y, a continuación, haga clic en la ficha **formato**.\r\r"+
+                    ">2. Haga clic en la opción que quiera.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/aplicar-o-quitar-estilos-y-efectos-de-los-objetos-6f916fb0-5b31-4d5d-8de7-11d44abfd0c7")),
+               };
+        }
+
+        // Crear y Usar su propia plantilla en Office para Mac
+        public static IList<Attachment> GetUsarPlantilla()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear y usar su propia plantilla en Office para Mac",
+                    "Se aplica a: Excel 2016 para Mac, PowerPoint 2016 para Mac, Word 2016 para Mac",
+                    "Para crear una plantilla, puede empezar con un documento, presentación, o libro que ya ha creado, uno que haya descargado o " +
+                    "uno nuevo que desea personalizar en cualquier número de formas.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-y-usar-su-propia-plantilla-en-office-para-mac-a1b72758-61a0-4215-80eb-165c6c4bed04?ui=es-ES&rs=es-ES&ad=ES")),
+               };
+        }
+
+        // Firmas digitales y certificados
+        public static IList<Attachment> GetDefinicionFirmaDigital()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "¿Qué es una firma digital?",
+                    "Se aplica a: Excel 2016 Word 2016 PowerPoint 2016 Access 2016 Visio Professional 2016",
+                    "Una firma digital es un sello de autenticación electrónico cifrado en información digital, como mensajes de correo, "+
+                    "macros o documentos electrónicos. La firma constata que la información proviene del firmante y no se ha modificado.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Firmas-digitales-y-certificados-8186cd15-e7ac-4a16-8597-22bd163e8e96#__toc311530578")),
+            };
+        }
+
+        // -------------------------------------------------------------
+        // PREGUNTAS CON VARIOS SERVICIOS
+        // -------------------------------------------------------------
+        //---------- ABRIR ------------
+        //-----------------------------
         // Abrir archivos en su dispositivo móvil
         // Abrir y cerrar archivos de datos de Outlook (.pst)
         public static IList<Attachment> GetAbrirArchivosOneDriveOutlook()
@@ -536,6 +585,161 @@ namespace KlausBot.Util
                     "https://videocontent.osi.office.net/f6ae6849-cbd6-4863-a3c5-546e90246c45/dcb8a228-ebbc-47fe-a315-d62959b5de1a_1280x720_3400.mp4",
                     "https://support.office.com/es-es/article/Crear-y-agregar-una-firma-a-los-mensajes-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2#ID0EAABAAA=2016,_2013"),
 
+            };
+        }
+
+        //--------- COLABORAR ---------
+        //-----------------------------
+        // Colaborar en documentos de Word con coautoría en tiempo real 
+        // Trabajar o colaborar de manera conjunta en documentos de Office en OneDrive
+        public static IList<Attachment> GetTrabajarManeraConjunta()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Colaborar en documentos de Word con coautoría en tiempo real",
+                    "Se aplica a: Word 2016, Word para Mac, Word Online, Word para iPad, Word para iPhone, Word para teléfonos y tabletas Android",
+                    "Si usted y sus compañeros desean colaborar en un documento, use la coautoría en tiempo real para ver los cambios " +
+                    "de todos los usuarios al mismo tiempo que se producen. La colaboración es un proceso simple de tres pasos:",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/colaborar-en-documentos-de-word-con-coautor%C3%ADa-en-tiempo-real-7dd3040c-3f30-4fdd-bab0-8586492a1f1d?ui=es-ES&rs=es-ES&ad=ES")),
+                GetHeroCardV2(
+                    "Trabajar de manera conjunta en documentos de Office en One Drive",
+                    "Se aplica a: Excel Online, Word Online, PowerPoint Online, OneNote Online, Office.com",
+                    "Con Office Online es fácil trabajar con otras personas porque puede enviar vínculos a documentos en lugar de enviar " +
+                    "datos adjuntos. De este modo, ahorrará almacenamiento de correo electrónico y evitará tener que conciliar varias " +
+                    "versiones del mismo documento.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver información",
+                    value: "https://support.office.com/es-es/article/trabajar-de-manera-conjunta-en-documentos-de-office-en-onedrive-ea3807bc-2b73-406f-a8c9-a493de18258b")),
+            };
+        }
+
+        //---------- AJUSTAR ----------
+        //-----------------------------
+        // Ajustar la sangría y el espaciado Word / Outlook
+        public static IList<Attachment> GetAjustarSangriaEspaciado()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Ajustar la sangría y el espaciado",
+                    "Se aplica a: Word 2016, Outlook 2016, Word 2013, Outlook 2013",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. Seleccione un párrafo o un grupo de párrafos que quiera ajustar.\r\r"+
+                    ">2. Haga clic en el selector de cuadro de diálogo **Párrafo** en la pestaña **Diseño de página** o **Presentación**.\r\r"+
+                    ">3. Si fuera necesario, haga clic en la pestaña **Sangría y espacio**.\r\r"+
+                    ">4. Elija la configuración y, después, haga clic en **Aceptar**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Ajustar-la-sangr%C3%ADa-y-el-espaciado-36239d98-14c5-411e-a880-1ddf25d65cd6")),
+            };
+        }
+
+        // Crear una tabla de contenido en Word y crear tabla en Excel
+        public static IList<Attachment> GetCrearTabla()
+        {
+            return new List<Attachment>()
+            {
+                 GetHeroCardV2(
+                    "Crear una tabla de contenido en Word",
+                    "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007",
+                    "Para crear una tabla de contenido que podrá mantener actualizada con gran facilidad, "+
+                    "en primer lugar, necesitará aplicar los estilos de título al texto que desea incluir "+
+                    "en dicha tabla. Luego, **Word** la generará automáticamente a partir de esos títulos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-una-tabla-de-contenido-en-Word-882e8564-0edb-435e-84b5-1d8552ccf0c0")),
+
+                GetHeroCardV2(
+                    "Crear o eliminar una tabla de Excel",
+                    "Se aplica a: Excel 2016 Excel 2013 Excel 2010 Excel 2007 Excel 2016 para Mac Excel para Mac 2011",
+                    "Siga los siguientes pasos para crear una tabla:\r\r"+
+                    ">1. Seleccione cualquier rango de celdas que desea incluir en la tabla.\r\r"+
+                    ">2. En la pestaña **Inicio**, haga clic en **Estilos** > **Dar formato como tabla** > seleccione un estilo en la **Galería de estilos** de tabla.\r\r"+
+                    ">3. Excel resaltará automáticamente el rango de datos de la tabla, si todo esta bien haga click en **Aceptar**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-o-eliminar-una-tabla-de-excel-e81aa349-b006-4f8a-9806-5af9df0ac664")),
+            };
+        }
+
+        //Cambiar mayúsculas en el texto WORD/POWERPOINT
+        public static IList<Attachment> GetCambiarMayusculasTextoWord()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar mayúsculas en el texto",
+                    "Se aplica a: Word, PowerPoint, Word para Mac, Word Starter 2010",
+                    "Para cambiar el texto seleccionado en un documento, haga lo siguiente:\r\r"+
+                    ">1. Seleccione el texto que desea cambiar.\r\r"+
+                    ">2. En la ficha Inicio, en el grupo fuente, haga clic en Cambiar mayúsculas y minúsculas (g ).\r\r"+
+                    ">3. Escoja la alternativa que más le convenga.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-uso-de-may%C3%BAsculas-en-el-texto-1d86cf80-fbef-4380-8d6f-59a6b77db749")),
+            };
+        }
+
+        public static IList<Attachment> GetCompartirArchivos()
+        {
+            return new List<Attachment>()
+            {
+            GetHeroCardV2(
+                    "Compartir el documento en Word 2016 para Windows",
+                    "Se aplica a: Word 2016",
+                    ">1. Abra el documento de Word y elija la pestaña Compartir en el lado derecho de la barra de menús.\r\r>2. Si "+
+                    "todavía no lo ha guardado el documento en OneDrive o SharePoint Online para Office 365, le pedirá que hacerlo"+
+                    " ahora.\r\r>3. Una vez que el documento se guarda en una ubicación compartida, puede invitar a otros usuarios a "+
+                    "trabajar en él. En el cuadro Invitar a personas, escriba la dirección de correo electrónico de la persona que le"+
+                    " gustaría compartir a. Si ya tiene información de contacto de la persona almacenado, solo puede escribir su nombre.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Compartir-el-documento-en-Word-2016-para-Windows-d39f3cd8-0aa0-412f-9a35-1abba926d354")),
+            GetHeroCardV2(
+                    "Compartir el libro de Excel con otros usuarios",
+                    "Se aplica a: Excel 2016 Excel 2016 para Mac",
+                    ">1. Si ha cargado el archivo, haga clic en el nombre de archivo para abrirlo. El libro se abrirá en una pestaña nueva en el explorador web.\r\r"+
+                    ">2. Haga clic en el botón Editar en Excel. Si no se encuentra este botón, haga clic en Editar en el exploradory, después, haga clic en Editar en Excel después de que se vuelva a cargar la página.\r\r"+
+                    ">3. Cuando el archivo se abra en el programa Excel, haga clic en Compartir en la esquina superior derecha.\r\r"+
+                    ">4. Escriba las direcciones de correo electrónico en el cuadro Invitar a personas y sepárelas entre sí con un punto y coma. Asegúrese de seleccionar Puede editar. Cuando haya terminado, haga clic en el botón Enviar.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/compartir-el-libro-de-excel-con-otros-usuarios-8d8a52bb-03c3-4933-ab6c-330aabf1e589?ui=es-ES&rs=es-ES&ad=ES")),
+            GetHeroCardV2(
+                    "Compartir la presentación de PowerPoint 2016 con otros usuarios",
+                    "Se aplica a: PowerPoint 2016",
+                    ">1. Cree un borrador de la presentación. Cuando esté listo para compartir con otros usuarios, seleccione Compartir en la esquina superior derecha de la cinta de opciones.\r\r"+
+                    ">2. Si aún no ha guardado la presentación en OneDrive o en Office 365 SharePoint, ahora se le solicitará que lo haga.\r\r"+
+                    ">3. Una vez que la presentación se guarda en una ubicación compartida, a continuación, puede invitar a otros usuarios a trabajar en él también. En el cuadro en Invitar a personas, escriba la dirección de correo electrónico de la persona que le gustaría compartir con."+
+                    " Si ya tiene información de contacto de la persona almacenado, sólo se puede especificar el nombre.\r\r"+
+                    ">4. Cuando haya terminado, haga clic en el botón Compartir.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/compartir-la-presentaci%C3%B3n-de-powerpoint-2016-con-otros-usuarios-a6308d9d-a0a8-443b-8e1c-0f4983f0afd1")),
+            GetHeroCardV2("Compartir archivos y carpetas en One Drive",
+                "Se aplica a: OneDrive",
+                "Con OneDrive, puede compartir sus fotos y archivos personales con otros usuarios, controlar si pueden verlos o editarlos e incluso trabajar en colaboración en documentos al mismo tiempo.",
+                new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                value: "https://support.office.com/es-es/article/v%C3%ADdeo-compartir-archivos-y-carpetas-en-onedrive-3fcefa26-1371-401e-8c04-589de81ed5eb")),
+
+            };
+        }
+
+        // Eliminar comentarios POWERPOINT / WORD
+        public static IList<Attachment> GetEliminarComentarios()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Quitar comentarios",
+                    "Se aplica a: Word 2016",
+                    "Si el documento incluye comentarios, no se quitarán al aceptar o rechazar los cambios realizados. Tendrá que eliminarlos por separado.\r\r"+
+                    ">* Haga clic en el comentario y en la pestaña **Revisión**, haga clic en **Eliminar**\r\r"+
+                    ">* Para quitar todos los comentarios a la vez, haga clic en un comentario y, luego, en la pestaña **Revisión**, haga clic en la flecha debajo de **Eliminar** y haga clic en **Eliminar todos los comentarios del documento**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/quitar-los-cambios-realizados-y-los-comentarios-en-word-2016-para-windows-7966b497-7e04-4a13-8d41-53a3ffa00c25?ui=es-ES&rs=es-ES&ad=ES")),
+                GetHeroCardV2(
+                    "Eliminar comentarios en Power Point",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013 PowerPoint 2010 PowerPoint 2007",
+                    "Eliminar comentarios:\r\r"+
+                    ">* **En la diapositiva:**    Haga clic en el icono de comentarios ![duck](https://support.content.office.net/es-es/media/5280372e-4b53-4d30-8c78-3a60a066ec23.png) del comentario que desea eliminar y, a continuación, haga clic en Eliminar comentario.\r\r"+
+                    ">* **En el panel Comentarios:**    Haga clic en el comentario que desea eliminar y, luego, haga clic en la **X** negra.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-cambiar-ocultar-o-eliminar-comentarios-en-una-presentaci%C3%B3n-a8f071fa-6e5d-4c37-a025-1cf48a76eb38?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
 

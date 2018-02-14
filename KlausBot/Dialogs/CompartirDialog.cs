@@ -107,6 +107,56 @@ namespace KlausBot.Dialogs
                 }
                 else if (palabra1 == "archivos" || palabra1 == "archivo")
                 {
+                    // Se detectó el Servicio de la pregunta
+                    foreach (var entity in result.Entities.Where(Entity => Entity.Type == "Servicio"))
+                    {
+                        var serv = entity.Entity.ToLower().Replace(" ", "");
+                        if (serv == "word")
+                        {
+                            reply.Attachments = RespuestasWord.GetCompartirArchivosWord();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else if (serv == "excel")
+                        {
+                            reply.Attachments = RespuestasExcel.GetCompartirLibrosExcelOtrosUsuarios();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else if (serv == "powerpoint")
+                        {
+                            reply.Attachments = RespuestasPowerPoint.GetCompartirPresentacionPowerPoint();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else if (serv == "onedrive")
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetCompartirArchivosCarpetasOneDrive();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = Respuestas.GetCompartirArchivos();
+                            await context.PostAsync($"Lo siento, {serv} no esta registrado, consulte otra vez el servicio escribiendo ayuda");
+                            await context.PostAsync(opcionSecundarioDeRespuesta2);
+                            await context.PostAsync(reply);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                    }
                     // Se detectó  la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
@@ -130,7 +180,7 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = RespuestasOneDrive.GetCompartirArchivosOneDriveAndroid();
+                    reply.Attachments = Respuestas.GetCompartirArchivos();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
@@ -144,6 +194,52 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    return;
+                }
+                else if (palabra1 == "presentación" || palabra1 == "presentacion" || palabra1 == "presentaciones")
+                {
+                    reply.Attachments = RespuestasPowerPoint.GetCompartirPresentacionPowerPoint();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
+                else if (palabra1 == "libro" || palabra1 == "libros")
+                {
+                    reply.Attachments = RespuestasExcel.GetCompartirLibrosExcelOtrosUsuarios();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    return;
+                }
+                else if (palabra1 == "coautoría" || palabra1 == "coautoria" || palabra1 == "autoría" || palabra1 == "autoria")
+                {
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra1 == "presentación" || palabra1 == "presentacion" || palabra1 == "presentaciones")
+                        {
+                            reply.Attachments = RespuestasPowerPoint.GetCompartirAutoriaPresentacionPowerPoint();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasPowerPoint.GetCompartirAutoriaPresentacionPowerPoint();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    reply.Attachments = RespuestasPowerPoint.GetCompartirAutoriaPresentacionPowerPoint();
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
                     return;
                 }
                 else

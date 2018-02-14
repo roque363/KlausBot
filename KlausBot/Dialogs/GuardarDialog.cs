@@ -59,13 +59,112 @@ namespace KlausBot.Dialogs
                 }
                 else if (palabra1 == "archivos" || palabra1 == "archivo" || palabra1 == "documentos" || palabra1 == "documento")
                 {
-                    await context.PostAsync($"Quizás deseas saber como guardar un documento en One Drive");
-                    reply.Attachments = RespuestasOneDrive.GetGuardarDocumentoOneDrive();
-                    await context.PostAsync(confirmacionRespuesta1);
-                    await context.PostAsync(reply);
-                    await context.PostAsync(preguntaConsulta);
-                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
-                    return;
+                    // Recorrido del Servicio de la pregunta
+                    foreach (var entity in result.Entities.Where(Entity => Entity.Type == "Servicio"))
+                    {
+                        var serv = entity.Entity.ToLower().Replace(" ", "");
+                        if (serv == "OneDrive" || serv == "onedrive" || serv == "drive")
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetGuardarDocumentoOneDrive();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else if(serv == "Word" || serv == "word")
+                        {
+                            foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                            {
+                                var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                                if (palabra2 == "pdf" || palabra2 == "xps")
+                                {
+                                    reply.Attachments = RespuestasWord.GetGuardarArchivoPDF();
+                                    await context.PostAsync(confirmacionRespuesta1);
+                                    await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
+                                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                                    return;
+                                }
+                                else
+                                {
+                                    reply.Attachments = RespuestasWord.GetGuardarArchivoPDF();
+                                    await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                                    await context.PostAsync(reply);
+                                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                                    return;
+                                }
+                            }
+                            reply.Attachments = RespuestasWord.GetGuardarArchivoPDF();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetGuardarDocumentoOneDrive();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, no se tiene registrado el servicio '{serv}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                    }
+                    //obtener el producto si este a sido escodigo anteriormente
+                    var servicio = "Servicio";
+                    context.PrivateConversationData.TryGetValue<string>("tipoDeServicio", out servicio);
+                    if (servicio == "Word")
+                    {
+                        reply.Attachments = RespuestasWord.GetGuardarArchivoPDF();
+                        await context.PostAsync(confirmacionRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        return;
+                    }
+                    else if (servicio == "OneDrive")
+                    {
+                        reply.Attachments = RespuestasOneDrive.GetGuardarDocumentoOneDrive();
+                        await context.PostAsync(confirmacionRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        return;
+                    }
+                    else
+                    {
+                        foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                        {
+                            var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                            if (palabra2 == "pdf" || palabra2 == "xps")
+                            {
+                                reply.Attachments = RespuestasWord.GetGuardarArchivoPDF();
+                                await context.PostAsync(confirmacionRespuesta1);
+                                await context.PostAsync(reply);
+                                await context.PostAsync(preguntaConsulta);
+                                context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                                return;
+                            }
+                            else
+                            {
+                                reply.Attachments = RespuestasWord.GetGuardarArchivoPDF();
+                                await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                                await context.PostAsync(opcionSecundarioDeRespuesta1);
+                                await context.PostAsync(reply);
+                                context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                                return;
+                            }
+                        }
+                        reply.Attachments = RespuestasOneDrive.GetGuardarDocumentoOneDrive();
+                        await context.PostAsync(confirmacionRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        return;
+                    }
                 }
                 else if (palabra1 == "fotos" || palabra1 == "foto" || palabra1 == "videos" || palabra1 == "video" || palabra1 == "vídeos" || palabra1 == "vídeo")
                 {
