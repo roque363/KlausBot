@@ -28,10 +28,11 @@ namespace KlausBot.Dialogs
 
             var estadoPregunta = "True";
             var estadoPregunta2 = "False";
-            var accion = "Abrir";
-            context.PrivateConversationData.SetValue<string>("Accion", accion);
-
             var estadoRespuesta = "True";
+            var estadoRespuesta2 = "False";
+            var accion = "Abrir";
+            // Se guarda la accion escrita por el usuario
+            context.PrivateConversationData.SetValue<string>("Accion", accion);
 
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
@@ -41,7 +42,7 @@ namespace KlausBot.Dialogs
             string opcionSecundarioDeRespuesta2 = "Pero estas respuestas le podrían interesar:";
             string preguntaConsulta = "si tiene otra consulta por favor hágamelo saber";
 
-            // Recorrido de la primera parte de la pregunta
+            // Se detectó la primera parte de la pregunta
             foreach (var entityP1 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra1"))
             {
                 var palabra1 = entityP1.Entity.ToLower().Replace(" ", "");
@@ -70,6 +71,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                             context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
@@ -81,7 +83,6 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(opcionSecundarioDeRespuesta2);
                     await context.PostAsync(reply);
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
-                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                     return;
                 }
                 // ---------------------------------------------------------------------
@@ -224,6 +225,7 @@ namespace KlausBot.Dialogs
             await context.PostAsync(reply);
             await context.PostAsync("O tal vez no escribió la pregunta correctamente");
             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
+            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
             return;
         }
 

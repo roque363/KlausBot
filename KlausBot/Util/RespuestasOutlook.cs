@@ -33,7 +33,7 @@ namespace KlausBot.Util
                     "https://support.office.com/es-es/article/Video-What-is-Outlook-10f1fa35-f33a-4cb7-838c-a7f3e6228b20?ui=es-ES&rs=es-ES&ad=ES"),
                 GetHeroCardV4(
                      new CardImage(
-                         url: HttpContext.Current.Server.MapPath("~/Images/aprendizajeDeOutlook.png")),
+                         url: "http://klausbotv1.azurewebsites.net/Images/aprendizajeDeOutlook.png"),
                     new CardAction(
                         ActionTypes.OpenUrl, "Ver más información",
                         value: "https://support.office.com/es-es/article/aprendizaje-de-outlook-8a5b816d-9052-4190-a5eb-494512343cca?wt.mc_id=otc_home&ui=es-ES&rs=es-ES&ad=ES")),

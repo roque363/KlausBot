@@ -31,6 +31,14 @@ namespace KlausBot.Dialogs
             var estadoRespuesta = "EstadoRespuesta";
             context.PrivateConversationData.TryGetValue<string>("EstadoRespuesta", out estadoRespuesta);
 
+            Random rnd = new Random();
+
+            // Despedida que puede generar el bot
+            string[] negacion = {
+                "Espero poder ayudarle la prónxima vez, estoy dispinible las 24 horas del día",
+                "Entiendo ,Espero poder ayudarle la prónxima vez",
+            };
+
             if (estadoRespuesta == "True")
             {
                 // Display the result

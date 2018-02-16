@@ -25,7 +25,6 @@ namespace KlausBot.Dialogs
         public async Task StartAsync()
         {
             var estadoPregunta2 = "False";
-
             var estadoRespuesta2 = "False";
 
             Random rnd = new Random();

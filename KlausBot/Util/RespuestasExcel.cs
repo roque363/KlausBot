@@ -81,6 +81,7 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/crear-un-gr%C3%A1fico-con-gr%C3%A1ficos-recomendados-cd131b77-79c7-4537-a438-8db20cea84c0?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
+
         // Crear un gráfico de Excel en Word y crear un gráfico con gráficos recomendados
         public static IList<Attachment> GetCrearGraficoWordExcel()
         {
@@ -106,6 +107,7 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/crear-un-gr%C3%A1fico-con-gr%C3%A1ficos-recomendados-cd131b77-79c7-4537-a438-8db20cea84c0?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
+
         // Crear e imprimir etiquetas postales para una lista de direcciones en Excel
         public static IList<Attachment> GetCrearEtiquetasPostalesExcel()
         {
@@ -122,6 +124,7 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/Crear-e-imprimir-etiquetas-postales-para-una-lista-de-direcciones-en-Excel-d9484315-5123-48ae-bc58-2e8dcf271252")),
                };
         }
+
         // Crear etiquetas Word y Crear e imprimir etiquetas postales para una lista de direcciones en Excel
         public static IList<Attachment> GetCrearEtiquetasWordEtiquetasPostalesExcel()
         {
@@ -147,6 +150,115 @@ namespace KlausBot.Util
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Crear-e-imprimir-etiquetas-postales-para-una-lista-de-direcciones-en-Excel-d9484315-5123-48ae-bc58-2e8dcf271252")),
                };
+        }
+
+        // Crear una fórmula simple
+        public static IList<Attachment> GetCrearFormulaSimple()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear una fórmula simple en Excel",
+                    "Se aplica a: Excel 2016 Excel 2013 Excel 2010 Excel 2007",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. Haga clic en la celda donde desea introducir la fórmula.\r\r"+
+                    ">2. Escriba el = (signo igual) seguido de las constantes y operadores para su cálculo."+
+                    ">3. Presione **Enter**(Windows) o **Retorno**(Mac).",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-una-f%C3%B3rmula-simple-en-excel-11a5f0e5-38a3-4115-85bc-f4a465f64a8a?ui=es-ES&rs=es-ES&ad=ES")),
+               };
+        }
+
+        // Crear un histograma en Excel
+        public static IList<Attachment> GetCrearHistogramaExcel()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un histograma en Excel",
+                    "Se aplica a: Excel 2016 Word 2016 Outlook 2016 PowerPoint 2016 Excel 2013",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. Seleccione los datos.\r\r"+
+                    ">2. Haga clic en **Insertar** > **Insertar gráfico estadístico** > **Histograma**.\r\r"+
+                    "![duck](https://support.content.office.net/es-es/media/f2724c8f-ac73-43c9-a0b2-718be485a399.png)",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-un-histograma-en-excel-85680173-064b-4024-b39d-80f17ff2f4e8?ui=es-ES&rs=es-ES&ad=ES")),
+               };
+        }
+
+        // Crear un modelo de datos en Excel
+        public static IList<Attachment> GetCrearModeloDatos()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un modelo de datos en Excel",
+                    "Se aplica a: Excel 2016 Excel 2013",
+                    "Un modelo de datos es un nuevo método para integrar datos de varias tablas y generar de forma efectiva un origen de datos "+
+                    "relacional en un libro de Excel, estos se usan de forma transparente y proporcionan datos tabulares utilizados en tablas y"+
+                    " gráficos dinámicos.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-un-modelo-de-datos-en-Excel-87e7a54c-87dc-488e-9410-5c75dbcb0f7b")),
+               };
+        }
+
+        // Crear un formato de número personalizado
+        public static IList<Attachment> GetCrearFormatoNumeroPersonalizado()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un formato de número personalizado",
+                    "Se aplica a: Excel 2016 Excel 2013 Excel 2010 Excel 2007 ",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. En la pestaña **Inicio**, haga clic en el Selector de cuadro de diálogo junto a **Número**.\r\r"+
+                    "![duck](https://support.content.office.net/es-es/media/63114aca-c8ba-4cd3-a58c-d518828c484d.jpg)\r\r"+
+                    ">2. En el cuadro **Categoría**, haga clic en **Personalizado**.\r\r"+
+                    ">3. En el cuadro **Tipo**, realice los cambios necesarios en el formato de número seleccionado",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-o-eliminar-un-formato-de-n%C3%BAmero-personalizado-78f2a361-936b-4c03-8772-09fab54be7f4")),
+               };
+        }
+
+        // Crear una macro
+        public static IList<Attachment> GetCrearMacro()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear una macro",
+                    "Se aplica a: Excel 2016 Excel 2013 Excel 2010 Excel 2016 para Mac ",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. En el grupo Código en la pestaña **Desarrollador**, haga clic en **Grabar macro**.\r\r"+
+                    "![duck](https://support.content.office.net/es-es/media/b962324a-f530-4dc2-bd6c-401bc1faaafa.jpg)\r\r"+
+                    ">2. Escriba un nombre para la macro en el cuadro **Nombre de la macro**\r\r"+
+                    ">3. Especifique una tecla de método abreviado en el cuadro **Tecla de método abreviado**\r\r"+
+                    ">4. Haga clic en **Aceptar** para comenzar a grabar.\r\r"+
+                    ">5. Realice las acciones que desee automatizar.\r\r"+
+                    ">6. Haga clic en **Detener grabación**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/inicio-r%C3%A1pido-crear-una-macro-741130ca-080d-49f5-9471-1e5fb3d581a8")),
+               };
+        }
+
+        // INSERTAR
+        // ---------------------
+        // Insertar, mover o eliminar saltos de página en una hoja de cálculo
+        public static IList<Attachment> GetInsertarSaltosPaginaHojaCalculo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Insertar un objeto en la hoja de cálculo de Excel",
+                    "Se aplica a: Excel 2016 Excel 2013 Excel 2010 Excel 2007",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. En la ficha **Ver**, en el grupo **Vistas de libro**, haga clic en **Vista previa de salto de página**.\r\r"+
+                    "![duck](https://support.content.office.net/es-es/media/67067591-a24b-4c5a-8c18-e1c44efb2a0c.png)\r\r"+
+                    ">2. Seleccione la fila o columna donde quiera insertarlo.\r\r"+
+                    ">3. En el grupo **Configurar página** de la pestaña **Diseño de página**, haga clic en **Saltos** y luego en **Insertar salto de página**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/insertar-mover-o-eliminar-saltos-de-p%c3%a1gina-en-una-hoja-de-c%c3%a1lculo-ad3dc726-beec-4a4c-861f-ed640612bdc2?ui=es-ES&rs=es-ES&ad=ES")),
+            };
         }
 
         // COMPARTIR

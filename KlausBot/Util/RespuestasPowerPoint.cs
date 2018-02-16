@@ -32,6 +32,156 @@ namespace KlausBot.Util
             };
         }
 
+        //---------- CREAR ----------
+        //---------------------------
+        // Crear una presentación básica en cuatro pasos en PowerPoint
+        public static IList<Attachment> GetCrearPresentacionPowerPoint()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear una presentación básica en cuatro pasos en PowerPoint",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013 PowerPoint 2010 PowerPoint 2016 para Mac",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. En la pestaña **Diseño**, haga clic en el tema que desee.\r\r"+
+                    ">2. En la pestaña **Inicio**, haga clic en **Nueva diapositiva**.\r\r"+
+                    ">3. En la pestaña **Transiciones**, haga clic en la transición que desee.\r\r"+
+                    ">4. Haga clic en **Aplicar en todo**\r\r"+
+                    "Si desea saber como crear una presentación autoejecutable haga clic [aquí](https://support.office.com/es-es/article/Crear-una-presentaci%C3%B3n-autoejecutable-57fc41ae-f36a-4fb5-94a3-52d5bc466037)",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-una-presentaci%C3%B3n-b%C3%A1sica-en-cuatro-pasos-en-powerpoint-076863ce-0107-428d-a0e4-08ad8cea8ce9")),
+            };
+        }
+
+        // Crear o personalizar un patrón de diapositivas
+        public static IList<Attachment> GetCrearPersonalizarPatronDiapositivas()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear o personalizar un patrón de diapositivas",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013 PowerPoint 2010 PowerPoint 2007",
+                    "En la vista **Patrón de diapositivas**, el patrón de diapositivas aparece en la parte superior del panel de miniaturas con sus respectivos diseños.\r\r"+
+                    "Usted puede cambiar el patrón moviendo las diapositivas donde mejor le parezca.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-o-personalizar-un-patr%C3%B3n-de-diapositivas-036d317b-3251-4237-8ddc-22f4668e2b56")),
+                };
+        }
+
+        // Utilizar o crear temas en PowerPoint
+        public static IList<Attachment> GetUtilizarCrearTemasPowerPoint()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Utilizar o crear temas en PowerPoint",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013 PowerPoint 2010 PowerPoint 2007",
+                    "Puede usar temas en PowerPoint para simplificar el proceso de creación de presentaciones de aspecto profesional. Puede crear su propio"+
+                    " tema que contiene colores personalizados, fuentes y efectos, empiece por un tema integrado y cambiar su configuración. A continuación, "+
+                    "puede guardar la configuración como un nuevo tema en la Galería de temas.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/utilizar-o-crear-temas-en-powerpoint-83e68627-2c17-454a-9fd8-62deb81951a6?ui=es-ES&rs=es-ES&ad=ES")),
+                };
+        }
+
+        // Crear un organigrama
+        public static IList<Attachment> GetCrearOrganigrama()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear un organigrama",
+                    "Se aplica a: Excel 2016 Word 2016 Outlook 2016 PowerPoint 2016",
+                    "Crear un organigrama\r\r"+
+                    ">1. En el grupo **Ilustraciones** de la pestaña **Insertar**, haga clic en **SmartArt**.\r\r"+
+                    ">2. En la galería **Elegir un gráfico SmartArt**, haga clic en **Jerarquía**, haga clic en un diseño de organigrama y luego **Aceptar** \r\r"+
+                    "Si desea saber como crear un organigrama con una plantilla haga clic [aquí](https://support.office.com/es-es/article/Crear-un-organigrama-en-PowerPoint-con-una-plantilla-d361c25f-665e-4d2c-bfc9-133763511a85)",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-un-organigrama-9b51f667-11b7-4971-a757-a08a36684ee6")),
+                };
+        }
+
+        // Crear una escala de tiempo
+        public static IList<Attachment> GetCrearEscalaTiempo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear una escala de tiempo",
+                    "Se aplica a: Excel 2016 Word 2016 Outlook 2016 PowerPoint 2016",
+                    "Crear una escala de tiempo\r\r"+
+                    ">1. En la ficha **Insertar**, haga clic en **SmartArt**.\r\r"+
+                    ">2. En la galería **Elegir un gráfico SmartArt**, haga clic en **proceso** y, a continuación, haga doble clic en un diseño de escala de tiempo.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Crear-una-escala-de-tiempo-9c4448a9-99c7-4b0e-8eff-0dcf535f223c")),
+                };
+        }
+
+        //--------- APLICAR ---------
+        //---------------------------
+        // Aplicar varios efectos de animación a un objeto
+        public static IList<Attachment> GetAplicarVariosEfectosAnimacion()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Aplicar varios efectos de animación a un objeto",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. Seleccione el objeto de la diapositiva que desee animar.\r\r"+
+                    ">2. En la pestaña **Animaciones**, haga clic en **Panel de animación**.\r\r"+
+                    ">3. Haga clic en **Agregar animación** y elija un efecto de animación.\r\r",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/aplicar-varios-efectos-de-animaci%C3%B3n-a-un-objeto-9bb7b925-ab0f-47d4-bc11-85d939194bed")),
+            };
+        }
+
+        // Insertar y reproducir un archivo de vídeo
+        public static IList<Attachment> GetInsertarArchivoVideo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Insertar y reproducir un archivo de vídeo",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013 PowerPoint 2010 PowerPoint 2007",
+                    "Insertar un vídeo almacenado en su equipo\r\r"+
+                    ">1. En la pestaña **Insertar**, haga clic en la flecha situada debajo de **Video** y luego en **Video en Mi PC**.\r\r"+
+                    ">2. En el cuadro de diálogo **Insertar vídeo**, haga clic en el vídeo que desea y a continuación, haga clic en **Insertar**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/insertar-y-reproducir-un-archivo-de-v%C3%ADdeo-desde-su-equipo-o-desde-onedrive-f3fcbd3e-5f86-4320-8aea-31bff480ed02?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Agregar texto a una diapositiva
+        public static IList<Attachment> GetAgregarTextoDiapositiva()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar texto a una diapositiva",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013 PowerPoint 2010",
+                    "Puede agregar texto a una diapositiva de PowerPoint o a un patrón de diapositivas insertando un cuadro de texto y escribiendo dentro de ese cuadro. "+
+                    "También puede eliminar ese texto seleccionando el texto o el cuadro completo y agregar texto a marcadores de posición y formas.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-texto-a-una-diapositiva-11b8b646-f775-4b77-a512-ca51bb54b26c")),
+            };
+        }
+
+        // Agregar un encabezado o pie de página a documentos o notas
+        public static IList<Attachment> GetAgregarEncabezadoPiePaginaPowerPoint()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar un encabezado o pie de página a documentos o notas",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013 PowerPoint 2010 PowerPoint 2007",
+                    "En PowerPoint, notas y documentos tiene encabezados y pies de página. Diapositivas tienen sólo pies de página."+
+                    " Haga click en **Ver más información** para ver instrucciones detalladas.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-un-encabezado-o-pie-de-p%C3%A1gina-a-documentos-o-notas-882efcea-35cd-4b68-ac0b-041ae1ba7099?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
         //-------- COMPARTIR --------
         //---------------------------
         // Compartir la presentación de PowerPoint 2016 con otros usuarios
@@ -101,6 +251,7 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/cambiar-o-eliminar-informaci%C3%B3n-de-encabezado-y-pie-de-p%C3%A1gina-en-una-presentaci%C3%B3n-5695469d-eaf5-412a-b0ce-e6b7d11082a2")),
             };
         }
+
         // Cambiar o eliminar información de encabezado y pie de página en una presentación
         public static IList<Attachment> GetEliminarCambiarEncabezadoPiePaginaWordPowerPoint()
         {

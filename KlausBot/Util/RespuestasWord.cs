@@ -140,7 +140,7 @@ namespace KlausBot.Util
             {
                 GetHeroCardV2(
                     "Agregar o quitar una firma digital en archivos de Office",
-                    "Se aplica a: Excel 2016 Word 2016 PowerPoint 2016 Word Starter 2010",
+                    "Se aplica a: Excel 2016, Word 2016, PowerPoint 2016, Word Starter 2010",
                     "En este artículo se explican las firmas digitales , para qué se pueden usar y cómo se pueden usar " +
                     "firmas digitales en los siguientes programas de Microsoft Office: Word, Excel y PowerPoint.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
