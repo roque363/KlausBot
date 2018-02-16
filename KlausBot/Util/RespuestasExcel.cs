@@ -20,8 +20,7 @@ namespace KlausBot.Util
                 GetHeroCard(
                     "¿Qué es Excel?",
                     "Significad e historia de  Excel",
-                    "Excel es un programa informático desarrollado por Microsoft y forma parte de Office que es una suite ofimática la cual incluye " +
-                    "otros programas como Word y PowerPoint. Excel se distingue de los demás programas porque nos permite trabajar con datos " +
+                    "Excel es un programa informático desarrollado por Microsoft y forma parte de Office. Excel se distingue de los demás programas porque nos permite trabajar con datos " +
                     "numéricos, es decir, podemos realizar cálculos, crear tablas o gráficos y también podemos analizar los datos con herramientas " +
                     "tan avanzadas como las tablas dinámicas.",
                     new CardImage(url: "https://policyviz.com/wp-content/uploads/2017/07/Excel-Logo.png")),

@@ -32,6 +32,9 @@ namespace KlausBot.Dialogs
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
+            var estadoRespuesta = "True";
+            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+
             string confirmacionRespuesta1 = "También tengo esta respuesta para usted :";
             string confirmacionRespuesta2 = "También tengo estas respuestas para usted :";
             string preguntaNoEncontrada = "Lo siento, no tengo otra respuesta para su pregunta";
@@ -71,11 +74,18 @@ namespace KlausBot.Dialogs
                     {
                         await context.PostAsync(preguntaNoEncontrada);
                     }
+                    else if (palabra1 == "notas" || palabra1 == "nota" || palabra1 == "blocs de notas" || palabra1 == "bloc de notas" || palabra1 == "bloc" || palabra1 == "block")
+                    {
+                        reply.Attachments = RespuestasOneNote.GetAbrirBlocNotasCompartidoOneNote();
+                        await context.PostAsync(confirmacionRespuesta2);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                    }
                     else
                     {
                         reply.Attachments = Respuestas.GetConsultaV2();
-                        await context.PostAsync(preguntaNoEncontrada);
                         await context.PostAsync(reply);
+                        await context.PostAsync(preguntaNoEncontrada);
                         return;
                     }
                 }
@@ -83,7 +93,21 @@ namespace KlausBot.Dialogs
                 // --------------------------------
                 else if (acccion == "Agregar")
                 {
-                    if (palabra1 == "graficos" || palabra1 == "grafico" || palabra1 == "gráficos" || palabra1 == "gráfico")
+                    if (palabra1 == "contacto" || palabra1 == "contactos" || palabra1 == "correos" || palabra1 == "correo" || palabra1 == "emails" || palabra1 == "email")
+                    {
+                        reply.Attachments = RespuestasOutlook.GetAgregarContactos();
+                        await context.PostAsync(confirmacionRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                    }
+                    else if (palabra1 == "nombres" || palabra1 == "nombre" || palabra1 == "personas" || palabra1 == "persona")
+                    {
+                        reply.Attachments = RespuestasOutlook.GetCambiarNombrePerfil();
+                        await context.PostAsync(confirmacionRespuesta2);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                    }
+                    else if (palabra1 == "graficos" || palabra1 == "grafico" || palabra1 == "gráficos" || palabra1 == "gráfico")
                     {
                         reply.Attachments = RespuestasOutlook.GetUsarGráficos();
                         await context.PostAsync(confirmacionRespuesta1);
@@ -125,6 +149,13 @@ namespace KlausBot.Dialogs
                         await context.PostAsync(reply);
                         await context.PostAsync(preguntaConsulta);
                     }
+                    else if (palabra1 == "firmas" || palabra1 == "firma")
+                    {
+                        reply.Attachments = Respuestas.GetAgregarQuitarFirmaOffice();
+                        await context.PostAsync(confirmacionRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                    }
                     else if (palabra1 == "tarjetas" || palabra1 == "tarjeta")
                     {
                         reply.Attachments = RespuestasOutlook.GetTarjeta();
@@ -139,12 +170,59 @@ namespace KlausBot.Dialogs
                         await context.PostAsync(reply);
                         await context.PostAsync(preguntaConsulta);
                     }
-                    else if (palabra1 == "nombres" || palabra1 == "nombre" || palabra1 == "personas" || palabra1 == "persona")
+                    else if (palabra1 == "archivos" || palabra1 == "archivo")
                     {
-                        reply.Attachments = RespuestasOutlook.GetCambiarNombrePerfil();
-                        await context.PostAsync(confirmacionRespuesta2);
+                        reply.Attachments = Respuestas.GetAgregarArchivo();
+                        await context.PostAsync(confirmacionRespuesta1);
                         await context.PostAsync(reply);
                         await context.PostAsync(preguntaConsulta);
+                    }
+                    else if (palabra1 == "contenido" || palabra1 == "contenidos")
+                    {
+                        reply.Attachments = RespuestasOneNote.GetAgregaContenidoNotasGrupo();
+                        await context.PostAsync(confirmacionRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                    }
+                    else if (palabra1 == "vínculo" || palabra1 == "vínculos" || palabra1 == "vinculo" || palabra1 == "vinculos")
+                    {
+                        await context.PostAsync(preguntaNoEncontrada);
+                    }
+                    else if (palabra1 == "imagen" || palabra1 == "imagenes" || palabra1 == "imágenes" || palabra1 == "imágen")
+                    {
+                        await context.PostAsync(preguntaNoEncontrada);
+                    }
+                    else if (palabra1 == "vídeos" || palabra1 == "vídeo" || palabra1 == "video" || palabra1 == "videos")
+                    {
+                        await context.PostAsync(preguntaNoEncontrada);
+                    }
+                    else if (palabra1 == "carpetascompartidas" || palabra1 == "carpetacompartida" || palabra1 == "carpeta")
+                    {
+                        await context.PostAsync(preguntaNoEncontrada);
+                    }
+                    else if (palabra1 == "cuenta" || palabra1 == "cuentas")
+                    {
+                        await context.PostAsync(preguntaNoEncontrada);
+                    }
+                    else if (palabra1 == "comentarios" || palabra1 == "comentario")
+                    {
+                        await context.PostAsync(preguntaNoEncontrada);
+                    }
+                    else if (palabra1 == "pdf")
+                    {
+                        await context.PostAsync(preguntaNoEncontrada);
+                    }
+                    else if (palabra1 == "carácterespecial" || palabra1 == "caracterespecial" || palabra1 == "carácteresespeciales" || palabra1 == "caracteresespeciales" || palabra1 == "símbolo" || palabra1 == "simbolo")
+                    {
+                        await context.PostAsync(preguntaNoEncontrada);
+                    }
+                    else if (palabra1 == "wordart")
+                    {
+                        await context.PostAsync(preguntaNoEncontrada);
+                    }
+                    else if (palabra1 == "marcadeagua" || palabra1 == "marcasdeagua")
+                    {
+                        await context.PostAsync(preguntaNoEncontrada);
                     }
                     else
                     {
@@ -629,7 +707,7 @@ namespace KlausBot.Dialogs
             else if (estadoPregunta == "False")
             {
                 reply.Attachments = Respuestas.GetConsultaV2();
-                await context.PostAsync("Lo siento, no entendi tu ultima pregunta, acaso tienes una consulta");
+                await context.PostAsync("Lo siento, no entendí lo que escribiste, acaso tienes una consulta?");
                 await context.PostAsync(reply);
                 return;
             }

@@ -34,6 +34,8 @@ namespace KlausBot.Dialogs
             var accion = "Importar";
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
+            var estadoRespuesta = "True";
+
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
             string preguntaNoRegistrada1 = "Lo siento, su pregunta no esta registrada, tal vez no escribió la pregunta correctamente";
@@ -61,6 +63,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else
@@ -94,6 +97,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else

@@ -31,6 +31,8 @@ namespace KlausBot.Dialogs
             var accion = "Revisar";
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
+            var estadoRespuesta = "True";
+
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
             string preguntaNoRegistrada1 = "Lo siento, su pregunta no esta registrada, tal vez no escribió la pregunta correctamente";
@@ -59,20 +61,22 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else if (servicio1 == "word" || servicio1 == "excel" || servicio1 == "powerpoint" || servicio1 == "outlook" || servicio1 == "office")
                         {
-                            reply.Attachments = RespuestasWord.GetRevisarOrtografiaOffice();
+                            reply.Attachments = Respuestas.GetRevisarOrtografiaOffice();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else
                         {
-                            reply.Attachments = RespuestasWord.GetRevisarOrtografiaOffice();
+                            reply.Attachments = Respuestas.GetRevisarOrtografiaOffice();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente el servicio '{servicio1}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -92,11 +96,12 @@ namespace KlausBot.Dialogs
                         await context.PostAsync(preguntaConsulta);
                         context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
                         context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                         return;
                     }
                     else
                     {
-                        reply.Attachments = RespuestasWord.GetRevisarOrtografiaOffice();
+                        reply.Attachments = Respuestas.GetRevisarOrtografiaOffice();
                         await context.PostAsync(preguntaNoRegistrada1);
                         await context.PostAsync(opcionSecundarioDeRespuesta1);
                         await context.PostAsync(reply);

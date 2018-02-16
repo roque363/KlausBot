@@ -34,6 +34,8 @@ namespace KlausBot.Dialogs
             var accion = "Exportar";
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
+            var estadoRespuesta = "True";
+
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
             string preguntaNoRegistrada1 = "Lo siento, su pregunta no esta registrada, tal vez no escribió la pregunta correctamente";
@@ -98,7 +100,7 @@ namespace KlausBot.Dialogs
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
                         if (palabra2 == "pdf")
                         {
-                            reply.Attachments = RespuestasWord.GetGuardarArchivoPDF();
+                            reply.Attachments = Respuestas.GetGuardarArchivoPDF();
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
@@ -107,7 +109,7 @@ namespace KlausBot.Dialogs
                         }
                         else
                         {
-                            reply.Attachments = RespuestasWord.GetGuardarArchivoPDF();
+                            reply.Attachments = Respuestas.GetGuardarArchivoPDF();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -115,7 +117,7 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
-                    reply.Attachments = RespuestasWord.GetGuardarArchivoPDF();
+                    reply.Attachments = Respuestas.GetGuardarArchivoPDF();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);

@@ -2,14 +2,17 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Microsoft.Bot.Builder.Dialogs.Internals;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
 using KlausBot.Dialogs;
 using KlausBot.Models;
+using Autofac;
 using System.Collections.Generic;
 
 namespace KlausBot
@@ -25,6 +28,13 @@ namespace KlausBot
         {
             if (activity.Type == ActivityTypes.Message)
             {
+                using (var scope = DialogModule.BeginLifetimeScope(Conversation.Container, activity))
+                {
+                    var botData = scope.Resolve<IBotData>();
+                    await botData.LoadAsync(CancellationToken.None);
+                    activity.Locale = "es";
+                    await botData.FlushAsync(CancellationToken.None);
+                }
                 await Conversation.SendAsync(activity, MakeLuisDialog);
             }
             else

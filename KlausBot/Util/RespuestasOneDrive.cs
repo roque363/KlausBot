@@ -12,7 +12,7 @@ namespace KlausBot.Util
         // PREGUNTAS DE ONE DRIVE                                               
         // ----------------------------------------------------------------------- 
         // ----------- DEFINICION -----------
-        // ----------------------------------------
+        // ----------------------------------
         // Descripcion de One Drive
         public static IList<Attachment> GetOneDriveDefinicion()
         {
@@ -92,8 +92,7 @@ namespace KlausBot.Util
         }
 
         //----------- CARGAR -----------
-        //------------------------------------
-
+        //------------------------------
         // Cargar archivos en One Drive
         public static IList<Attachment> GetCargarArchivosOneDrive()
         {
@@ -110,7 +109,7 @@ namespace KlausBot.Util
         }
 
         //------ COPIAR ----------
-        //--------------------------------
+        //------------------------
         // Copiar archivos y carpetas entre OneDrive para la Empresa y sitios de SharePoint
         public static IList<Attachment> GetCopiarArchivosCarpetasOneDriveSharePoint()
         {
@@ -128,8 +127,7 @@ namespace KlausBot.Util
         }
 
         //----------- CREAR -----------
-        //-----------------------------------
-
+        //-----------------------------
         // Crear archivos y carpetas en One Drive
         public static IList<Attachment> GetCrearArchivosCarpetasOneDrive()
         {
@@ -199,8 +197,7 @@ namespace KlausBot.Util
         }
 
         //--------GUARDAR----------
-        //-----------------------------------
-
+        //-------------------------
         // Guardar archivos en One Drive
         public static IList<Attachment> GetGuardarDocumentoOneDrive()
         {
@@ -244,7 +241,7 @@ namespace KlausBot.Util
         }
 
         //----- ENCONTRAR ------
-        //--------------------------------
+        //----------------------
         //Encontrar archivos perdidos o que faltan en OneDrive
         public static IList<Attachment> GetEncontrarArchivosPerdidosFaltanOneDrive()
         {
@@ -260,8 +257,7 @@ namespace KlausBot.Util
         }
 
         //-------- COMPARTIR --------
-        //-----------------------------------
-
+        //---------------------------
         //Compartir carpetas en One Drive y compartir carpeta de contactos en Outlook
         public static IList<Attachment> GetCompartirCarpetasOneDriveCarpetaContactosOutlook()
         {
@@ -309,8 +305,7 @@ namespace KlausBot.Util
         }
 
         //-------- AGREGAR ----------
-        //-----------------------------------
-
+        //---------------------------
         // Agregar carpetas compartidas a OneDrive y sincronizarlas
         public static IList<Attachment> GetAgregarCarpetasCompartidasOneDrive()
         {
@@ -355,8 +350,7 @@ namespace KlausBot.Util
         }
 
         //-------- ABRIR ----------
-        //---------------------------------
-
+        //-------------------------
         // Abrir archivos en su dispositivo móvil
         public static IList<Attachment> GetAbrirArchivosDispositivoMovilOneDrive()
         {
@@ -422,7 +416,6 @@ namespace KlausBot.Util
 
         //----- ESTABLECER --------
         //---------------------------------
-
         // Establecer la ubicación de almacenamiento de los archivos
         public static IList<Attachment> GetEstablecerUbicacionAlmacenamientoArchivosOneDrive()
         {
@@ -439,7 +432,6 @@ namespace KlausBot.Util
 
         //--------- BUSCAR --------
         //---------------------------------
-
         // Buscar y mover los archivos
         public static IList<Attachment> GetBuscarOMoverArchivosOneDrive()
         {

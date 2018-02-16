@@ -34,6 +34,8 @@ namespace KlausBot.Dialogs
             var accion = "Compartir";
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
+            var estadoRespuesta = "True";
+
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
             string preguntaNoRegistrada1 = "Lo siento, su pregunta no esta registrada, tal vez no escribió la pregunta correctamente";
@@ -67,6 +69,7 @@ namespace KlausBot.Dialogs
                                     await context.PostAsync(reply);
                                     await context.PostAsync(preguntaConsulta);
                                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                                     return;
                                 }
                                 else
@@ -118,6 +121,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else if (serv == "excel")
@@ -127,6 +131,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else if (serv == "powerpoint")
@@ -136,6 +141,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else if (serv == "onedrive")
@@ -145,6 +151,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else
@@ -154,6 +161,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(opcionSecundarioDeRespuesta2);
                             await context.PostAsync(reply);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                     }
@@ -167,6 +175,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else
@@ -176,6 +185,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                     }
@@ -194,6 +204,7 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                     return;
                 }
                 else if (palabra1 == "presentación" || palabra1 == "presentacion" || palabra1 == "presentaciones")
@@ -202,6 +213,7 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                     return;
                 }
                 else if (palabra1 == "libro" || palabra1 == "libros")
@@ -210,6 +222,7 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                     return;
                 }
                 else if (palabra1 == "coautoría" || palabra1 == "coautoria" || palabra1 == "autoría" || palabra1 == "autoria")
@@ -223,6 +236,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else
@@ -232,6 +246,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                     }
@@ -240,6 +255,7 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                     return;
                 }
                 else

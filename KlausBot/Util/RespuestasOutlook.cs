@@ -9,11 +9,11 @@ namespace KlausBot.Util
 {
     public class RespuestasOutlook
     {
-        // ----------------------------------------------------------------------- 
+        //---------------------------------------------------------------
         // PREGUNTAS DE OUTLOOK                                                    
-        // ----------------------------------------------------------------------- 
-        // DEFINICION
-        // ---------------------
+        //---------------------------------------------------------------
+        //----------- DEFINICION ------------
+        //-----------------------------------
         // Definicion de Outlook
         public static IList<Attachment> GetOutlookDefinicion()
         {
@@ -40,9 +40,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // CREAR
-        // ---------------------
+        //-------------- CREAR --------------
+        //-----------------------------------
         // Crear y enviar correo electrónico
         public static IList<Attachment> GetCrearEnviarCorreoElectronico()
         {
@@ -386,9 +385,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // RECUPERAR
-        // ---------------------
+        //----------- RECUPERAR -------------
+        //-----------------------------------
         // Recuperar elementos eliminados en Outlook para Windows
         public static IList<Attachment> GetRecuperarElementosEliminados()
         {
@@ -420,9 +418,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // AGREGAR Y INCLUIR Y INSERTAR
-        // ---------------------
+        //--- AGREGAR / INCLUIR / INSERTAR ---
+        //------------------------------------
         // Agregar algun contacto en outlook
         public static IList<Attachment> GetAgregarContacto()
         {
@@ -637,7 +634,7 @@ namespace KlausBot.Util
             {
                 GetHeroCardV2(
                     "Insertar hipervínculos de Facebook o Twitter en la firma de correo electrónico",
-                    "SSe aplica a: Outlook 2016 Outlook 2013",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
                     "Puede modificar su firma de correo electrónico o cree uno nuevo para incluir "
                     +"vínculos a perfiles de Facebook o Twitter. Para empezar, asegúrese de que guarde copias de los iconos de Facebook y Twitter en su equipo.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
@@ -646,9 +643,31 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // BLOQUEAR
-        // ---------------------
+        // Agregar rápidamente nuevos contactos en Outlook
+        // Bloquear o permitir (configuración del correo electrónico no deseado)
+        public static IList<Attachment> GetAgregarContactos()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar rápidamente nuevos contactos en Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "En muchos casos, no hay tener que escribir toda la información de un nuevo contacto en Microsoft Office Outlook 2007.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-r%C3%A1pidamente-nuevos-contactos-en-Outlook-6a18568a-73c7-42c8-957c-a59ae1175976")),
+                GetHeroCardV2(
+                    "ABloquear o permitir (configuración del correo electrónico no deseado)",
+                    "Se aplica a: Outlook Web App",
+                    "Este artículo trata sobre Outlook Web App, que usan las organizaciones que administran servidores de correo electrónico " +
+                    "con Exchange Server 2013 o 2010",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Bloquear-o-permitir-configuraci%C3%B3n-del-correo-electr%C3%B3nico-no-deseado-48c9f6f7-2309-4f95-9a4d-de987e880e46")),
+
+            };
+        }
+
+        //------------ BLOQUEAR -------------
+        //-----------------------------------
         // Bloquear a un remitente de correo
         public static IList<Attachment> GetNombresListasBloqueados()
         {
@@ -664,9 +683,8 @@ namespace KlausBot.Util
             };
         }
 
-        //--------------------
-        //DESACTIVAR
-        // ---------------------
+        //----------- DESACTIVAR ------------
+        //-----------------------------------
         //Activar o desactivar las alertas de escritorio
         public static IList<Attachment> GetDesactivarActivarAlertasEscritorio()
         {
@@ -701,9 +719,8 @@ namespace KlausBot.Util
             };
         }
 
-        //--------------------
-        //MOVER
-        // ---------------------
+        //-------------- MOVER --------------
+        //-----------------------------------
         //Mover un archivo de datos de Outlook
         public static IList<Attachment> GetMoverArchivoDatosOutlook()
         {
@@ -720,8 +737,8 @@ namespace KlausBot.Util
             };
         }
 
-        //--------------------
-        //SINCRONIZAR
+        //----------- SINCRONIZAR -----------
+        //-----------------------------------
         //Sincronizar Outlook con los contactos de iPhone o iPod touch de Apple
         public static IList<Attachment> GetSincronizarContactosOutlookApple()
         {
@@ -737,9 +754,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // CAMBIAR
-        // ---------------------
+        //------------- CAMBIAR -------------
+        //-----------------------------------
         // Cambiar el modo de ver el calendario de Outlook
         public static IList<Attachment> GetCambiarModoVerCalendario()
         {
@@ -991,9 +1007,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // USAR
-        // ---------------------
+        //-------------- USAR ---------------
+        //-----------------------------------
         // Usar los filtros de correo electrónico no deseado para controlar los mensajes que se pueden ver
         public static IList<Attachment> GetUsarFiltrosCorreoNoDeseadoControlarMensajes()
         {
@@ -1069,9 +1084,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // BUSCAR
-        // ---------------------
+        //------------- BUSCAR --------------
+        //-----------------------------------
         // Buscar personas o contactos en outlook
         public static IList<Attachment> GetBuscarPersonasOutlook()
         {
@@ -1153,9 +1167,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // EDITAR
-        // ---------------------
+        //-------------- EDITAR -------------
+        //-----------------------------------
         //Editar un contacto
         public static IList<Attachment> GetEditarContactosOutlook()
         {
@@ -1171,9 +1184,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // VER
-        // ---------------------
+        //--------------- VER ---------------
+        //-----------------------------------
         // Ver simultáneamente varios calendarios
         public static IList<Attachment> GetVerCalendarioSimultaneamente()
         {
@@ -1286,9 +1298,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // REENVIAR Y ENVIAR Y RESPONDER
-        // ---------------------
+        //-- REENVIAR / ENVIAR / RESPONDER --
+        //-----------------------------------
         // Enviar un mensaje de correo electrónico a un grupo de contactos
         public static IList<Attachment> GetAplicarFondosTemasMensajes()
         {
@@ -1466,9 +1477,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // ORGANIZAR
-        // ---------------------
+        //------------ ORGANIZAR ------------
+        //-----------------------------------
         //Organizar el calendario con categorías de colores
         public static IList<Attachment> GetOrganizarCalendariosCategorias()
         {
@@ -1484,9 +1494,8 @@ namespace KlausBot.Util
             };
         }
 
-        // --------------------
-        // ESTABLECER
-        // --------------------
+        //----------- ESTABLECER ------------
+        //-----------------------------------
         // Establecer o quitar avisos
         public static IList<Attachment> GetEstablecerAvisoOutlook()
         {
@@ -1550,9 +1559,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // ABRIR Y CERRAR
-        // ---------------------
+        //---------- ABRIR / CERRAR ---------
+        //-----------------------------------
         // Abrir y cerrar archivos de datos de Outlook (.pst)
         public static IList<Attachment> GetAbrirArchivosDatosOutlook()
         {
@@ -1589,9 +1597,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // GUARDAR
-        // ---------------------
+        //------------- GUARDAR -------------
+        //-----------------------------------
         // Guardar mensaje en outlook
         public static IList<Attachment> GetGuardarMensajeOutlook()
         {
@@ -1607,9 +1614,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // IMPRIMIR
-        // ---------------------
+        //------------ IMPRIMIR -------------
+        //-----------------------------------
         // Imprimir contactos, mensajes u otros elementos de Outlook
         public static IList<Attachment> GetImprimirContactosMensajesOutlook()
         {
@@ -1626,9 +1632,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // OBTENER
-        // ---------------------
+        //------------- OBTENER -------------
+        //-----------------------------------
         // Obtener un id digital
         public static IList<Attachment> GetObtenerIdDigitalOutlook()
         {
@@ -1661,9 +1666,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        // COMPARTIR
-        // ---------------------
+        //------------ COMPARTIR ------------
+        //-----------------------------------
         //Compartir una carpeta de contactos con otros usuarios
         public static IList<Attachment> GetCompartirCarpetaContactosUsuarios()
         {
@@ -1679,9 +1683,8 @@ namespace KlausBot.Util
             };
         }
 
-        // ---------------------
-        //EXPORTAR
-        //----------------------
+        //------------- EXPORTAR ------------
+        //-----------------------------------
         //Exportar un calendario de Outlook a Google Calendar
         public static IList<Attachment> GetExportarCalendarioGoogleCalendar()
         {
@@ -1712,9 +1715,8 @@ namespace KlausBot.Util
             };
         }
 
-        //---------------------
-        //IMPORTAR
-        //---------------------
+        //------------- IMPORTAR ------------
+        //-----------------------------------
         //Importar Gmail a Outlook
         public static IList<Attachment> GetImportarGmailOutlook()
         {

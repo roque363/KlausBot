@@ -34,6 +34,9 @@ namespace KlausBot.Dialogs
 
         private static async Task Respond(IDialogContext context)
         {
+            var estadoRespuesta2 = "False";
+            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
+
             Random rnd = new Random();
             // Saludos que puede generar el bot
             string[] saludos = {

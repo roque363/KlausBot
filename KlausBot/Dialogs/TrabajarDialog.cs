@@ -31,6 +31,8 @@ namespace KlausBot.Dialogs
             var accion = "Trabajar";
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
+            var estadoRespuesta = "True";
+
             string preguntaConsulta = "¿Tiene alguna otra consulta?";
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
@@ -62,6 +64,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else if (service == "onedrive")
@@ -71,6 +74,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else
@@ -94,6 +98,7 @@ namespace KlausBot.Dialogs
                         await context.PostAsync(preguntaConsulta);
                         context.PrivateConversationData.SetValue<string>("tipoServicio", "Word");
                         context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                         return;
                     }
                     else if (servicio == "OneDrive")
@@ -104,6 +109,7 @@ namespace KlausBot.Dialogs
                         await context.PostAsync(preguntaConsulta);
                         context.PrivateConversationData.SetValue<string>("tipoServicio", "OneNote");
                         context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                         return;
                     }
                     else
@@ -113,6 +119,7 @@ namespace KlausBot.Dialogs
                         await context.PostAsync(reply);
                         await context.PostAsync(preguntaConsulta);
                         context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                         return;
                     }
                 }
@@ -129,6 +136,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else
@@ -152,6 +160,7 @@ namespace KlausBot.Dialogs
                         await context.PostAsync(preguntaConsulta);
                         context.PrivateConversationData.SetValue<string>("tipoServicio", "Word");
                         context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                         return;
                     }
                     else
@@ -171,6 +180,7 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                     return;
                 }
                 else

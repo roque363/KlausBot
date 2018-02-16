@@ -24,8 +24,9 @@ namespace KlausBot.Dialogs
 
         public async Task StartAsync()
         {
-            var estadoPregunta = "True";
             var estadoPregunta2 = "False";
+
+            var estadoRespuesta2 = "False";
 
             Random rnd = new Random();
 
@@ -43,6 +44,7 @@ namespace KlausBot.Dialogs
             // Display the result
             await context.PostAsync(despe[mIndex]);
             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
+            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
             return;
         }
     }

@@ -42,6 +42,11 @@ namespace KlausBot.Models
                 var reply = context.MakeMessage();
                 reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
+                var estadoRespuesta2 = "False";
+                context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
+                var estadoPregunta2 = "False";
+                context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
+
                 var name = "Usuario";
                 var servicio = "Servicio";
                 context.UserData.TryGetValue<string>("Name", out name);
@@ -107,7 +112,7 @@ namespace KlausBot.Models
             };
 
             return new FormBuilder<ConsultaServicio>()
-                .Message("Bienvenido soy el bot de soporte para Office 365")
+                .Message("Soy el bot de soporte para Office")
                 .Field(nameof(TipoDeServicio))
                 .Confirm("El servicio que has seleccionado es {TipoDeServicio}? (Si/No)")
                 .OnCompletion(processOrder)

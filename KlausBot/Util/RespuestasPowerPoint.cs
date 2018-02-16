@@ -8,11 +8,11 @@ namespace KlausBot.Util
 {
     public class RespuestasPowerPoint
     {
-        // -------------------------------------------------------------
+        //-------------------------------------------------------------
         // PREGUNTAS DE POWER POINT
-        // -------------------------------------------------------------
-        // DEFINICION
-        // --------------------
+        //-------------------------------------------------------------
+        //-------- DEFINICION --------
+        // ---------------------------
         // Definicon de Power Point
         public static IList<Attachment> GetPowerPointDefinicionCard()
         {
@@ -32,8 +32,8 @@ namespace KlausBot.Util
             };
         }
 
-        // COMPARTIR
-        //---------------------
+        //-------- COMPARTIR --------
+        //---------------------------
         // Compartir la presentación de PowerPoint 2016 con otros usuarios
         public static IList<Attachment> GetCompartirPresentacionPowerPoint()
         {
@@ -51,6 +51,7 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/compartir-la-presentaci%C3%B3n-de-powerpoint-2016-con-otros-usuarios-a6308d9d-a0a8-443b-8e1c-0f4983f0afd1")),
             };
         }
+
         // Compartir la autoría de una presentación con PowerPoint Online
         public static IList<Attachment> GetCompartirAutoriaPresentacionPowerPoint()
         {

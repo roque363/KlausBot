@@ -25,6 +25,20 @@ namespace KlausBot.Util
             };
         }
 
+        // ----------- DEFINICION ------------
+        // Definicon de OneNote
+        public static IList<Attachment> GetOneNoteDefinicion()
+        {
+            return new List<Attachment>()
+            {
+                GetVideoCard(
+                    "¿Qué es OneNote?",
+                    "Video sobre OneNote",
+                    "https://videocontent.osi.office.net/06986140-d923-4649-9fb1-0a5860f892bd/3ac7679f-8354-4cf8-874a-b0af053c0de4_1280x720_3400.mp4",
+                    "https://support.office.com/es-es/article/v%C3%ADdeo-%C2%BFqu%C3%A9-es-onenote-be6cc6cc-3ca7-4f46-8876-5000f013c563?ui=es-ES&rs=es-ES&ad=ES"),
+            };
+        }
+
         //------------- ABRIR ---------------
         //-----------------------------------
         // Abrir un bloc de notas en OneNote para Windows 10
@@ -39,6 +53,21 @@ namespace KlausBot.Util
                     "de la cuenta que ha iniciado sesión.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/abrir-un-bloc-de-notas-en-onenote-para-windows-10-34f08dac-f7d5-4f0d-9f1c-5eb17a4c07c2?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Abrir blocs de notas que otras personas hayan compartido conmigo
+        public static IList<Attachment> GetAbrirBlocNotasCompartidoOneNote()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Abrir blocs de notas que otras personas hayan compartido conmigo",
+                    "Se aplica a: OneNote para iOS",
+                    "1. Pulse **Más blocs de notas**.\r\r" +
+                    "2. Busque el bloc de notas que se ha compartido con usted. Se marcará como 'Compartido por'",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Abrir-blocs-de-notas-que-otras-personas-hayan-compartido-conmigo-F5B5B7F4-E516-4D27-BC36-C8A64F31E347")),
             };
         }
 
@@ -129,6 +158,21 @@ namespace KlausBot.Util
                     "que puede compartir con o distribuir a otras personas.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/inserte-v%C3%ADdeos-en-l%C3%ADnea-en-onenote-para-windows-10-bea22b6e-04dc-4f3d-a04b-bdeb26f3f522?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Agregar contenido y notas a un grupo
+        public static IList<Attachment> GetAgregaContenidoNotasGrupo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Agregar contenido y notas a un grupo",
+                    "Se aplica a: Microsoft Teams",
+                    "Puede cargar archivos directamente a la ficha Archivos en cualquier canal. Solo tiene que hacer clic en " +
+                    "**Archivos** en la parte superior y, a continuación, hacer clic en **Cargar**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-contenido-y-notas-a-un-grupo-1edae27c-25c8-4c1e-9a6d-c06cfb3e4c44")),
             };
         }
 

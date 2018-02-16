@@ -33,6 +33,9 @@ namespace KlausBot.Dialogs
         {
             var estadoPregunta2 = "False";
 
+            var estadoRespuesta2 = "False";
+            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
+
             Random rnd = new Random();
             // Dudas que puede generar el bot
             string[] none = {
@@ -79,6 +82,18 @@ namespace KlausBot.Dialogs
         public async Task Despedida(IDialogContext context, LuisResult result)
         {
             await new DespedidaDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Afirmacion")]
+        public async Task Afirmacion(IDialogContext context, LuisResult result)
+        {
+            await new AfirmacionDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Negacion")]
+        public async Task Negacion(IDialogContext context, LuisResult result)
+        {
+            await new NegacionDialog(context, result).StartAsync();
         }
 
         // ------------------------------------------------------------
