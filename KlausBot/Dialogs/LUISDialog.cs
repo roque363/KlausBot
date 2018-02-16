@@ -32,8 +32,8 @@ namespace KlausBot.Dialogs
         public async Task None(IDialogContext context, LuisResult result)
         {
             var estadoPregunta2 = "False";
-
             var estadoRespuesta2 = "False";
+            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
             context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
 
             Random rnd = new Random();
@@ -42,6 +42,7 @@ namespace KlausBot.Dialogs
                 "Perdón, no entiendo lo que estas diciendo \U0001F615",
                 "Perdón, no entendí lo que necesitas \U0001F615",
                 "Perdón, no entendí lo que quieres decir \U0001F615",
+                "Perdón, no entendí lo que necesitas \U0001F615",
             };
 
             // Generate random indexes for none
@@ -55,7 +56,6 @@ namespace KlausBot.Dialogs
             await context.PostAsync(none[mIndex]);
             await context.PostAsync(reply);
             context.Wait(MessageReceived);
-            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
             return;
         }
 
@@ -94,6 +94,12 @@ namespace KlausBot.Dialogs
         public async Task Negacion(IDialogContext context, LuisResult result)
         {
             await new NegacionDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Random")]
+        public async Task Random(IDialogContext context, LuisResult result)
+        {
+            await new RandomDialog(context, result).StartAsync();
         }
 
         // ------------------------------------------------------------

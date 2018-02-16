@@ -208,6 +208,7 @@
     <Compile Include="Dialogs\OrganizarDialog.cs" />
     <Compile Include="Dialogs\ProbarDialog.cs" />
     <Compile Include="Dialogs\ProtegerDialog.cs" />
+    <Compile Include="Dialogs\RandomDialog.cs" />
     <Compile Include="Dialogs\RecuperarDialog.cs" />
     <Compile Include="Dialogs\RevisarDialog.cs" />
     <Compile Include="Dialogs\SaludoDialog.cs" />
