@@ -33,7 +33,7 @@ namespace KlausBot.Dialogs
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
             var estadoRespuesta = "True";
-            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+            var estadoRespuesta2 = "False";
 
             string confirmacionRespuesta1 = "También tengo esta respuesta para usted :";
             string confirmacionRespuesta2 = "También tengo estas respuestas para usted :";
@@ -59,6 +59,8 @@ namespace KlausBot.Dialogs
             // Si el usuario a realizado un pregunta correcta
             if (estadoPregunta == "True")
             {
+                context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+
                 // ------------ ABRIR -------------
                 // --------------------------------
                 if (acccion == "Abrir")
@@ -709,6 +711,7 @@ namespace KlausBot.Dialogs
                 reply.Attachments = Respuestas.GetConsultaV2();
                 await context.PostAsync("Lo siento, no entendí lo que escribiste, acaso tienes una consulta?");
                 await context.PostAsync(reply);
+                context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
                 return;
             }
             // El usuario no a realizado una pregunta
@@ -717,6 +720,7 @@ namespace KlausBot.Dialogs
                 reply.Attachments = Respuestas.GetConsultaV2();
                 await context.PostAsync("Lo siento, acaso tienes una consulta");
                 await context.PostAsync(reply);
+                context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
                 return;
             }
 

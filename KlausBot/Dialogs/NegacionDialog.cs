@@ -33,16 +33,19 @@ namespace KlausBot.Dialogs
 
             Random rnd = new Random();
 
-            // Despedida que puede generar el bot
+            // Respuestas a negaciones que puede generar el bot
             string[] negacion = {
                 "Espero poder ayudarle la prónxima vez, estoy dispinible las 24 horas del día",
                 "Entiendo ,Espero poder ayudarle la prónxima vez",
             };
 
+            // Generate random indexes for negacion
+            int mIndex = rnd.Next(0, negacion.Length);
+
             if (estadoRespuesta == "True")
             {
                 // Display the result
-                await context.PostAsync("");
+                await context.PostAsync(negacion[mIndex]);
                 context.PrivateConversationData.SetValue<string>("EstadoRespuesta", "False");
                 return;
             }
@@ -50,7 +53,7 @@ namespace KlausBot.Dialogs
             {
                 // Display the result
                 reply.Attachments = Respuestas.GetConsultaV2();
-                await context.PostAsync("Lo siento, acaso tienes una consulta");
+                await context.PostAsync("Lo siento, acaso tienes una consulta?");
                 await context.PostAsync(reply);
                 return;
             }
@@ -58,7 +61,7 @@ namespace KlausBot.Dialogs
             {
                 // Display the result
                 reply.Attachments = Respuestas.GetConsultaV2();
-                await context.PostAsync("Lo siento, acaso tienes una consulta");
+                await context.PostAsync("Lo siento, acaso tienes una consulta?");
                 await context.PostAsync(reply);
                 return;
             }

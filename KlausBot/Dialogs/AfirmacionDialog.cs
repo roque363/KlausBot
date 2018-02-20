@@ -41,7 +41,7 @@ namespace KlausBot.Dialogs
             {
                 // Display the result
                 reply.Attachments = Respuestas.GetConsultaV2();
-                await context.PostAsync("Lo siento, acaso tienes una consulta");
+                await context.PostAsync("Lo siento, acaso tienes una consulta?");
                 await context.PostAsync(reply);
                 return;
             }
@@ -49,7 +49,7 @@ namespace KlausBot.Dialogs
             {
                 // Display the result
                 reply.Attachments = Respuestas.GetConsultaV2();
-                await context.PostAsync("Lo siento, acaso tienes una consulta");
+                await context.PostAsync("Perdón, no entiendo lo que necesitas \U0001F615?");
                 await context.PostAsync(reply);
                 return;
             }

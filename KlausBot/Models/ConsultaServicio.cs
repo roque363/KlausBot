@@ -68,7 +68,7 @@ namespace KlausBot.Models
                     reply.Attachments = Respuestas.GetDestacadosExcel();
                     await context.PostAsync($"Estos son algunos temas destacados de {servicio}");
                     await context.PostAsync(reply);
-                    context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                    context.PrivateConversationData.SetValue<string>("tipoServicio", servicio);
                     return;
                 }
                 else if (servicio == "PowerPoint")
@@ -76,7 +76,7 @@ namespace KlausBot.Models
                     reply.Attachments = Respuestas.GetDestacadosPowerPoint();
                     await context.PostAsync($"Estos son algunos temas destacados de {servicio}");
                     await context.PostAsync(reply);
-                    context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                    context.PrivateConversationData.SetValue<string>("tipoServicio", servicio);
                     return;
                 }
                 else if (servicio == "Outlook")
@@ -84,7 +84,7 @@ namespace KlausBot.Models
                     reply.Attachments = Respuestas.GetDestacadosOutlook();
                     await context.PostAsync($"Estos son algunos temas destacados de {servicio}");
                     await context.PostAsync(reply);
-                    context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                    context.PrivateConversationData.SetValue<string>("tipoServicio", servicio);
                     return;
                 }
                 else if (servicio == "OneDrive")
@@ -92,7 +92,7 @@ namespace KlausBot.Models
                     reply.Attachments = Respuestas.GetDestacadosOneDrive();
                     await context.PostAsync($"Estos son algunos temas destacados de {servicio}");
                     await context.PostAsync(reply);
-                    context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                    context.PrivateConversationData.SetValue<string>("tipoServicio", servicio);
                     return;
                 }
                 else if (servicio == "OneNote")
@@ -100,7 +100,7 @@ namespace KlausBot.Models
                     reply.Attachments = Respuestas.GetDestacadosOneNote();
                     await context.PostAsync($"Estos son algunos temas destacados de {servicio}");
                     await context.PostAsync(reply);
-                    context.PrivateConversationData.SetValue<string>("tipoServicio", "Servicio");
+                    context.PrivateConversationData.SetValue<string>("tipoServicio", servicio);
                     return;
                 }
                 else

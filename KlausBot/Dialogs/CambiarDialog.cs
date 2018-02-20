@@ -35,6 +35,7 @@ namespace KlausBot.Dialogs
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
             var estadoRespuesta = "True";
+            var estadoRespuesta2 = "False";
 
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
@@ -387,6 +388,24 @@ namespace KlausBot.Dialogs
                                         return;
                                     }
                                 }
+                                else if (palabra3 == "documento" || palabra3 == "documentos" || palabra3 == "archivo" || palabra3 == "archivos")
+                                {
+                                    reply.Attachments = RespuestasWord.GetCambiarColorFondoDocumentoWord();
+                                    await context.PostAsync(confirmacionRespuesta1);
+                                    await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
+                                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                                    return;
+                                }
+                                else if (palabra3 == "diapositiva" || palabra3 == "diapositivas")
+                                {
+                                    reply.Attachments = RespuestasPowerPoint.GetCambiarColorFondoDiapositivas();
+                                    await context.PostAsync(confirmacionRespuesta1);
+                                    await context.PostAsync(reply);
+                                    await context.PostAsync(preguntaConsulta);
+                                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                                    return;
+                                }
                                 else
                                 {
                                     reply.Attachments = Respuestas.GetCambiarColorFondoOutlookOneDrive();
@@ -605,23 +624,24 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(opcionSecundarioDeRespuesta2);
                     await context.PostAsync(reply);
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
                     return;
                 }
                 // -------------------------------------------------------------------
                 // La primera parte de la pregunta es tamaño fuente
-                else if (palabra1 == "tamañodefuente" || palabra1 == "tamañosdefuentes" || palabra1 == "tamaño de fuente")
+                else if (palabra1 == "tamaño" || palabra1 == "tamaños")
                 {
                     // Se detectó  la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {
                         var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
-                        if (palabra2 == "lista" || palabra2 == "listas")
+                        if (palabra2 == "fuente" || palabra2 == "fuentes")
                         {
                             // Se detectó  la tercera parte de la pregunta
                             foreach (var entityP3 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra3"))
                             {
                                 var palabra3 = entityP3.Entity.ToLower().Replace(" ", "");
-                                if (palabra3 == "mensaje" || palabra3 == "mensajes" || palabra3 == "correo" || palabra3 == "correo")
+                                if (palabra3 == "lista" || palabra3 == "listas")
                                 {
                                     reply.Attachments = RespuestasOutlook.GetCambiarTamanoFuenteListaMensajes();
                                     await context.PostAsync(confirmacionRespuesta1);
@@ -633,9 +653,9 @@ namespace KlausBot.Dialogs
                                 }
                                 else
                                 {
-                                    reply.Attachments = RespuestasOutlook.GetCrearDiseñosFondoParaMensajes();
-                                    await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra3}'?");
                                     reply.Attachments = RespuestasOutlook.GetCambiarTamanoFuenteListaMensajes();
+                                    await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra3}'?");
+                                    await context.PostAsync(opcionSecundarioDeRespuesta1);
                                     await context.PostAsync(reply);
                                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                                     return;
@@ -647,12 +667,21 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(preguntaConsulta);
                             await context.PostAsync(reply);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else if (palabra2 == "diapositiva" || palabra2 == "diapositivas")
+                        {
+                            reply.Attachments = RespuestasPowerPoint.GetCambiarTamanoDiapositivas();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(preguntaConsulta);
+                            await context.PostAsync(reply);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                             context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else
                         {
-                            reply.Attachments = RespuestasOutlook.GetCambiarTamanoFuenteListaMensajes();
+                            reply.Attachments = Respuestas.GetCambiarTamanoFuenteListaMensajesTamanoDiapositivas();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -661,11 +690,12 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = RespuestasOutlook.GetCambiarTamanoFuenteListaMensajes();
+                    reply.Attachments = Respuestas.GetCambiarTamanoFuenteListaMensajesTamanoDiapositivas();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
                     return;
                 }
                 // -------------------------------------------------------------------
@@ -1261,11 +1291,101 @@ namespace KlausBot.Dialogs
                         return;
                     }
                 }
+                else if (palabra1 == "contraseñas" || palabra1 == "contraseña" || palabra1 == "password")
+                {
+                    reply.Attachments = Respuestas.GetRecuperarContraseñaMicrosoft();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                    return;
+                }
+                else if (palabra1 == "comentarios" || palabra1 == "comentario")
+                {
+                    reply.Attachments = RespuestasPowerPoint.GetModificarComentarioPowerPoint();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    return;
+                }
+                else if (palabra1 == "orden")
+                {
+                    // Se detectó la segunda parte de la pregunta
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "reproducción" || palabra2 == "reproduccion")
+                        {
+                            reply.Attachments = RespuestasPowerPoint.GetCambiarOrdenReproduccionEfectosAnimacion();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasPowerPoint.GetCambiarOrdenReproduccionEfectosAnimacion();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    reply.Attachments = reply.Attachments = RespuestasPowerPoint.GetCambiarOrdenReproduccionEfectosAnimacion();
+                    await context.PostAsync(preguntaNoRegistrada1);
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync(reply);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    return;
+                }
+                else if (palabra1 == "efecto" || palabra1 == "efectos")
+                {
+                    // Se detectó la segunda parte de la pregunta
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+                        if (palabra2 == "animación" || palabra2 == "animacion" || palabra2 == "animaciones")
+                        {
+                            reply.Attachments = RespuestasPowerPoint.GetCambiarEfectoAnimacion();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasPowerPoint.GetCambiarEfectoAnimacion();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                    }
+                    // No se detectó la segunda parte de la pregunta
+                    reply.Attachments = RespuestasPowerPoint.GetCambiarEfectoAnimacion();
+                    await context.PostAsync(preguntaNoRegistrada1);
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync(reply);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    return;
+                }
                 else
                 {
                     await context.PostAsync(preguntaNoRegistrada2);
                     await context.PostAsync($"O tal vez no escribió correctamente la palabra '{palabra1}'?");
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
                     return;
                 }
             }
@@ -1275,6 +1395,7 @@ namespace KlausBot.Dialogs
             await context.PostAsync(reply);
             await context.PostAsync("O tal vez no escribió la pregunta correctamente");
             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
+            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
             return;
         }
     }

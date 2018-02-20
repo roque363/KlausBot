@@ -35,6 +35,7 @@ namespace KlausBot.Dialogs
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
             var estadoRespuesta = "True";
+            var estadoRespuesta2 = "False";
 
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
@@ -61,6 +62,7 @@ namespace KlausBot.Dialogs
                     context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                     return;
                 }
+                // -------------------------------------------------------------------
                 else if (palabra1 == "mensajes" || palabra1 == "mensaje")
                 {
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
@@ -94,6 +96,7 @@ namespace KlausBot.Dialogs
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                     return;
                 }
+                // -------------------------------------------------------------------
                 else if (palabra1 == "elementos" || palabra1 == "elemento")
                 {
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
@@ -127,6 +130,7 @@ namespace KlausBot.Dialogs
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                     return;
                 }
+                // -------------------------------------------------------------------
                 else if (palabra1 == "archivos" || palabra1 == "archivo")
                 {
                     foreach (var servicio in result.Entities.Where(Entity => Entity.Type == "Servicio"))
@@ -278,6 +282,7 @@ namespace KlausBot.Dialogs
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                     return;
                 }
+                // -------------------------------------------------------------------
                 else if (palabra1 == "referencias" || palabra1 == "referencia")
                 {
                     // Se detectó el Servico de la pregunta
@@ -312,6 +317,7 @@ namespace KlausBot.Dialogs
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                     return;
                 }
+                // -------------------------------------------------------------------
                 else if (palabra1 == "nota" || palabra1 == "notas")
                 {
                     // Se detectó el Servico de la pregunta
@@ -465,6 +471,7 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(preguntaNoRegistrada2);
                     await context.PostAsync($"O tal vez no escribió correctamente la palabra '{palabra1}'?");
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
                     return;
                 }
             }
@@ -474,6 +481,7 @@ namespace KlausBot.Dialogs
             await context.PostAsync(reply);
             await context.PostAsync("O tal vez no escribió la pregunta correctamente");
             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
+            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
             return;
         }
     }

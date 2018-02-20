@@ -128,6 +128,28 @@ namespace KlausBot.Dialogs
                 // La primera parte de la pregunta es plantilla
                 else if (palabra1 == "plantilla" || palabra1 == "plantillas")
                 {
+                    foreach (var servicio in result.Entities.Where(Entity => Entity.Type == "Servicio"))
+                    {
+                        var serv = servicio.Entity.ToLower().Replace(" ", "");
+                        if (serv == "powerpoint")
+                        {
+                            reply.Attachments = RespuestasPowerPoint.GetCrearGuardarPlantillaPowerPoint();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasWord.GetCrearPlantilla();
+                            await context.PostAsync($"Lo siento, {serv} no esta registrado.");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                    }
                     // Se detectó la segunda parte de la pregunta
                     foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
                     {

@@ -74,6 +74,85 @@ namespace KlausBot.Dialogs
         [LuisIntent("Consulta.ServicioGeneral")]
         public async Task ConsultaServicio(IDialogContext context, LuisResult result)
         {
+            var reply = context.MakeMessage();
+            reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+
+            var estadoRespuesta2 = "False";
+            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
+            var estadoPregunta2 = "False";
+            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
+
+            // Se detectó el Servicio de la consulta
+            foreach (var serv in result.Entities.Where(Entity => Entity.Type == "Servicio"))
+            {
+                var servicio = serv.Entity.ToLower().Replace(" ", "");
+
+                if (servicio == "word")
+                {
+                    reply.Attachments = Respuestas.GetDestacadosWord();
+                    await context.PostAsync($"Entonces, ¿En qué te puedo ayudar respecto a {servicio}?");
+                    await context.PostAsync($"Estos son algunos temas destacados de {servicio}");
+                    await context.PostAsync(reply);
+                    context.PrivateConversationData.SetValue<string>("tipoServicio", "Word");
+                    context.Wait(MessageReceived);
+                    return;
+                }
+                else if (servicio == "excel")
+                {
+                    reply.Attachments = Respuestas.GetDestacadosExcel();
+                    await context.PostAsync($"Entonces, ¿En qué te puedo ayudar respecto a {servicio}?");
+                    await context.PostAsync($"Estos son algunos temas destacados de {servicio}");
+                    await context.PostAsync(reply);
+                    context.PrivateConversationData.SetValue<string>("tipoServicio", "Excel");
+                    context.Wait(MessageReceived);
+                    return;
+                }
+                else if (servicio == "powerpoint")
+                {
+                    reply.Attachments = Respuestas.GetDestacadosPowerPoint();
+                    await context.PostAsync($"Entonces, ¿En qué te puedo ayudar respecto a {servicio}?");
+                    await context.PostAsync($"Estos son algunos temas destacados de {servicio}");
+                    await context.PostAsync(reply);
+                    context.PrivateConversationData.SetValue<string>("tipoServicio", "PowerPoint");
+                    context.Wait(MessageReceived);
+                    return;
+                }
+                else if (servicio == "outlook")
+                {
+                    reply.Attachments = Respuestas.GetDestacadosOutlook();
+                    await context.PostAsync($"Entonces, ¿En qué te puedo ayudar respecto a {servicio}?");
+                    await context.PostAsync($"Estos son algunos temas destacados de {servicio}");
+                    await context.PostAsync(reply);
+                    context.PrivateConversationData.SetValue<string>("tipoServicio", "Outlook");
+                    context.Wait(MessageReceived);
+                    return;
+                }
+                else if (servicio == "onedrive")
+                {
+                    reply.Attachments = Respuestas.GetDestacadosOneDrive();
+                    await context.PostAsync($"Entonces, ¿En qué te puedo ayudar respecto a {servicio}?");
+                    await context.PostAsync($"Estos son algunos temas destacados de {servicio}");
+                    await context.PostAsync(reply);
+                    context.PrivateConversationData.SetValue<string>("tipoServicio", "OneDrive");
+                    context.Wait(MessageReceived);
+                    return;
+                }
+                else if (servicio == "onenote")
+                {
+                    reply.Attachments = Respuestas.GetDestacadosOneNote();
+                    await context.PostAsync($"Entonces, ¿En qué te puedo ayudar respecto a {servicio}?");
+                    await context.PostAsync($"Estos son algunos temas destacados de {servicio}");
+                    await context.PostAsync(reply);
+                    context.PrivateConversationData.SetValue<string>("tipoServicio", "OneNote");
+                    context.Wait(MessageReceived);
+                    return;
+                }
+                else
+                {
+                    var formularioRegistro1 = new FormDialog<ConsultaServicio>(new ConsultaServicio(), this.consultaServicio, FormOptions.PromptInStart);
+                    context.Call<ConsultaServicio>(formularioRegistro1, Callback);
+                }
+            }
             var formularioRegistro = new FormDialog<ConsultaServicio>(new ConsultaServicio(), this.consultaServicio, FormOptions.PromptInStart);
             context.Call<ConsultaServicio>(formularioRegistro, Callback);
         }
@@ -101,7 +180,7 @@ namespace KlausBot.Dialogs
         {
             await new RandomDialog(context, result).StartAsync();
         }
-
+        
         // ------------------------------------------------------------
         //------------ ACCIONES QUE PUEDE TOMAR EL USUARIO ------------
 
@@ -123,6 +202,12 @@ namespace KlausBot.Dialogs
         public async Task ConsultaAjustar(IDialogContext context, LuisResult result)
         {
             await new AjustarDialog(context, result).StartAsync();
+        }
+
+        [LuisIntent("Consulta.Animar")]
+        public async Task ConsultaAnimar(IDialogContext context, LuisResult result)
+        {
+            await new AnimarDialog(context, result).StartAsync();
         }
 
         [LuisIntent("Consulta.Aplicar")]
@@ -246,6 +331,12 @@ namespace KlausBot.Dialogs
             await new GuardarDialog(context, result).StartAsync();
         }
 
+        [LuisIntent("Consulta.Hacer")]
+        public async Task ConsultaHacer(IDialogContext context, LuisResult result)
+        {
+            await new HacerDialog(context, result).StartAsync();
+        }
+
         [LuisIntent("Consulta.Importar")]
         public async Task ConsultaImportar(IDialogContext context, LuisResult result)
         {
@@ -256,6 +347,14 @@ namespace KlausBot.Dialogs
         public async Task ConsultaImprimir(IDialogContext context, LuisResult result)
         {
             await new ImprimirDialog(context, result).StartAsync();
+        }
+        // La accion del usuairo es agregar
+
+        [LuisIntent("Consulta.Mantener")]
+        public async Task ConsultaMantener(IDialogContext context, LuisResult result)
+        {
+            await new MantenerDialog(context, result).StartAsync();
+
         }
 
         [LuisIntent("Consulta.Mover")]

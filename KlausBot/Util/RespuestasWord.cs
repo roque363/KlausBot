@@ -351,7 +351,6 @@ namespace KlausBot.Util
             };
         }
 
-
         // Agregar un encabezado o pie de página
         public static IList<Attachment> GetAgregarEncabezadoPiePaginaWord()
         {
@@ -365,7 +364,6 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/agregar-un-encabezado-o-pie-de-p%C3%A1gina-b87ee4df-abc1-41f8-995b-b39f6d99c7ed?ui=es-ES&rs=es-HN&ad=PE")),
                 };
         }
-
 
         // Insertar o dibujar una tabla
         public static IList<Attachment> GetInsertarDibujarTablaWord()
@@ -624,6 +622,24 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/Configurar-una-nueva-lista-de-combinaci%C3%B3n-de-correspondencia-con-Word-1a752328-b1b5-4865-96a2-e0acd561fe6f")),
 
             };
+        }
+
+        // Crear una plantilla
+        public static IList<Attachment> GetCrearPlantilla()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Crear una plantilla",
+                    "Se aplica a: Excel 2016 Word 2016 PowerPoint 2016 Access 2016 Visio Standard 2016",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. Para guardar un archivo como una plantilla, haga clic en **archivo** > **Guardar como**.\r\r"+
+                    ">2. Haga doble clic en el **equipo**, o bien, en los programas de Office 2016, haga doble clic en **Este equipo**.\r\r"+
+                    ">3. Escriba un nombre para la plantilla en el cuadro **Nombre de archivo**.\r\r"+
+                    ">4. Haga clic en el elemento de plantilla en la lista **Guardar como tipo**.En Word, por ejemplo, haga clic en **Plantilla de Word** y haga clic en **Guardar**.\r\r",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/crear-una-plantilla-86a1d089-5ae2-4d53-9042-1191bce57deb")),
+                };
         }
 
         //--------- COMPARTIR ---------
@@ -978,13 +994,30 @@ namespace KlausBot.Util
             {
                 GetHeroCardV2(
                     "Eliminar o cambiar un encabezado o pie de página de una sola página",
-                    "Se aplica a: Word 2016, Word 2013, Word 2010, Word 2007, Word Online",
+                    "Se aplica a: Word",
                     "Puede quitar una marca de agua de un documento si lo desea.\r\r"+
                     ">1. Abra el documento donde quiera quitar la marca de agua.\r\r"+
                     ">2. Vaya a la pestaña **Diseño** y, en el grupo **Fondo de página**, seleccione **Marca de agua**.\r\r"+
                     ">3. Seleccione **Quitar marca de agua**.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/quitar-una-marca-de-agua-636cc588-489d-46c4-a03f-07f3f4820029?ui=es-ES&rs=es-HN&ad=PE")),
+            };
+        }
+
+        // Borrar todo el formato de texto
+        public static IList<Attachment> GetBorrarFormatoTexto()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Borrar todo el formato de texto",
+                    "Se aplica a: Word 2016 Outlook 2016 PowerPoint 2016 OneNote 2016 Publisher 2016",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. Seleccione el texto que desea restablecer a su formato predeterminado.\r\r"+
+                    ">2. En el grupo **Fuente** de la ficha **Inicio**, haga clic en **Borrar todo el formato**.\r\r"+
+                    "![duck](https://support.content.office.net/es-es/media/45a272d9-d934-4938-bbc0-8d69c6c36773.png).",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Borrar-todo-el-formato-de-texto-c094c4da-7f09-4cea-9a8d-c166949c9c80")),
             };
         }
 

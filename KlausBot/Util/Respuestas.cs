@@ -566,6 +566,30 @@ namespace KlausBot.Util
             };
         }
 
+        // Cambiar la fuente o el tamaño de fuente en la lista de mensajes
+        // Cambiar el tamaño de las diapositivas
+        public static IList<Attachment> GetCambiarTamanoFuenteListaMensajesTamanoDiapositivas()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar la fuente o el tamaño de fuente en la lista de mensajes",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
+                    "Para buscar más rápidamente a través de la Bandeja de entrada, desea ampliar el texto de las líneas de asunto"+
+                    " y el encabezado de columna, o cambiar la fuente para facilitar la lectura.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-la-fuente-o-el-tama%C3%B1o-de-fuente-en-la-lista-de-mensajes-57bd24a6-1f85-45ac-a657-fba877d3fe00?ui=es-ES&rs=es-ES&ad=ES")),
+                GetHeroCardV2(
+                    "Cambiar el tamaño de las diapositivas",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013 PowerPoint 2010 PowerPoint 2016",
+                    "Para cambiar el tamaño de las diapositivas\r\r"+
+                    ">* Vaya a la pestaña Diseño de la cinta de opciones\r\r"+
+                    ">* Seleccione el **tamaño de diapositiva**",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-tama%C3%B1o-de-las-diapositivas-040a811c-be43-40b9-8d04-0de5ed79987e")),
+               };
+        }
+
         // ---------- CREAR -------------
         public static IList<Attachment> GetCrearDocumento()
         {
@@ -646,6 +670,7 @@ namespace KlausBot.Util
 
         // Insertar una tabla en OneNote para Windows 10
         // Como agregar tablas a mensajes en Outlook
+        // Agregar Tabla Office
         public static IList<Attachment> GetInsertarTabla()
         {
             return new List<Attachment>()
@@ -677,6 +702,13 @@ namespace KlausBot.Util
                     "y la posibilidad de usar diferentes fórmulas en una fila de totales.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/crear-o-eliminar-una-tabla-de-excel-e81aa349-b006-4f8a-9806-5af9df0ac664")),
+                  GetHeroCardV2(
+                    "Agregar una tabla a una diapositiva",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013 PowerPoint 2010",
+                    " Puede crear y aplicar formato a una tabla en PowerPoint, copiar y pegar una tabla desde Word, copiar y pegar un grupo de " +
+                    "celdas desde Excel o insertar una hoja de cálculo Excel en la presentación de PowerPoint.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-una-tabla-a-una-diapositiva-34f106c9-5320-4b89-9129-806e64b258ac")),
             };
         }
 
@@ -746,6 +778,53 @@ namespace KlausBot.Util
             };
         }
 
+        // Insertar y reproducir un archivo de vídeo
+        // Inserte vídeos en línea en OneNote para Windows 10
+        public static IList<Attachment> GetInsertarArchivoVideoPowerPointOneNote()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Insertar y reproducir un archivo de vídeo",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013 PowerPoint 2010 PowerPoint 2007",
+                    "Insertar un vídeo almacenado en su equipo\r\r"+
+                    ">1. En la pestaña **Insertar**, haga clic en la flecha situada debajo de **Video** y luego en **Video en Mi PC**.\r\r"+
+                    ">2. En el cuadro de diálogo **Insertar vídeo**, haga clic en el vídeo que desea y a continuación, haga clic en **Insertar**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/insertar-y-reproducir-un-archivo-de-v%C3%ADdeo-desde-su-equipo-o-desde-onedrive-f3fcbd3e-5f86-4320-8aea-31bff480ed02?ui=es-ES&rs=es-ES&ad=ES")),
+                GetHeroCardV2(
+                    "Inserte vídeos en línea en OneNote",
+                    "Se aplica a: OneNote para Windows 10",
+                    "Agregar vídeos a las notas es una excelente forma de crear los blocs de notas interactivas " +
+                    "que puede compartir con o distribuir a otras personas.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/inserte-v%C3%ADdeos-en-l%C3%ADnea-en-onenote-para-windows-10-bea22b6e-04dc-4f3d-a04b-bdeb26f3f522?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Insertar una marca de agua en Word
+        public static IList<Attachment> GetAgregarMarcaAguaWordPowerPoint()
+        {
+            return new List<Attachment>()
+            {
+                 GetHeroCardV2(
+                    "Insertar una marca de agua en Word",
+                    "Se aplica a: Word 2016 Word 2013 Word 2010 Word 2007",
+                    "Las marcas de agua son texto o imágenes que se colocan detrás del texto en el documento. Puede agregar " +
+                    "marcas de agua de texto, como Borrador o Confidencial, al documento.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/insertar-una-marca-de-agua-en-word-f90f26a5-2101-4a75-bbfe-f27ef05002de")),
+
+                GetHeroCardV2(
+                    "Agregar una marca de agua 'BORRADOR' al fondo de las diapositivas",
+                    "Se aplica a: PowerPoint 2016 PowerPoint 2013 PowerPoint 2010 PowerPoint 2007",
+                    "PowerPoint no tiene una galería de marcas de agua prediseñadas como Word, pero puede agregar de forma manual"+
+                    " un fondo del texto en las diapositivas para obtener el efecto de marca de agua.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/agregar-una-marca-de-agua-borrador-al-fondo-de-las-diapositivas-ea4cc5f5-ea5d-4213-9c7d-ed01a7952ed0?ui=es-ES&rs=es-ES&ad=ES#OfficeVersion-WaterTxt=2016,_2013")),
+                };
+        }
+
         //---------- COLABORAR ----------
         // Colaborar en documentos de Word con coautoría en tiempo real 
         // Trabajar o colaborar de manera conjunta en documentos de Office en OneDrive
@@ -810,6 +889,47 @@ namespace KlausBot.Util
             };
         }
 
+        //------------ USAR -------------
+        // Usar una fórmula en una tabla de Word o de Outlook
+        public static IList<Attachment> GetUsarFormulaWordOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Usar una fórmula en una tabla de Word o de Outlook",
+                    "Se aplica a: Word 2016 Outlook 2016 Word 2013 Outlook 2013",
+                    "Seleccione la celda de la tabla donde desee mostrar los resultados.\r\r"+
+                    "E inserte el comando **Fórmula** que se encuentra en la pestaña **Diseño** en **Herramientas de tabla**, en el grupo **Datos**.\r\r"+
+                    "![duck](https://support.content.office.net/es-es/media/28bc04f3-5a31-457c-b4d4-437b3581d341.jpg)",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/usar-una-f%C3%B3rmula-en-una-tabla-de-word-o-de-outlook-cbd0596e-ea8a-485e-a35d-b2cb2c4f3e27")),
+                };
+        }
+
+        // Usar fórmulas en Excel
+        // Usar una fórmula en una tabla de Word o de Outlook
+        public static IList<Attachment> GetUsarFormulaWordOutlookExcel()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Información general sobre fórmulas en Excel",
+                    "Se aplica a: Excel 2016 Excel 2013 Excel 2010 Excel 2007",
+                    "En excel una fórmula siempre empieza con un signo igual (=), que puede ir seguido de números, operadores matemáticos (como los signos + o - "+
+                    "para sumar o restar) y funciones integradas de **Excel**, que pueden ampliar el poder de una fórmula.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/informaci%C3%B3n-general-sobre-f%C3%B3rmulas-en-excel-ecfdc708-9162-49e8-b993-c311f47ca173")),
+
+                GetHeroCardV2(
+                    "Usar una fórmula en una tabla de Word o de Outlook",
+                    "Se aplica a: Word 2016 Outlook 2016 Word 2013 Outlook 2013",
+                    "Seleccione la celda de la tabla donde desee mostrar los resultados.\r\r"+
+                    "E inserte el comando **Fórmula** que se encuentra en la pestaña **Diseño** en **Herramientas de tabla**, en el grupo **Datos**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/usar-una-f%C3%B3rmula-en-una-tabla-de-word-o-de-outlook-cbd0596e-ea8a-485e-a35d-b2cb2c4f3e27")),
+                };
+        }
+
         //---------- COMPARTIR ----------
         public static IList<Attachment> GetCompartirArchivos()
         {
@@ -863,6 +983,58 @@ namespace KlausBot.Util
                     "El Panel de comentarios es la manera más rápida de editar, ocultar o eliminar los comentarios en la presentación.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/agregar-cambiar-ocultar-o-eliminar-comentarios-en-una-presentaci%C3%B3n-a8f071fa-6e5d-4c37-a025-1cf48a76eb38?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Quitar una marca de agua Word
+        // Quitar una marca de agua transparente de las diapositivas
+        public static IList<Attachment> GetQuitarMarcaAgua()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Eliminar o cambiar un encabezado o pie de página de una sola página",
+                    "Se aplica a: Word",
+                    "Puede quitar una marca de agua de un documento si lo desea.\r\r"+
+                    ">1. Abra el documento donde quiera quitar la marca de agua.\r\r"+
+                    ">2. Vaya a la pestaña **Diseño** y, en el grupo **Fondo de página**, seleccione **Marca de agua**.\r\r"+
+                    ">3. Seleccione **Quitar marca de agua**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/quitar-una-marca-de-agua-636cc588-489d-46c4-a03f-07f3f4820029?ui=es-ES&rs=es-HN&ad=PE")),
+                GetHeroCardV2(
+                    "Quitar una marca de agua transparente de las diapositivas",
+                    "Se aplica a: PowerPoint",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. Haga clic en la pestaña **Vista** y luego en **Patrón de diapositivas**.\r\r"+
+                    ">2. Haga clic en el patrón o diseño de diapositivas que contenga la marca de agua.\r\r"+
+                    ">3. En la diapositiva, seleccione la imagen que quiere quitar y presione **Eliminar**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Quitar-una-marca-de-agua-transparente-de-las-diapositivas-44f576d2-4e06-498c-9930-1b1dbd878ae2")),
+            };
+        }
+
+        // Quitar formato condicional Excel
+        // Borrar todo el formato de texto PowerPoint y Word
+        public static IList<Attachment> GetBorrarFormatoWordExcel()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Quitar formato condicional",
+                    "Se aplica a: Excel 2016 Excel 2013",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. Seleccione el rango de celdas.\r\r"+
+                    ">2. Haga clic en el botón **Lente de análisis rápido** ![duck](https://support.content.office.net/es-es/media/d569b32d-d9c4-4676-b46e-ee17543dd843.jpg).\r\r"+
+                    ">3. Haga clic en **Borrar formato**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Quitar-formato-condicional-a3a74584-96fe-44ea-8a84-e726ce81094b")),
+                GetHeroCardV2(
+                    "Borrar todo el formato de texto",
+                    "Se aplica a: Word 2016 Outlook 2016 PowerPoint 2016 OneNote 2016 Publisher 2016",
+                    "Puede borrar fácilmente todo el formato (como el formato de negrita, subrayado, cursiva, color, superíndice, subíndice, etc.) " +
+                    "del texto y restablecer el texto a sus estilos de formato predeterminados.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Borrar-todo-el-formato-de-texto-c094c4da-7f09-4cea-9a8d-c166949c9c80")),
             };
         }
 

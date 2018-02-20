@@ -179,6 +179,7 @@
     <Compile Include="Dialogs\AfirmacionDialog.cs" />
     <Compile Include="Dialogs\AgregarDialog.cs" />
     <Compile Include="Dialogs\AjustarDialog.cs" />
+    <Compile Include="Dialogs\AnimarDialog.cs" />
     <Compile Include="Dialogs\AplicarDialog.cs" />
     <Compile Include="Dialogs\BuscarDialog.cs" />
     <Compile Include="Dialogs\CambiarDialog.cs" />
@@ -199,9 +200,11 @@
     <Compile Include="Dialogs\EstablecerDialog.cs" />
     <Compile Include="Dialogs\ExportarDialog.cs" />
     <Compile Include="Dialogs\GuardarDialog.cs" />
+    <Compile Include="Dialogs\HacerDialog.cs" />
     <Compile Include="Dialogs\ImportarDialog.cs" />
     <Compile Include="Dialogs\ImprimirDialog.cs" />
     <Compile Include="Dialogs\LUISDialog.cs" />
+    <Compile Include="Dialogs\MantenerDialog.cs" />
     <Compile Include="Dialogs\MoverDialog.cs" />
     <Compile Include="Dialogs\NegacionDialog.cs" />
     <Compile Include="Dialogs\ObtenerDialog.cs" />

@@ -1752,6 +1752,23 @@ namespace KlausBot.Util
             };
         }
 
+        //------------ MANTENER -------------
+        //-----------------------------------
+        // Mantener las próximas citas y reuniones siempre a la vista
+        public static IList<Attachment> GetMantenerCitasYReuniones()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                "Sincronizar Outlook con los contactos de iPhone o iPod touch de Apple",
+                "Se aplica a: Outlook 2016 Outlook 2013",
+                "Cuando seleccione el icono de calendario en la barra de navegación, la información del calendario muestra las próximas citas y " +
+                "reuniones. Para ver los elementos próximos, acoplar la información de calendario a la ventana de Outlook.",
+                new CardAction(ActionTypes.OpenUrl, "Ver información",
+                value: "https://support.office.com/es-es/article/Mantener-las-pr%C3%B3ximas-citas-y-reuniones-siempre-a-la-vista-0dc3d54c-9ae9-4285-9439-4f675244aae0")),
+            };
+        }
+
         // ----------------------------------------------------------------------- 
         // PREGUNTAS SECUNDARIAS DE OUTLOOK                                                    
         // ----------------------------------------------------------------------- 
@@ -2202,20 +2219,6 @@ namespace KlausBot.Util
 
         // ----------------------------------------------------------------------- 
         // PREGUNTAS NO IMPLEMENTADAS 
-
-        // Mantener las próximas citas y reuniones siempre a la vista
-        public static IList<Attachment> GetMantenerCitasReunionesVista()
-        {
-            return new List<Attachment>()
-            {
-                GetHeroCardV2(
-                    "Mantener las próximas citas y reuniones siempre a la vista",
-                    "Se aplica a: Outlook 2016 Outlook 2013",
-                    "",
-                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
-                    value: "https://support.office.com/es-es/article/Mantener-las-pr%C3%B3ximas-citas-y-reuniones-siempre-a-la-vista-0dc3d54c-9ae9-4285-9439-4f675244aae0")),
-            };
-        }
 
         // Marcar un mensaje como leído o como no leído
         public static IList<Attachment> GetMarcarMensajeComoLeidoONoLeido()
