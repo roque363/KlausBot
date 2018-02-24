@@ -705,7 +705,7 @@ namespace KlausBot.Util
             };
         }
 
-        //Usar OneDrive en Windows Phone
+        // Usar OneDrive en Windows Phone
         public static IList<Attachment> GetUsarOneDriveWindowsPhone()
         {
             return new List<Attachment>()
@@ -719,7 +719,7 @@ namespace KlausBot.Util
             };
         }
 
-        //Usar OneDrive para la Empresa en Windows Phone 
+        // Usar OneDrive para la Empresa en Windows Phone 
         public static IList<Attachment> GetUsarOneDriveEmpresaWindowsPhone()
         {
             return new List<Attachment>()
@@ -734,7 +734,7 @@ namespace KlausBot.Util
             };
         }
 
-        //Usar One Drive en Windows Phone y tambien para la empresa
+        // Usar One Drive en Windows Phone y tambien para la empresa
         public static IList<Attachment> GetUsarOneDriveEmpresaOneDriveWindowsPhone()
         {
             return new List<Attachment>()
@@ -801,7 +801,7 @@ namespace KlausBot.Util
 
         //------- DESACTIVAR --------
         //----------------------------
-        //Detener o cambiar el uso compartido
+        // Detener o cambiar el uso compartido
         public static IList<Attachment> GetDesactivarDesinstalarOneDrive()
         {
             return new List<Attachment>()
@@ -812,6 +812,39 @@ namespace KlausBot.Util
                 "Si no quiere usar OneDrive, la solución más sencilla es desvincularlo.",
                 new CardAction(ActionTypes.OpenUrl, "Ver información",
                 value: "https://support.office.com/es-es/article/Desactivar-o-desinstalar-OneDrive-f32a17ce-3336-40fe-9c38-6efb09f944b0")),
+            };
+        }
+
+        //------ RESOLVER / SOLUCIONAR -------
+        //------------------------------------
+        // Correcciones o soluciones alternativas para problemas recientes en OneDrive
+        // Solucionar problemas de sincronización de OneDrive
+        // Solucionar problemas de la aplicación móvil de OneDrive
+        public static IList<Attachment> GetSolucionarOneDrive()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Correcciones o soluciones alternativas para problemas recientes en OneDrive",
+                    "Se aplica a: Office.com, OneDrive",
+                    "Si tiene problemas de acceso a OneDrive en línea, puede ver el estado de los servicios de Microsoft Office Online en el " +
+                    "[portal Estado del servicio](https://portal.office.com/servicestatus).",
+                    new CardAction(ActionTypes.OpenUrl, "Ver información",
+                    value: "https://support.office.com/es-es/article/Correcciones-o-soluciones-alternativas-para-problemas-recientes-en-OneDrive-36110213-f3f6-490d-8cb7-3833539def0b")),
+                 GetHeroCardV2(
+                     "Solucionar problemas de sincronización de OneDrive",
+                     "Se aplica a: Office, OneDrive",
+                     "Los siguientes pasos garantizarán que las aplicaciones y procesos de OneDrive o OneDrive para la Empresa se están ejecutando " +
+                     "correctamente.",
+                     new CardAction(ActionTypes.OpenUrl, "Ver información",
+                     value: "https://support.office.com/es-es/article/Solucionar-problemas-de-sincronizaci%C3%B3n-de-OneDrive-83ab0d8a-8400-45b0-8dcf-dc8aa8a6bcf8")),
+                 GetHeroCardV2(
+                     "Solucionar problemas de la aplicación móvil de OneDrive",
+                     "Se aplica a: OneDrive para la Empresa OneDrive",
+                     "Para todos los OneDrive móvil sincronizar, compartir y problemas de carga, asegúrese de que puede conectarse a Internet. " +
+                     "Algunas características y aplicaciones pueden funcionar solamente con Wi-Fi.",
+                     new CardAction(ActionTypes.OpenUrl, "Ver información",
+                     value: "https://support.office.com/es-es/article/solucionar-problemas-de-la-aplicaci%C3%B3n-m%C3%B3vil-de-onedrive-a06710d4-fc32-4eec-a7b5-6d9584fb930c?ui=es-ES&rs=es-ES&ad=ES")),
             };
         }
 

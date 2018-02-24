@@ -753,6 +753,7 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(preguntaConsulta);
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                             context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+
                             return;
                         }
                     }

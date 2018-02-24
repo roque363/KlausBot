@@ -409,12 +409,26 @@ namespace KlausBot.Util
             {
                 GetHeroCardV2(
                     "Recuperar o reemplazar un mensaje después de enviarlo",
-                    "",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Outlook 2010 Outlook 2007",
                     "Con la recuperación de mensajes, un mensaje enviado se recupera de los buzones de los destinatarios que aún no lo hayan abierto. " +
-                    "También puede reemplazarlo con un mensaje de sustitución. Por ejemplo, si olvidó incluir un dato adjunto, puede intentar " +
-                    "recuperar el mensaje y luego enviar un mensaje de reemplazo con el dato adjunto.",
+                    "También puede reemplazarlo con un mensaje de sustitución.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Recuperar-o-reemplazar-un-mensaje-despu%C3%A9s-de-enviarlo-35027f88-d655-4554-b4f8-6c0729a723a0?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Restaurar mensajes de correo electrónico eliminados en Outlook.com
+        public static IList<Attachment> GetRestaurarMensajeEliminados()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Restaurar mensajes de correo electrónico eliminados",
+                    "Se aplica a: Outlook.com",
+                    "Si elimina accidentalmente un mensaje en su correo de Outlook.com, puede recuperarlo si continúa en la carpeta Elementos " +
+                    "eliminados o Correo electrónico no deseado. ",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Restaurar-mensajes-de-correo-electr%C3%B3nico-eliminados-en-Outlook-com-cf06ab1b-ae0b-418c-a4d9-4e895f83ed50")),
             };
         }
 
@@ -764,7 +778,11 @@ namespace KlausBot.Util
                 GetHeroCardV2(
                     "Cambiar el modo de ver el calendario de Outlook",
                     "Se aplica a: Outlook 2016 Outlook 2013",
-                    "",
+                    "Temas:\r\r"+
+                    "> [Información del calendario](https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES#odh_calendarpeek).\r\r" +
+                    "> [Lunes con vacaciones](https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES#odh_mondays).\r\r" +
+                    "> [Trabajo no tradicional](https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES#odh_nontraditional).\r\r" +
+                    "> [Zonas horarias visibles](https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES#odh_twozones).",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES")),
             };
@@ -978,6 +996,46 @@ namespace KlausBot.Util
             };
         }
 
+        // Cambiar del modo trabajar sin conexión al modo con conexión
+        public static IList<Attachment> GetCambiarModoConexion()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar del modo trabajar sin conexión al modo con conexión",
+                    "Se aplica a: Outlook 2016, Outlook 2013, Outlook 2010, Outlook 2007",
+                    "En Outlook, tiene la flexibilidad para hacer que Outlook funcione en línea o sin conexión con el servidor de correo.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-del-modo-trabajar-sin-conexi%C3%B3n-al-modo-con-conexi%C3%B3n-2460e4a8-16c7-47fc-b204-b1549275aac9")),
+
+            };
+        }
+
+        // Cambiar el modo de ver el calendario de Outlook
+        // Cambiar del modo trabajar sin conexión al modo con conexión
+        public static IList<Attachment> GetCambiarModo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Cambiar el modo de ver el calendario de Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Temas:\r\r"+
+                    "> [Información del calendario](https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES#odh_calendarpeek).\r\r" +
+                    "> [Lunes con vacaciones](https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES#odh_mondays).\r\r" +
+                    "> [Trabajo no tradicional](https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES#odh_nontraditional).\r\r" +
+                    "> [Zonas horarias visibles](https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES#odh_twozones).",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-el-modo-en-que-ve-el-calendario-de-Outlook-a4e0dfd2-89a1-4770-9197-a3e786f4cd8f?ui=es-ES&rs=es-ES&ad=ES")),
+                GetHeroCardV2(
+                    "Cambiar del modo trabajar sin conexión al modo con conexión",
+                    "Se aplica a: Outlook 2016, Outlook 2013, Outlook 2010, Outlook 2007",
+                    "En Outlook, tiene la flexibilidad para hacer que Outlook funcione en línea o sin conexión con el servidor de correo.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Cambiar-del-modo-trabajar-sin-conexi%C3%B3n-al-modo-con-conexi%C3%B3n-2460e4a8-16c7-47fc-b204-b1549275aac9")),
+            };
+        }
+
         // Prácticas recomendadas para las organizaciones cuando se usa el calendario de Outlook
         public static IList<Attachment> GetUsarCalendarioManeraAdecuadaOutlook()
         {
@@ -1000,7 +1058,8 @@ namespace KlausBot.Util
                 GetHeroCardV2(
                     "Configuración de Correo",
                     "Se aplica a: Outlook Web App",
-                    "Personalizar la configuración para los mensajes que envía y recibe con Outlook Web App. Puede hacer cosas como configurar una firma se agregue a los mensajes que envíe o controlar el seguimiento de mensajes.",
+                    "Personalizar la configuración para los mensajes que envía y recibe con Outlook Web App. Puede hacer cosas como configurar " +
+                    "una firma se agregue a los mensajes que envíe o controlar el seguimiento de mensajes.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/cambiar-la-foto-y-la-informaci%C3%B3n-de-cuenta-en-outlook-en-la-web-b2dbb289-851d-4bed-93c3-3e136f5659ec")),
 
@@ -1477,6 +1536,21 @@ namespace KlausBot.Util
             };
         }
 
+        // Mis mensajes no se envían
+        public static IList<Attachment> GetNoEnviarMensaje()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Mis mensajes no se envían",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas",
+                    "Si ve que los mensajes se acumulan en la bandeja de salida de Outlook o que las personas a las que envía los " +
+                    "mensajes no los reciben, pruebe los siguientes métodos para solucionar el problema.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Mis-mensajes-no-se-env%C3%ADan-97748418-bbd5-4743-a05b-581f22a466dd")),
+            };
+        }
+
         //------------ ORGANIZAR ------------
         //-----------------------------------
         //Organizar el calendario con categorías de colores
@@ -1769,10 +1843,41 @@ namespace KlausBot.Util
             };
         }
 
+        //------ RESOLVER / SOLUCIONAR -------
+        //------------------------------------
+        // Soluciones alternativas para problemas recientes en Outlook para Windows
+        // Resolver problemas de Outlook para Windows con herramientas de solución de problemas automatizadas
+        // No puedo iniciar Microsoft Outlook 2016, 2013 o 2010 o recibo el error "No se puede iniciar Microsoft Office Outlook. No puede abrir la ventana de Outlook"
+        public static IList<Attachment> GetSolucionarOutlook()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Soluciones en OneNote",
+                    "Se aplica a: Outlook 2016 Outlook 2013",
+                    "Correcciones o soluciones alternativas para problemas recientes en Outlook.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/correcciones-o-soluciones-alternativas-para-problemas-recientes-en-outlook-para-windows-ecf61305-f84f-4e13-bb73-95a214ac1230?ui=es-ES&rs=es-ES&ad=ES")),
+                GetHeroCardV2(
+                    "Resolver problemas de Outlook",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office 2010",
+                    "Tenemos varias herramientas para ayudarle a diagnosticar problemas, solucionar problemas y corregir problemas con " +
+                    "Outlook automáticamente.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/resolver-problemas-de-outlook-para-windows-con-herramientas-de-soluci%C3%B3n-de-problemas-automatizadas-38e2342d-3527-4190-8754-a82d8b970fe2")),
+                GetHeroCardV2(
+                    "No puedo iniciar Microsoft Outlook o recibo el error 'No se puede iniciar Microsoft Office Outlook. No puede abrir la ventana de Outlook'",
+                    "Se aplica a: Outlook 2016 Outlook 2013 Office para empresas Outlook 2010",
+                    "¿Tiene problemas para iniciar Outlook 2016, Outlook 2013 u Outlook 2010? ¿Se muestran los mensajes de error 'No se puede iniciar " +
+                    "Microsoft Outlook' y 'No se puede abrir la ventana de Outlook'?",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/no-puedo-iniciar-microsoft-outlook-2016-2013-o-2010-o-recibo-el-error-no-se-puede-iniciar-microsoft-office-outlook-no-puede-abrir-la-ventana-de-outlook-d1f69da6-b333-4650-97bf-4d77bd7abb85?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
         // ----------------------------------------------------------------------- 
         // PREGUNTAS SECUNDARIAS DE OUTLOOK                                                    
         // ----------------------------------------------------------------------- 
-
         // Firma en los mensajes
         public static IList<Attachment> GetFirma()
         {

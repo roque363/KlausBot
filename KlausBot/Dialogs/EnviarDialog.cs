@@ -95,12 +95,39 @@ namespace KlausBot.Dialogs
                             return;
                         }
                     }
-                    // No se detectó la segunda parte de la pregunta
+                    // No se dtecto la segunda parte de la pregunta
+                    // Se detecto el Adverbio de la pregunta
+                    foreach (var adv in result.Entities.Where(Entity => Entity.Type == "Adverbio"))
+                    {
+                        var adverbio = adv.Entity.ToLower().Replace(" ", "");
+                        if(adverbio == "no"){
+                            reply.Attachments = RespuestasOutlook.GetNoEnviarMensaje();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasOutlook.GetNoEnviarMensaje();
+                            await context.PostAsync(preguntaNoRegistrada1);
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                            return;
+                        }
+                    }
+                    // No se detectó el adverbio de la pregunta
                     reply.Attachments = RespuestasOutlook.GetReenviarYEnviarMensajeOutlook();
                     await context.PostAsync(confirmacionRespuesta2);
                     await context.PostAsync(reply);
                     await context.PostAsync(preguntaConsulta);
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                     return;
                 }
                 else if (palabra1 == "respuestasautomaticas" || palabra1 == "respuestaautomatica" || palabra1 == "respuestasautomáticas" || palabra1 == "respuestaautomática" || palabra1 == "respuestasfuera" || palabra1 == "respuestafuera")
@@ -154,6 +181,7 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(opcionSecundarioDeRespuesta2);
                     await context.PostAsync(reply);
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
                     return;
                 }
                 else if (palabra1 == "imágen" || palabra1 == "imágenes" || palabra1 == "imagen" || palabra1 == "imagenes" || palabra1 == "fotos" || palabra1 == "foto")

@@ -70,9 +70,19 @@ namespace KlausBot.Dialogs
                             context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
+                        else if (palabra2 == "sinconexión" || palabra2 == "conconexión" || palabra2 == "conexión" || palabra2 == "sinconexion" || palabra2 == "conconexion" || palabra2 == "conexion")
+                        {
+                            reply.Attachments = RespuestasOutlook.GetCambiarModoConexion();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                            return;
+                        }
                         else
                         {
-                            reply.Attachments = RespuestasOutlook.GetCambiarModoVerCalendario();
+                            reply.Attachments = RespuestasOutlook.GetCambiarModo();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
@@ -81,11 +91,12 @@ namespace KlausBot.Dialogs
                         }
                     }
                     // No se detectó la segunda parte de la pregunta
-                    reply.Attachments = RespuestasOutlook.GetCambiarModoVerCalendario();
+                    reply.Attachments = RespuestasOutlook.GetCambiarModo();
                     await context.PostAsync(preguntaNoRegistrada1);
                     await context.PostAsync(opcionSecundarioDeRespuesta1);
                     await context.PostAsync(reply);
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
                     return;
                 }
                 // -------------------------------------------------------------------

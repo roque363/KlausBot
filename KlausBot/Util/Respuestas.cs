@@ -424,7 +424,7 @@ namespace KlausBot.Util
                     value: "https://support.office.com/es-es/article/Crear-un-archivo-de-datos-de-Outlook-para-guardar-la-informaci%C3%B3n-17a13ca2-df52-48e8-b933-4c84c2aabe7c")),
             };
         }
-
+        
         // Aplicar o quitar estilos y efectos de los objetos en office 
         public static IList<Attachment> GetAplicarEstilos()
         {
@@ -511,6 +511,22 @@ namespace KlausBot.Util
                     "Se aplica a: Excel 2016, Word 2016, PowerPoint 2016, Word Starter 2010",
                     "En este artículo se explican las firmas digitales , para qué se pueden usar y cómo se pueden usar " +
                     "firmas digitales en los siguientes programas de Microsoft Office: Word, Excel y PowerPoint.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/Agregar-o-quitar-una-firma-digital-en-archivos-de-Office-70d26dc9-be10-46f1-8efa-719c8b3f1a2d#__toc311526848")),
+            };
+        }
+
+        // Correcciones y resoluciones para problemas recientes de Office
+        public static IList<Attachment> GetSolucionarOffice()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Correcciones y resoluciones para problemas recientes de Office",
+                    "Se aplica a: Office",
+                    "Si le están surgiendo problemas de instalación, activación o de actualización, consulte nuestro artículo " +
+                    "[Correcciones o soluciones alternativas para los problemas recientes de activación o de instalación de Office](https://support.office.com/es-es/article/correcciones-o-soluciones-alternativas-para-los-problemas-recientes-de-activaci%C3%B3n-o-de-instalaci%C3%B3n-de-office-30453145-72e9-4061-a88c-cd74884f292f).\r\r" +
+                    "Si los problemas son específicos de aplicaciones de Office, haga clic en 'Ver más información'.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/Agregar-o-quitar-una-firma-digital-en-archivos-de-Office-70d26dc9-be10-46f1-8efa-719c8b3f1a2d#__toc311526848")),
             };

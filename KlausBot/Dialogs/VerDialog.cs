@@ -82,9 +82,9 @@ namespace KlausBot.Dialogs
                                 }
                             }
                             reply.Attachments = RespuestasOutlook.GetVerMensajesCorreoElectronicoConversacion();
-                            await context.PostAsync($"Quizás desea saber como ver mensajes de correo electrónico por conversación, tengo esto: ");
+                            await context.PostAsync(preguntaNoRegistrada1);
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
                             await context.PostAsync(reply);
-                            await context.PostAsync($"Caso contrario, la pregunta no se encuentra registrada o vuelva a escribir correctamente la pregunta.");
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                             return;
                         }

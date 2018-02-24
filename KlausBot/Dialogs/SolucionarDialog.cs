@@ -111,13 +111,36 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(confirmacionRespuesta2);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("tipoServicio", "OneNote");
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                            return;
+                        }
+                        else if (servicioU == "outlook" || servicioU == "outlok")
+                        {
+                            reply.Attachments = RespuestasOutlook.GetSolucionarOutlook();
+                            await context.PostAsync(confirmacionRespuesta2);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("tipoServicio", "Outlook");
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                            return;
+                        }
+                        else if (servicioU == "onedrive" || servicioU == "drive")
+                        {
+                            reply.Attachments = RespuestasOneDrive.GetSolucionarOneDrive();
+                            await context.PostAsync(confirmacionRespuesta2);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("tipoServicio", "OneDrive");
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                             context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
                         else
                         {
-                            reply.Attachments = RespuestasOneNote.GetSolucionarOneNote();
+                            reply.Attachments = Respuestas.GetSolucionarOffice();
                             await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{servicioU}'?");
                             await context.PostAsync(opcionSecundarioDeRespuesta2);
                             await context.PostAsync(reply);
@@ -135,14 +158,33 @@ namespace KlausBot.Dialogs
                         await context.PostAsync(confirmacionRespuesta2);
                         await context.PostAsync(reply);
                         await context.PostAsync(preguntaConsulta);
-                        context.PrivateConversationData.SetValue<string>("tipoServicio", "OneNote");
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                        return;
+                    }
+                    else if (servicio == "Outlook")
+                    {
+                        reply.Attachments = RespuestasOutlook.GetSolucionarOutlook();
+                        await context.PostAsync(confirmacionRespuesta2);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                        return;
+                    }
+                    else if (servicio == "OneDrive")
+                    {
+                        reply.Attachments = RespuestasOneDrive.GetSolucionarOneDrive();
+                        await context.PostAsync(confirmacionRespuesta2);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
                         context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                         context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                         return;
                     }
                     else
                     {
-                        reply.Attachments = RespuestasOneNote.GetSolucionarOneNote();
+                        reply.Attachments = Respuestas.GetSolucionarOffice();
                         await context.PostAsync(preguntaNoRegistrada1);
                         await context.PostAsync(opcionSecundarioDeRespuesta2);
                         await context.PostAsync(reply);
@@ -153,10 +195,12 @@ namespace KlausBot.Dialogs
                 }
                 else
                 {
-                    await context.PostAsync(preguntaNoRegistrada2);
-                    await context.PostAsync($"O tal vez no escribió correctamente la palabra '{palabra1}'?");
-                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
-                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
+                    reply.Attachments = Respuestas.GetSolucionarOffice();
+                    await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra1}'?");
+                    await context.PostAsync(opcionSecundarioDeRespuesta1);
+                    await context.PostAsync(reply);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                     return;
                 }
             }

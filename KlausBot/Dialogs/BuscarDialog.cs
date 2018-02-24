@@ -346,7 +346,7 @@ namespace KlausBot.Dialogs
                     }
                     //obtener el producto si este a sido escodigo anteriormente
                     var servicio = "Servicio";
-                    context.PrivateConversationData.TryGetValue<string>("tipoDeServicio", out servicio);
+                    context.PrivateConversationData.TryGetValue<string>("tipoServicio", out servicio);
                     if (servicio == "OneNote" )
                     {
                         reply.Attachments = RespuestasOneNote.GetBuscarNotasOneNote();
@@ -404,6 +404,16 @@ namespace KlausBot.Dialogs
                             context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
                         }
+                        else if (palabra2 == "hoja" || palabra2 == "hojas")
+                        {
+                            reply.Attachments = RespuestasExcel.GetBuscarTextoNumerosHojaCalculo();
+                            await context.PostAsync(confirmacionRespuesta2);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                            return;
+                        }
                         else
                         {
                             reply.Attachments = RespuestasWord.GetBuscarReemplazarTextoDatosDocumentoWord();
@@ -426,6 +436,18 @@ namespace KlausBot.Dialogs
                             await context.PostAsync(confirmacionRespuesta1);
                             await context.PostAsync(reply);
                             await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("tipoServicio", "Word");
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                            return;
+                        }
+                        else if (servicio1 == "excel")
+                        {
+                            reply.Attachments = RespuestasExcel.GetBuscarTextoNumerosHojaCalculo();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("tipoServicio", "Excel");
                             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
                             context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                             return;
@@ -443,10 +465,20 @@ namespace KlausBot.Dialogs
                     }
                     //obtener el producto si este a sido escodigo anteriormente
                     var servicio = "Servicio";
-                    context.PrivateConversationData.TryGetValue<string>("tipoDeServicio", out servicio);
+                    context.PrivateConversationData.TryGetValue<string>("tipoServicio", out servicio);
                     if (servicio == "Word" || servicio == "Outlook")
                     {
                         reply.Attachments = RespuestasWord.GetBuscarReemplazarTextoDatosDocumentoWord();
+                        await context.PostAsync(confirmacionRespuesta1);
+                        await context.PostAsync(reply);
+                        await context.PostAsync(preguntaConsulta);
+                        context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                        context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                        return;
+                    }
+                    else if (servicio == "Excel")
+                    {
+                        reply.Attachments = RespuestasExcel.GetBuscarTextoNumerosHojaCalculo();
                         await context.PostAsync(confirmacionRespuesta1);
                         await context.PostAsync(reply);
                         await context.PostAsync(preguntaConsulta);
@@ -465,6 +497,46 @@ namespace KlausBot.Dialogs
                         context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
                         return;
                     }
+                }
+                else if (palabra1 == "vínculo" || palabra1 == "vínculos" || palabra1 == "vinculo" || palabra1 == "vinculos")
+                {
+                    reply.Attachments = RespuestasExcel.GetBuscarVinculosLibro();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                    return;
+                }
+                else if (palabra1 == "referencia" || palabra1 == "referencias")
+                {
+                    reply.Attachments = RespuestasExcel.GetBuscarVinculosLibro();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                    return;
+                }
+                else if (palabra1 == "celdas" || palabra1 == "celda")
+                {
+                    reply.Attachments = RespuestasExcel.GetBuscarCeldasOcultasHoja();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                    return;
+                }
+                else if (palabra1 == "duplicado" || palabra1 == "duplicados")
+                {
+                    reply.Attachments = RespuestasExcel.GetBuscarDuplicadosExcel();
+                    await context.PostAsync(confirmacionRespuesta1);
+                    await context.PostAsync(reply);
+                    await context.PostAsync(preguntaConsulta);
+                    context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                    return;
                 }
                 else
                 {

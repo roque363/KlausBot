@@ -876,7 +876,7 @@ namespace KlausBot.Util
             };
         }
 
-        // ELIMINAR - QUITAR - DESAPARECER
+        // ELIMINAR / QUITAR / DESAPARECER
         //--------------------
         // Quitar una contraseña de una hoja de cálculo o un libro
         public static IList<Attachment> GetQuitarContrasenaHojaCalculolibroExcel()
@@ -924,8 +924,8 @@ namespace KlausBot.Util
             };
         }
 
-        // APLICAR
-        //------------------
+        //------ APLICAR ------
+        //---------------------
         // Aplicar formato condicional en Excel
         public static IList<Attachment> GetAplicarFormatoCondicionalExcel()
         {
@@ -938,6 +938,74 @@ namespace KlausBot.Util
                     +"También puede mostrar la clasificación de celdas individuales comparadas con un rango de valores con barras de datos, escalas de colores y conjuntos de iconos.",
                     new CardAction(ActionTypes.OpenUrl, "Ver más información",
                     value: "https://support.office.com/es-es/article/aplicar-formato-condicional-en-excel-34402f91-c7e7-4060-944c-65d913033d18")),
+            };
+        }
+
+        //------- BUSCAR ------
+        //---------------------
+        // Buscar o reemplazar texto y números en una hoja de cálculo
+        public static IList<Attachment> GetBuscarTextoNumerosHojaCalculo()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Buscar o reemplazar texto y números en una hoja de cálculo",
+                    "Se aplica a: Excel 2016 Excel 2013 Excel 2010 Excel 2007",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. En la pestaña **Inicio** en el grupo **Edición**, haga clic en **Buscar y seleccionar**.\r\r"+
+                    ">2. Haga clic en **Buscar**.\r\r"+
+                    ">3. En el cuadro **Buscar**, escriba el texto o los números que desee buscar.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/buscar-o-reemplazar-texto-y-n%c3%bameros-en-una-hoja-de-c%c3%a1lculo-0e304ca5-ecef-4808-b90f-fdb42f892e90?ui=es-ES&rs=es-HN&ad=PE")),
+            };
+        }
+
+        // Buscar vínculos (referencias externas) en un libro
+        public static IList<Attachment> GetBuscarVinculosLibro()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Buscar vínculos (referencias externas) en un libro",
+                    "Se aplica a: Excel 2016 Excel 2013 Excel 2010 Excel 2007",
+                    "Cualquier libro de Excel al que se haya vinculado tendrá el nombre de archivo de ese libro en el vínculo con su extensión de archivo .xl*,"+
+                    " por lo que el método recomendado consiste en buscar todas las referencias a la extensión de archivo parcial .xl.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/buscar-v%C3%ADnculos-referencias-externas-en-un-libro-fcbf4576-3aab-4029-ba25-54313a532ff1?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Encontrar las celdas ocultas de una hoja de cálculo
+        public static IList<Attachment> GetBuscarCeldasOcultasHoja()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Encontrar las celdas ocultas de una hoja de cálculo",
+                    "Se aplica a: Excel 2013",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. Haga clic en la hoja de cálculo donde desee buscar.\r\r"+
+                    ">2. En la pestaña **Inicio** en el grupo **Edición**, haga clic en **Buscar y seleccionar**.\r\r"+
+                    ">3. Haga clic en **Ir a Especial** y en **Seleccionar**, haga clic en **Solo celdas visibles** y en **Aceptar**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/encontrar-las-celdas-ocultas-de-una-hoja-de-c%C3%A1lculo-ead313b5-1673-4c31-95ef-ec97767ad04d?ui=es-ES&rs=es-ES&ad=ES")),
+            };
+        }
+
+        // Buscar duplicados
+        public static IList<Attachment> GetBuscarDuplicadosExcel()
+        {
+            return new List<Attachment>()
+            {
+                GetHeroCardV2(
+                    "Buscar duplicados",
+                    "Se aplica a: Excel 2016 Excel 2013 Excel 2010 Excel 2007",
+                    "Siga los siguientes pasos:\r\r"+
+                    ">1. Seleccione las celdas en las que desea comprobar duplicados.\r\r"+
+                    ">2. Haga clic en **Inicio** > **Formato condicional** > **Resaltar reglas de celdas** > **Valores duplicados**.\r\r"+
+                    ">3. En el cuadro que se encuentra junto a valores con, elija el formato que desea aplicar a los valores duplicados y haga clic en **Aceptar**.",
+                    new CardAction(ActionTypes.OpenUrl, "Ver más información",
+                    value: "https://support.office.com/es-es/article/buscar-y-eliminar-duplicados-00e35bea-b46a-4d5d-b28e-66a552dc138d")),
             };
         }
 
@@ -1032,19 +1100,6 @@ namespace KlausBot.Util
                 }
             };
             return videoCard.ToAttachment();
-        }
-
-        private static Attachment GetCardDoubleAction(string firstAction, string action1, string secondAction, string action2)
-        {
-            var Saludocard = new ThumbnailCard
-            {
-                Buttons = new List<CardAction>
-                {
-                    new CardAction(ActionTypes.ImBack, firstAction, value: action1),
-                    new CardAction(ActionTypes.ImBack, firstAction, value: action2),
-                }
-            };
-            return Saludocard.ToAttachment();
         }
 
     }

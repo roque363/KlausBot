@@ -29,12 +29,16 @@ namespace KlausBot.Dialogs
             var reply = context.MakeMessage();
             reply.AttachmentLayout = AttachmentLayoutTypes.Carousel;
 
-            var estadoPregunta = "True";
-            var estadoPregunta2 = "False";
             var accion = "Crear";
             context.PrivateConversationData.SetValue<string>("Accion", accion);
 
+            // Estados para saber si al usuario se le a enviado una respuesta
+            var estadoPregunta = "True";
+            var estadoPregunta2 = "False";
+
+            // Estados para saber si se le a echo una pregunta de si o no al usuario 
             var estadoRespuesta = "True";
+            var estadoRespuesta2 = "False";
 
             string confirmacionRespuesta1 = "Tengo esta respuesta para usted:";
             string confirmacionRespuesta2 = "Tengo estas respuestas para usted:";
@@ -744,6 +748,31 @@ namespace KlausBot.Dialogs
                 // -------------------------------------------------------------------
                 else if (palabra1 == "tabla" || palabra1 == "tablas")
                 {
+                    // Se detectó  la segunda parte de la pregunta
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+
+                        // La segunda parte de la prgunta es mensaje o correo
+                        if (palabra2 == "dinámica" || palabra2 == "dinámicas" || palabra2 == "dinamica" || palabra2 == "dinamicas")
+                        {
+                            reply.Attachments = RespuestasExcel.GetCrearTablaDinamicaExcel();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasExcel.GetCrearTablaDinamicaExcel();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                    }
                     foreach (var entity in result.Entities.Where(Entity => Entity.Type == "Servicio"))
                     {
                         var serv = entity.Entity.ToLower().Replace(" ", "");
@@ -1265,6 +1294,7 @@ namespace KlausBot.Dialogs
                     await context.PostAsync(preguntaNoRegistrada2);
                     await context.PostAsync($"O tal vez no escribió correctamente la palabra '{palabra1}'?");
                     context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
+                    context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
                     return;
                 }
             }
@@ -1274,6 +1304,7 @@ namespace KlausBot.Dialogs
             await context.PostAsync(reply);
             await context.PostAsync("O tal vez no escribió la pregunta correctamente");
             context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta2);
+            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta2);
             return;
         }
 

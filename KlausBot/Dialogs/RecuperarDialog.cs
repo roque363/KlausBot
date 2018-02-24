@@ -91,6 +91,31 @@ namespace KlausBot.Dialogs
                 // El usuario escribio en su pregunta la palabra mensaje
                 else if (palabra1 == "mensaje" || palabra1 == "mensajes" || palabra1 == "correo" || palabra1 == "correos")
                 {
+                    // Recorrido de la primera parte de la pregunta
+                    foreach (var entityP2 in result.Entities.Where(Entity => Entity.Type == "Pregunta::Palabra2"))
+                    {
+                        var palabra2 = entityP2.Entity.ToLower().Replace(" ", "");
+
+                        if (palabra2 == "eliminado" || palabra2 == "eliminados" || palabra2 == "elimine" || palabra2 == "borrado" || palabra2 == "borrados")
+                        {
+                            reply.Attachments = RespuestasOutlook.GetRestaurarMensajeEliminados();
+                            await context.PostAsync(confirmacionRespuesta1);
+                            await context.PostAsync(reply);
+                            await context.PostAsync(preguntaConsulta);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            context.PrivateConversationData.SetValue<string>("EstadoRespuesta", estadoRespuesta);
+                            return;
+                        }
+                        else
+                        {
+                            reply.Attachments = RespuestasOutlook.GetRestaurarMensajeEliminados();
+                            await context.PostAsync($"Lo siento, su pregunta no esta registrada, tal vez no escribió correctamente la palabra '{palabra2}'?");
+                            await context.PostAsync(opcionSecundarioDeRespuesta1);
+                            await context.PostAsync(reply);
+                            context.PrivateConversationData.SetValue<string>("EstadoPregunta", estadoPregunta);
+                            return;
+                        }
+                    }
                     reply.Attachments = RespuestasOutlook.GetRecuperarMensajeDespuésEnviarlo();
                     await context.PostAsync(confirmacionRespuesta1);
                     await context.PostAsync(reply);
